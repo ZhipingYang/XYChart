@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4EE56A95-DA6C-45F4-872B-249364E847AC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>UUChartView</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5726F78CACADAE7BD24B35EEE5D0F81897D84BB8</key>
+		<string>https://xcodeyang%2540gmail.com@github.com/ZhipingYang/UUChartView.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>UUChartView.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5726F78CACADAE7BD24B35EEE5D0F81897D84BB8</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://xcodeyang%2540gmail.com@github.com/ZhipingYang/UUChartView.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5726F78CACADAE7BD24B35EEE5D0F81897D84BB8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5726F78CACADAE7BD24B35EEE5D0F81897D84BB8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>UUChartView</string>
+		</dict>
+	</array>
+</dict>
+</plist>
