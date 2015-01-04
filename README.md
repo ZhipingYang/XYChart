@@ -29,6 +29,7 @@ Line and Bar of Chart
  optional
 
     - (NSArray *)UUChart_ColorArray:(UUChart *)chart;
+    
     //CGRange CGRangeMake(CGFloat max, CGFloat min);
     - (CGRange)UUChartChooseRangeInLineChart:(UUChart *)chart;
 
