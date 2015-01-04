@@ -13,7 +13,7 @@ Line and Bar of Chart
                        withSource:(id<UUChartDataSource>)dataSource 
                         withStyle:(UUChartStyle)style;
 
-UUChartView have two style to select:
+#### UUChartView have two style to select:
 
     UUChartLineStyle,
     UUChartBarStyle
@@ -21,22 +21,20 @@ UUChartView have two style to select:
 ## UUChartDataSource
 
  required
-    - (NSArray *)UUChart_xLableArray:(UUChart *)chart;
 
+    - (NSArray *)UUChart_xLableArray:(UUChart *)chart;
     //The target array's object's class is equal to NSArray
     - (NSArray *)UUChart_yValueArray:(UUChart *)chart;
 
  optional
-    - (NSArray *)UUChart_ColorArray:(UUChart *)chart;
 
+    - (NSArray *)UUChart_ColorArray:(UUChart *)chart;
     //CGRange CGRangeMake(CGFloat max, CGFloat min);
     - (CGRange)UUChartChooseRangeInLineChart:(UUChart *)chart;
 
- Only apply in lineChart
+Only apply in lineChart
 
     - (CGRange)UUChartMarkRangeInLineChart:(UUChart *)chart;
-
     - (BOOL)UUChart:(UUChart *)chart ShowHorizonLineAtIndex:(NSInteger)index;
-
     - (BOOL)UUChart:(UUChart *)chart ShowMaxMinAtIndex:(NSInteger)index;
 
