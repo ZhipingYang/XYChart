@@ -27,17 +27,24 @@ Line and Bar of Chart, you can mark the range of value you want, and show the ma
     - (NSArray *)UUChart_yValueArray:(UUChart *)chart;
 
  optional
-
+    // the colors for lines and bars.
     - (NSArray *)UUChart_ColorArray:(UUChart *)chart;
     
     //CGRange CGRangeMake(CGFloat max, CGFloat min);
     - (CGRange)UUChartChooseRangeInLineChart:(UUChart *)chart;
 
-Only apply in lineChart
+####Only apply in lineChart
 
+    //Mark the range of values with grayColor if you need
     - (CGRange)UUChartMarkRangeInLineChart:(UUChart *)chart;
+    
+    //You can choose horizonLine which you want to show
     - (BOOL)UUChart:(UUChart *)chart ShowHorizonLineAtIndex:(NSInteger)index;
+    
+    // Show the label on the max and min values with their colors.
     - (BOOL)UUChart:(UUChart *)chart ShowMaxMinAtIndex:(NSInteger)index;
+
+
 
 ### Demo
 
