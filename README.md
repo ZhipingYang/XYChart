@@ -1,7 +1,7 @@
 UUChartView
 ===========
 
-Line and Bar of Chart
+Line and Bar of Chart, you can mark the range of value you want, and show the max or min values in linechart
 
 ![Flipboard playing multiple GIFs](https://github.com/ZhipingYang/UUChartView/raw/master/UUChartViewTests/UUChartView.gif)
 
