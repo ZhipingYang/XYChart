@@ -19,17 +19,16 @@ Line and Bar of Chart, you can mark the range of value you want, and show the ma
     UUChartBarStyle
 
 ## UUChartDataSource
-
- required
+####required
 
     - (NSArray *)UUChart_xLableArray:(UUChart *)chart;
     //The target array's object's class is equal to NSArray
     - (NSArray *)UUChart_yValueArray:(UUChart *)chart;
+    
+####optional
 
- optional
     // the colors for lines and bars.
     - (NSArray *)UUChart_ColorArray:(UUChart *)chart;
-    
     //CGRange CGRangeMake(CGFloat max, CGFloat min);
     - (CGRange)UUChartChooseRangeInLineChart:(UUChart *)chart;
 
