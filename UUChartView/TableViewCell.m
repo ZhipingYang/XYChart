@@ -39,6 +39,8 @@
 {
     if (path.row==0 && path.section==0) {
         return @[@"one",@"two",@"three",@"four",@"five"];
+    }else if (path.row==0 && path.section==1){
+        return @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13"];
     }
     return @[@"one",@"two",@"three",@"four",@"five",@"six",@"seven"];
 }
@@ -49,6 +51,7 @@
     NSArray *ary1 = @[@"22",@"54",@"15",@"30",@"42",@"77",@"43"];
     NSArray *ary2 = @[@"76",@"34",@"54",@"23",@"16",@"32",@"17"];
     NSArray *ary3 = @[@"3",@"12",@"25",@"55",@"52"];
+    NSArray *ary4 = @[@"23",@"42",@"25",@"55",@"52",@"19",@"25",@"55",@"52",@"32",@"25",@"55",@"52"];
     
     if (path.section==0) {
         switch (path.row) {
@@ -65,23 +68,11 @@
         if (path.row) {
             return @[ary1,ary2];
         }else{
-            return @[ary1];
+            return @[ary4];
         }
     }
-    
-//    if (path.row==0) {
-//        return @[ary];
-//    }
-//    else if (path.row==1) {
-//        return @[ary1];
-//    }
-//    else if (path.row==2){
-//        return @[ary1,ary2];
-//    }
-//    else{
-//        return @[ary1,ary2,ary3];
-//    }
 }
+
 #pragma mark - @optional
 //颜色数组
 - (NSArray *)UUChart_ColorArray:(UUChart *)chart
