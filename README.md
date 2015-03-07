@@ -51,7 +51,7 @@ Line and Bar of Chart, you can mark the range of value you want, and show the ma
     // Show the label on the max and min values with their colors.
     - (BOOL)UUChart:(UUChart *)chart ShowMaxMinAtIndex:(NSInteger)index;
 
-#### Thanks to kevinzhow's [PNChart](https://github.com/kevinzhow/PNChart)
+#### Thanks to kevinzhow's [PNChart](https://github.com/kevinzhow/PNChart) (about six months ago)
 
 
 ### Demo
