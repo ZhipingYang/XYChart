@@ -1,11 +1,11 @@
 UUChartView
 ===========
 
-Line and Bar of Chart, you can mark the range of value you want, and show the max or min values in linechart
+Line and Bar charts. You can mark the range of values you want, and show the max or min values in linechart.
 
 ![Flipboard playing multiple GIFs](https://github.com/ZhipingYang/UUChartView/raw/master/UUChartViewTests/UUChartView.gif)
 
-## Introduce
+## Introduction
   
  * UUChart
  * UULineChart
@@ -21,9 +21,9 @@ Line and Bar of Chart, you can mark the range of value you want, and show the ma
                        withSource:(id<UUChartDataSource>)dataSource 
                         withStyle:(UUChartStyle)style;
 
-#### UUChartView have two style to select:
+#### Select from two styles for UUChartView:
 
-    UUChartLineStyle,
+    UUChartLineStyle
     UUChartBarStyle
 
 ## UUChartDataSource
@@ -32,7 +32,7 @@ Line and Bar of Chart, you can mark the range of value you want, and show the ma
     - (NSArray *)UUChart_xLableArray:(UUChart *)chart;
     //The target array's object's class is equal to NSArray
     - (NSArray *)UUChart_yValueArray:(UUChart *)chart;
-    
+
 ####optional
 
     // the colors for lines and bars.
@@ -40,18 +40,18 @@ Line and Bar of Chart, you can mark the range of value you want, and show the ma
     //CGRange CGRangeMake(CGFloat max, CGFloat min);
     - (CGRange)UUChartChooseRangeInLineChart:(UUChart *)chart;
 
-####Only apply in lineChart
+####Additional options available for UUChartLineStyle
 
     //Mark the range of values with grayColor if you need
     - (CGRange)UUChartMarkRangeInLineChart:(UUChart *)chart;
-    
+
     //You can choose horizonLine which you want to show
     - (BOOL)UUChart:(UUChart *)chart ShowHorizonLineAtIndex:(NSInteger)index;
-    
+
     // Show the label on the max and min values with their colors.
     - (BOOL)UUChart:(UUChart *)chart ShowMaxMinAtIndex:(NSInteger)index;
 
-#### UUChart,base on kevinzhow's [PNChart](https://github.com/kevinzhow/PNChart), was created on 2014-7-24, And there must be big different with UUchart and PNChart now.
+#### UUChart, based on kevinzhow's [PNChart](https://github.com/kevinzhow/PNChart), was created on 2014-7-24, although UUChart is now very different from PNChart.
 
 
 ### Demo
@@ -61,7 +61,7 @@ Line and Bar of Chart, you can mark the range of value you want, and show the ma
                                                withStyle:indexPath.section==1?UUChartBarStyle:UUChartLineStyle];
     [chartView showInView:self.contentView];
 
-//横坐标下标题
+//Horizontal Axis Label
 
     - (NSArray *)UUChart_xLableArray:(UUChart *)chart
     {
@@ -100,7 +100,7 @@ Line and Bar of Chart, you can mark the range of value you want, and show the ma
 	    return xTitles;
 	}	
 	
-//数值多重数组（注意数组元素类型还是数组）
+//Creating multiple array values (note the datatype)
 
     - (NSArray *)UUChart_yValueArray:(UUChart *)chart
     {
@@ -109,7 +109,7 @@ Line and Bar of Chart, you can mark the range of value you want, and show the ma
 	    NSArray *ary2 = @[@"76",@"34",@"54",@"23",@"16",@"32",@"17"];
 	    NSArray *ary3 = @[@"3",@"12",@"25",@"55",@"52"];
 	    NSArray *ary4 = @[@"23",@"42",@"25",@"15",@"30",@"42",@"32",@"40",@"42",@"25",@"33"];
-	    
+	
 	    if (path.section==0) {
 	        switch (path.row) {
 	            case 0:
@@ -130,14 +130,14 @@ Line and Bar of Chart, you can mark the range of value you want, and show the ma
 	    }
     }
 
-//颜色数组
+//Array of colors
 
     - (NSArray *)UUChart_ColorArray:(UUChart *)chart
     {
         return @[UUGreen,UURed,UUBrown];
     }
-    
-//显示数值范围
+
+//Choose line chart range
 
     - (CGRange)UUChartChooseRangeInLineChart:(UUChart *)chart
     {
@@ -152,10 +152,11 @@ Line and Bar of Chart, you can mark the range of value you want, and show the ma
 	    }
 	    return CGRangeZero;
     }
-#### 折线图专享功能
 
-   //标记数值区域
-    
+#### Features only available for line charts
+
+   //Ability to declare line chart range
+
     - (CGRange)UUChartMarkRangeInLineChart:(UUChart *)chart
     {
        if (path.row==2) {
@@ -164,14 +165,14 @@ Line and Bar of Chart, you can mark the range of value you want, and show the ma
       return CGRangeZero;
     }
 
-//判断显示横线条
+  //Display horizontal line
 
     - (BOOL)UUChart:(UUChart *)chart ShowHorizonLineAtIndex:(NSInteger)index
     {
         return YES;
     }
 
-//判断显示最大最小值
+  //Determine the minimum and maximum display
 
     - (BOOL)UUChart:(UUChart *)chart ShowMaxMinAtIndex:(NSInteger)index
     {
