@@ -10,7 +10,10 @@
 #import "UUColor.h"
 #import "UUChartLabel.h"
 
-@implementation UULineChart
+
+@implementation UULineChart {
+    NSHashTable *_chartLabelsForX;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -94,6 +97,10 @@
 
 -(void)setXLabels:(NSArray *)xLabels
 {
+    if( !_chartLabelsForX ){
+        _chartLabelsForX = [NSHashTable weakObjectsHashTable];
+    }
+    
     _xLabels = xLabels;
     CGFloat num = 0;
     if (xLabels.count>=20) {
@@ -110,6 +117,8 @@
         UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake(i * _xLabelWidth+UUYLabelwidth, self.frame.size.height - UULabelHeight, _xLabelWidth, UULabelHeight)];
         label.text = labelText;
         [self addSubview:label];
+        
+        [_chartLabelsForX addObject:label];
     }
     
     //画竖线
@@ -131,14 +140,17 @@
 {
 	_colors = colors;
 }
+
 - (void)setMarkRange:(CGRange)markRange
 {
     _markRange = markRange;
 }
+
 - (void)setChooseRange:(CGRange)chooseRange
 {
     _chooseRange = chooseRange;
 }
+
 - (void)setShowHorizonLine:(NSMutableArray *)ShowHorizonLine
 {
     _ShowHorizonLine = ShowHorizonLine;
@@ -275,5 +287,9 @@
     [self addSubview:view];
 }
 
+- (NSArray *)chartLabelsForX
+{
+    return [_chartLabelsForX allObjects];
+}
 
 @end

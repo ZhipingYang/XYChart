@@ -16,7 +16,9 @@
 }
 @end
 
-@implementation UUBarChart
+@implementation UUBarChart {
+    NSHashTable *_chartLabelsForX;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -80,6 +82,10 @@
 
 -(void)setXLabels:(NSArray *)xLabels
 {
+    if( !_chartLabelsForX ){
+        _chartLabelsForX = [NSHashTable weakObjectsHashTable];
+    }
+    
     _xLabels = xLabels;
     NSInteger num;
     if (xLabels.count>=8) {
@@ -95,6 +101,8 @@
         UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake((i *  _xLabelWidth ), self.frame.size.height - UULabelHeight, _xLabelWidth, UULabelHeight)];
         label.text = xLabels[i];
         [myScrollView addSubview:label];
+        
+        [_chartLabelsForX addObject:label];
     }
     
     float max = (([xLabels count]-1)*_xLabelWidth + chartMargin)+_xLabelWidth;
@@ -102,14 +110,17 @@
         myScrollView.contentSize = CGSizeMake(max, self.frame.size.height);
     }
 }
+
 -(void)setColors:(NSArray *)colors
 {
 	_colors = colors;
 }
+
 - (void)setChooseRange:(CGRange)chooseRange
 {
     _chooseRange = chooseRange;
 }
+
 -(void)strokeChart
 {
     
@@ -131,6 +142,11 @@
             
         }
     }
+}
+
+- (NSArray *)chartLabelsForX
+{
+    return [_chartLabelsForX allObjects];
 }
 
 @end

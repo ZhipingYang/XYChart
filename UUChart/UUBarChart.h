@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UUColor.h"
+
 #define chartMargin     10
 #define xLabelMargin    15
 #define yLabelMargin    15
@@ -39,5 +40,6 @@
 
 @property (nonatomic, strong) NSArray * colors;
 
+- (NSArray *)chartLabelsForX;
 
 @end
