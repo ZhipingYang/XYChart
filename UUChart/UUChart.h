@@ -12,53 +12,49 @@
 #import "UUColor.h"
 #import "UULineChart.h"
 #import "UUBarChart.h"
-//类型
-typedef enum {
-	UUChartLineStyle,
-	UUChartBarStyle
-} UUChartStyle;
 
+typedef NS_ENUM(NSInteger, UUChartStyle){
+    UUChartStyleLine = 0,
+    UUChartStyleBar
+};
 
 @class UUChart;
 @protocol UUChartDataSource <NSObject>
 
 @required
 //横坐标标题数组
-- (NSArray *)UUChart_xLableArray:(UUChart *)chart;
+- (NSArray *)chartConfigAxisXLabel:(UUChart *)chart;
 
 //数值多重数组
-- (NSArray *)UUChart_yValueArray:(UUChart *)chart;
+- (NSArray *)chartConfigAxisYValue:(UUChart *)chart;
 
 @optional
 //颜色数组
-- (NSArray *)UUChart_ColorArray:(UUChart *)chart;
+- (NSArray *)chartConfigColors:(UUChart *)chart;
 
 //显示数值范围
-- (CGRange)UUChartChooseRangeInLineChart:(UUChart *)chart;
+- (CGRange)chartRange:(UUChart *)chart;
 
 #pragma mark 折线图专享功能
 //标记数值区域
-- (CGRange)UUChartMarkRangeInLineChart:(UUChart *)chart;
+- (CGRange)chartHighlightRangeInLine:(UUChart *)chart;
 
 //判断显示横线条
-- (BOOL)UUChart:(UUChart *)chart ShowHorizonLineAtIndex:(NSInteger)index;
+- (BOOL)chart:(UUChart *)chart showHorizonLineAtIndex:(NSInteger)index;
 
 //判断显示最大最小值
-- (BOOL)UUChart:(UUChart *)chart ShowMaxMinAtIndex:(NSInteger)index;
+- (BOOL)chart:(UUChart *)chart showMaxMinAtIndex:(NSInteger)index;
 @end
 
 
 @interface UUChart : UIView
 
-//是否自动显示范围
-@property (nonatomic, assign) BOOL showRange;
+@property (nonatomic) UUChartStyle chartStyle;
 
-@property (assign) UUChartStyle chartStyle;
-
--(id)initwithUUChartDataFrame:(CGRect)rect withSource:(id<UUChartDataSource>)dataSource withStyle:(UUChartStyle)style;
+- (id)initwithUUChartDataFrame:(CGRect)rect withSource:(id<UUChartDataSource>)dataSource withStyle:(UUChartStyle)style;
 
 - (void)showInView:(UIView *)view;
 
--(void)strokeChart;
+- (void)strokeChart;
 
 @end

@@ -47,17 +47,11 @@
             }
         }
     }
-    if (max < 5) {
-        max = 5;
-    }
-    if (self.showRange) {
-        _yValueMin = min;
-    }else{
-        _yValueMin = 0;
-    }
+    max = max<5 ? 5:max;
+    _yValueMin = 0;
     _yValueMax = (int)max;
     
-    if (_chooseRange.max!=_chooseRange.min) {
+    if (_chooseRange.max != _chooseRange.min) {
         _yValueMax = _chooseRange.max;
         _yValueMin = _chooseRange.min;
     }
@@ -79,7 +73,7 @@
 
     //画横线
     for (int i=0; i<5; i++) {
-        if ([_ShowHorizonLine[i] integerValue]>0) {
+        if ([_showHorizonLine[i] integerValue]>0) {
             
             CAShapeLayer *shapeLayer = [CAShapeLayer layer];
             UIBezierPath *path = [UIBezierPath bezierPath];
@@ -151,9 +145,9 @@
     _chooseRange = chooseRange;
 }
 
-- (void)setShowHorizonLine:(NSMutableArray *)ShowHorizonLine
+- (void)setshowHorizonLine:(NSMutableArray *)showHorizonLine
 {
-    _ShowHorizonLine = ShowHorizonLine;
+    _showHorizonLine = showHorizonLine;
 }
 
 
@@ -167,8 +161,8 @@
         //获取最大最小位置
         CGFloat max = [childAry[0] floatValue];
         CGFloat min = [childAry[0] floatValue];
-        NSInteger max_i;
-        NSInteger min_i;
+        NSInteger max_i = 0;
+        NSInteger min_i = 0;
         
         for (int j=0; j<childAry.count; j++){
             CGFloat num = [childAry[j] floatValue];
@@ -200,8 +194,8 @@
        
         //第一个点
         BOOL isShowMaxAndMinPoint = YES;
-        if (self.ShowMaxMinArray) {
-            if ([self.ShowMaxMinArray[i] intValue]>0) {
+        if (self.showMaxMinArray) {
+            if ([self.showMaxMinArray[i] intValue]>0) {
                 isShowMaxAndMinPoint = (max_i==0 || min_i==0)?NO:YES;
             }else{
                 isShowMaxAndMinPoint = YES;
@@ -227,8 +221,8 @@
                 [progressline addLineToPoint:point];
                 
                 BOOL isShowMaxAndMinPoint = YES;
-                if (self.ShowMaxMinArray) {
-                    if ([self.ShowMaxMinArray[i] intValue]>0) {
+                if (self.showMaxMinArray) {
+                    if ([self.showMaxMinArray[i] intValue]>0) {
                         isShowMaxAndMinPoint = (max_i==index || min_i==index)?NO:YES;
                     }else{
                         isShowMaxAndMinPoint = YES;
@@ -249,7 +243,7 @@
         if ([[_colors objectAtIndex:i] CGColor]) {
             _chartLine.strokeColor = [[_colors objectAtIndex:i] CGColor];
         }else{
-            _chartLine.strokeColor = [UUGreen CGColor];
+            _chartLine.strokeColor = [UUColor green].CGColor;
         }
         CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
         pathAnimation.duration = childAry.count*0.4;
@@ -270,12 +264,12 @@
     view.layer.masksToBounds = YES;
     view.layer.cornerRadius = 4;
     view.layer.borderWidth = 2;
-    view.layer.borderColor = [[_colors objectAtIndex:index] CGColor]?[[_colors objectAtIndex:index] CGColor]:UUGreen.CGColor;
+    view.layer.borderColor = [[_colors objectAtIndex:index] CGColor]?[[_colors objectAtIndex:index] CGColor]:[UUColor green].CGColor;
     
     if (isHollow) {
         view.backgroundColor = [UIColor whiteColor];
     }else{
-        view.backgroundColor = [_colors objectAtIndex:index]?[_colors objectAtIndex:index]:UUGreen;
+        view.backgroundColor = [_colors objectAtIndex:index]?[_colors objectAtIndex:index]:[UUColor green];
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(point.x-UUTagLabelwidth/2.0, point.y-UULabelHeight*2, UUTagLabelwidth, UULabelHeight)];
         label.font = [UIFont systemFontOfSize:10];
         label.textAlignment = NSTextAlignmentCenter;

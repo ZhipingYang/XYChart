@@ -20,11 +20,8 @@
 @interface UULineChart : UIView
 
 @property (strong, nonatomic) NSArray * xLabels;
-
 @property (strong, nonatomic) NSArray * yLabels;
-
 @property (strong, nonatomic) NSArray * yValues;
-
 @property (nonatomic, strong) NSArray * colors;
 
 @property (nonatomic) CGFloat xLabelWidth;
@@ -35,10 +32,8 @@
 
 @property (nonatomic, assign) CGRange chooseRange;
 
-@property (nonatomic, assign) BOOL showRange;
-
-@property (nonatomic, retain) NSMutableArray *ShowHorizonLine;
-@property (nonatomic, retain) NSMutableArray *ShowMaxMinArray;
+@property (nonatomic, retain) NSMutableArray *showHorizonLine;
+@property (nonatomic, retain) NSMutableArray *showMaxMinArray;
 
 -(void)strokeChart;
 

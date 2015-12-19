@@ -56,11 +56,7 @@
     if (max < 5) {
         max = 5;
     }
-    if (self.showRange) {
-        _yValueMin = (int)min;
-    }else{
-        _yValueMin = 0;
-    }
+    _yValueMin = 0;
     _yValueMax = (int)max;
     
     if (_chooseRange.max!=_chooseRange.min) {
@@ -77,7 +73,6 @@
 		label.text = [NSString stringWithFormat:@"%.1f",level * i+_yValueMin];
 		[self addSubview:label];
     }
-	
 }
 
 -(void)setXLabels:(NSArray *)xLabels

@@ -17,29 +17,19 @@
 
 @interface UUBarChart : UIView
 
-/**
- * This method will call and troke the line in animation
- */
-
--(void)strokeChart;
-
 @property (strong, nonatomic) NSArray * xLabels;
-
 @property (strong, nonatomic) NSArray * yLabels;
-
 @property (strong, nonatomic) NSArray * yValues;
+@property (strong, nonatomic) NSArray * colors;
 
-@property (nonatomic) CGFloat xLabelWidth;
-
+@property (nonatomic) float xLabelWidth;
 @property (nonatomic) float yValueMax;
 @property (nonatomic) float yValueMin;
+@property (nonatomic) CGRange chooseRange;
 
-@property (nonatomic, assign) BOOL showRange;
-
-@property (nonatomic, assign) CGRange chooseRange;
-
-@property (nonatomic, strong) NSArray * colors;
 
 - (NSArray *)chartLabelsForX;
+
+- (void)strokeChart;
 
 @end

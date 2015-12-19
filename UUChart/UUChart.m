@@ -38,28 +38,28 @@
 }
 
 -(void)setUpChart{
-	if (self.chartStyle == UUChartLineStyle) {
+	if (self.chartStyle == UUChartStyleLine) {
         if(!_lineChart){
             _lineChart = [[UULineChart alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
             [self addSubview:_lineChart];
         }
         //选择标记范围
-        if ([self.dataSource respondsToSelector:@selector(UUChartMarkRangeInLineChart:)]) {
-            [_lineChart setMarkRange:[self.dataSource UUChartMarkRangeInLineChart:self]];
+        if ([self.dataSource respondsToSelector:@selector(chartHighlightRangeInLine:)]) {
+            [_lineChart setMarkRange:[self.dataSource chartHighlightRangeInLine:self]];
         }
         //选择显示范围
-        if ([self.dataSource respondsToSelector:@selector(UUChartChooseRangeInLineChart:)]) {
-            [_lineChart setChooseRange:[self.dataSource UUChartChooseRangeInLineChart:self]];
+        if ([self.dataSource respondsToSelector:@selector(chartRange:)]) {
+            [_lineChart setChooseRange:[self.dataSource chartRange:self]];
         }
         //显示颜色
-        if ([self.dataSource respondsToSelector:@selector(UUChart_ColorArray:)]) {
-            [_lineChart setColors:[self.dataSource UUChart_ColorArray:self]];
+        if ([self.dataSource respondsToSelector:@selector(chartConfigColors:)]) {
+            [_lineChart setColors:[self.dataSource chartConfigColors:self]];
         }
         //显示横线
-        if ([self.dataSource respondsToSelector:@selector(UUChart:ShowHorizonLineAtIndex:)]) {
+        if ([self.dataSource respondsToSelector:@selector(chart:showHorizonLineAtIndex:)]) {
             NSMutableArray *showHorizonArray = [[NSMutableArray alloc]init];
             for (int i=0; i<5; i++) {
-                if ([self.dataSource UUChart:self ShowHorizonLineAtIndex:i]) {
+                if ([self.dataSource chart:self showHorizonLineAtIndex:i]) {
                     [showHorizonArray addObject:@"1"];
                 }else{
                     [showHorizonArray addObject:@"0"];
@@ -69,40 +69,40 @@
 
         }
         //判断显示最大最小值
-        if ([self.dataSource respondsToSelector:@selector(UUChart:ShowMaxMinAtIndex:)]) {
+        if ([self.dataSource respondsToSelector:@selector(chart:showMaxMinAtIndex:)]) {
             NSMutableArray *showMaxMinArray = [[NSMutableArray alloc]init];
-            NSArray *y_values = [self.dataSource UUChart_yValueArray:self];
+            NSArray *y_values = [self.dataSource chartConfigAxisYValue:self];
             if (y_values.count>0){
                 for (int i=0; i<y_values.count; i++) {
-                    if ([self.dataSource UUChart:self ShowMaxMinAtIndex:i]) {
+                    if ([self.dataSource chart:self showMaxMinAtIndex:i]) {
                         [showMaxMinArray addObject:@"1"];
                     }else{
                         [showMaxMinArray addObject:@"0"];
                     }
                 }
-                _lineChart.ShowMaxMinArray = showMaxMinArray;
+                _lineChart.showMaxMinArray = showMaxMinArray;
             }
         }
         
-		[_lineChart setYValues:[self.dataSource UUChart_yValueArray:self]];
-		[_lineChart setXLabels:[self.dataSource UUChart_xLableArray:self]];
+		[_lineChart setYValues:[self.dataSource chartConfigAxisYValue:self]];
+		[_lineChart setXLabels:[self.dataSource chartConfigAxisXLabel:self]];
         
 		[_lineChart strokeChart];
 
-	}else if (self.chartStyle == UUChartBarStyle)
+	}else if (self.chartStyle == UUChartStyleBar)
 	{
         if (!_barChart) {
             _barChart = [[UUBarChart alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
             [self addSubview:_barChart];
         }
-        if ([self.dataSource respondsToSelector:@selector(UUChartChooseRangeInLineChart:)]) {
-            [_barChart setChooseRange:[self.dataSource UUChartChooseRangeInLineChart:self]];
+        if ([self.dataSource respondsToSelector:@selector(chartRange:)]) {
+            [_barChart setChooseRange:[self.dataSource chartRange:self]];
         }
-        if ([self.dataSource respondsToSelector:@selector(UUChart_ColorArray:)]) {
-            [_barChart setColors:[self.dataSource UUChart_ColorArray:self]];
+        if ([self.dataSource respondsToSelector:@selector(chartConfigColors:)]) {
+            [_barChart setColors:[self.dataSource chartConfigColors:self]];
         }
-		[_barChart setYValues:[self.dataSource UUChart_yValueArray:self]];
-		[_barChart setXLabels:[self.dataSource UUChart_xLableArray:self]];
+		[_barChart setYValues:[self.dataSource chartConfigAxisYValue:self]];
+		[_barChart setXLabels:[self.dataSource chartConfigAxisXLabel:self]];
         
         [_barChart strokeChart];
 	}

@@ -29,7 +29,7 @@
     
     chartView = [[UUChart alloc]initwithUUChartDataFrame:CGRectMake(10, 10, [UIScreen mainScreen].bounds.size.width-20, 150)
                                               withSource:self
-                                               withStyle:indexPath.section==1?UUChartBarStyle:UUChartLineStyle];
+                                               withStyle:indexPath.section==1?UUChartStyleBar:UUChartStyleLine];
     [chartView showInView:self.contentView];
 }
 
@@ -45,7 +45,7 @@
 
 #pragma mark - @required
 //横坐标标题数组
-- (NSArray *)UUChart_xLableArray:(UUChart *)chart
+- (NSArray *)chartConfigAxisXLabel:(UUChart *)chart
 {
 
     if (path.section==0) {
@@ -74,7 +74,7 @@
     return [self getXTitles:20];
 }
 //数值多重数组
-- (NSArray *)UUChart_yValueArray:(UUChart *)chart
+- (NSArray *)chartConfigAxisYValue:(UUChart *)chart
 {
     NSArray *ary = @[@"22",@"44",@"15",@"40",@"42"];
     NSArray *ary1 = @[@"22",@"54",@"15",@"30",@"42",@"77",@"43"];
@@ -104,20 +104,20 @@
 
 #pragma mark - @optional
 //颜色数组
-- (NSArray *)UUChart_ColorArray:(UUChart *)chart
+- (NSArray *)chartConfigColors:(UUChart *)chart
 {
-    return @[UUGreen,UURed,UUBrown];
+    return @[[UUColor green],[UUColor red],[UUColor brown]];
 }
 //显示数值范围
-- (CGRange)UUChartChooseRangeInLineChart:(UUChart *)chart
+- (CGRange)chartRange:(UUChart *)chart
 {
-    if (path.section==0 && (path.row==0|path.row==1)) {
+    if (path.section==0 && (path.row==0 | path.row==1)) {
         return CGRangeMake(60, 10);
     }
     if (path.section==1 && path.row==0) {
         return CGRangeMake(60, 10);
     }
-    if (path.row==2) {
+    if (path.row == 2) {
         return CGRangeMake(100, 0);
     }
     return CGRangeZero;
@@ -126,23 +126,23 @@
 #pragma mark 折线图专享功能
 
 //标记数值区域
-- (CGRange)UUChartMarkRangeInLineChart:(UUChart *)chart
+- (CGRange)chartHighlightRangeInLine:(UUChart *)chart
 {
-    if (path.row==2) {
+    if (path.row == 2) {
         return CGRangeMake(25, 75);
     }
     return CGRangeZero;
 }
 
 //判断显示横线条
-- (BOOL)UUChart:(UUChart *)chart ShowHorizonLineAtIndex:(NSInteger)index
+- (BOOL)chart:(UUChart *)chart showHorizonLineAtIndex:(NSInteger)index
 {
     return YES;
 }
 
 //判断显示最大最小值
-- (BOOL)UUChart:(UUChart *)chart ShowMaxMinAtIndex:(NSInteger)index
+- (BOOL)chart:(UUChart *)chart showMaxMinAtIndex:(NSInteger)index
 {
-    return path.row==2;
+    return path.row == 2;
 }
 @end

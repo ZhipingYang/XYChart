@@ -11,7 +11,7 @@
 
 @interface RootViewController ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *myTableView;
+@property (weak, nonatomic) IBOutlet UITableView *chartTableView;
 
 @end
 
@@ -20,7 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    NSString *cellName = NSStringFromClass([TableViewCell class]);
+    [self.chartTableView registerNib:[UINib nibWithNibName:cellName bundle:nil] forCellReuseIdentifier:cellName];
 }
 
 
@@ -34,16 +35,9 @@
     return section?2:4;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"TableViewCell";
-    
-    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    if(cell == nil) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"TableViewCell" owner:nil options:nil] firstObject];
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TableViewCell class])];
     [cell configUI:indexPath];
-    
     return cell;
 }
 

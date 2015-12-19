@@ -20,9 +20,9 @@
         [self setMinimumScaleFactor:5.0f];
         [self setNumberOfLines:1];
         [self setFont:[UIFont boldSystemFontOfSize:9.0f]];
-        [self setTextColor: UUDeepGrey];
-        self.backgroundColor = [UIColor clearColor];
+        [self setTextColor: [UUColor darkGrayColor]];
         [self setTextAlignment:NSTextAlignmentCenter];
+        self.backgroundColor = [UIColor clearColor];
         self.userInteractionEnabled = YES;
     }
     return self;
