@@ -27,9 +27,9 @@
     
     path = indexPath;
     
-    chartView = [[UUChart alloc]initwithUUChartDataFrame:CGRectMake(10, 10, [UIScreen mainScreen].bounds.size.width-20, 150)
-                                              withSource:self
-                                               withStyle:indexPath.section==1?UUChartStyleBar:UUChartStyleLine];
+    chartView = [[UUChart alloc]initWithFrame:CGRectMake(10, 10, [UIScreen mainScreen].bounds.size.width-20, 150)
+                                   dataSource:self
+                                        style:indexPath.section==1?UUChartStyleBar:UUChartStyleLine];
     [chartView showInView:self.contentView];
 }
 

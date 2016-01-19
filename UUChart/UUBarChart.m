@@ -132,7 +132,7 @@
             
             UUBar * bar = [[UUBar alloc] initWithFrame:CGRectMake((j+(_yValues.count==1?0.1:0.05))*_xLabelWidth +i*_xLabelWidth * 0.47, UULabelHeight, _xLabelWidth * (_yValues.count==1?0.8:0.45), chartCavanHeight)];
             bar.barColor = [_colors objectAtIndex:i];
-            bar.grade = grade;
+            bar.gradePercent = grade;
             [myScrollView addSubview:bar];
             
         }

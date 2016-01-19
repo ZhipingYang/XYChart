@@ -20,7 +20,8 @@
 
 @implementation UUChart
 
--(id)initwithUUChartDataFrame:(CGRect)rect withSource:(id<UUChartDataSource>)dataSource withStyle:(UUChartStyle)style{
+- (id)initWithFrame:(CGRect)rect dataSource:(id<UUChartDataSource>)dataSource style:(UUChartStyle)style
+{
     self.dataSource = dataSource;
     self.chartStyle = style;
     return [self initWithFrame:rect];

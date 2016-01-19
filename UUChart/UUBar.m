@@ -7,7 +7,7 @@
 //
 
 #import "UUBar.h"
-#import "UUColor.h"
+#import "UUChartConst.h"
 
 @implementation UUBar
 
@@ -28,16 +28,16 @@
     return self;
 }
 
--(void)setGrade:(float)grade
+-(void)setGradePercent:(float)gradePercent
 {
-    if (grade==0)
+    if (gradePercent==0)
     return;
     
-	_grade = grade;
+	_gradePercent = gradePercent;
 	UIBezierPath *progressline = [UIBezierPath bezierPath];
     
     [progressline moveToPoint:CGPointMake(self.frame.size.width/2.0, self.frame.size.height+30)];
-	[progressline addLineToPoint:CGPointMake(self.frame.size.width/2.0, (1 - grade) * self.frame.size.height+15)];
+	[progressline addLineToPoint:CGPointMake(self.frame.size.width/2.0, (1 - gradePercent) * self.frame.size.height+15)];
     [progressline setLineWidth:1.0];
     [progressline setLineCapStyle:kCGLineCapSquare];
 	_chartLine.path = progressline.CGPath;

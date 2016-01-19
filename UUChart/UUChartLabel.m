@@ -7,7 +7,7 @@
 //
 
 #import "UUChartLabel.h"
-#import "UUColor.h"
+#import "UUChartConst.h"
 
 @implementation UUChartLabel
 

@@ -8,21 +8,17 @@
 
 
 #import <UIKit/UIKit.h>
-#import "UUColor.h"
-
-#define chartMargin     10
-#define xLabelMargin    15
-#define yLabelMargin    15
-#define UULabelHeight    10
-#define UUYLabelwidth     30
-#define UUTagLabelwidth     80
+#import "UUChartConst.h"
 
 @interface UULineChart : UIView
 
 @property (strong, nonatomic) NSArray * xLabels;
 @property (strong, nonatomic) NSArray * yLabels;
 @property (strong, nonatomic) NSArray * yValues;
-@property (nonatomic, strong) NSArray * colors;
+@property (strong, nonatomic) NSArray * colors;
+
+@property (strong, nonatomic) NSMutableArray *showHorizonLine;
+@property (strong, nonatomic) NSMutableArray *showMaxMinArray;
 
 @property (nonatomic) CGFloat xLabelWidth;
 @property (nonatomic) CGFloat yValueMin;
@@ -31,9 +27,6 @@
 @property (nonatomic, assign) CGRange markRange;
 
 @property (nonatomic, assign) CGRange chooseRange;
-
-@property (nonatomic, retain) NSMutableArray *showHorizonLine;
-@property (nonatomic, retain) NSMutableArray *showMaxMinArray;
 
 -(void)strokeChart;
 

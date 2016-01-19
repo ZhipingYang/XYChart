@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#define chartMargin         10
+#define xLabelMargin        15
+#define yLabelMargin        15
+#define UULabelHeight       10
+#define UUYLabelwidth       30
+#define UUTagLabelwidth     80
+
 //范围
 struct Range {
     CGFloat max;

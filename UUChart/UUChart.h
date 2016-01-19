@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UUChart.h"
-#import "UUColor.h"
+#import "UUChartConst.h"
 #import "UULineChart.h"
 #import "UUBarChart.h"
 
@@ -51,7 +51,8 @@ typedef NS_ENUM(NSInteger, UUChartStyle){
 
 @property (nonatomic) UUChartStyle chartStyle;
 
-- (id)initwithUUChartDataFrame:(CGRect)rect withSource:(id<UUChartDataSource>)dataSource withStyle:(UUChartStyle)style;
+
+- (id)initWithFrame:(CGRect)rect dataSource:(id<UUChartDataSource>)dataSource style:(UUChartStyle)style;
 
 - (void)showInView:(UIView *)view;
 

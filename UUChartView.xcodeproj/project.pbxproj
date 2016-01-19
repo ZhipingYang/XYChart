@@ -16,7 +16,7 @@
 		B7A1897F1A58DA8500579497 /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189751A58DA8500579497 /* UUBarChart.m */; };
 		B7A189801A58DA8500579497 /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189771A58DA8500579497 /* UUChart.m */; };
 		B7A189811A58DA8500579497 /* UUChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189791A58DA8500579497 /* UUChartLabel.m */; };
-		B7A189821A58DA8500579497 /* UUColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1897B1A58DA8500579497 /* UUColor.m */; };
+		B7A189821A58DA8500579497 /* UUChartConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1897B1A58DA8500579497 /* UUChartConst.m */; };
 		B7A189831A58DA8500579497 /* UULineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1897D1A58DA8500579497 /* UULineChart.m */; };
 		B7A189871A58DAC600579497 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189851A58DAC600579497 /* RootViewController.m */; };
 		B7A189881A58DAC600579497 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A189861A58DAC600579497 /* RootViewController.xib */; };
@@ -53,8 +53,8 @@
 		B7A189771A58DA8500579497 /* UUChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChart.m; sourceTree = "<group>"; };
 		B7A189781A58DA8500579497 /* UUChartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChartLabel.h; sourceTree = "<group>"; };
 		B7A189791A58DA8500579497 /* UUChartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChartLabel.m; sourceTree = "<group>"; };
-		B7A1897A1A58DA8500579497 /* UUColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUColor.h; sourceTree = "<group>"; };
-		B7A1897B1A58DA8500579497 /* UUColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUColor.m; sourceTree = "<group>"; };
+		B7A1897A1A58DA8500579497 /* UUChartConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChartConst.h; sourceTree = "<group>"; };
+		B7A1897B1A58DA8500579497 /* UUChartConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChartConst.m; sourceTree = "<group>"; };
 		B7A1897C1A58DA8500579497 /* UULineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UULineChart.h; sourceTree = "<group>"; };
 		B7A1897D1A58DA8500579497 /* UULineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UULineChart.m; sourceTree = "<group>"; };
 		B7A189841A58DAC600579497 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 				B7A189771A58DA8500579497 /* UUChart.m */,
 				B7A189781A58DA8500579497 /* UUChartLabel.h */,
 				B7A189791A58DA8500579497 /* UUChartLabel.m */,
-				B7A1897A1A58DA8500579497 /* UUColor.h */,
-				B7A1897B1A58DA8500579497 /* UUColor.m */,
+				B7A1897A1A58DA8500579497 /* UUChartConst.h */,
+				B7A1897B1A58DA8500579497 /* UUChartConst.m */,
 				B7A1897C1A58DA8500579497 /* UULineChart.h */,
 				B7A1897D1A58DA8500579497 /* UULineChart.m */,
 			);
@@ -273,7 +273,7 @@
 				B7A189871A58DAC600579497 /* RootViewController.m in Sources */,
 				B7A189831A58DA8500579497 /* UULineChart.m in Sources */,
 				B7A1897F1A58DA8500579497 /* UUBarChart.m in Sources */,
-				B7A189821A58DA8500579497 /* UUColor.m in Sources */,
+				B7A189821A58DA8500579497 /* UUChartConst.m in Sources */,
 				B7A1894E1A58D9A200579497 /* main.m in Sources */,
 				B7A189811A58DA8500579497 /* UUChartLabel.m in Sources */,
 			);

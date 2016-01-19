@@ -10,7 +10,7 @@
 
 @interface UUBar : UIView
 
-@property (nonatomic) float grade;
+@property (nonatomic) float gradePercent;
 
 @property (nonatomic, strong) CAShapeLayer * chartLine;
 

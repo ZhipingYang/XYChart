@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 uyiuyao. All rights reserved.
 //
 
-#import "UUColor.h"
+#import "UUChartConst.h"
 
 @implementation UUColor
 +(UIColor *)randomColor

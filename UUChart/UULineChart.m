@@ -7,7 +7,7 @@
 //
 
 #import "UULineChart.h"
-#import "UUColor.h"
+#import "UUChartConst.h"
 #import "UUChartLabel.h"
 
 
@@ -19,7 +19,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
         self.clipsToBounds = YES;
     }
     return self;
@@ -233,8 +232,6 @@
                          index:i
                         isShow:isShowMaxAndMinPoint
                          value:[valueString floatValue]];
-                
-//                [progressline stroke];
             }
             index += 1;
         }
