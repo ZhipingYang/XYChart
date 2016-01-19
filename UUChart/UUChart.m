@@ -14,16 +14,14 @@
 
 @property (strong, nonatomic) UUBarChart * barChart;
 
-@property (assign, nonatomic) id<UUChartDataSource> dataSource;
-
 @end
 
 @implementation UUChart
 
--(id)initwithUUChartDataFrame:(CGRect)rect withSource:(id<UUChartDataSource>)dataSource withStyle:(UUChartStyle)style{
+- (id)initWithFrame:(CGRect)frame dataSource:(id<UUChartDataSource>)dataSource style:(UUChartStyle)style {
     self.dataSource = dataSource;
     self.chartStyle = style;
-    return [self initWithFrame:rect];
+    return [self initWithFrame:frame];
 }
 
 - (id)initWithFrame:(CGRect)frame

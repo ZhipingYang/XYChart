@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "TableViewCell.h"
+#import "UUChartView-swift.h"
 
 @interface RootViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -58,6 +59,12 @@
     label.textColor = [UIColor colorWithRed:0.257 green:0.650 blue:0.478 alpha:1.000];
     label.textAlignment = NSTextAlignmentCenter;
     return label;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ViewController *vc = [ViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger, UUChartStyle){
 };
 
 @class UUChart;
+
 @protocol UUChartDataSource <NSObject>
 
 @required
@@ -49,9 +50,11 @@ typedef NS_ENUM(NSInteger, UUChartStyle){
 
 @interface UUChart : UIView
 
+@property (assign, nonatomic) id<UUChartDataSource> dataSource;
+
 @property (nonatomic) UUChartStyle chartStyle;
 
-- (id)initwithUUChartDataFrame:(CGRect)rect withSource:(id<UUChartDataSource>)dataSource withStyle:(UUChartStyle)style;
+- (id)initWithFrame:(CGRect)frame dataSource:(id<UUChartDataSource>)dataSource style:(UUChartStyle)style;
 
 - (void)showInView:(UIView *)view;
 

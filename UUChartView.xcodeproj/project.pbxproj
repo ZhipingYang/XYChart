@@ -22,6 +22,8 @@
 		B7A189881A58DAC600579497 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A189861A58DAC600579497 /* RootViewController.xib */; };
 		B7A1898E1A58DDBB00579497 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1898C1A58DDBB00579497 /* TableViewCell.m */; };
 		B7A1898F1A58DDBB00579497 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A1898D1A58DDBB00579497 /* TableViewCell.xib */; };
+		F03B79E41C4E6001005E0EBD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03B79E21C4E6001005E0EBD /* ViewController.swift */; };
+		F03B79E51C4E6001005E0EBD /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F03B79E31C4E6001005E0EBD /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,9 @@
 		B7A1898B1A58DDBB00579497 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		B7A1898C1A58DDBB00579497 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		B7A1898D1A58DDBB00579497 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		F03B79DF1C4E5F58005E0EBD /* UUChartView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UUChartView-Bridging-Header.h"; sourceTree = "<group>"; };
+		F03B79E21C4E6001005E0EBD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F03B79E31C4E6001005E0EBD /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +121,9 @@
 				B7A189581A58D9A200579497 /* Images.xcassets */,
 				B7A1895A1A58D9A200579497 /* LaunchScreen.xib */,
 				B7A1894B1A58D9A200579497 /* Supporting Files */,
+				F03B79DF1C4E5F58005E0EBD /* UUChartView-Bridging-Header.h */,
+				F03B79E21C4E6001005E0EBD /* ViewController.swift */,
+				F03B79E31C4E6001005E0EBD /* ViewController.xib */,
 			);
 			path = UUChartView;
 			sourceTree = "<group>";
@@ -245,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F03B79E51C4E6001005E0EBD /* ViewController.xib in Resources */,
 				B7A1895C1A58D9A200579497 /* LaunchScreen.xib in Resources */,
 				B7A1898F1A58DDBB00579497 /* TableViewCell.xib in Resources */,
 				B7A189881A58DAC600579497 /* RootViewController.xib in Resources */,
@@ -271,6 +280,7 @@
 				B7A189511A58D9A200579497 /* AppDelegate.m in Sources */,
 				B7A1898E1A58DDBB00579497 /* TableViewCell.m in Sources */,
 				B7A189871A58DAC600579497 /* RootViewController.m in Sources */,
+				F03B79E41C4E6001005E0EBD /* ViewController.swift in Sources */,
 				B7A189831A58DA8500579497 /* UULineChart.m in Sources */,
 				B7A1897F1A58DA8500579497 /* UUBarChart.m in Sources */,
 				B7A189821A58DA8500579497 /* UUColor.m in Sources */,
@@ -390,11 +400,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = UUChartView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uyiuyao.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UUChartView/UUChartView-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -402,11 +415,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = UUChartView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uyiuyao.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UUChartView/UUChartView-Bridging-Header.h";
 			};
 			name = Release;
 		};
