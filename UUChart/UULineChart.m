@@ -30,7 +30,7 @@
     [self setYLabels:yValues];
 }
 
--(void)setYLabels:(NSArray *)yLabels
+- (void)setYLabels:(NSArray *)yLabels
 {
     NSInteger max = 0;
     NSInteger min = 1000000000;
@@ -88,7 +88,7 @@
     }
 }
 
--(void)setXLabels:(NSArray *)xLabels
+- (void)setXLabels:(NSArray *)xLabels
 {
     if( !_chartLabelsForX ){
         _chartLabelsForX = [NSHashTable weakObjectsHashTable];
@@ -129,7 +129,7 @@
     }
 }
 
--(void)setColors:(NSArray *)colors
+- (void)setColors:(NSArray *)colors
 {
 	_colors = colors;
 }
@@ -150,7 +150,7 @@
 }
 
 
--(void)strokeChart
+- (void)strokeChart
 {
     for (int i=0; i<_yValues.count; i++) {
         NSArray *childAry = _yValues[i];
