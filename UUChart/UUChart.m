@@ -22,26 +22,58 @@
 
 - (id)initWithFrame:(CGRect)rect dataSource:(id<UUChartDataSource>)dataSource style:(UUChartStyle)style
 {
-    self.dataSource = dataSource;
-    self.chartStyle = style;
-    return [self initWithFrame:rect];
+    self = [self initWithFrame:rect];
+    if (self) {
+        self.dataSource = dataSource;
+        self.chartStyle = style;
+        [self setUpChart];
+    }
+    return self;
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
         self.backgroundColor = [UIColor whiteColor];
         self.clipsToBounds = NO;
     }
     return self;
 }
 
--(void)setUpChart{
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    if (self.chartStyle == UUChartStyleLine) {
+        self.lineChart.frame = self.bounds;
+    } else {
+        self.barChart.frame = self.bounds;
+    }
+}
+
+- (UULineChart *)lineChart
+{
+    if (!_lineChart) {
+        _lineChart = [UULineChart new];
+        _lineChart.clipsToBounds = YES;
+    }
+    return _lineChart;
+}
+
+- (UUBarChart *)barChart
+{
+    if (_barChart) {
+        _barChart = [UUBarChart new];
+        _barChart.clipsToBounds = YES;
+    }
+    return _barChart;
+}
+
+-(void)setUpChart
+{
 	if (self.chartStyle == UUChartStyleLine) {
         if(!_lineChart){
-            _lineChart = [[UULineChart alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+            _lineChart = [UULineChart new];
             [self addSubview:_lineChart];
         }
         //选择标记范围
@@ -55,19 +87,6 @@
         //显示颜色
         if ([self.dataSource respondsToSelector:@selector(chartConfigColors:)]) {
             [_lineChart setColors:[self.dataSource chartConfigColors:self]];
-        }
-        //显示横线
-        if ([self.dataSource respondsToSelector:@selector(chart:showHorizonLineAtIndex:)]) {
-            NSMutableArray *showHorizonArray = [[NSMutableArray alloc]init];
-            for (int i=0; i<5; i++) {
-                if ([self.dataSource chart:self showHorizonLineAtIndex:i]) {
-                    [showHorizonArray addObject:@"1"];
-                }else{
-                    [showHorizonArray addObject:@"0"];
-                }
-            }
-            [_lineChart setShowHorizonLine:showHorizonArray];
-
         }
         //判断显示最大最小值
         if ([self.dataSource respondsToSelector:@selector(chart:showMaxMinAtIndex:)]) {
@@ -85,13 +104,12 @@
             }
         }
         
-		[_lineChart setYValues:[self.dataSource chartConfigAxisYValue:self]];
-		[_lineChart setXLabels:[self.dataSource chartConfigAxisXLabel:self]];
+		[_lineChart setYAxisValues:[self.dataSource chartConfigAxisYValue:self]];
+		[_lineChart setXAxisTitles:[self.dataSource chartConfigAxisXTitles:self]];
         
 		[_lineChart strokeChart];
 
-	}else if (self.chartStyle == UUChartStyleBar)
-	{
+	} else if (self.chartStyle == UUChartStyleBar) {
         if (!_barChart) {
             _barChart = [[UUBarChart alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
             [self addSubview:_barChart];
@@ -102,25 +120,20 @@
         if ([self.dataSource respondsToSelector:@selector(chartConfigColors:)]) {
             [_barChart setColors:[self.dataSource chartConfigColors:self]];
         }
-		[_barChart setYValues:[self.dataSource chartConfigAxisYValue:self]];
-		[_barChart setXLabels:[self.dataSource chartConfigAxisXLabel:self]];
+		[_barChart setYAxisValues:[self.dataSource chartConfigAxisYValue:self]];
+		[_barChart setXAxisTitle:[self.dataSource chartConfigAxisXTitles:self]];
         
         [_barChart strokeChart];
 	}
 }
 
-- (void)showInView:(UIView *)view
+- (void)reloadData
 {
-    [self setUpChart];
-    [view addSubview:self];
+    if (self.chartStyle == UUChartStyleLine) {
+        [self.lineChart reloadData];
+    } else {
+        [self.barChart reloadData];
+    }
 }
-
--(void)strokeChart
-{
-	[self setUpChart];
-	
-}
-
-
 
 @end

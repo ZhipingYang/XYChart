@@ -12,8 +12,6 @@
 
 @property (nonatomic) float gradePercent;
 
-@property (nonatomic, strong) CAShapeLayer * chartLine;
-
 @property (nonatomic, strong) UIColor * barColor;
 
 @end

@@ -10,12 +10,14 @@
 #import "UUChartConst.h"
 
 @implementation UUBar
+{
+    CAShapeLayer * _chartLine;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
 		_chartLine = [CAShapeLayer layer];
 		_chartLine.lineCap = kCALineCapSquare;
 		_chartLine.fillColor = [UIColor whiteColor].CGColor;
@@ -30,12 +32,14 @@
 
 -(void)setGradePercent:(float)gradePercent
 {
-    if (gradePercent==0)
-    return;
+    gradePercent = gradePercent<0 ? 0 : (gradePercent>1 ? 1:gradePercent);
+    
+    if (gradePercent == _gradePercent) { return; }
     
 	_gradePercent = gradePercent;
-	UIBezierPath *progressline = [UIBezierPath bezierPath];
     
+	UIBezierPath *progressline = [UIBezierPath bezierPath];
+    //TODO:
     [progressline moveToPoint:CGPointMake(self.frame.size.width/2.0, self.frame.size.height+30)];
 	[progressline addLineToPoint:CGPointMake(self.frame.size.width/2.0, (1 - gradePercent) * self.frame.size.height+15)];
     [progressline setLineWidth:1.0];
@@ -50,7 +54,7 @@
     pathAnimation.toValue = @1.0;
     pathAnimation.autoreverses = NO;
     [_chartLine addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
-    
+    //TODO:
     _chartLine.strokeEnd = 2.0;
 }
 

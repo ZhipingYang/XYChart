@@ -23,14 +23,14 @@ typedef NS_ENUM(NSInteger, UUChartStyle){
 
 @required
 //横坐标标题数组
-- (NSArray *)chartConfigAxisXLabel:(UUChart *)chart;
+- (NSArray <NSString *> *)chartConfigAxisXTitles:(UUChart *)chart;
 
 //数值多重数组
-- (NSArray *)chartConfigAxisYValue:(UUChart *)chart;
+- (NSArray <NSArray <NSString *> *> *)chartConfigAxisYValue:(UUChart *)chart;
 
 @optional
 //颜色数组
-- (NSArray *)chartConfigColors:(UUChart *)chart;
+- (NSArray <UIColor *> *)chartConfigColors:(UUChart *)chart;
 
 //显示数值范围
 - (CGRange)chartRange:(UUChart *)chart;
@@ -38,9 +38,6 @@ typedef NS_ENUM(NSInteger, UUChartStyle){
 #pragma mark 折线图专享功能
 //标记数值区域
 - (CGRange)chartHighlightRangeInLine:(UUChart *)chart;
-
-//判断显示横线条
-- (BOOL)chart:(UUChart *)chart showHorizonLineAtIndex:(NSInteger)index;
 
 //判断显示最大最小值
 - (BOOL)chart:(UUChart *)chart showMaxMinAtIndex:(NSInteger)index;
@@ -54,8 +51,6 @@ typedef NS_ENUM(NSInteger, UUChartStyle){
 
 - (id)initWithFrame:(CGRect)rect dataSource:(id<UUChartDataSource>)dataSource style:(UUChartStyle)style;
 
-- (void)showInView:(UIView *)view;
-
-- (void)strokeChart;
+- (void)reloadData;
 
 @end

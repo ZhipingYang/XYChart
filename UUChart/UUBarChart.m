@@ -32,25 +32,17 @@
     return self;
 }
 
--(void)setYValues:(NSArray *)yValues
+- (void)setYAxisValues:(NSArray<NSArray<NSString *> *> *)yAxisValues
 {
-    _yValues = yValues;
-    [self setYLabels:yValues];
-}
-
--(void)setYLabels:(NSArray *)yLabels
-{
-    NSInteger max = 0;
-    NSInteger min = 1000000000;
-    for (NSArray * ary in yLabels) {
-        for (NSString *valueString in ary) {
-            NSInteger value = [valueString integerValue];
-            if (value > max) {
-                max = value;
-            }
-            if (value < min) {
-                min = value;
-            }
+    _yAxisValues = yAxisValues;
+    NSInteger max = yAxisValues.firstObject.firstObject.integerValue;
+    NSInteger min = max;
+    
+    for (NSArray *arr in yAxisValues) {
+        for (NSString *str in arr) {
+            NSInteger value = [str integerValue];
+            max = value>max ? value : max;
+            min = value<min ? value :min;
         }
     }
     if (max < 5) {
@@ -63,50 +55,51 @@
         _yValueMax = _chooseRange.max;
         _yValueMin = _chooseRange.min;
     }
-
+    
     float level = (_yValueMax-_yValueMin) /4.0;
     CGFloat chartCavanHeight = self.frame.size.height - UULabelHeight*3;
     CGFloat levelHeight = chartCavanHeight /4.0;
     
     for (int i=0; i<5; i++) {
         UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake(0.0,chartCavanHeight-i*levelHeight+5, UUYLabelwidth, UULabelHeight)];
-		label.text = [NSString stringWithFormat:@"%.1f",level * i+_yValueMin];
-		[self addSubview:label];
+        label.text = [NSString stringWithFormat:@"%.1f",level * i+_yValueMin];
+        [self addSubview:label];
     }
 }
 
--(void)setXLabels:(NSArray *)xLabels
+
+- (void)setXAxisTitle:(NSArray<NSString *> *)xAxisTitle
 {
     if( !_chartLabelsForX ){
         _chartLabelsForX = [NSHashTable weakObjectsHashTable];
     }
     
-    _xLabels = xLabels;
+    _xAxisTitle = xAxisTitle;
+    
     NSInteger num;
-    if (xLabels.count>=8) {
+    if (xAxisTitle.count>=8) {
         num = 8;
-    }else if (xLabels.count<=4){
+    }else if (xAxisTitle.count<=4){
         num = 4;
     }else{
-        num = xLabels.count;
+        num = xAxisTitle.count;
     }
-    _xLabelWidth = myScrollView.frame.size.width/num;
+    _xLabelWidth = myScrollView.bounds.size.width/num;
     
-    for (int i=0; i<xLabels.count; i++) {
-        UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake((i *  _xLabelWidth ), self.frame.size.height - UULabelHeight, _xLabelWidth, UULabelHeight)];
-        label.text = xLabels[i];
+    [xAxisTitle enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake((idx *  _xLabelWidth ), self.frame.size.height - UULabelHeight, _xLabelWidth, UULabelHeight)];
+        label.text = xAxisTitle[idx];
         [myScrollView addSubview:label];
-        
         [_chartLabelsForX addObject:label];
-    }
+    }];
     
-    float max = (([xLabels count]-1)*_xLabelWidth + chartMargin)+_xLabelWidth;
+    float max = ((xAxisTitle.count-1)*_xLabelWidth + chartMargin) + _xLabelWidth;
     if (myScrollView.frame.size.width < max-10) {
         myScrollView.contentSize = CGSizeMake(max, self.frame.size.height);
     }
 }
 
--(void)setColors:(NSArray *)colors
+-(void)setColors:(NSArray<UIColor *> *)colors
 {
 	_colors = colors;
 }
@@ -116,25 +109,28 @@
     _chooseRange = chooseRange;
 }
 
+- (void)reloadData
+{
+    [self strokeChart];
+}
+
 -(void)strokeChart
 {
-    
     CGFloat chartCavanHeight = self.frame.size.height - UULabelHeight*3;
 	
-    for (int i=0; i<_yValues.count; i++) {
+    for (int i=0; i<_yAxisValues.count; i++) {
         if (i==2)
             return;
-        NSArray *childAry = _yValues[i];
+        NSArray *childAry = _yAxisValues[i];
         for (int j=0; j<childAry.count; j++) {
             NSString *valueString = childAry[j];
             float value = [valueString floatValue];
             float grade = ((float)value-_yValueMin) / ((float)_yValueMax-_yValueMin);
             
-            UUBar * bar = [[UUBar alloc] initWithFrame:CGRectMake((j+(_yValues.count==1?0.1:0.05))*_xLabelWidth +i*_xLabelWidth * 0.47, UULabelHeight, _xLabelWidth * (_yValues.count==1?0.8:0.45), chartCavanHeight)];
+            UUBar * bar = [[UUBar alloc] initWithFrame:CGRectMake((j+(_yAxisValues.count==1?0.1:0.05))*_xLabelWidth +i*_xLabelWidth * 0.47, UULabelHeight, _xLabelWidth * (_yAxisValues.count==1?0.8:0.45), chartCavanHeight)];
             bar.barColor = [_colors objectAtIndex:i];
             bar.gradePercent = grade;
             [myScrollView addSubview:bar];
-            
         }
     }
 }

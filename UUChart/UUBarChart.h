@@ -11,10 +11,9 @@
 
 @interface UUBarChart : UIView
 
-@property (strong, nonatomic) NSArray * xLabels;
-@property (strong, nonatomic) NSArray * yLabels;
-@property (strong, nonatomic) NSArray * yValues;
-@property (strong, nonatomic) NSArray * colors;
+@property (strong, nonatomic) NSArray <NSString *> * xAxisTitle;
+@property (strong, nonatomic) NSArray <NSArray <NSString *> *> * yAxisValues;
+@property (strong, nonatomic) NSArray <UIColor *> * colors;
 
 @property (nonatomic) float xLabelWidth;
 @property (nonatomic) float yValueMax;
@@ -25,5 +24,7 @@
 - (NSArray *)chartLabelsForX;
 
 - (void)strokeChart;
+
+- (void)reloadData;
 
 @end

@@ -214,6 +214,8 @@
 				TargetAttributes = {
 					B7A189471A58D9A200579497 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = H9J886PZ98;
+						ProvisioningStyle = Manual;
 					};
 					B7A189601A58D9A200579497 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -390,11 +392,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H9J886PZ98;
 				INFOPLIST_FILE = UUChartView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uyiuyao.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "77385128-ca56-4121-a84d-7263f8fe4c37";
+				PROVISIONING_PROFILE_SPECIFIER = "chelun any app";
 			};
 			name = Debug;
 		};
@@ -402,11 +407,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = H9J886PZ98;
 				INFOPLIST_FILE = UUChartView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uyiuyao.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "77385128-ca56-4121-a84d-7263f8fe4c37";
+				PROVISIONING_PROFILE_SPECIFIER = "chelun any app";
 			};
 			name = Release;
 		};

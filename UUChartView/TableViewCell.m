@@ -30,7 +30,8 @@
     chartView = [[UUChart alloc]initWithFrame:CGRectMake(10, 10, [UIScreen mainScreen].bounds.size.width-20, 150)
                                    dataSource:self
                                         style:indexPath.section==1?UUChartStyleBar:UUChartStyleLine];
-    [chartView showInView:self.contentView];
+    [self.contentView addSubview:chartView];
+    [chartView reloadData];
 }
 
 - (NSArray *)getXTitles:(int)num
@@ -45,7 +46,7 @@
 
 #pragma mark - @required
 //横坐标标题数组
-- (NSArray *)chartConfigAxisXLabel:(UUChart *)chart
+- (NSArray *)chartConfigAxisXTitles:(UUChart *)chart
 {
 
     if (path.section==0) {

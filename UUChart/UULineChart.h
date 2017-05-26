@@ -12,10 +12,9 @@
 
 @interface UULineChart : UIView
 
-@property (strong, nonatomic) NSArray * xLabels;
-@property (strong, nonatomic) NSArray * yLabels;
-@property (strong, nonatomic) NSArray * yValues;
-@property (strong, nonatomic) NSArray * colors;
+@property (strong, nonatomic) NSArray <NSString *> * xAxisTitles;
+@property (strong, nonatomic) NSArray <NSArray <NSString *> *> * yAxisValues;
+@property (strong, nonatomic) NSArray <UIColor *> * colors;
 
 @property (strong, nonatomic) NSMutableArray *showHorizonLine;
 @property (strong, nonatomic) NSMutableArray *showMaxMinArray;
@@ -31,5 +30,7 @@
 -(void)strokeChart;
 
 - (NSArray *)chartLabelsForX;
+
+- (void)reloadData;
 
 @end

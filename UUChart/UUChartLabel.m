@@ -15,13 +15,12 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
-        [self setLineBreakMode:NSLineBreakByWordWrapping];
-        [self setMinimumScaleFactor:5.0f];
-        [self setNumberOfLines:1];
-        [self setFont:[UIFont boldSystemFontOfSize:9.0f]];
-        [self setTextColor: [UUColor darkGrayColor]];
-        [self setTextAlignment:NSTextAlignmentCenter];
+        self.lineBreakMode = NSLineBreakByWordWrapping;
+        self.minimumScaleFactor = 5.0f;
+        self.numberOfLines = 1;
+        self.font = [UIFont boldSystemFontOfSize:9.0f];
+        self.textColor = [UUColor darkGrayColor];
+        self.textAlignment = NSTextAlignmentCenter;
         self.backgroundColor = [UIColor clearColor];
         self.userInteractionEnabled = YES;
     }
