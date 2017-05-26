@@ -20,7 +20,7 @@
     if (self) {
 		_chartLine = [CAShapeLayer layer];
 		_chartLine.lineCap = kCALineCapSquare;
-		_chartLine.fillColor = [UIColor whiteColor].CGColor;
+		_chartLine.fillColor = [UIColor clearColor].CGColor;
 		_chartLine.lineWidth = self.frame.size.width;
 		_chartLine.strokeEnd = 0.0;
         [self.layer addSublayer:_chartLine];
@@ -57,14 +57,5 @@
     //TODO:
     _chartLine.strokeEnd = 2.0;
 }
-
-- (void)drawRect:(CGRect)rect
-{
-	//Draw BG
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
-	CGContextFillRect(context, rect);
-}
-
 
 @end

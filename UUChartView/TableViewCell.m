@@ -26,11 +26,12 @@
     }
     
     path = indexPath;
-    
-    chartView = [[UUChart alloc]initWithFrame:CGRectMake(10, 10, [UIScreen mainScreen].bounds.size.width-20, 150)
-                                   dataSource:self
-                                        style:indexPath.section==1?UUChartStyleBar:UUChartStyleLine];
-    [self.contentView addSubview:chartView];
+    if (chartView == nil) {
+        chartView = [[UUChart alloc]initWithFrame:CGRectMake(10, 10, [UIScreen mainScreen].bounds.size.width-20, 150)
+                                       dataSource:self
+                                            style:indexPath.section==0 ? UUChartStyleLine:UUChartStyleBar];
+        [self.contentView addSubview:chartView];
+    }
     [chartView reloadData];
 }
 
@@ -135,15 +136,9 @@
     return CGRangeZero;
 }
 
-//判断显示横线条
-- (BOOL)chart:(UUChart *)chart showHorizonLineAtIndex:(NSInteger)index
+//判断显示最大最小值
+- (BOOL)shouldShowMaxMinValue:(UUChart *)chart
 {
     return YES;
-}
-
-//判断显示最大最小值
-- (BOOL)chart:(UUChart *)chart showMaxMinAtIndex:(NSInteger)index
-{
-    return path.row == 2;
 }
 @end

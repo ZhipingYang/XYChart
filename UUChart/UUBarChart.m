@@ -14,6 +14,10 @@
 {
     UIScrollView *myScrollView;
 }
+@property (nonatomic) float xLabelWidth;
+@property (nonatomic) float yValueMax;
+@property (nonatomic) float yValueMin;
+
 @end
 
 @implementation UUBarChart {

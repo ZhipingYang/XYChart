@@ -17,11 +17,7 @@
 @property (strong, nonatomic) NSArray <UIColor *> * colors;
 
 @property (strong, nonatomic) NSMutableArray *showHorizonLine;
-@property (strong, nonatomic) NSMutableArray *showMaxMinArray;
-
-@property (nonatomic) CGFloat xLabelWidth;
-@property (nonatomic) CGFloat yValueMin;
-@property (nonatomic) CGFloat yValueMax;
+@property (nonatomic, assign) BOOL shouldShowMaxMin;
 
 @property (nonatomic, assign) CGRange markRange;
 

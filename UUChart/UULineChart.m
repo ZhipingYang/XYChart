@@ -10,10 +10,18 @@
 #import "UUChartConst.h"
 #import "UUChartLabel.h"
 
-
-@implementation UULineChart {
+@interface UULineChart ()
+{
     NSHashTable *_chartLabelsForX;
 }
+
+@property (nonatomic) CGFloat xLabelWidth;
+@property (nonatomic) CGFloat yValueMin;
+@property (nonatomic) CGFloat yValueMax;
+
+@end
+
+@implementation UULineChart
 
 -(void)setYAxisValues:(NSArray<NSArray<NSString *> *> *)yAxisValues
 {
@@ -175,18 +183,9 @@
         
         float grade = ((float)firstValue-_yValueMin) / ((float)_yValueMax-_yValueMin);
        
-        //第一个点
-        BOOL isShowMaxAndMinPoint = YES;
-        if (self.showMaxMinArray) {
-            if ([self.showMaxMinArray[i] intValue]>0) {
-                isShowMaxAndMinPoint = (max_i==0 || min_i==0)?NO:YES;
-            }else{
-                isShowMaxAndMinPoint = YES;
-            }
-        }
         [self addPoint:CGPointMake(xPosition, chartCavanHeight - grade * chartCavanHeight+UULabelHeight)
                  index:i
-                isShow:isShowMaxAndMinPoint
+                isShow:YES
                  value:firstValue];
 
         
@@ -203,18 +202,10 @@
                 CGPoint point = CGPointMake(xPosition+index*_xLabelWidth, chartCavanHeight - grade * chartCavanHeight+UULabelHeight);
                 [progressline addLineToPoint:point];
                 
-                BOOL isShowMaxAndMinPoint = YES;
-                if (self.showMaxMinArray) {
-                    if ([self.showMaxMinArray[i] intValue]>0) {
-                        isShowMaxAndMinPoint = (max_i==index || min_i==index)?NO:YES;
-                    }else{
-                        isShowMaxAndMinPoint = YES;
-                    }
-                }
                 [progressline moveToPoint:point];
                 [self addPoint:point
                          index:i
-                        isShow:isShowMaxAndMinPoint
+                        isShow:YES
                          value:[valueString floatValue]];
             }
             index += 1;

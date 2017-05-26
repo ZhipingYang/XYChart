@@ -37,6 +37,7 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         self.clipsToBounds = NO;
+        [self setUpChart];
     }
     return self;
 }
@@ -44,10 +45,13 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
     if (self.chartStyle == UUChartStyleLine) {
         self.lineChart.frame = self.bounds;
+        [self.lineChart reloadData];
     } else {
         self.barChart.frame = self.bounds;
+        [self.barChart reloadData];
     }
 }
 
@@ -73,7 +77,7 @@
 {
 	if (self.chartStyle == UUChartStyleLine) {
         if(!_lineChart){
-            _lineChart = [UULineChart new];
+            _lineChart = [[UULineChart alloc] initWithFrame:self.bounds];
             [self addSubview:_lineChart];
         }
         //选择标记范围
@@ -89,19 +93,8 @@
             [_lineChart setColors:[self.dataSource chartConfigColors:self]];
         }
         //判断显示最大最小值
-        if ([self.dataSource respondsToSelector:@selector(chart:showMaxMinAtIndex:)]) {
-            NSMutableArray *showMaxMinArray = [[NSMutableArray alloc]init];
-            NSArray *y_values = [self.dataSource chartConfigAxisYValue:self];
-            if (y_values.count>0){
-                for (int i=0; i<y_values.count; i++) {
-                    if ([self.dataSource chart:self showMaxMinAtIndex:i]) {
-                        [showMaxMinArray addObject:@"1"];
-                    }else{
-                        [showMaxMinArray addObject:@"0"];
-                    }
-                }
-                _lineChart.showMaxMinArray = showMaxMinArray;
-            }
+        if ([self.dataSource respondsToSelector:@selector(shouldShowMaxMinValue:)]) {
+            _lineChart.shouldShowMaxMin = [self.dataSource shouldShowMaxMinValue:self];
         }
         
 		[_lineChart setYAxisValues:[self.dataSource chartConfigAxisYValue:self]];
@@ -111,7 +104,7 @@
 
 	} else if (self.chartStyle == UUChartStyleBar) {
         if (!_barChart) {
-            _barChart = [[UUBarChart alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+            _barChart = [[UUBarChart alloc] initWithFrame:self.bounds];
             [self addSubview:_barChart];
         }
         if ([self.dataSource respondsToSelector:@selector(chartRange:)]) {

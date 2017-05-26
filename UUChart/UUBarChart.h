@@ -15,9 +15,6 @@
 @property (strong, nonatomic) NSArray <NSArray <NSString *> *> * yAxisValues;
 @property (strong, nonatomic) NSArray <UIColor *> * colors;
 
-@property (nonatomic) float xLabelWidth;
-@property (nonatomic) float yValueMax;
-@property (nonatomic) float yValueMin;
 @property (nonatomic) CGRange chooseRange;
 
 

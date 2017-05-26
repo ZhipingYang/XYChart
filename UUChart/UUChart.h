@@ -40,7 +40,7 @@ typedef NS_ENUM(NSInteger, UUChartStyle){
 - (CGRange)chartHighlightRangeInLine:(UUChart *)chart;
 
 //判断显示最大最小值
-- (BOOL)chart:(UUChart *)chart showMaxMinAtIndex:(NSInteger)index;
+- (BOOL)shouldShowMaxMinValue:(UUChart *)chart;
 @end
 
 
