@@ -51,6 +51,6 @@ typedef NS_ENUM(NSInteger, UUChartStyle){
 
 - (id)initWithFrame:(CGRect)rect dataSource:(id<UUChartDataSource>)dataSource style:(UUChartStyle)style;
 
-- (void)reloadData;
+- (void)reloadData:(BOOL)animation;
 
 @end

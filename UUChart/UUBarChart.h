@@ -17,11 +17,6 @@
 
 @property (nonatomic) CGRange chooseRange;
 
-
-- (NSArray *)chartLabelsForX;
-
-- (void)strokeChart;
-
-- (void)reloadData;
+- (void)reloadData:(BOOL)animation;
 
 @end

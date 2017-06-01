@@ -31,9 +31,17 @@
         // Initialization code
         self.clipsToBounds = YES;
         myScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(UUYLabelwidth, 0, frame.size.width-UUYLabelwidth, frame.size.height)];
+        myScrollView.showsHorizontalScrollIndicator = NO;
         [self addSubview:myScrollView];
     }
     return self;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    myScrollView.frame = CGRectMake(UUYLabelwidth, 0, self.frame.size.width-UUYLabelwidth, self.frame.size.height);
+    [self reloadData:YES];
 }
 
 - (void)setYAxisValues:(NSArray<NSArray<NSString *> *> *)yAxisValues
@@ -113,7 +121,7 @@
     _chooseRange = chooseRange;
 }
 
-- (void)reloadData
+- (void)reloadData:(BOOL)animation
 {
     [self strokeChart];
 }

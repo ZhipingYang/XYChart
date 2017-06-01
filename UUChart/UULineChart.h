@@ -23,10 +23,6 @@
 
 @property (nonatomic, assign) CGRange chooseRange;
 
--(void)strokeChart;
-
-- (NSArray *)chartLabelsForX;
-
-- (void)reloadData;
+- (void)reloadData:(BOOL)animation;
 
 @end

@@ -11,9 +11,6 @@
 #import "UUChartLabel.h"
 
 @interface UULineChart ()
-{
-    NSHashTable *_chartLabelsForX;
-}
 
 @property (nonatomic) CGFloat xLabelWidth;
 @property (nonatomic) CGFloat yValueMin;
@@ -23,98 +20,21 @@
 
 @implementation UULineChart
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self reloadData:YES];
+}
+
+
 -(void)setYAxisValues:(NSArray<NSArray<NSString *> *> *)yAxisValues
 {
     _yAxisValues = yAxisValues;
-    
-    NSInteger max = yAxisValues.firstObject.firstObject.integerValue;
-    NSInteger min = max;
-    
-    for (NSArray *arr in yAxisValues) {
-        for (NSString *str in arr) {
-            NSInteger value = [str integerValue];
-            max = value>max ? value : max;
-            min = value<min ? value :min;
-        }
-    }
-    max = max<5 ? 5:max;
-    _yValueMin = 0;
-    _yValueMax = (int)max;
-    
-    if (_chooseRange.max != _chooseRange.min) {
-        _yValueMax = _chooseRange.max;
-        _yValueMin = _chooseRange.min;
-    }
-
-    float level = (_yValueMax-_yValueMin) /4.0;
-    CGFloat chartCavanHeight = self.frame.size.height - UULabelHeight*3;
-    CGFloat levelHeight = chartCavanHeight /4.0;
-
-    for (int i=0; i<5; i++) {
-        UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake(0.0,chartCavanHeight-i*levelHeight+5, UUYLabelwidth, UULabelHeight)];
-		label.text = [NSString stringWithFormat:@"%d",(int)(level * i+_yValueMin)];
-		[self addSubview:label];
-    }
-    if ([super respondsToSelector:@selector(setMarkRange:)]) {
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(UUYLabelwidth, (1-(_markRange.max-_yValueMin)/(_yValueMax-_yValueMin))*chartCavanHeight+UULabelHeight, self.frame.size.width-UUYLabelwidth, (_markRange.max-_markRange.min)/(_yValueMax-_yValueMin)*chartCavanHeight)];
-        view.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.1];
-        [self addSubview:view];
-    }
-
-    //画横线
-    for (int i=0; i<5; i++) {
-        CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-        UIBezierPath *path = [UIBezierPath bezierPath];
-        [path moveToPoint:CGPointMake(UUYLabelwidth,UULabelHeight+i*levelHeight)];
-        [path addLineToPoint:CGPointMake(self.frame.size.width,UULabelHeight+i*levelHeight)];
-        [path closePath];
-        shapeLayer.path = path.CGPath;
-        shapeLayer.strokeColor = [[[UIColor blackColor] colorWithAlphaComponent:0.1] CGColor];
-        shapeLayer.fillColor = [[UIColor whiteColor] CGColor];
-        shapeLayer.lineWidth = 1;
-        [self.layer addSublayer:shapeLayer];
-    }
 }
 
 - (void)setXAxisTitles:(NSArray<NSString *> *)xAxisTitles
 {
-    if( !_chartLabelsForX ){
-        _chartLabelsForX = [NSHashTable weakObjectsHashTable];
-    }
-    
     _xAxisTitles = xAxisTitles;
-    CGFloat num = 0;
-    if (xAxisTitles.count>=20) {
-        num=20.0;
-    }else if (xAxisTitles.count<=1){
-        num=1.0;
-    }else{
-        num = xAxisTitles.count;
-    }
-    _xLabelWidth = (self.frame.size.width - UUYLabelwidth)/num;
-    
-    for (int i=0; i<xAxisTitles.count; i++) {
-        NSString *labelText = xAxisTitles[i];
-        UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake(i * _xLabelWidth+UUYLabelwidth, self.frame.size.height - UULabelHeight, _xLabelWidth, UULabelHeight)];
-        label.text = labelText;
-        [self addSubview:label];
-        
-        [_chartLabelsForX addObject:label];
-    }
-    
-    //画竖线
-    for (int i=0; i<xAxisTitles.count+1; i++) {
-        CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-        UIBezierPath *path = [UIBezierPath bezierPath];
-        [path moveToPoint:CGPointMake(UUYLabelwidth+i*_xLabelWidth,UULabelHeight)];
-        [path addLineToPoint:CGPointMake(UUYLabelwidth+i*_xLabelWidth,self.frame.size.height-2*UULabelHeight)];
-        [path closePath];
-        shapeLayer.path = path.CGPath;
-        shapeLayer.strokeColor = [[[UIColor blackColor] colorWithAlphaComponent:0.1] CGColor];
-        shapeLayer.fillColor = [[UIColor whiteColor] CGColor];
-        shapeLayer.lineWidth = 1;
-        [self.layer addSublayer:shapeLayer];
-    }
 }
 
 - (void)setColors:(NSArray *)colors
@@ -137,13 +57,115 @@
     _showHorizonLine = showHorizonLine;
 }
 
-- (void)reloadData
+- (void)reloadData:(BOOL)animation
 {
     [self strokeChart];
 }
 
 - (void)strokeChart
 {
+    for (UIView *subView in self.subviews) {
+        [subView removeFromSuperview];
+    }
+    self.layer.sublayers = nil;
+    
+    NSInteger max = _yAxisValues.firstObject.firstObject.integerValue;
+    NSInteger min = max;
+    
+    for (NSArray *arr in _yAxisValues) {
+        for (NSString *str in arr) {
+            NSInteger value = [str integerValue];
+            max = value>max ? value : max;
+            min = value<min ? value :min;
+        }
+    }
+    max = max<5 ? 5:max;
+    _yValueMin = 0;
+    _yValueMax = (int)max;
+    
+    if (_chooseRange.max != _chooseRange.min) {
+        _yValueMax = _chooseRange.max;
+        _yValueMin = _chooseRange.min;
+    }
+    
+    float level = (_yValueMax-_yValueMin) /4.0;
+    CGFloat chartCavanHeight = self.frame.size.height - UULabelHeight*3;
+    CGFloat levelHeight = chartCavanHeight /4.0;
+    
+    for (int i=0; i<5; i++) {
+        UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake(0.0,chartCavanHeight-i*levelHeight+5, UUYLabelwidth, UULabelHeight)];
+        label.text = [NSString stringWithFormat:@"%d",(int)(level * i+_yValueMin)];
+        [self addSubview:label];
+    }
+    if ([super respondsToSelector:@selector(setMarkRange:)]) {
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(UUYLabelwidth, (1-(_markRange.max-_yValueMin)/(_yValueMax-_yValueMin))*chartCavanHeight+UULabelHeight, self.frame.size.width-UUYLabelwidth, (_markRange.max-_markRange.min)/(_yValueMax-_yValueMin)*chartCavanHeight)];
+        view.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.1];
+        [self addSubview:view];
+    }
+    
+    //画横线
+    for (int i=0; i<5; i++) {
+        CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path moveToPoint:CGPointMake(UUYLabelwidth,UULabelHeight+i*levelHeight)];
+        [path addLineToPoint:CGPointMake(self.frame.size.width,UULabelHeight+i*levelHeight)];
+        [path closePath];
+        shapeLayer.path = path.CGPath;
+        shapeLayer.strokeColor = [[[UIColor blackColor] colorWithAlphaComponent:0.1] CGColor];
+        shapeLayer.fillColor = [[UIColor whiteColor] CGColor];
+        shapeLayer.lineWidth = 1;
+        [self.layer addSublayer:shapeLayer];
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    CGFloat num = 0;
+    if (_xAxisTitles.count>=20) {
+        num=20.0;
+    }else if (_xAxisTitles.count<=1){
+        num=1.0;
+    }else{
+        num = _xAxisTitles.count;
+    }
+    _xLabelWidth = (self.frame.size.width - UUYLabelwidth)/num;
+    
+    for (int i=0; i<_xAxisTitles.count; i++) {
+        NSString *labelText = _xAxisTitles[i];
+        UUChartLabel * label = [[UUChartLabel alloc] initWithFrame:CGRectMake(i * _xLabelWidth+UUYLabelwidth, self.frame.size.height - UULabelHeight, _xLabelWidth, UULabelHeight)];
+        label.text = labelText;
+        [self addSubview:label];
+    }
+    
+    //画竖线
+    for (int i=0; i<_xAxisTitles.count+1; i++) {
+        CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path moveToPoint:CGPointMake(UUYLabelwidth+i*_xLabelWidth,UULabelHeight)];
+        [path addLineToPoint:CGPointMake(UUYLabelwidth+i*_xLabelWidth,self.frame.size.height-2*UULabelHeight)];
+        [path closePath];
+        shapeLayer.path = path.CGPath;
+        shapeLayer.strokeColor = [[[UIColor blackColor] colorWithAlphaComponent:0.1] CGColor];
+        shapeLayer.fillColor = [[UIColor whiteColor] CGColor];
+        shapeLayer.lineWidth = 1;
+        [self.layer addSublayer:shapeLayer];
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     for (int i=0; i<_yAxisValues.count; i++) {
         NSArray *childAry = _yAxisValues[i];
         if (childAry.count==0) {
@@ -251,11 +273,6 @@
     }
     
     [self addSubview:view];
-}
-
-- (NSArray *)chartLabelsForX
-{
-    return [_chartLabelsForX allObjects];
 }
 
 @end

@@ -18,6 +18,13 @@
 
 @implementation TableViewCell
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    chartView.frame = CGRectInset(self.bounds, 10, 10);
+    [chartView setNeedsLayout];
+}
+
 - (void)configUI:(NSIndexPath *)indexPath
 {
     if (chartView) {
@@ -26,13 +33,10 @@
     }
     
     path = indexPath;
-    if (chartView == nil) {
-        chartView = [[UUChart alloc]initWithFrame:CGRectMake(10, 10, [UIScreen mainScreen].bounds.size.width-20, 150)
-                                       dataSource:self
-                                            style:indexPath.section==0 ? UUChartStyleLine:UUChartStyleBar];
-        [self.contentView addSubview:chartView];
-    }
-    [chartView reloadData];
+    chartView = [[UUChart alloc]initWithFrame:CGRectZero
+                                   dataSource:self
+                                        style:indexPath.section==0 ? UUChartStyleLine:UUChartStyleBar];
+    [self.contentView addSubview:chartView];
 }
 
 - (NSArray *)getXTitles:(int)num

@@ -48,10 +48,10 @@
     
     if (self.chartStyle == UUChartStyleLine) {
         self.lineChart.frame = self.bounds;
-        [self.lineChart reloadData];
+        [self.lineChart setNeedsLayout];
     } else {
         self.barChart.frame = self.bounds;
-        [self.barChart reloadData];
+        [self.barChart setNeedsLayout];
     }
 }
 
@@ -67,7 +67,7 @@
 - (UUBarChart *)barChart
 {
     if (_barChart) {
-        _barChart = [UUBarChart new];
+        _barChart = [[UUBarChart alloc] initWithFrame:CGRectMake(10, 10, 350, 150)];
         _barChart.clipsToBounds = YES;
     }
     return _barChart;
@@ -99,14 +99,12 @@
         
 		[_lineChart setYAxisValues:[self.dataSource chartConfigAxisYValue:self]];
 		[_lineChart setXAxisTitles:[self.dataSource chartConfigAxisXTitles:self]];
-        
-		[_lineChart strokeChart];
 
 	} else if (self.chartStyle == UUChartStyleBar) {
         if (!_barChart) {
-            _barChart = [[UUBarChart alloc] initWithFrame:self.bounds];
-            [self addSubview:_barChart];
+            _barChart = [[UUBarChart alloc] initWithFrame:CGRectMake(10, 10, 350, 150)];
         }
+        [self addSubview:_barChart];
         if ([self.dataSource respondsToSelector:@selector(chartRange:)]) {
             [_barChart setChooseRange:[self.dataSource chartRange:self]];
         }
@@ -115,17 +113,15 @@
         }
 		[_barChart setYAxisValues:[self.dataSource chartConfigAxisYValue:self]];
 		[_barChart setXAxisTitle:[self.dataSource chartConfigAxisXTitles:self]];
-        
-        [_barChart strokeChart];
 	}
 }
 
-- (void)reloadData
+- (void)reloadData:(BOOL)animation
 {
     if (self.chartStyle == UUChartStyleLine) {
-        [self.lineChart reloadData];
+        [self.lineChart reloadData:animation];
     } else {
-        [self.barChart reloadData];
+        [self.barChart reloadData:animation];
     }
 }
 
