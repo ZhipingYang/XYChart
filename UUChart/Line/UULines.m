@@ -44,7 +44,7 @@
     [_chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<UUChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSMutableArray <UULineGradientLayer *>*mArr = @[].mutableCopy;
         for (int i=0; (i<obj.count-1 && obj.count>1); i++) {
-            UULineGradientLayer *gradient = [UULineGradientLayer layerWithPre:obj[i] next:obj[i+1]];
+            UULineGradientLayer *gradient = [UULineGradientLayer layerWithPre:obj.safeIndex(i) next:obj.safeIndex(i+1)];
             gradient.zPosition = -100;
             [self.layer addSublayer:gradient];
             [mArr addObject:gradient];

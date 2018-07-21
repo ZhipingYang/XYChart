@@ -9,6 +9,7 @@
 @import UIKit;
 #import "UUChartConst.h"
 #import "UIColor+UUChart.h"
+#import "NSArray+UUChart.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

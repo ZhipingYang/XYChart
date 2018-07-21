@@ -8,7 +8,6 @@
 
 #import "UUChartGroup.h"
 #import "UUChartItem.h"
-#import "NSArray+UUChart.h"
 
 @interface UUChartGroup()
 {
@@ -76,7 +75,7 @@
         _names = [self.dataList.firstObject uu_map:^id(id<UUChartItem> obj, NSUInteger idx) {
             NSMutableAttributedString *mStr = [NSMutableAttributedString new];
             for (int i=0; i<self.dataList.count; i++) {
-                id <UUChartItem>item = self.dataList[i][idx];
+                id <UUChartItem>item = self.dataList.safeIndex(i).safeIndex(idx);
                 [mStr appendAttributedString:block(item.name, item.color)];
                 if (i!=self.dataList.count-1) {
                     [mStr appendAttributedString:block(@":",[UIColor separatedColor])];

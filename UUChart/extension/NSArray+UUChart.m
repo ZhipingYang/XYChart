@@ -26,12 +26,14 @@
 
 - (id)uu_max:(NSComparisonResult (^)(id, id))block
 {
+    NSAssert(block!=nil, @"block 不能为空, 但还是做了保护");
+
     if (self.count==0) { return nil; }
     if (self.count==1) { return self.firstObject;}
     id max = self.firstObject;
     for (int i=1; i<self.count; i++) {
-        if (block(max, self[i]) == NSOrderedAscending) {
-            max = self[i];
+        if (block(max, self.safeIndex(i)) == NSOrderedAscending) {
+            max = self.safeIndex(i);
         }
     }
     return max;
@@ -39,12 +41,14 @@
 
 - (id)uu_min:(NSComparisonResult (^)(id, id))block
 {
+    NSAssert(block!=nil, @"block 不能为空, 但还是做了保护");
+
     if (self.count==0) { return nil; }
     if (self.count==1) { return self.firstObject;}
     id min = self.firstObject;
     for (int i=1; i<self.count; i++) {
-        if (block(min, self[i]) == NSOrderedDescending) {
-            min = self[i];
+        if (block(min, self.safeIndex(i)) == NSOrderedDescending) {
+            min = self.safeIndex(i);
         }
     }
     return min;
