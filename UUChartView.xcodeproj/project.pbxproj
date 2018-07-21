@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6552FA2521031DA800BE0658 /* UUBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA2321031DA800BE0658 /* UUBarCell.m */; };
+		6552FA292103388C00BE0658 /* UUChartGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA282103388C00BE0658 /* UUChartGroup.m */; };
+		6552FA2C21033A6300BE0658 /* UUChartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA2B21033A6300BE0658 /* UUChartItem.m */; };
+		6552FA2F21033D1E00BE0658 /* NSArray+Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA2E21033D0400BE0658 /* NSArray+Map.m */; };
+		6552FA3321034BD500BE0658 /* UIColor+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA3221034BD500BE0658 /* UIColor+Random.m */; };
 		B7A1894E1A58D9A200579497 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1894D1A58D9A200579497 /* main.m */; };
 		B7A189511A58D9A200579497 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189501A58D9A200579497 /* AppDelegate.m */; };
 		B7A189591A58D9A200579497 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A189581A58D9A200579497 /* Images.xcassets */; };
@@ -14,9 +19,7 @@
 		B7A189681A58D9A200579497 /* UUChartViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189671A58D9A200579497 /* UUChartViewTests.m */; };
 		B7A1897E1A58DA8500579497 /* UUBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189731A58DA8500579497 /* UUBar.m */; };
 		B7A1897F1A58DA8500579497 /* UUBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189751A58DA8500579497 /* UUBarChart.m */; };
-		B7A189801A58DA8500579497 /* UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189771A58DA8500579497 /* UUChart.m */; };
-		B7A189811A58DA8500579497 /* UUChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189791A58DA8500579497 /* UUChartLabel.m */; };
-		B7A189821A58DA8500579497 /* UUChartConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1897B1A58DA8500579497 /* UUChartConst.m */; };
+		B7A189801A58DA8500579497 /* UUChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189771A58DA8500579497 /* UUChartView.m */; };
 		B7A189831A58DA8500579497 /* UULineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1897D1A58DA8500579497 /* UULineChart.m */; };
 		B7A189871A58DAC600579497 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189851A58DAC600579497 /* RootViewController.m */; };
 		B7A189881A58DAC600579497 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A189861A58DAC600579497 /* RootViewController.xib */; };
@@ -35,6 +38,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6552FA1F21030C1F00BE0658 /* UUChartProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChartProtocol.h; sourceTree = "<group>"; };
+		6552FA2221031DA800BE0658 /* UUBarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UUBarCell.h; sourceTree = "<group>"; };
+		6552FA2321031DA800BE0658 /* UUBarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UUBarCell.m; sourceTree = "<group>"; };
+		6552FA272103388C00BE0658 /* UUChartGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UUChartGroup.h; sourceTree = "<group>"; };
+		6552FA282103388C00BE0658 /* UUChartGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UUChartGroup.m; sourceTree = "<group>"; };
+		6552FA2A21033A6300BE0658 /* UUChartItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UUChartItem.h; sourceTree = "<group>"; };
+		6552FA2B21033A6300BE0658 /* UUChartItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UUChartItem.m; sourceTree = "<group>"; };
+		6552FA2D21033C9D00BE0658 /* NSArray+Map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Map.h"; sourceTree = "<group>"; };
+		6552FA2E21033D0400BE0658 /* NSArray+Map.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Map.m"; sourceTree = "<group>"; };
+		6552FA3121034BD500BE0658 /* UIColor+Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Random.h"; sourceTree = "<group>"; };
+		6552FA3221034BD500BE0658 /* UIColor+Random.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Random.m"; sourceTree = "<group>"; };
 		B7A189481A58D9A200579497 /* UUChartView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UUChartView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7A1894C1A58D9A200579497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7A1894D1A58D9A200579497 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -49,12 +63,8 @@
 		B7A189731A58DA8500579497 /* UUBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBar.m; sourceTree = "<group>"; };
 		B7A189741A58DA8500579497 /* UUBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUBarChart.h; sourceTree = "<group>"; };
 		B7A189751A58DA8500579497 /* UUBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUBarChart.m; sourceTree = "<group>"; };
-		B7A189761A58DA8500579497 /* UUChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChart.h; sourceTree = "<group>"; };
-		B7A189771A58DA8500579497 /* UUChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChart.m; sourceTree = "<group>"; };
-		B7A189781A58DA8500579497 /* UUChartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChartLabel.h; sourceTree = "<group>"; };
-		B7A189791A58DA8500579497 /* UUChartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChartLabel.m; sourceTree = "<group>"; };
-		B7A1897A1A58DA8500579497 /* UUChartConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChartConst.h; sourceTree = "<group>"; };
-		B7A1897B1A58DA8500579497 /* UUChartConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChartConst.m; sourceTree = "<group>"; };
+		B7A189761A58DA8500579497 /* UUChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUChartView.h; sourceTree = "<group>"; };
+		B7A189771A58DA8500579497 /* UUChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUChartView.m; sourceTree = "<group>"; };
 		B7A1897C1A58DA8500579497 /* UULineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UULineChart.h; sourceTree = "<group>"; };
 		B7A1897D1A58DA8500579497 /* UULineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UULineChart.m; sourceTree = "<group>"; };
 		B7A189841A58DAC600579497 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -83,6 +93,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6552FA2021031BEF00BE0658 /* Bar */ = {
+			isa = PBXGroup;
+			children = (
+				B7A189721A58DA8500579497 /* UUBar.h */,
+				B7A189731A58DA8500579497 /* UUBar.m */,
+				B7A189741A58DA8500579497 /* UUBarChart.h */,
+				B7A189751A58DA8500579497 /* UUBarChart.m */,
+				6552FA2221031DA800BE0658 /* UUBarCell.h */,
+				6552FA2321031DA800BE0658 /* UUBarCell.m */,
+			);
+			path = Bar;
+			sourceTree = "<group>";
+		};
+		6552FA2121031BFE00BE0658 /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				B7A1897C1A58DA8500579497 /* UULineChart.h */,
+				B7A1897D1A58DA8500579497 /* UULineChart.m */,
+			);
+			path = Line;
+			sourceTree = "<group>";
+		};
+		6552FA3021034BA000BE0658 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				6552FA2D21033C9D00BE0658 /* NSArray+Map.h */,
+				6552FA2E21033D0400BE0658 /* NSArray+Map.m */,
+				6552FA3121034BD500BE0658 /* UIColor+Random.h */,
+				6552FA3221034BD500BE0658 /* UIColor+Random.m */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 		B7A1893F1A58D9A200579497 = {
 			isa = PBXGroup;
 			children = (
@@ -149,18 +192,16 @@
 		B7A189711A58DA8500579497 /* UUChart */ = {
 			isa = PBXGroup;
 			children = (
-				B7A189721A58DA8500579497 /* UUBar.h */,
-				B7A189731A58DA8500579497 /* UUBar.m */,
-				B7A189741A58DA8500579497 /* UUBarChart.h */,
-				B7A189751A58DA8500579497 /* UUBarChart.m */,
-				B7A189761A58DA8500579497 /* UUChart.h */,
-				B7A189771A58DA8500579497 /* UUChart.m */,
-				B7A189781A58DA8500579497 /* UUChartLabel.h */,
-				B7A189791A58DA8500579497 /* UUChartLabel.m */,
-				B7A1897A1A58DA8500579497 /* UUChartConst.h */,
-				B7A1897B1A58DA8500579497 /* UUChartConst.m */,
-				B7A1897C1A58DA8500579497 /* UULineChart.h */,
-				B7A1897D1A58DA8500579497 /* UULineChart.m */,
+				6552FA3021034BA000BE0658 /* extension */,
+				6552FA1F21030C1F00BE0658 /* UUChartProtocol.h */,
+				6552FA272103388C00BE0658 /* UUChartGroup.h */,
+				6552FA282103388C00BE0658 /* UUChartGroup.m */,
+				6552FA2A21033A6300BE0658 /* UUChartItem.h */,
+				6552FA2B21033A6300BE0658 /* UUChartItem.m */,
+				6552FA2121031BFE00BE0658 /* Line */,
+				6552FA2021031BEF00BE0658 /* Bar */,
+				B7A189761A58DA8500579497 /* UUChartView.h */,
+				B7A189771A58DA8500579497 /* UUChartView.m */,
 			);
 			path = UUChart;
 			sourceTree = "<group>";
@@ -269,15 +310,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7A1897E1A58DA8500579497 /* UUBar.m in Sources */,
-				B7A189801A58DA8500579497 /* UUChart.m in Sources */,
+				6552FA3321034BD500BE0658 /* UIColor+Random.m in Sources */,
+				B7A189801A58DA8500579497 /* UUChartView.m in Sources */,
 				B7A189511A58D9A200579497 /* AppDelegate.m in Sources */,
+				6552FA2521031DA800BE0658 /* UUBarCell.m in Sources */,
 				B7A1898E1A58DDBB00579497 /* TableViewCell.m in Sources */,
 				B7A189871A58DAC600579497 /* RootViewController.m in Sources */,
+				6552FA292103388C00BE0658 /* UUChartGroup.m in Sources */,
 				B7A189831A58DA8500579497 /* UULineChart.m in Sources */,
 				B7A1897F1A58DA8500579497 /* UUBarChart.m in Sources */,
-				B7A189821A58DA8500579497 /* UUChartConst.m in Sources */,
+				6552FA2F21033D1E00BE0658 /* NSArray+Map.m in Sources */,
+				6552FA2C21033A6300BE0658 /* UUChartItem.m in Sources */,
 				B7A1894E1A58D9A200579497 /* main.m in Sources */,
-				B7A189811A58DA8500579497 /* UUChartLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,7 +438,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H9J886PZ98;
 				INFOPLIST_FILE = UUChartView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uyiuyao.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -409,7 +453,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H9J886PZ98;
 				INFOPLIST_FILE = UUChartView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uyiuyao.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
