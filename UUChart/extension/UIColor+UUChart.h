@@ -33,4 +33,6 @@
  */
 + (UIColor *)separatedColor;
 
++ (UIColor *)rainBow:(NSInteger)index;
+
 @end

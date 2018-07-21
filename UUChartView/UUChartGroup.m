@@ -115,7 +115,11 @@
             return [obj1 uu_map:^id(NSString *obj, NSUInteger idx) {
                 UUChartItem *item = [[UUChartItem alloc] init];
                 item.percent = (obj.floatValue-self.minValue)/(self.maxValue-self.minValue);
-                item.color = [UIColor random];
+                if (_section==1 && _row>=7) {
+                    item.color = [UIColor rainBow:idx];
+                } else {
+                    item.color = [UIColor random];                    
+                }
                 item.duration = 0.3;
                 item.name = obj;
                 return item;

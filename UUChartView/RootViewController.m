@@ -23,12 +23,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"UUChartView";
+    
     _dataArray = @[
                    @[
                        [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:1 row:5],
                        [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:1 row:15],
-                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:2 row:5],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:2 row:15],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:3 row:5],
                        [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:2 row:15 width:60],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:2 row:33 width:40],
                        ],
                    @[
                        [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:1 row:5],
@@ -43,8 +47,33 @@
     
     NSString *cellName = NSStringFromClass([TableViewCell class]);
     [self.chartTableView registerNib:[UINib nibWithNibName:cellName bundle:nil] forCellReuseIdentifier:cellName];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadNewData)];
 }
 
+- (void)reloadNewData
+{
+    _dataArray = @[
+                   @[
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:1 row:5],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:1 row:15],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:2 row:15],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:3 row:5],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:2 row:15 width:60],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:2 row:33 width:40],
+                       ],
+                   @[
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:1 row:5],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:1 row:12],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:2 row:5],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:3 row:5],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:4 row:6],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:2 row:15 width:60],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:4 row:6 width:80],
+                       ]
+                   ];
+    [self.chartTableView reloadData];
+}
 
 #pragma mark - UITableView Datasource
 
@@ -67,14 +96,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+    return 40;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width , 30);
+    CGRect frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width , 40);
     UILabel *label = [[UILabel alloc]initWithFrame:frame];
     label.font = [UIFont systemFontOfSize:30];
-    label.backgroundColor = [[UIColor lightGrayColor]colorWithAlphaComponent:0.3];
+    label.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.8];
     label.text = section ? @"Bar":@"Line";
     label.textColor = [UIColor colorWithRed:0.257 green:0.650 blue:0.478 alpha:1.000];
     label.textAlignment = NSTextAlignmentCenter;

@@ -8,6 +8,8 @@
 
 #import "UIColor+UUChart.h"
 
+#define uucc(color) [UIColor color]
+
 @implementation UIColor(Random)
 
 + (UIColor *)random
@@ -63,4 +65,17 @@
                             blue:200/255.0
                            alpha:1];
 }
++ (UIColor *)rainBow:(NSInteger)index
+{
+    return @[
+             uucc(redColor),
+             uucc(orangeColor),
+             uucc(yellowColor),
+             uucc(greenColor),
+             uucc(blueColor),
+             uucc(cyanColor),
+             uucc(purpleColor)
+             ][index%7];
+}
 @end
+

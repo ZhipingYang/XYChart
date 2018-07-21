@@ -14,7 +14,7 @@
 // 横轴文案高度
 #define UUChartXLabelHeight 20
 // 折线图，线条宽度
-#define UUChartLineWidth 3
+#define UUChartLineWidth 2
 
 // 获取宽度
 #define uu_width(obj) obj.frame.size.width
