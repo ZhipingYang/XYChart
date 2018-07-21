@@ -11,6 +11,8 @@
 
 @interface UUChartGroup()
 {
+    NSUInteger _section;
+    NSUInteger _row;
     NSAttributedString *(^_configYLabelBlock)(CGFloat value);
 }
 @property (nonatomic) UUChartStyle chartStyle;
@@ -19,7 +21,7 @@
 
 @implementation UUChartGroup
 
-- (instancetype)initWithTyle:(UUChartStyle)style
+- (instancetype)initWithStyle:(UUChartStyle)style
 {
     self = [super init];
     if (self) {
@@ -32,10 +34,29 @@
     }
     return self;
 }
-
+- (instancetype)initWithStyle:(UUChartStyle)style section:(NSUInteger)section row:(NSUInteger)row
+{
+    self = [self initWithStyle:style];
+    if (self) {
+        _section = section;
+        _row = row;
+    }
+    return self;
+}
+- (instancetype)initWithStyle:(UUChartStyle)style section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width
+{
+    self = [self initWithStyle:style];
+    if (self) {
+        _section = section;
+        _row = row;
+        self.xSectionWidth = width;
+        self.autoSizeX = NO;
+    }
+    return self;
+}
 - (instancetype)init
 {
-    return [self initWithTyle:UUChartStyleLine];
+    return [self initWithStyle:UUChartStyleLine];
 }
 
 - (NSAttributedString *(^)(CGFloat))configYLabelBlock
@@ -90,7 +111,7 @@
 - (NSArray<NSArray<id<UUChartItem>> *> *)dataList
 {
     if (!_dataList) {
-        _dataList = [[self randomSection:3 row:7] uu_map:^id(NSArray<NSString *> *obj1, NSUInteger idx1) {
+        _dataList = [[self randomSection:_section row:_row] uu_map:^id(NSArray<NSString *> *obj1, NSUInteger idx1) {
             return [obj1 uu_map:^id(NSString *obj, NSUInteger idx) {
                 UUChartItem *item = [[UUChartItem alloc] init];
                 item.percent = (obj.floatValue-self.minValue)/(self.maxValue-self.minValue);

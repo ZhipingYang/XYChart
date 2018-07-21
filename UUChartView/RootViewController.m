@@ -8,10 +8,13 @@
 
 #import "RootViewController.h"
 #import "TableViewCell.h"
+#import "UUChartGroup.h"
 
 @interface RootViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *chartTableView;
+
+@property (nonatomic, strong) NSArray <NSArray <UUChartGroup *>*>* dataArray;
 
 @end
 
@@ -20,7 +23,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    _dataArray = @[
+                   @[
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:1 row:5],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:1 row:5]
+                       ],
+                   @[
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:1 row:5],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:1 row:5]
+                       ]
+                   ];
     
     NSString *cellName = NSStringFromClass([TableViewCell class]);
     [self.chartTableView registerNib:[UINib nibWithNibName:cellName bundle:nil] forCellReuseIdentifier:cellName];
@@ -30,16 +42,16 @@
 #pragma mark - UITableView Datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return _dataArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return _dataArray.safeIndex(section).count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TableViewCell class])];
-    [cell configUI:indexPath];
+    cell.group = _dataArray.safeIndex(indexPath.section).safeIndex(indexPath.row);
     return cell;
 }
 

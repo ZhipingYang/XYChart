@@ -62,7 +62,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) NSArray <NSArray <id<UUChartItem>>*> *dataList;
 
-- (instancetype)initWithTyle:(UUChartStyle)style;
+- (instancetype)initWithStyle:(UUChartStyle)style;
+- (instancetype)initWithStyle:(UUChartStyle)style section:(NSUInteger)section row:(NSUInteger)row;
+- (instancetype)initWithStyle:(UUChartStyle)style section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width;
 
 /**
  默认 UUChartStyleLine

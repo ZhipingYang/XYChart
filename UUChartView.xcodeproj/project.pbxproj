@@ -147,8 +147,6 @@
 			children = (
 				6552FA2A21033A6300BE0658 /* UUChartItem.h */,
 				6552FA2B21033A6300BE0658 /* UUChartItem.m */,
-				6552FA272103388C00BE0658 /* UUChartGroup.h */,
-				6552FA282103388C00BE0658 /* UUChartGroup.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -177,6 +175,8 @@
 			children = (
 				B7A1894F1A58D9A200579497 /* AppDelegate.h */,
 				B7A189501A58D9A200579497 /* AppDelegate.m */,
+				6552FA272103388C00BE0658 /* UUChartGroup.h */,
+				6552FA282103388C00BE0658 /* UUChartGroup.m */,
 				B7A189841A58DAC600579497 /* RootViewController.h */,
 				B7A189851A58DAC600579497 /* RootViewController.m */,
 				B7A189861A58DAC600579497 /* RootViewController.xib */,

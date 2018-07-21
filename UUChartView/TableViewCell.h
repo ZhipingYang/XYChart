@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UUChartGroup.h"
 
 @interface TableViewCell : UITableViewCell
 
-- (void)configUI:(NSIndexPath *)indexPath;
+@property (nonatomic, strong) UUChartGroup *group;
 
 @end

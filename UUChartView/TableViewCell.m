@@ -19,21 +19,26 @@
 
 @implementation TableViewCell
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+    }
+    return self;
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     chartView.frame = CGRectMake(10, 30, self.bounds.size.width-20, self.bounds.size.height-40);
 }
 
-- (void)configUI:(NSIndexPath *)indexPath
+- (void)setGroup:(UUChartGroup *)group
 {
-    if (chartView) {
-        [chartView removeFromSuperview];
-        chartView = nil;
-    }
-    
-    chartView = [[UUChartView alloc] initWithFrame:CGRectZero
-                                        chartGroup:[[UUChartGroup alloc] initWithTyle:indexPath.section ? UUChartStyleBar : UUChartStyleLine]];
+    _group = group;
+    [chartView removeFromSuperview];
+    chartView = nil;
+    chartView = [[UUChartView alloc] initWithFrame:CGRectZero chartGroup:group];
     [self.contentView addSubview:chartView];
 }
+
 @end
