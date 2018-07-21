@@ -11,5 +11,9 @@
 @interface UIColor(Random)
 
 + (UIColor *)random;
++ (UIColor *)randomLigt;
++ (UIColor *)randomDark;
+
++ (UIColor *)separatedColor;
 
 @end

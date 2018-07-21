@@ -29,12 +29,12 @@
 
 - (CGFloat)minValue
 {
-    return 0;
+    return 10;
 }
 
 - (CGFloat)maxValue
 {
-    return 100;
+    return 50;
 }
 
 - (NSUInteger)ySectionNumber
@@ -49,7 +49,7 @@
 
 - (BOOL)autoSizeX
 {
-    return YES;
+    return NO;
 }
 
 - (NSArray<NSAttributedString *> *)names
@@ -63,7 +63,7 @@
                   }];
     };
     NSArray *arr =  [[self demoStrings] uu_map:^id(NSString *obj, NSUInteger idx) {
-        return block([NSString stringWithFormat:@"%zd:%@",idx,obj]);
+        return block([NSString stringWithFormat:@"%@:%@",obj,[self demoStrings2][idx]]);
     }];
     return arr;
 }
@@ -74,14 +74,14 @@
              [[self demoStrings] uu_map:^id(NSString *obj, NSUInteger idx) {
                  UUChartItem *item = [[UUChartItem alloc] init];
                  item.percent = obj.floatValue/self.maxValue;
-                 item.color = [UIColor redColor];
+                 item.color = [UIColor randomLigt];
                  item.duration = 0.3;
                  return item;
              }],
              [[self demoStrings2] uu_map:^id(NSString *obj, NSUInteger idx) {
                  UUChartItem *item = [[UUChartItem alloc] init];
                  item.percent = obj.floatValue/self.maxValue;
-                 item.color = [UIColor greenColor];
+                 item.color = [UIColor randomDark];
                  item.duration = 0.3;
                  return item;
              }]

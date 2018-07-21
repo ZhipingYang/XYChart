@@ -35,9 +35,11 @@
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.minimumLineSpacing = 0;
     _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
-    _collectionView.backgroundColor = [UIColor whiteColor];
+    _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
+    _collectionView.showsVerticalScrollIndicator = NO;
+    _collectionView.showsHorizontalScrollIndicator = NO;
     [self addSubview:_collectionView];
     [_collectionView registerClass:[UUBarCell class] forCellWithReuseIdentifier:NSStringFromClass([UUBarCell class])];
 }
@@ -57,12 +59,14 @@
 - (void)setChartGroup:(id<UUChartGroup>)chartGroup animation:(BOOL)animation
 {
     _chartGroup = chartGroup;
+    [self.collectionView reloadData];
 }
 
 - (void)reloadData:(BOOL)animation
 {
     
 }
+
 
 #pragma mark - UICollectionViewDelegate & UICollectionViewDataSource
 

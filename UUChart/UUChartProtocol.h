@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+#import "UIColor+UUChart.h"
 
 #define UUChartYLabelWidth 30
 #define UUChartXLabelHeight 20

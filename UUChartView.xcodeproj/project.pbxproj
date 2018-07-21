@@ -11,7 +11,7 @@
 		6552FA292103388C00BE0658 /* UUChartGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA282103388C00BE0658 /* UUChartGroup.m */; };
 		6552FA2C21033A6300BE0658 /* UUChartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA2B21033A6300BE0658 /* UUChartItem.m */; };
 		6552FA2F21033D1E00BE0658 /* NSArray+Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA2E21033D0400BE0658 /* NSArray+Map.m */; };
-		6552FA3321034BD500BE0658 /* UIColor+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA3221034BD500BE0658 /* UIColor+Random.m */; };
+		6552FA3321034BD500BE0658 /* UIColor+UUChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA3221034BD500BE0658 /* UIColor+UUChart.m */; };
 		B7A1894E1A58D9A200579497 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1894D1A58D9A200579497 /* main.m */; };
 		B7A189511A58D9A200579497 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189501A58D9A200579497 /* AppDelegate.m */; };
 		B7A189591A58D9A200579497 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A189581A58D9A200579497 /* Images.xcassets */; };
@@ -47,8 +47,8 @@
 		6552FA2B21033A6300BE0658 /* UUChartItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UUChartItem.m; sourceTree = "<group>"; };
 		6552FA2D21033C9D00BE0658 /* NSArray+Map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Map.h"; sourceTree = "<group>"; };
 		6552FA2E21033D0400BE0658 /* NSArray+Map.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Map.m"; sourceTree = "<group>"; };
-		6552FA3121034BD500BE0658 /* UIColor+Random.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Random.h"; sourceTree = "<group>"; };
-		6552FA3221034BD500BE0658 /* UIColor+Random.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Random.m"; sourceTree = "<group>"; };
+		6552FA3121034BD500BE0658 /* UIColor+UUChart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+UUChart.h"; sourceTree = "<group>"; };
+		6552FA3221034BD500BE0658 /* UIColor+UUChart.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+UUChart.m"; sourceTree = "<group>"; };
 		B7A189481A58D9A200579497 /* UUChartView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UUChartView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7A1894C1A58D9A200579497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7A1894D1A58D9A200579497 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -120,8 +120,8 @@
 			children = (
 				6552FA2D21033C9D00BE0658 /* NSArray+Map.h */,
 				6552FA2E21033D0400BE0658 /* NSArray+Map.m */,
-				6552FA3121034BD500BE0658 /* UIColor+Random.h */,
-				6552FA3221034BD500BE0658 /* UIColor+Random.m */,
+				6552FA3121034BD500BE0658 /* UIColor+UUChart.h */,
+				6552FA3221034BD500BE0658 /* UIColor+UUChart.m */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -310,7 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7A1897E1A58DA8500579497 /* UUBar.m in Sources */,
-				6552FA3321034BD500BE0658 /* UIColor+Random.m in Sources */,
+				6552FA3321034BD500BE0658 /* UIColor+UUChart.m in Sources */,
 				B7A189801A58DA8500579497 /* UUChartView.m in Sources */,
 				B7A189511A58D9A200579497 /* AppDelegate.m in Sources */,
 				6552FA2521031DA800BE0658 /* UUBarCell.m in Sources */,
