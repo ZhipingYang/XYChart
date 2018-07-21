@@ -47,16 +47,12 @@
     [super layoutSubviews];
     
     _separatedLine.frame = CGRectMake(0, 0, 1/[UIScreen mainScreen].scale, uu_height(self)-UUChartXLabelHeight);
-    
     _nameLabel.frame = CGRectMake(0, uu_height(self)-UUChartXLabelHeight, uu_width(self), UUChartXLabelHeight);
-    
-    NSLog(@"%@",self);
     
     [_circles enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.frame = CGRectMake((uu_width(self)-uu_width(obj))/2.0,
                                (uu_height(self)-UUChartXLabelHeight)*(1-_chartItems[idx].percent) - uu_height(obj)/2.0,
                                uu_width(obj), uu_height(obj));
-        NSLog(@"obj.frame %@",NSStringFromCGRect(obj.frame));
     }];
 }
 

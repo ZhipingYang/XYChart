@@ -15,8 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) CGFloat percent;
 @property (nonatomic) NSTimeInterval duration;
 @property (nonatomic, strong) UIColor *color;
-
-- (void)setName:(nullable NSString *)name;
+@property (nonatomic, readwrite) NSString *name;
 
 @end
 

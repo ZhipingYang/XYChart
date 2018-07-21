@@ -11,14 +11,10 @@
 #import "NSArray+UUChart.h"
 
 @interface UUChartGroup()
-
+{
+    NSAttributedString *(^_configYLabelBlock)(CGFloat value);
+}
 @property (nonatomic) UUChartStyle chartStyle;
-
-@property (nonatomic, strong) NSArray <NSArray <id<UUChartItem>>*> *dataList;
-
-@property (nonatomic, strong) NSArray <NSAttributedString *> *names;
-
-@property (nonatomic, copy) NSAttributedString *(^configYLabelBlock)(CGFloat value);
 
 @end
 
@@ -29,28 +25,18 @@
     self = [super init];
     if (self) {
         self.chartStyle = style;
+        self.maxValue = 100;
+        self.minValue = 0;
+        self.ySectionNumber = 5;
+        self.xSectionWidth = 60;
+        self.autoSizeX = YES;
     }
     return self;
 }
 
-- (CGFloat)minValue
+- (instancetype)init
 {
-    return 5;
-}
-
-- (CGFloat)maxValue
-{
-    return 555;
-}
-
-- (NSUInteger)ySectionNumber
-{
-    return 5;
-}
-
-- (CGFloat)xSectionWidth
-{
-    return 80;
+    return [self initWithTyle:UUChartStyleLine];
 }
 
 - (NSAttributedString *(^)(CGFloat))configYLabelBlock
@@ -65,14 +51,14 @@
                       }
                     ];
         };
-        _configYLabelBlock = block;
+        self.configYLabelBlock = block;
     }
     return _configYLabelBlock;
 }
 
-- (BOOL)autoSizeX
+- (void)setConfigYLabelBlock:(NSAttributedString *(^)(CGFloat))configYLabelBlock
 {
-    return NO;
+    _configYLabelBlock = [configYLabelBlock copy];
 }
 
 - (NSArray<NSAttributedString *> *)names
@@ -105,7 +91,7 @@
 - (NSArray<NSArray<id<UUChartItem>> *> *)dataList
 {
     if (!_dataList) {
-        _dataList = [[self randomSection:1 row:10] uu_map:^id(NSArray<NSString *> *obj1, NSUInteger idx1) {
+        _dataList = [[self randomSection:3 row:7] uu_map:^id(NSArray<NSString *> *obj1, NSUInteger idx1) {
             return [obj1 uu_map:^id(NSString *obj, NSUInteger idx) {
                 UUChartItem *item = [[UUChartItem alloc] init];
                 item.percent = (obj.floatValue-self.minValue)/(self.maxValue-self.minValue);
@@ -115,6 +101,9 @@
                 return item;
             }];
         }];
+        // 更新其他
+        _names = nil;
+        [self names];
     }
     return _dataList;
 }
@@ -140,6 +129,7 @@
 }
 
 @end
+
 
 
 

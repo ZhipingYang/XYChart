@@ -33,7 +33,7 @@
     }
     
     chartView = [[UUChartView alloc] initWithFrame:CGRectZero
-                                        chartGroup:[[UUChartGroup alloc] initWithTyle:UUChartStyleLine]];
+                                        chartGroup:[[UUChartGroup alloc] initWithTyle:indexPath.section ? UUChartStyleBar : UUChartStyleLine]];
     [self.contentView addSubview:chartView];
 }
 @end

@@ -8,17 +8,6 @@
 
 #import "UUChartItem.h"
 
-@interface UUChartItem()
-
-@property (nonatomic, copy) NSString *name;
-
-@end
-
 @implementation UUChartItem
-
--(void)setName:(NSString *)name
-{
-    _name = name;
-}
 
 @end

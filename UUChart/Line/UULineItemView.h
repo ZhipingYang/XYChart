@@ -8,11 +8,15 @@
 
 #import "UUChartProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UULineItemView : UIView
 
-@property (nonatomic, readonly) id<UUChartGroup> chartGroup;
+@property (nonatomic, readonly, nullable) id<UUChartGroup> chartGroup;
 @property (nonatomic, readonly) NSUInteger index;
 
-- (void)setChartGroup:(id<UUChartGroup> _Nonnull)chartGroup index:(NSUInteger)index;
+- (void)setChartGroup:(nullable id<UUChartGroup>)chartGroup index:(NSUInteger)index;
 
 @end
+
+NS_ASSUME_NONNULL_END

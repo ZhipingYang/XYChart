@@ -45,6 +45,7 @@
         NSMutableArray <UULineGradientLayer *>*mArr = @[].mutableCopy;
         for (int i=0; (i<obj.count-1 && obj.count>1); i++) {
             UULineGradientLayer *gradient = [UULineGradientLayer layerWithPre:obj[i] next:obj[i+1]];
+            gradient.zPosition = -100;
             [self.layer addSublayer:gradient];
             [mArr addObject:gradient];
         }

@@ -50,4 +50,13 @@
     return min;
 }
 
+- (id  _Nonnull (^)(NSUInteger))safeIndex
+{
+    __weak typeof(self) weakSelf = self;
+    id (^block)(NSUInteger index) = ^(NSUInteger index) {
+        return (weakSelf.count-1)<index ? nil : weakSelf[index];
+    };
+    return block;
+}
+
 @end

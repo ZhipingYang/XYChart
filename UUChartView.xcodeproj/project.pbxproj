@@ -58,6 +58,7 @@
 		6552FA3821039D2200BE0658 /* UULines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UULines.m; sourceTree = "<group>"; };
 		6552FA3A2103A0DE00BE0658 /* UULineGradientLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UULineGradientLayer.h; sourceTree = "<group>"; };
 		6552FA3B2103A0DE00BE0658 /* UULineGradientLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UULineGradientLayer.m; sourceTree = "<group>"; };
+		6552FA3E2103BAD100BE0658 /* UUChartConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UUChartConst.h; sourceTree = "<group>"; };
 		B7A189481A58D9A200579497 /* UUChartView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UUChartView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7A1894C1A58D9A200579497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7A1894D1A58D9A200579497 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -141,6 +142,17 @@
 			path = extension;
 			sourceTree = "<group>";
 		};
+		6552FA3D2103BAAD00BE0658 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6552FA2A21033A6300BE0658 /* UUChartItem.h */,
+				6552FA2B21033A6300BE0658 /* UUChartItem.m */,
+				6552FA272103388C00BE0658 /* UUChartGroup.h */,
+				6552FA282103388C00BE0658 /* UUChartGroup.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		B7A1893F1A58D9A200579497 = {
 			isa = PBXGroup;
 			children = (
@@ -207,16 +219,14 @@
 		B7A189711A58DA8500579497 /* UUChart */ = {
 			isa = PBXGroup;
 			children = (
-				6552FA3021034BA000BE0658 /* extension */,
+				6552FA3E2103BAD100BE0658 /* UUChartConst.h */,
 				6552FA1F21030C1F00BE0658 /* UUChartProtocol.h */,
-				6552FA272103388C00BE0658 /* UUChartGroup.h */,
-				6552FA282103388C00BE0658 /* UUChartGroup.m */,
-				6552FA2A21033A6300BE0658 /* UUChartItem.h */,
-				6552FA2B21033A6300BE0658 /* UUChartItem.m */,
-				6552FA2121031BFE00BE0658 /* Line */,
-				6552FA2021031BEF00BE0658 /* Bar */,
 				B7A189761A58DA8500579497 /* UUChartView.h */,
 				B7A189771A58DA8500579497 /* UUChartView.m */,
+				6552FA3D2103BAAD00BE0658 /* model */,
+				6552FA3021034BA000BE0658 /* extension */,
+				6552FA2121031BFE00BE0658 /* Line */,
+				6552FA2021031BEF00BE0658 /* Bar */,
 			);
 			path = UUChart;
 			sourceTree = "<group>";
