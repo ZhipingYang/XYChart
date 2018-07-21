@@ -8,19 +8,55 @@
 
 
 #import "UULineChart.h"
+#import "UULineItemView.h"
+#import "UULines.h"
 
 @interface UULineChart ()
 
 @property (nonatomic, strong) UIScrollView *scrolView;
+@property (nonatomic, strong) UULines *linesView;
+
+@property (nonatomic, strong) NSMutableArray <UULineItemView *>* itemViews;
 
 @end
 
 @implementation UULineChart
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        _itemViews = @[].mutableCopy;
+        _scrolView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        _scrolView.showsVerticalScrollIndicator = NO;
+        _scrolView.showsHorizontalScrollIndicator = NO;
+        [self addSubview:_scrolView];
+        
+        _linesView = [UULines new];
+        [_scrolView addSubview:_linesView];
+    }
+    return self;
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    _scrolView.frame = self.bounds;
+    if (_chartGroup.autoSizeX) {
+        _scrolView.contentSize = _scrolView.frame.size;
+    } else {
+        _scrolView.contentSize = CGSizeMake(_chartGroup.xSectionWidth * _itemViews.count, uu_height(_scrolView));
+    }
+    _linesView.frame = CGRectMake(0, 0, _scrolView.contentSize.width, _scrolView.contentSize.height-UUChartXLabelHeight);
     
+    [_itemViews enumerateObjectsUsingBlock:^(UULineItemView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (_chartGroup.autoSizeX) {
+            CGFloat width = uu_width(self)/_itemViews.count;
+            obj.frame = CGRectMake(idx*width, 0, width, uu_height(self));
+        } else {
+            obj.frame = CGRectMake(idx*_chartGroup.xSectionWidth, 0, _chartGroup.xSectionWidth, uu_height(self));
+        }
+    }];
 }
 
 - (void)setChartGroup:(id<UUChartGroup>)chartGroup
@@ -31,6 +67,20 @@
 - (void)setChartGroup:(id<UUChartGroup>)chartGroup animation:(BOOL)animation
 {
     _chartGroup = chartGroup;
+    
+    [_itemViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [_itemViews removeAllObjects];
+    
+    _linesView.chartGroup = chartGroup;
+    
+    const NSUInteger count = _chartGroup.dataList.firstObject.count;
+    for (int i=0; i<count; i++) {
+        UULineItemView *itemView = [[UULineItemView alloc] init];
+        [itemView setChartGroup:_chartGroup index:i];
+        [self.scrolView addSubview:itemView];
+        [_itemViews addObject:itemView];
+    }
+    [self setNeedsLayout];
 }
 
 - (void)reloadData:(BOOL)animation

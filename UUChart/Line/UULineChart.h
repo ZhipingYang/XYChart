@@ -10,8 +10,14 @@
 
 #import "UUChartProtocol.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UULineChart : UIView<UUChartContainer>
 
 @property (nonatomic, strong) id<UUChartGroup>chartGroup;
 
+- (nullable NSArray <NSValue *>*)getPoints;
+
 @end
+
+NS_ASSUME_NONNULL_END

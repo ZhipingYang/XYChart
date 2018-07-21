@@ -103,11 +103,16 @@
     
     for (NSUInteger i=0; i<_chartGroup.ySectionNumber+1; i++) {
         UILabel *label = [[UILabel alloc] init];
-        label.font = [UIFont systemFontOfSize:13];
-        label.textColor = [UIColor lightGrayColor];
         label.textAlignment = NSTextAlignmentRight;
         CGFloat sectionValue = (chartGroup.maxValue-chartGroup.minValue)/(CGFloat)chartGroup.ySectionNumber;
-        label.text = [NSString stringWithFormat:@"%.f",chartGroup.maxValue - sectionValue*i];
+        CGFloat value = chartGroup.maxValue - sectionValue*i;
+        if (_chartGroup.configYLabelBlock) {
+            label.attributedText = _chartGroup.configYLabelBlock(value);
+        } else {
+            label.font = [UIFont systemFontOfSize:11];
+            label.textColor = [UIColor lightGrayColor];
+            label.text = [NSString stringWithFormat:@"%.f",chartGroup.maxValue - sectionValue*i];
+        }
         [self addSubview:label];
         [_sectionLabels addObject:label];
     }

@@ -15,7 +15,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.clipsToBounds = YES;
-        self.layer.cornerRadius = 2.0;
         
         _line = [CAShapeLayer layer];
         _line.lineCap = kCALineCapSquare;

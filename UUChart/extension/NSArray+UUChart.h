@@ -19,4 +19,8 @@
  */
 - (NSArray *)uu_map:(nonnull id (^)(ObjectType obj, NSUInteger idx))block;
 
+- (nullable ObjectType)uu_max:(NSComparisonResult (^)(ObjectType pre, ObjectType next))block;
+
+- (nullable ObjectType)uu_min:(NSComparisonResult (^)(ObjectType pre, ObjectType next))block;
+
 @end

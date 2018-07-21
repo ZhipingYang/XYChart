@@ -12,6 +12,11 @@
 #define UUChartYLabelWidth 30
 #define UUChartXLabelHeight 20
 
+#define UUChartLineWidth 3
+
+#define uu_width(obj) obj.frame.size.width
+#define uu_height(obj) obj.frame.size.height
+
 typedef NS_ENUM(NSInteger, UUChartStyle){
     UUChartStyleLine = 0,
     UUChartStyleBar
@@ -48,13 +53,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NSUInteger ySectionNumber;
 
-@property (nonatomic, readonly) NSUInteger xSectionWidth;
+@property (nonatomic, readonly) CGFloat xSectionWidth;
 
 @property (nonatomic, readonly) BOOL autoSizeX;
 
 @property (nonatomic, readonly) NSArray <NSArray <id<UUChartItem>>*> *dataList;
 
 @property (nonatomic, readonly) NSArray <NSAttributedString *> *names;
+
+@property (nonatomic, readonly, nullable) NSAttributedString *(^configYLabelBlock)(CGFloat value);
 
 @end
 

@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSTimeInterval duration;
 @property (nonatomic, strong) UIColor *color;
 
+- (void)setName:(nullable NSString *)name;
+
 @end
 
 NS_ASSUME_NONNULL_END

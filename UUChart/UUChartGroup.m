@@ -8,11 +8,17 @@
 
 #import "UUChartGroup.h"
 #import "UUChartItem.h"
-#import "NSArray+Map.h"
+#import "NSArray+UUChart.h"
 
 @interface UUChartGroup()
 
 @property (nonatomic) UUChartStyle chartStyle;
+
+@property (nonatomic, strong) NSArray <NSArray <id<UUChartItem>>*> *dataList;
+
+@property (nonatomic, strong) NSArray <NSAttributedString *> *names;
+
+@property (nonatomic, copy) NSAttributedString *(^configYLabelBlock)(CGFloat value);
 
 @end
 
@@ -29,12 +35,12 @@
 
 - (CGFloat)minValue
 {
-    return 10;
+    return 5;
 }
 
 - (CGFloat)maxValue
 {
-    return 50;
+    return 555;
 }
 
 - (NSUInteger)ySectionNumber
@@ -42,9 +48,26 @@
     return 5;
 }
 
-- (NSUInteger)xSectionWidth
+- (CGFloat)xSectionWidth
 {
-    return 50;
+    return 80;
+}
+
+- (NSAttributedString *(^)(CGFloat))configYLabelBlock
+{
+    if (!_configYLabelBlock) {
+        NSAttributedString * (^block)(CGFloat value) = ^(CGFloat value) {
+            return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.f",value]
+                                                   attributes:
+                    @{
+                      NSFontAttributeName: [UIFont systemFontOfSize:10],
+                      NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                      }
+                    ];
+        };
+        _configYLabelBlock = block;
+    }
+    return _configYLabelBlock;
 }
 
 - (BOOL)autoSizeX
@@ -54,50 +77,71 @@
 
 - (NSArray<NSAttributedString *> *)names
 {
-    NSAttributedString *(^block)(NSString *str) = ^(NSString *str) {
-        return [[NSAttributedString alloc] initWithString:str
-                                               attributes:
-                @{
-                  NSFontAttributeName: [UIFont systemFontOfSize:12],
-                  NSStrokeColorAttributeName: [UIColor lightGrayColor]
-                  }];
-    };
-    NSArray *arr =  [[self demoStrings] uu_map:^id(NSString *obj, NSUInteger idx) {
-        return block([NSString stringWithFormat:@"%@:%@",obj,[self demoStrings2][idx]]);
-    }];
-    return arr;
+    if (!_names) {
+        NSAttributedString *(^block)(NSString *str, UIColor *color) = ^(NSString *str, UIColor *color) {
+            return [[NSMutableAttributedString alloc] initWithString:str
+                                                          attributes:
+                    @{
+                      NSFontAttributeName: [UIFont systemFontOfSize:10],
+                      NSForegroundColorAttributeName: color,
+                      }];
+        };
+        
+        _names = [self.dataList.firstObject uu_map:^id(id<UUChartItem> obj, NSUInteger idx) {
+            NSMutableAttributedString *mStr = [NSMutableAttributedString new];
+            for (int i=0; i<self.dataList.count; i++) {
+                id <UUChartItem>item = self.dataList[i][idx];
+                [mStr appendAttributedString:block(item.name, item.color)];
+                if (i!=self.dataList.count-1) {
+                    [mStr appendAttributedString:block(@":",[UIColor separatedColor])];
+                }
+            }
+            return mStr;
+        }];
+    }
+    return _names;
 }
 
 - (NSArray<NSArray<id<UUChartItem>> *> *)dataList
 {
-    return @[
-             [[self demoStrings] uu_map:^id(NSString *obj, NSUInteger idx) {
-                 UUChartItem *item = [[UUChartItem alloc] init];
-                 item.percent = obj.floatValue/self.maxValue;
-                 item.color = [UIColor randomLigt];
-                 item.duration = 0.3;
-                 return item;
-             }],
-             [[self demoStrings2] uu_map:^id(NSString *obj, NSUInteger idx) {
-                 UUChartItem *item = [[UUChartItem alloc] init];
-                 item.percent = obj.floatValue/self.maxValue;
-                 item.color = [UIColor randomDark];
-                 item.duration = 0.3;
-                 return item;
-             }]
-             ];
+    if (!_dataList) {
+        _dataList = [[self randomSection:1 row:10] uu_map:^id(NSArray<NSString *> *obj1, NSUInteger idx1) {
+            return [obj1 uu_map:^id(NSString *obj, NSUInteger idx) {
+                UUChartItem *item = [[UUChartItem alloc] init];
+                item.percent = (obj.floatValue-self.minValue)/(self.maxValue-self.minValue);
+                item.color = [UIColor random];
+                item.duration = 0.3;
+                item.name = obj;
+                return item;
+            }];
+        }];
+    }
+    return _dataList;
 }
 
-- (NSArray <NSString *>*)demoStrings
+#pragma mark - helper
+
+- (NSArray <NSString *>*)randomStrings:(NSUInteger)count
 {
-    return @[@"23",@"42",@"25",@"15",@"30",@"42",@"32",@"40",@"42",@"25",@"33"];
+    NSMutableArray <NSString *>*mArr = @[].mutableCopy;
+    for (int i=0; i<count; i++) {
+        NSInteger num = arc4random()%(NSInteger)([self maxValue]-[self minValue]);
+        [mArr addObject:@(num+[self minValue]).stringValue];
+    }
+    return [NSArray arrayWithArray:mArr];
 }
-- (NSArray <NSString *>*)demoStrings2
+- (NSArray <NSArray<NSString *>*>*)randomSection:(NSUInteger)section row:(NSUInteger)row
 {
-    return @[@"25",@"42",@"25",@"15",@"33",@"30",@"42",@"32",@"23",@"40",@"42"];
+    NSMutableArray <NSArray<NSString *>*>*mArr = @[].mutableCopy;
+    for (int i=0; i<section; i++) {
+        [mArr addObject:[self randomStrings:row]];
+    }
+    return [NSArray arrayWithArray:mArr];
 }
 
 @end
+
+
 
 
 
