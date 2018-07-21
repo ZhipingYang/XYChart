@@ -26,11 +26,18 @@
     _dataArray = @[
                    @[
                        [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:1 row:5],
-                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:1 row:5]
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:1 row:15],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:2 row:5],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleLine section:2 row:15 width:60],
                        ],
                    @[
                        [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:1 row:5],
-                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:1 row:5]
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:1 row:12],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:2 row:5],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:3 row:5],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:4 row:6],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:2 row:15 width:60],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:4 row:6 width:80],
                        ]
                    ];
     

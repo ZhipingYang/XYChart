@@ -32,8 +32,9 @@
     if (self) {
         self.sectionLabels = @[].mutableCopy;
         _horizonLines = @[].mutableCopy;
-        _chartGroup = chartGroup;
         [self setUpChart];
+        // 初始化
+        self.chartGroup = _chartGroup;
     }
     return self;
 }
@@ -45,31 +46,18 @@
 
 - (void)setUpChart
 {
-    [_sectionLabels makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [_chartContainer removeFromSuperview];
-    [_sectionLabels removeAllObjects];
-    
-    // 容器
-    const CGSize size = self.bounds.size;
-    if (_chartGroup.chartStyle == UUChartStyleLine) {
-        _chartContainer = [[UULineChart alloc] initWithFrame:CGRectMake(UUChartYLabelWidth, 0, size.width-UUChartYLabelWidth, size.height)];
-    } else {
-        _chartContainer = [[UUBarChart alloc] initWithFrame:CGRectMake(UUChartYLabelWidth, 0, size.width-UUChartYLabelWidth, size.height)];
+    if (!_leftSeparatedLine) {
+        _leftSeparatedLine = [CALayer layer];
+        _leftSeparatedLine.backgroundColor = [UIColor separatedColor].CGColor;
+        _leftSeparatedLine.zPosition = -1;
+        [self.layer addSublayer:_leftSeparatedLine];
     }
-    [self addSubview:_chartContainer];
-    [_chartContainer setChartGroup:_chartGroup animation:NO];
-    
-    // 初始化
-    [self setChartGroup:_chartGroup];
-    
-    _leftSeparatedLine = [CALayer layer];
-    _leftSeparatedLine.backgroundColor = [UIColor separatedColor].CGColor;
-    _leftSeparatedLine.zPosition = -1;
-    [self.layer addSublayer:_leftSeparatedLine];
-    _rightSeparatedLine = [CALayer layer];
-    _rightSeparatedLine.backgroundColor = [UIColor separatedColor].CGColor;
-    _rightSeparatedLine.zPosition = -1;
-    [self.layer addSublayer:_rightSeparatedLine];
+    if (!_rightSeparatedLine) {
+        _rightSeparatedLine = [CALayer layer];
+        _rightSeparatedLine.backgroundColor = [UIColor separatedColor].CGColor;
+        _rightSeparatedLine.zPosition = -1;
+        [self.layer addSublayer:_rightSeparatedLine];
+    }
 }
 
 - (void)layoutSubviews
@@ -100,6 +88,22 @@
     
     [_sectionLabels makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [_sectionLabels removeAllObjects];
+    
+    // 图表类型都改变了
+    if (_chartContainer && _chartGroup.chartStyle != _chartContainer.chartGroup.chartStyle) {
+        [_chartContainer removeFromSuperview];
+        _chartContainer = nil;
+    }
+    
+    // 容器
+    const CGSize size = self.bounds.size;
+    if (_chartGroup.chartStyle == UUChartStyleLine && !_chartContainer) {
+        _chartContainer = [[UULineChart alloc] initWithFrame:CGRectMake(UUChartYLabelWidth, 0, size.width-UUChartYLabelWidth, size.height)];
+    } else if (_chartGroup.chartStyle == UUChartStyleBar && !_chartContainer) {
+        _chartContainer = [[UUBarChart alloc] initWithFrame:CGRectMake(UUChartYLabelWidth, 0, size.width-UUChartYLabelWidth, size.height)];
+    }
+    [self addSubview:_chartContainer];
+    [_chartContainer setChartGroup:_chartGroup animation:NO];
     
     for (NSUInteger i=0; i<_chartGroup.ySectionNumber+1; i++) {
         UILabel *label = [[UILabel alloc] init];

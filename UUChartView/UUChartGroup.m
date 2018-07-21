@@ -134,8 +134,8 @@
 {
     NSMutableArray <NSString *>*mArr = @[].mutableCopy;
     for (int i=0; i<count; i++) {
-        NSInteger num = arc4random()%(NSInteger)([self maxValue]-[self minValue]);
-        [mArr addObject:@(num+[self minValue]).stringValue];
+        NSInteger num = arc4random()%(NSInteger)([self maxValue]-[self minValue])*0.6;
+        [mArr addObject:@(num+[self minValue]+([self maxValue]-[self minValue])*0.2).stringValue];
     }
     return [NSArray arrayWithArray:mArr];
 }

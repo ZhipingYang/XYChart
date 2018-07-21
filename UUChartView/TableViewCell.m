@@ -22,6 +22,8 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
+        chartView = [[UUChartView alloc] init];
+        [self.contentView addSubview:chartView];
     }
     return self;
 }
@@ -35,10 +37,7 @@
 - (void)setGroup:(UUChartGroup *)group
 {
     _group = group;
-    [chartView removeFromSuperview];
-    chartView = nil;
-    chartView = [[UUChartView alloc] initWithFrame:CGRectZero chartGroup:group];
-    [self.contentView addSubview:chartView];
+    chartView.chartGroup = group;
 }
 
 @end
