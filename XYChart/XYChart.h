@@ -1,17 +1,17 @@
 //
-//  UUChartView.h
-//  UUChartView
+//  XYChart.h
+//  XYChart
 //
 //  Created by Daniel on 14-7-24.
 //  Copyright (c) 2014年 uyiuyao. All rights reserved.
 //
 
 
-#import "UUChartProtocol.h"
+#import "XYChartProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UUChartView : UIView<UUChartContainer>
+@interface XYChart : UIView<UUChartContainer>
 
 @property (nonatomic, strong, nullable) id<UUChartGroup> chartGroup;
 

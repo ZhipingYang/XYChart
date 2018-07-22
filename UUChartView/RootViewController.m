@@ -41,7 +41,7 @@
                        [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:3 row:5],
                        [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:4 row:6],
                        [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:2 row:15 width:60],
-                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:4 row:6 width:80],
+                       [[UUChartGroup alloc] initWithStyle:UUChartStyleBar section:4 row:16 width:80],
                        ]
                    ];
     
@@ -82,12 +82,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _dataArray.safeIndex(section).count;
+    return _dataArray.xy_safeIdx(section).count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TableViewCell class])];
-    cell.group = _dataArray.safeIndex(indexPath.section).safeIndex(indexPath.row);
+    cell.group = _dataArray.xy_safeIdx(indexPath.section).xy_safeIdx(indexPath.row);
     return cell;
 }
 

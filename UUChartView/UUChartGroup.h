@@ -6,7 +6,7 @@
 //  Copyright © 2018 uyiuyao. All rights reserved.
 //
 
-#import "UUChartProtocol.h"
+#import "XYChartProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

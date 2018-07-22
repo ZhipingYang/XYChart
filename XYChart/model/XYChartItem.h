@@ -6,11 +6,11 @@
 //  Copyright © 2018 uyiuyao. All rights reserved.
 //
 
-#import "UUChartProtocol.h"
+#import "XYChartProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UUChartItem : NSObject<UUChartItem>
+@interface XYChartItem : NSObject<UUChartItem>
 
 @property (nonatomic) CGFloat percent;
 @property (nonatomic) NSTimeInterval duration;

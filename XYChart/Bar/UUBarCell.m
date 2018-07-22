@@ -58,11 +58,11 @@
 - (void)setChartGroup:(id<UUChartGroup>)chartGroup index:(NSUInteger)index
 {
     _chartGroup = chartGroup;
-    self.nameLabel.attributedText = _chartGroup.names.safeIndex(index);
+    self.nameLabel.attributedText = _chartGroup.names.xy_safeIdx(index);
     
     NSMutableArray <id<UUChartItem>>*mArr = @[].mutableCopy;
     [chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<UUChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [mArr addObject:obj.safeIndex(index)];
+        [mArr addObject:obj.xy_safeIdx(index)];
     }];
     _barsDataArray = [NSArray arrayWithArray:mArr];
     [self reloadBars];

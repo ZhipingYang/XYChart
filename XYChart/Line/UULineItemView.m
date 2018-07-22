@@ -7,7 +7,7 @@
 //
 
 #import "UULineItemView.h"
-#import "UUChartItem.h"
+#import "XYChartItem.h"
 
 @interface UULineItemView()
 {
@@ -36,7 +36,7 @@
         
         _separatedLine = [CALayer layer];
         _separatedLine.zPosition = -100;
-        _separatedLine.backgroundColor = [UIColor separatedColor].CGColor;
+        _separatedLine.backgroundColor = [UIColor xy_separatedColor].CGColor;
         [self.layer addSublayer:_separatedLine];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -55,7 +55,7 @@
     
     [_circles enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.frame = CGRectMake((uu_width(self)-uu_width(obj))/2.0,
-                               (uu_height(self)-UUChartXLabelHeight)*(1-_chartItems.safeIndex(idx).percent) - uu_height(obj)/2.0,
+                               (uu_height(self)-UUChartXLabelHeight)*(1-_chartItems.xy_safeIdx(idx).percent) - uu_height(obj)/2.0,
                                uu_width(obj), uu_height(obj));
     }];
 }
@@ -68,12 +68,12 @@
     _chartGroup = chartGroup;
     _index = index;
     
-    _nameLabel.attributedText = _chartGroup.names.safeIndex(index);
+    _nameLabel.attributedText = _chartGroup.names.xy_safeIdx(index);
     _separatedLine.hidden = index==0;
     
     NSMutableArray <id <UUChartItem>>*array = @[].mutableCopy;
     [_chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<UUChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        id <UUChartItem>item = obj.safeIndex(index);
+        id <UUChartItem>item = obj.xy_safeIdx(index);
         [array addObject:item];
         
         CALayer *circle = [CALayer layer];

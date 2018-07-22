@@ -1,15 +1,15 @@
 //
-//  UUChartProtocol.h
-//  UUChartView
+//  XYChartProtocol.h
+//  XYChart
 //
 //  Created by Daniel on 2018/7/21.
 //  Copyright © 2018 uyiuyao. All rights reserved.
 //
 
 @import UIKit;
-#import "UUChartConst.h"
-#import "UIColor+UUChart.h"
-#import "NSArray+UUChart.h"
+#import "XYChartConst.h"
+#import "UIColor+XYChart.h"
+#import "NSArray+XYChart.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

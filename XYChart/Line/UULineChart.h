@@ -8,7 +8,7 @@
 
 
 
-#import "UUChartProtocol.h"
+#import "XYChartProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

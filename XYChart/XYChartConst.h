@@ -1,5 +1,5 @@
 //
-//  UUChartConst.h
+//  XYChartConst.h
 //  UUChartView
 //
 //  Created by Daniel on 2018/7/22.

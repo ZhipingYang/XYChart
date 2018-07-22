@@ -7,11 +7,11 @@
 //
 
 
-#import "UUChartView.h"
+#import "XYChart.h"
 #import "UULineChart.h"
 #import "UUBarChart.h"
 
-@interface UUChartView ()
+@interface XYChart ()
 {
     CALayer *_leftSeparatedLine;
     CALayer *_rightSeparatedLine;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation UUChartView
+@implementation XYChart
 
 - (id)initWithFrame:(CGRect)frame chartGroup:(id<UUChartGroup>)chartGroup
 {
@@ -48,13 +48,13 @@
 {
     if (!_leftSeparatedLine) {
         _leftSeparatedLine = [CALayer layer];
-        _leftSeparatedLine.backgroundColor = [UIColor separatedColor].CGColor;
+        _leftSeparatedLine.backgroundColor = [UIColor xy_separatedColor].CGColor;
         _leftSeparatedLine.zPosition = -1;
         [self.layer addSublayer:_leftSeparatedLine];
     }
     if (!_rightSeparatedLine) {
         _rightSeparatedLine = [CALayer layer];
-        _rightSeparatedLine.backgroundColor = [UIColor separatedColor].CGColor;
+        _rightSeparatedLine.backgroundColor = [UIColor xy_separatedColor].CGColor;
         _rightSeparatedLine.zPosition = -1;
         [self.layer addSublayer:_rightSeparatedLine];
     }
@@ -149,7 +149,7 @@
     
     for (int i=0; i<_chartGroup.ySectionNumber+1; i++) {
         CALayer *hori = [CALayer layer];
-        hori.backgroundColor = [UIColor separatedColor].CGColor;
+        hori.backgroundColor = [UIColor xy_separatedColor].CGColor;
         hori.zPosition = -1;
         [self.layer addSublayer:hori];
         [_horizonLines addObject:hori];

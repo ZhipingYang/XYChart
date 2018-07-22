@@ -7,13 +7,13 @@
 //
 
 #import "TableViewCell.h"
-#import "UUChartView.h"
+#import "XYChart.h"
 #import "UUChartGroup.h"
 
 @interface TableViewCell ()
 {
     NSIndexPath *path;
-    UUChartView *chartView;
+    XYChart *chartView;
 }
 @end
 
@@ -22,7 +22,7 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        chartView = [[UUChartView alloc] init];
+        chartView = [[XYChart alloc] init];
         [self.contentView addSubview:chartView];
     }
     return self;

@@ -7,7 +7,7 @@
 //
 
 #import "UUChartGroup.h"
-#import "UUChartItem.h"
+#import "XYChartItem.h"
 
 @interface UUChartGroup()
 {
@@ -93,13 +93,13 @@
                       }];
         };
         
-        _names = [self.dataList.firstObject uu_map:^id(id<UUChartItem> obj, NSUInteger idx) {
+        _names = [self.dataList.firstObject xy_map:^id(id<UUChartItem> obj, NSUInteger idx) {
             NSMutableAttributedString *mStr = [NSMutableAttributedString new];
             for (int i=0; i<self.dataList.count; i++) {
-                id <UUChartItem>item = self.dataList.safeIndex(i).safeIndex(idx);
+                id <UUChartItem>item = self.dataList.xy_safeIdx(i).xy_safeIdx(idx);
                 [mStr appendAttributedString:block(item.name, item.color)];
                 if (i!=self.dataList.count-1) {
-                    [mStr appendAttributedString:block(@":",[UIColor separatedColor])];
+                    [mStr appendAttributedString:block(@":",[UIColor xy_separatedColor])];
                 }
             }
             return mStr;
@@ -111,14 +111,14 @@
 - (NSArray<NSArray<id<UUChartItem>> *> *)dataList
 {
     if (!_dataList) {
-        _dataList = [[self randomSection:_section row:_row] uu_map:^id(NSArray<NSString *> *obj1, NSUInteger idx1) {
-            return [obj1 uu_map:^id(NSString *obj, NSUInteger idx) {
-                UUChartItem *item = [[UUChartItem alloc] init];
+        _dataList = [[self randomSection:_section row:_row] xy_map:^id(NSArray<NSString *> *obj1, NSUInteger idx1) {
+            return [obj1 xy_map:^id(NSString *obj, NSUInteger idx) {
+                XYChartItem *item = [[XYChartItem alloc] init];
                 item.percent = (obj.floatValue-self.minValue)/(self.maxValue-self.minValue);
                 if (_section==1 && _row>=7) {
-                    item.color = [UIColor rainBow:idx];
+                    item.color = [UIColor xy_rainBow:idx];
                 } else {
-                    item.color = [UIColor random];                    
+                    item.color = [UIColor xy_random];                    
                 }
                 item.duration = 0.3;
                 item.name = obj;

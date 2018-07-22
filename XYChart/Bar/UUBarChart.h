@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 uyiuyao. All rights reserved.
 //
 
-#import "UUChartProtocol.h"
+#import "XYChartProtocol.h"
 
 @interface UUBarChart : UIView<UUChartContainer>
 

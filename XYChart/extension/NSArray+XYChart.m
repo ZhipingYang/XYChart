@@ -6,11 +6,11 @@
 //  Copyright © 2018 uyiuyao. All rights reserved.
 //
 
-#import "NSArray+UUChart.h"
+#import "NSArray+XYChart.h"
 
-@implementation NSArray (Map)
+@implementation NSArray (XYChart)
 
-- (NSArray *)uu_map:(nonnull id (^)(id obj, NSUInteger idx))block
+- (NSArray *)xy_map:(nonnull id (^)(id obj, NSUInteger idx))block
 {
     NSAssert(block!=nil, @"block 不能为空, 但还是做了保护");
     
@@ -24,7 +24,7 @@
     return [NSArray arrayWithArray:result];
 }
 
-- (id)uu_max:(NSComparisonResult (^)(id, id))block
+- (id)xy_max:(NSComparisonResult (^)(id, id))block
 {
     NSAssert(block!=nil, @"block 不能为空, 但还是做了保护");
 
@@ -32,14 +32,14 @@
     if (self.count==1) { return self.firstObject;}
     id max = self.firstObject;
     for (int i=1; i<self.count; i++) {
-        if (block(max, self.safeIndex(i)) == NSOrderedAscending) {
-            max = self.safeIndex(i);
+        if (block(max, self.xy_safeIdx(i)) == NSOrderedAscending) {
+            max = self.xy_safeIdx(i);
         }
     }
     return max;
 }
 
-- (id)uu_min:(NSComparisonResult (^)(id, id))block
+- (id)xy_min:(NSComparisonResult (^)(id, id))block
 {
     NSAssert(block!=nil, @"block 不能为空, 但还是做了保护");
 
@@ -47,14 +47,14 @@
     if (self.count==1) { return self.firstObject;}
     id min = self.firstObject;
     for (int i=1; i<self.count; i++) {
-        if (block(min, self.safeIndex(i)) == NSOrderedDescending) {
-            min = self.safeIndex(i);
+        if (block(min, self.xy_safeIdx(i)) == NSOrderedDescending) {
+            min = self.xy_safeIdx(i);
         }
     }
     return min;
 }
 
-- (id  _Nonnull (^)(NSUInteger))safeIndex
+- (id  _Nonnull (^)(NSUInteger))xy_safeIdx
 {
     __weak typeof(self) weakSelf = self;
     id (^block)(NSUInteger index) = ^(NSUInteger index) {

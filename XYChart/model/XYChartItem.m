@@ -6,8 +6,8 @@
 //  Copyright © 2018 uyiuyao. All rights reserved.
 //
 
-#import "UUChartItem.h"
+#import "XYChartItem.h"
 
-@implementation UUChartItem
+@implementation XYChartItem
 
 @end

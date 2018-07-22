@@ -7,7 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "UUChartProtocol.h"
+#import "XYChartProtocol.h"
 
 @interface UULineGradientLayer : CAGradientLayer
 
