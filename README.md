@@ -3,12 +3,12 @@
 <img align="center" width="150" src ="https://user-images.githubusercontent.com/9360037/43032646-0771fd3c-8cef-11e8-913f-034ca293c625.png"/>
 </p>
 
-> **UUChartView** is designed by Line and Bar. You can mark the range of values you want, and show the max or min values in linechart.
+> **XYChart** is designed by Line and Bar. You can mark the range of values you want, and show the max or min values in linechart.
 
-#### two styles for UUChartView:
+#### Two styles for XYChart:
 
-- UUChartLineStyle
-- UUChartBarStyle
+- LineStyle
+- BarStyle
 
 <p align="center">
 <img src="https://github.com/ZhipingYang/UUChartView/raw/master/UUChartViewTests/UUChartView.gif">

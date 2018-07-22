@@ -15,6 +15,8 @@
 		6552FA36210368B400BE0658 /* UULineItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA35210368B400BE0658 /* UULineItemView.m */; };
 		6552FA3921039D2200BE0658 /* UULines.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA3821039D2200BE0658 /* UULines.m */; };
 		6552FA3C2103A0DE00BE0658 /* UULineGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6552FA3B2103A0DE00BE0658 /* UULineGradientLayer.m */; };
+		65CB0E7B21043A380065236D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 65CB0E7921043A370065236D /* README.md */; };
+		65CB0E7C21043A380065236D /* XYChart.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 65CB0E7A21043A370065236D /* XYChart.podspec */; };
 		B7A1894E1A58D9A200579497 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A1894D1A58D9A200579497 /* main.m */; };
 		B7A189511A58D9A200579497 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A189501A58D9A200579497 /* AppDelegate.m */; };
 		B7A189591A58D9A200579497 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A189581A58D9A200579497 /* Images.xcassets */; };
@@ -59,6 +61,8 @@
 		6552FA3A2103A0DE00BE0658 /* UULineGradientLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UULineGradientLayer.h; sourceTree = "<group>"; };
 		6552FA3B2103A0DE00BE0658 /* UULineGradientLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UULineGradientLayer.m; sourceTree = "<group>"; };
 		6552FA3E2103BAD100BE0658 /* UUChartConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UUChartConst.h; sourceTree = "<group>"; };
+		65CB0E7921043A370065236D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65CB0E7A21043A370065236D /* XYChart.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = XYChart.podspec; sourceTree = "<group>"; };
 		B7A189481A58D9A200579497 /* UUChartView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UUChartView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7A1894C1A58D9A200579497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7A1894D1A58D9A200579497 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -154,7 +158,9 @@
 		B7A1893F1A58D9A200579497 = {
 			isa = PBXGroup;
 			children = (
-				B7A189711A58DA8500579497 /* UUChart */,
+				65CB0E7921043A370065236D /* README.md */,
+				65CB0E7A21043A370065236D /* XYChart.podspec */,
+				B7A189711A58DA8500579497 /* XYChart */,
 				B7A1894A1A58D9A200579497 /* UUChartView */,
 				B7A189641A58D9A200579497 /* UUChartViewTests */,
 				B7A189491A58D9A200579497 /* Products */,
@@ -216,7 +222,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B7A189711A58DA8500579497 /* UUChart */ = {
+		B7A189711A58DA8500579497 /* XYChart */ = {
 			isa = PBXGroup;
 			children = (
 				6552FA3E2103BAD100BE0658 /* UUChartConst.h */,
@@ -228,7 +234,7 @@
 				6552FA2121031BFE00BE0658 /* Line */,
 				6552FA2021031BEF00BE0658 /* Bar */,
 			);
-			path = UUChart;
+			path = XYChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,8 +319,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65CB0E7C21043A380065236D /* XYChart.podspec in Resources */,
 				B7A1895C1A58D9A200579497 /* LaunchScreen.xib in Resources */,
 				B7A1898F1A58DDBB00579497 /* TableViewCell.xib in Resources */,
+				65CB0E7B21043A380065236D /* README.md in Resources */,
 				B7A189881A58DAC600579497 /* RootViewController.xib in Resources */,
 				B7A189591A58D9A200579497 /* Images.xcassets in Resources */,
 			);
