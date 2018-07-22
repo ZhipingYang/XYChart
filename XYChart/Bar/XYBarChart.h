@@ -1,5 +1,5 @@
 //
-//  UUBarChart.h
+//  XYBarChart.h
 //  UUChartView
 //
 //  Created by Daniel on 14-7-24.
@@ -8,7 +8,7 @@
 
 #import "XYChartProtocol.h"
 
-@interface UUBarChart : UIView<UUChartContainer>
+@interface XYBarChart : UIView<UUChartContainer>
 
 @property (nonatomic, strong) id<UUChartGroup>chartGroup;
 

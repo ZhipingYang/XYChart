@@ -8,8 +8,8 @@
 
 
 #import "XYChart.h"
-#import "UULineChart.h"
-#import "UUBarChart.h"
+#import "XYLineChart.h"
+#import "XYBarChart.h"
 
 @interface XYChart ()
 {
@@ -98,9 +98,9 @@
     // 容器
     const CGSize size = self.bounds.size;
     if (_chartGroup.chartStyle == UUChartStyleLine && !_chartContainer) {
-        _chartContainer = [[UULineChart alloc] initWithFrame:CGRectMake(UUChartYLabelWidth, 0, size.width-UUChartYLabelWidth, size.height)];
+        _chartContainer = [[XYLineChart alloc] initWithFrame:CGRectMake(UUChartYLabelWidth, 0, size.width-UUChartYLabelWidth, size.height)];
     } else if (_chartGroup.chartStyle == UUChartStyleBar && !_chartContainer) {
-        _chartContainer = [[UUBarChart alloc] initWithFrame:CGRectMake(UUChartYLabelWidth, 0, size.width-UUChartYLabelWidth, size.height)];
+        _chartContainer = [[XYBarChart alloc] initWithFrame:CGRectMake(UUChartYLabelWidth, 0, size.width-UUChartYLabelWidth, size.height)];
     }
     [self addSubview:_chartContainer];
     [_chartContainer setChartGroup:_chartGroup animation:NO];

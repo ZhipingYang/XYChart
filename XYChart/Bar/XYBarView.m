@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 uyiuyao. All rights reserved.
 //
 
-#import "UUBar.h"
+#import "XYBarView.h"
 
-@implementation UUBar
+@implementation XYBarView
 
 - (id)initWithFrame:(CGRect)frame
 {

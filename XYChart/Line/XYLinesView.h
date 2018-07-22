@@ -8,7 +8,7 @@
 
 #import "XYChartProtocol.h"
 
-@interface UULines : UIView
+@interface XYLinesView : UIView
 
 @property (nonatomic, strong) id<UUChartGroup> chartGroup;
 

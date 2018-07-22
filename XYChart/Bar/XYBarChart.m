@@ -1,5 +1,5 @@
 //
-//  UUBarChart.m
+//  XYBarChart.m
 //  UUChartView
 //
 //  Created by Daniel on 14-7-24.
@@ -7,17 +7,17 @@
 //
 
 
-#import "UUBarChart.h"
-#import "UUBar.h"
-#import "UUBarCell.h"
+#import "XYBarChart.h"
+#import "XYBarView.h"
+#import "XYBarCell.h"
 
-@interface UUBarChart ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface XYBarChart ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @end
 
-@implementation UUBarChart
+@implementation XYBarChart
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -41,7 +41,7 @@
     _collectionView.showsVerticalScrollIndicator = NO;
     _collectionView.showsHorizontalScrollIndicator = NO;
     [self addSubview:_collectionView];
-    [_collectionView registerClass:[UUBarCell class] forCellWithReuseIdentifier:NSStringFromClass([UUBarCell class])];
+    [_collectionView registerClass:[XYBarCell class] forCellWithReuseIdentifier:NSStringFromClass([XYBarCell class])];
 }
 
 - (void)layoutSubviews
@@ -77,7 +77,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UUBarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([UUBarCell class]) forIndexPath:indexPath];
+    XYBarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XYBarCell class]) forIndexPath:indexPath];
     [cell setChartGroup:_chartGroup index:indexPath.row];
     return cell;
 }

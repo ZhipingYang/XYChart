@@ -6,16 +6,16 @@
 //  Copyright © 2018 uyiuyao. All rights reserved.
 //
 
-#import "UULines.h"
-#import "UULineGradientLayer.h"
+#import "XYLinesView.h"
+#import "XYLineGradientLayer.h"
 
-@interface UULines()
+@interface XYLinesView()
 
-@property (nonatomic, strong) NSMutableArray <NSArray <UULineGradientLayer *>*>* sections;
+@property (nonatomic, strong) NSMutableArray <NSArray <XYLineGradientLayer *>*>* sections;
 
 @end
 
-@implementation UULines
+@implementation XYLinesView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -42,9 +42,9 @@
     [_sections removeAllObjects];
     
     [_chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<UUChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSMutableArray <UULineGradientLayer *>*mArr = @[].mutableCopy;
+        NSMutableArray <XYLineGradientLayer *>*mArr = @[].mutableCopy;
         for (int i=0; (i<obj.count-1 && obj.count>1); i++) {
-            UULineGradientLayer *gradient = [UULineGradientLayer layerWithPre:obj.xy_safeIdx(i) next:obj.xy_safeIdx(i+1)];
+            XYLineGradientLayer *gradient = [XYLineGradientLayer layerWithPre:obj.xy_safeIdx(i) next:obj.xy_safeIdx(i+1)];
             gradient.zPosition = -100;
             [self.layer addSublayer:gradient];
             [mArr addObject:gradient];
@@ -57,9 +57,9 @@
 
 - (void)updateLinesShape
 {
-    [_sections enumerateObjectsUsingBlock:^(NSArray<UULineGradientLayer *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [_sections enumerateObjectsUsingBlock:^(NSArray<XYLineGradientLayer *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         const CGFloat itemWidth = uu_width(self)/(float)(obj.count>0 ? (obj.count+1) : 1);
-        [obj enumerateObjectsUsingBlock:^(UULineGradientLayer * _Nonnull gradient, NSUInteger sub_idx, BOOL * _Nonnull sub_stop) {
+        [obj enumerateObjectsUsingBlock:^(XYLineGradientLayer * _Nonnull gradient, NSUInteger sub_idx, BOOL * _Nonnull sub_stop) {
             CGFloat circleLenght = UUChartLineWidth*4;
             gradient.frame = CGRectMake(itemWidth * (sub_idx + 0.5),
                                         uu_height(self)*(1-MAX(gradient.pre.percent, gradient.next.percent))-circleLenght/2,

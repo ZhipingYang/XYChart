@@ -1,5 +1,5 @@
 //
-//  UULineChart.m
+//  XYLineChart.m
 //  UUChartView
 //
 //  Created by Daniel on 14-7-24.
@@ -7,20 +7,20 @@
 //
 
 
-#import "UULineChart.h"
-#import "UULineItemView.h"
-#import "UULines.h"
+#import "XYLineChart.h"
+#import "XYLineItemView.h"
+#import "XYLinesView.h"
 
-@interface UULineChart ()
+@interface XYLineChart ()
 
 @property (nonatomic, strong) UIScrollView *scrolView;
-@property (nonatomic, strong) UULines *linesView;
+@property (nonatomic, strong) XYLinesView *linesView;
 
-@property (nonatomic, strong) NSMutableArray <UULineItemView *>* itemViews;
+@property (nonatomic, strong) NSMutableArray <XYLineItemView *>* itemViews;
 
 @end
 
-@implementation UULineChart
+@implementation XYLineChart
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -32,7 +32,7 @@
         _scrolView.showsHorizontalScrollIndicator = NO;
         [self addSubview:_scrolView];
         
-        _linesView = [UULines new];
+        _linesView = [XYLinesView new];
         [_scrolView addSubview:_linesView];
     }
     return self;
@@ -49,7 +49,7 @@
     }
     _linesView.frame = CGRectMake(0, 0, _scrolView.contentSize.width, _scrolView.contentSize.height-UUChartXLabelHeight);
     
-    [_itemViews enumerateObjectsUsingBlock:^(UULineItemView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [_itemViews enumerateObjectsUsingBlock:^(XYLineItemView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (_chartGroup.autoSizeX) {
             CGFloat width = uu_width(self)/_itemViews.count;
             obj.frame = CGRectMake(idx*width, 0, width, uu_height(self));
@@ -75,7 +75,7 @@
     
     const NSUInteger count = _chartGroup.dataList.firstObject.count;
     for (int i=0; i<count; i++) {
-        UULineItemView *itemView = [[UULineItemView alloc] init];
+        XYLineItemView *itemView = [[XYLineItemView alloc] init];
         [itemView setChartGroup:_chartGroup index:i];
         [self.scrolView addSubview:itemView];
         [_itemViews addObject:itemView];

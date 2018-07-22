@@ -1,15 +1,15 @@
 //
-//  UUBarCell.m
+//  XYBarCell.m
 //  UUChartView
 //
 //  Created by Daniel on 2018/7/21.
 //  Copyright © 2018 uyiuyao. All rights reserved.
 //
 
-#import "UUBarCell.h"
-#import "UUBar.h"
+#import "XYBarCell.h"
+#import "XYBarView.h"
 
-@interface UUBarCell()
+@interface XYBarCell()
 
 @property (nonatomic, strong) id<UUChartGroup> chartGroup;
 
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation UUBarCell
+@implementation XYBarCell
 {
     
 }
@@ -76,7 +76,7 @@
     [_barContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     [_barsDataArray enumerateObjectsUsingBlock:^(id<UUChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UUBar *bar = [[UUBar alloc] initWithFrame:CGRectMake((size.width/count)*idx, 0, size.width/count, size.height)];
+        XYBarView *bar = [[XYBarView alloc] initWithFrame:CGRectMake((size.width/count)*idx, 0, size.width/count, size.height)];
         [self.barContainerView addSubview:bar];
         bar.chartItem = obj;
     }];

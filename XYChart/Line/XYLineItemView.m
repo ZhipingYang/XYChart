@@ -6,10 +6,10 @@
 //  Copyright © 2018 uyiuyao. All rights reserved.
 //
 
-#import "UULineItemView.h"
+#import "XYLineItemView.h"
 #import "XYChartItem.h"
 
-@interface UULineItemView()
+@interface XYLineItemView()
 {
     CALayer *_separatedLine;
 }
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation UULineItemView
+@implementation XYLineItemView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

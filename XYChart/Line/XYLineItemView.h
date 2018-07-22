@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UULineItemView : UIView
+@interface XYLineItemView : UIView
 
 @property (nonatomic, readonly, nullable) id<UUChartGroup> chartGroup;
 @property (nonatomic, readonly) NSUInteger index;

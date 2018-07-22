@@ -1,14 +1,14 @@
 //
-//  UULineGradientLayer.m
+//  XYLineGradientLayer.m
 //  UUChartView
 //
 //  Created by Daniel on 2018/7/22.
 //  Copyright © 2018 uyiuyao. All rights reserved.
 //
 
-#import "UULineGradientLayer.h"
+#import "XYLineGradientLayer.h"
 
-@interface UULineGradientLayer()
+@interface XYLineGradientLayer()
 
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;
 @property (nonatomic, strong) id <UUChartItem>pre;
@@ -16,14 +16,14 @@
 
 @end
 
-@implementation UULineGradientLayer
+@implementation XYLineGradientLayer
 
 + (instancetype)layerWithPre:(id<UUChartItem>)pre next:(id<UUChartItem>)next
 {
     CGFloat startY = pre.percent > next.percent ? 0:1;
     CGFloat endY = pre.percent > next.percent ? 1:0;
 
-    UULineGradientLayer *gradient = [super layer];
+    XYLineGradientLayer *gradient = [super layer];
     gradient.pre = pre;
     gradient.next = next;
     gradient.colors = @[(id)pre.color.CGColor, (id)next.color.CGColor];

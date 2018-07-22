@@ -1,5 +1,5 @@
 //
-//  UULineChart.h
+//  XYLineChart.h
 //  UUChartView
 //
 //  Created by Daniel on 14-7-24.
@@ -12,11 +12,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UULineChart : UIView<UUChartContainer>
+@interface XYLineChart : UIView<UUChartContainer>
 
 @property (nonatomic, strong) id<UUChartGroup>chartGroup;
-
-- (nullable NSArray <NSValue *>*)getPoints;
 
 @end
 

@@ -1,5 +1,5 @@
 //
-//  UUBarCell.h
+//  XYBarCell.h
 //  XYChart
 //
 //  Created by Daniel on 2018/7/21.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UUBarCell : UICollectionViewCell
+@interface XYBarCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIView *barContainerView;
 @property (nonatomic, strong) UILabel *nameLabel;
