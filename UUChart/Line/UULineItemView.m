@@ -38,6 +38,10 @@
         _separatedLine.zPosition = -100;
         _separatedLine.backgroundColor = [UIColor separatedColor].CGColor;
         [self.layer addSublayer:_separatedLine];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                              action:@selector(handleTap:)];
+        [self addGestureRecognizer:tap];
     }
     return self;
 }
@@ -83,6 +87,53 @@
         [_circles addObject:circle];
     }];
     _chartItems = array;
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+- (void)handleTap:(UIGestureRecognizer*)recognizer
+{
+    CGPoint touchpoint = [recognizer locationInView:self];
+    NSMutableArray <id<UUChartItem>>* inTouchItems = @[].mutableCopy;
+    NSMutableArray <CALayer *>* inTouchCircles = @[].mutableCopy;
+    [_circles enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGRect rect = obj.frame;
+        id <UUChartItem> item = _chartItems[idx];
+        if (uu_width(obj)<=30) {
+            rect = CGRectInset(rect, uu_width(obj)-30, uu_width(obj)-30);
+        }
+        if (CGRectContainsPoint(rect, touchpoint) && item.name.length>0) {
+            [inTouchItems addObject:item];
+            [inTouchCircles addObject:obj];
+        }
+    }];
+    
+    if (inTouchItems.count > 0) {
+        [self becomeFirstResponder];
+        UIMenuController *menu = [UIMenuController sharedMenuController];
+        NSMutableArray *menus = @[].mutableCopy;
+        [inTouchItems enumerateObjectsUsingBlock:^(id<UUChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:obj.name action:@selector(showItemName:)];
+            [menus addObject:item];
+        }];
+        menu.menuItems = menus;
+        
+        [menu setTargetRect:inTouchCircles.lastObject.frame inView:self];
+        [menu setMenuVisible:YES animated:YES];
+    }
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    return (action == @selector(showItemName:)) && sender == [UIMenuController sharedMenuController];
+}
+
+- (void)showItemName:(id)sender
+{
+    // do nothing
 }
 
 @end

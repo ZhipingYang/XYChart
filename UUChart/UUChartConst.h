@@ -14,13 +14,14 @@
 // 横轴文案高度
 #define UUChartXLabelHeight 20
 // 折线图，线条宽度
-#define UUChartLineWidth 2
+#define UUChartLineWidth 6
 
 // 获取宽度
 #define uu_width(obj) obj.frame.size.width
 // 获取高度
 #define uu_height(obj) obj.frame.size.height
-
+#define uu_left(obj) obj.frame.origin.x
+#define uu_top(obj) obj.frame.origin.y
 
 /**
  图表类型

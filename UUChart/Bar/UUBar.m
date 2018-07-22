@@ -22,6 +22,10 @@
         _line.lineWidth = self.frame.size.width;
         _line.strokeEnd = 0.0;
         [self.layer addSublayer:_line];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                              action:@selector(handleTap:)];
+        [self addGestureRecognizer:tap];
     }
     return self;
 }
@@ -41,7 +45,7 @@
 
 - (void)setChartItem:(id<UUChartItem>)chartItem
 {
-    [self setChartItem:chartItem animation:YES];
+    [self setChartItem:chartItem animation:NO];
 }
 
 - (void)setChartItem:(id<UUChartItem> _Nonnull)chartItem animation:(BOOL)animation
@@ -64,6 +68,34 @@
     } else {
         _line.strokeEnd = 1.0;
     }
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+- (void)handleTap:(UIGestureRecognizer*)recognizer
+{
+    if (_chartItem.name.length > 0) {
+        [self becomeFirstResponder];
+        UIMenuController *menu = [UIMenuController sharedMenuController];
+        UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:_chartItem.name action:@selector(showItemName:)];
+        menu.menuItems = @[item];
+        
+        [menu setTargetRect:CGRectMake(uu_left(self), uu_top(self)+uu_height(self)*(1-_chartItem.percent), uu_width(self), uu_height(self)*_chartItem.percent) inView:self.superview];
+        [menu setMenuVisible:YES animated:YES];
+    }
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    return (action == @selector(showItemName:)) && sender == [UIMenuController sharedMenuController];
+}
+
+- (void)showItemName:(id)sender
+{
+    // do nothing
 }
 
 @end
