@@ -43,12 +43,12 @@
     _line.frame = CGRectMake(0, selfSize.height*(1-_chartItem.percent), selfSize.width, selfSize.height * _chartItem.percent);
 }
 
-- (void)setChartItem:(id<UUChartItem>)chartItem
+- (void)setChartItem:(id<XYChartItem>)chartItem
 {
     [self setChartItem:chartItem animation:NO];
 }
 
-- (void)setChartItem:(id<UUChartItem> _Nonnull)chartItem animation:(BOOL)animation
+- (void)setChartItem:(id<XYChartItem> _Nonnull)chartItem animation:(BOOL)animation
 {
     if (_chartItem.percent == chartItem.percent) { return; }
     _chartItem = chartItem;
@@ -83,7 +83,7 @@
         UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:_chartItem.name action:@selector(showItemName:)];
         menu.menuItems = @[item];
         
-        [menu setTargetRect:CGRectMake(uu_left(self), uu_top(self)+uu_height(self)*(1-_chartItem.percent), uu_width(self), uu_height(self)*_chartItem.percent) inView:self.superview];
+        [menu setTargetRect:CGRectMake(xy_left(self), xy_top(self)+xy_height(self)*(1-_chartItem.percent), xy_width(self), xy_height(self)*_chartItem.percent) inView:self.superview];
         [menu setMenuVisible:YES animated:YES];
     }
 }

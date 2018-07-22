@@ -1,6 +1,6 @@
 //
 //  UUChartItem.h
-//  UUChartView
+//  XYChart
 //
 //  Created by Daniel on 2018/7/21.
 //  Copyright © 2018 uyiuyao. All rights reserved.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XYChartItem : NSObject<UUChartItem>
+@interface XYChartItem : NSObject<XYChartItem>
 
 @property (nonatomic) CGFloat percent;
 @property (nonatomic) NSTimeInterval duration;

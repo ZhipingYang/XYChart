@@ -1,6 +1,6 @@
 //
-//  UUChartView.m
-//  UUChartView
+//  XYChart.m
+//  XYChart
 //
 //  Created by Daniel on 14-7-24.
 //  Copyright (c) 2014年 uyiuyao. All rights reserved.
@@ -18,7 +18,7 @@
     NSMutableArray <CALayer *>*_horizonLines;
 }
 
-@property (nonatomic, strong) UIView <UUChartContainer> *chartContainer;
+@property (nonatomic, strong) UIView <XYChartContainer> *chartContainer;
 
 @property (nonatomic, strong) NSMutableArray <UILabel *>* sectionLabels;
 
@@ -26,7 +26,7 @@
 
 @implementation XYChart
 
-- (id)initWithFrame:(CGRect)frame chartGroup:(id<UUChartGroup>)chartGroup
+- (id)initWithFrame:(CGRect)frame chartGroup:(id<XYChartGroup>)chartGroup
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -66,23 +66,23 @@
     
     const CGSize size = self.bounds.size;
     
-    CGFloat labelHeight = (size.height-UUChartXLabelHeight)/(_sectionLabels.count>1 ? _sectionLabels.count-1 : 1);
+    CGFloat labelHeight = (size.height-XYChartRowLabelHeight)/(_sectionLabels.count>1 ? _sectionLabels.count-1 : 1);
     
     [_sectionLabels enumerateObjectsUsingBlock:^(UILabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.frame = CGRectMake(0, labelHeight*(idx-0.5), UUChartYLabelWidth-4, labelHeight);
+        obj.frame = CGRectMake(0, labelHeight*(idx-0.5), XYChartSectionLabelWidth-4, labelHeight);
     }];
     
-    _chartContainer.frame = CGRectMake(UUChartYLabelWidth, 0, size.width-UUChartYLabelWidth, size.height);
+    _chartContainer.frame = CGRectMake(XYChartSectionLabelWidth, 0, size.width-XYChartSectionLabelWidth, size.height);
     [_chartContainer setNeedsLayout];
     [self justLinesLayout];
 }
 
-- (void)setChartGroup:(id<UUChartGroup>)chartGroup
+- (void)setChartGroup:(id<XYChartGroup>)chartGroup
 {
     [self setChartGroup:chartGroup animation:_chartGroup ? NO : YES];
 }
 
-- (void)setChartGroup:(id<UUChartGroup>)chartGroup animation:(BOOL)animation
+- (void)setChartGroup:(id<XYChartGroup>)chartGroup animation:(BOOL)animation
 {
     _chartGroup = chartGroup;
     
@@ -97,10 +97,10 @@
     
     // 容器
     const CGSize size = self.bounds.size;
-    if (_chartGroup.chartStyle == UUChartStyleLine && !_chartContainer) {
-        _chartContainer = [[XYLineChart alloc] initWithFrame:CGRectMake(UUChartYLabelWidth, 0, size.width-UUChartYLabelWidth, size.height)];
-    } else if (_chartGroup.chartStyle == UUChartStyleBar && !_chartContainer) {
-        _chartContainer = [[XYBarChart alloc] initWithFrame:CGRectMake(UUChartYLabelWidth, 0, size.width-UUChartYLabelWidth, size.height)];
+    if (_chartGroup.chartStyle == XYChartStyleLine && !_chartContainer) {
+        _chartContainer = [[XYLineChart alloc] initWithFrame:CGRectMake(XYChartSectionLabelWidth, 0, size.width-XYChartSectionLabelWidth, size.height)];
+    } else if (_chartGroup.chartStyle == XYChartStyleBar && !_chartContainer) {
+        _chartContainer = [[XYBarChart alloc] initWithFrame:CGRectMake(XYChartSectionLabelWidth, 0, size.width-XYChartSectionLabelWidth, size.height)];
     }
     [self addSubview:_chartContainer];
     [_chartContainer setChartGroup:_chartGroup animation:NO];
@@ -134,11 +134,11 @@
     const CGFloat pixel = 1/[UIScreen mainScreen].scale;
     const CGSize size = self.bounds.size;
     CGFloat count = _chartGroup.ySectionNumber>0 ? _chartGroup.ySectionNumber : 1;
-    const CGFloat sectionHeight = (size.height-UUChartXLabelHeight)/count;
-    _leftSeparatedLine.frame = CGRectMake(UUChartYLabelWidth, 0, pixel, size.height-UUChartXLabelHeight);
-    _rightSeparatedLine.frame = CGRectMake(size.width-pixel, 0, pixel, size.height-UUChartXLabelHeight);
+    const CGFloat sectionHeight = (size.height-XYChartRowLabelHeight)/count;
+    _leftSeparatedLine.frame = CGRectMake(XYChartSectionLabelWidth, 0, pixel, size.height-XYChartRowLabelHeight);
+    _rightSeparatedLine.frame = CGRectMake(size.width-pixel, 0, pixel, size.height-XYChartRowLabelHeight);
     [_horizonLines enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.frame = CGRectMake(UUChartYLabelWidth, sectionHeight * idx, size.width-UUChartYLabelWidth, pixel);
+        obj.frame = CGRectMake(XYChartSectionLabelWidth, sectionHeight * idx, size.width-XYChartSectionLabelWidth, pixel);
     }];
 }
 

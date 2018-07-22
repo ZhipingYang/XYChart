@@ -12,11 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XYBarView : UIView
 
-@property (nonatomic, strong) id<UUChartItem> chartItem;
+@property (nonatomic, strong) id<XYChartItem> chartItem;
 
 @property (nonatomic, strong) CAShapeLayer * line;
 
-- (void)setChartItem:(id<UUChartItem> _Nonnull)chartItem animation:(BOOL)animation;
+- (void)setChartItem:(id<XYChartItem> _Nonnull)chartItem animation:(BOOL)animation;
 
 @end
 

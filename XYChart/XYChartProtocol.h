@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  单个数据展示
  */
-@protocol UUChartItem
+@protocol XYChartItem
 
 @required
 /**
@@ -48,12 +48,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  多套对比数据展示
  */
-@protocol UUChartGroup
+@protocol XYChartGroup
 
 /**
  类型
  */
-@property (nonatomic, readonly) UUChartStyle chartStyle;
+@property (nonatomic, readonly) XYChartStyle chartStyle;
 
 /**
  最小值
@@ -84,7 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
  多条链对比展示
  子元素要求：装着UUChartItem的数组，且每个数组的UUChartItem个数要求一致
  */
-@property (nonatomic, readonly) NSArray <NSArray <id<UUChartItem>>*> *dataList;
+@property (nonatomic, readonly) NSArray <NSArray <id<XYChartItem>>*> *dataList;
 
 /**
  横轴底部标签文案，要求： names.count 和 dataList 每个子数组的 count 一致
@@ -104,9 +104,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  图标容器
  */
-@protocol UUChartContainer
+@protocol XYChartContainer
 
-@property (nonatomic, readonly) id<UUChartGroup>chartGroup;
+@property (nonatomic, readonly) id<XYChartGroup>chartGroup;
 
 /**
  更新图标数据
@@ -114,7 +114,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param chartGroup 对组数据
  @param animation 是否执行动画
  */
-- (void)setChartGroup:(id<UUChartGroup>)chartGroup animation:(BOOL)animation;
+- (void)setChartGroup:(id<XYChartGroup>)chartGroup animation:(BOOL)animation;
 
 /**
  重载数据

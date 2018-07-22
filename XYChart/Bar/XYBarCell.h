@@ -15,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIView *barContainerView;
 @property (nonatomic, strong) UILabel *nameLabel;
 
-@property (nonatomic, readonly) id<UUChartGroup> chartGroup;
+@property (nonatomic, readonly) id<XYChartGroup> chartGroup;
 
-- (void)setChartGroup:(id<UUChartGroup> _Nonnull)chartGroup index:(NSUInteger)index;
+- (void)setChartGroup:(id<XYChartGroup> _Nonnull)chartGroup index:(NSUInteger)index;
 
 @end
 

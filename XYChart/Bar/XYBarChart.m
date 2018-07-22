@@ -1,6 +1,6 @@
 //
 //  XYBarChart.m
-//  UUChartView
+//  XYChart
 //
 //  Created by Daniel on 14-7-24.
 //  Copyright (c) 2014年 uyiuyao. All rights reserved.
@@ -51,12 +51,12 @@
     [_collectionView reloadData];
 }
 
-- (void)setChartGroup:(id<UUChartGroup>)chartGroup
+- (void)setChartGroup:(id<XYChartGroup>)chartGroup
 {
     [self setChartGroup:chartGroup animation:_chartGroup ? NO : YES];
 }
 
-- (void)setChartGroup:(id<UUChartGroup>)chartGroup animation:(BOOL)animation
+- (void)setChartGroup:(id<XYChartGroup>)chartGroup animation:(BOOL)animation
 {
     _chartGroup = chartGroup;
     [self.collectionView reloadData];

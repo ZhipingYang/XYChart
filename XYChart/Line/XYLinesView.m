@@ -1,6 +1,6 @@
 //
 //  UULines.m
-//  UUChartView
+//  XYChart
 //
 //  Created by Daniel on 2018/7/22.
 //  Copyright © 2018 uyiuyao. All rights reserved.
@@ -32,7 +32,7 @@
     [self updateLinesShape];
 }
 
-- (void)setChartGroup:(id<UUChartGroup>)chartGroup
+- (void)setChartGroup:(id<XYChartGroup>)chartGroup
 {
     _chartGroup = chartGroup;
     // clean
@@ -41,7 +41,7 @@
     }];
     [_sections removeAllObjects];
     
-    [_chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<UUChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [_chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSMutableArray <XYLineGradientLayer *>*mArr = @[].mutableCopy;
         for (int i=0; (i<obj.count-1 && obj.count>1); i++) {
             XYLineGradientLayer *gradient = [XYLineGradientLayer layerWithPre:obj.xy_safeIdx(i) next:obj.xy_safeIdx(i+1)];
@@ -49,7 +49,7 @@
             [self.layer addSublayer:gradient];
             [mArr addObject:gradient];
         }
-        [_sections addObject:[NSArray arrayWithArray:mArr]];
+        [self.sections addObject:[NSArray arrayWithArray:mArr]];
     }];
     
     [self updateLinesShape];
@@ -58,13 +58,13 @@
 - (void)updateLinesShape
 {
     [_sections enumerateObjectsUsingBlock:^(NSArray<XYLineGradientLayer *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        const CGFloat itemWidth = uu_width(self)/(float)(obj.count>0 ? (obj.count+1) : 1);
+        const CGFloat itemWidth = xy_width(self)/(float)(obj.count>0 ? (obj.count+1) : 1);
         [obj enumerateObjectsUsingBlock:^(XYLineGradientLayer * _Nonnull gradient, NSUInteger sub_idx, BOOL * _Nonnull sub_stop) {
-            CGFloat circleLenght = UUChartLineWidth*4;
+            CGFloat circleLenght = XYChartLineWidth*4;
             gradient.frame = CGRectMake(itemWidth * (sub_idx + 0.5),
-                                        uu_height(self)*(1-MAX(gradient.pre.percent, gradient.next.percent))-circleLenght/2,
+                                        xy_height(self)*(1-MAX(gradient.pre.percent, gradient.next.percent))-circleLenght/2,
                                         itemWidth,
-                                        uu_height(self)*fabs(gradient.pre.percent-gradient.next.percent)+circleLenght);
+                                        xy_height(self)*fabs(gradient.pre.percent-gradient.next.percent)+circleLenght);
         }];
     }];
 }

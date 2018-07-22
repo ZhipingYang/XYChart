@@ -1,6 +1,6 @@
 //
 //  XYLineChart.m
-//  UUChartView
+//  XYChart
 //
 //  Created by Daniel on 14-7-24.
 //  Copyright (c) 2014年 uyiuyao. All rights reserved.
@@ -45,26 +45,26 @@
     if (_chartGroup.autoSizeX) {
         _scrolView.contentSize = _scrolView.frame.size;
     } else {
-        _scrolView.contentSize = CGSizeMake(_chartGroup.xSectionWidth * _itemViews.count, uu_height(_scrolView));
+        _scrolView.contentSize = CGSizeMake(_chartGroup.xSectionWidth * _itemViews.count, xy_height(_scrolView));
     }
-    _linesView.frame = CGRectMake(0, 0, _scrolView.contentSize.width, _scrolView.contentSize.height-UUChartXLabelHeight);
+    _linesView.frame = CGRectMake(0, 0, _scrolView.contentSize.width, _scrolView.contentSize.height-XYChartRowLabelHeight);
     
     [_itemViews enumerateObjectsUsingBlock:^(XYLineItemView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (_chartGroup.autoSizeX) {
-            CGFloat width = uu_width(self)/_itemViews.count;
-            obj.frame = CGRectMake(idx*width, 0, width, uu_height(self));
+        if (self.chartGroup.autoSizeX) {
+            CGFloat width = xy_width(self)/self.itemViews.count;
+            obj.frame = CGRectMake(idx*width, 0, width, xy_height(self));
         } else {
-            obj.frame = CGRectMake(idx*_chartGroup.xSectionWidth, 0, _chartGroup.xSectionWidth, uu_height(self));
+            obj.frame = CGRectMake(idx*self.chartGroup.xSectionWidth, 0, self.chartGroup.xSectionWidth, xy_height(self));
         }
     }];
 }
 
-- (void)setChartGroup:(id<UUChartGroup>)chartGroup
+- (void)setChartGroup:(id<XYChartGroup>)chartGroup
 {
     [self setChartGroup:chartGroup animation:_chartGroup ? NO : YES];
 }
 
-- (void)setChartGroup:(id<UUChartGroup>)chartGroup animation:(BOOL)animation
+- (void)setChartGroup:(id<XYChartGroup>)chartGroup animation:(BOOL)animation
 {
     _chartGroup = chartGroup;
     

@@ -1,6 +1,6 @@
 //
 //  XYBarCell.m
-//  UUChartView
+//  XYChart
 //
 //  Created by Daniel on 2018/7/21.
 //  Copyright © 2018 uyiuyao. All rights reserved.
@@ -11,9 +11,9 @@
 
 @interface XYBarCell()
 
-@property (nonatomic, strong) id<UUChartGroup> chartGroup;
+@property (nonatomic, strong) id<XYChartGroup> chartGroup;
 
-@property (nonatomic, strong) NSArray <id<UUChartItem>>*barsDataArray;
+@property (nonatomic, strong) NSArray <id<XYChartItem>>*barsDataArray;
 
 @end
 
@@ -40,8 +40,8 @@
     [super layoutSubviews];
     
     const CGSize size = self.bounds.size;
-    _barContainerView.frame = CGRectMake(4, 0, self.bounds.size.width-8, self.bounds.size.height-UUChartXLabelHeight);
-    _nameLabel.frame = CGRectMake(0, size.height-UUChartXLabelHeight, size.width, UUChartXLabelHeight);
+    _barContainerView.frame = CGRectMake(4, 0, self.bounds.size.width-8, self.bounds.size.height-XYChartRowLabelHeight);
+    _nameLabel.frame = CGRectMake(0, size.height-XYChartRowLabelHeight, size.width, XYChartRowLabelHeight);
     [self updateBarFrames];
 }
 
@@ -55,13 +55,13 @@
     }];
 }
 
-- (void)setChartGroup:(id<UUChartGroup>)chartGroup index:(NSUInteger)index
+- (void)setChartGroup:(id<XYChartGroup>)chartGroup index:(NSUInteger)index
 {
     _chartGroup = chartGroup;
     self.nameLabel.attributedText = _chartGroup.names.xy_safeIdx(index);
     
-    NSMutableArray <id<UUChartItem>>*mArr = @[].mutableCopy;
-    [chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<UUChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSMutableArray <id<XYChartItem>>*mArr = @[].mutableCopy;
+    [chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [mArr addObject:obj.xy_safeIdx(index)];
     }];
     _barsDataArray = [NSArray arrayWithArray:mArr];
@@ -75,7 +75,7 @@
 
     [_barContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    [_barsDataArray enumerateObjectsUsingBlock:^(id<UUChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [_barsDataArray enumerateObjectsUsingBlock:^(id<XYChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         XYBarView *bar = [[XYBarView alloc] initWithFrame:CGRectMake((size.width/count)*idx, 0, size.width/count, size.height)];
         [self.barContainerView addSubview:bar];
         bar.chartItem = obj;

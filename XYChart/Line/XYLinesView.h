@@ -1,6 +1,6 @@
 //
 //  UULines.h
-//  UUChartView
+//  XYChart
 //
 //  Created by Daniel on 2018/7/22.
 //  Copyright © 2018 uyiuyao. All rights reserved.
@@ -10,6 +10,6 @@
 
 @interface XYLinesView : UIView
 
-@property (nonatomic, strong) id<UUChartGroup> chartGroup;
+@property (nonatomic, strong) id<XYChartGroup> chartGroup;
 
 @end

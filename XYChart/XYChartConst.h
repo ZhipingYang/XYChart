@@ -1,6 +1,6 @@
 //
 //  XYChartConst.h
-//  UUChartView
+//  XYChart
 //
 //  Created by Daniel on 2018/7/22.
 //  Copyright © 2018 uyiuyao. All rights reserved.
@@ -10,18 +10,18 @@
 #define UUChartConst_h
 
 // 纵轴文案宽度
-#define UUChartYLabelWidth 30
+#define XYChartSectionLabelWidth 30
 // 横轴文案高度
-#define UUChartXLabelHeight 20
+#define XYChartRowLabelHeight 20
 // 折线图，线条宽度
-#define UUChartLineWidth 6
+#define XYChartLineWidth 3
 
 // 获取宽度
-#define uu_width(obj) obj.frame.size.width
+#define xy_width(obj) obj.frame.size.width
 // 获取高度
-#define uu_height(obj) obj.frame.size.height
-#define uu_left(obj) obj.frame.origin.x
-#define uu_top(obj) obj.frame.origin.y
+#define xy_height(obj) obj.frame.size.height
+#define xy_left(obj) obj.frame.origin.x
+#define xy_top(obj) obj.frame.origin.y
 
 /**
  图表类型
@@ -29,9 +29,9 @@
  - UUChartStyleLine: 折线图
  - UUChartStyleBar: 条形图
  */
-typedef NS_ENUM(NSInteger, UUChartStyle){
-    UUChartStyleLine = 0,
-    UUChartStyleBar
+typedef NS_ENUM(NSInteger, XYChartStyle){
+    XYChartStyleLine = 0,
+    XYChartStyleBar
 };
 
 #endif /* UUChartConst_h */

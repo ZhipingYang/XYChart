@@ -1,6 +1,6 @@
 //
 //  UULineItemView.h
-//  UUChartView
+//  XYChart
 //
 //  Created by Daniel on 2018/7/21.
 //  Copyright © 2018 uyiuyao. All rights reserved.
@@ -12,10 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XYLineItemView : UIView
 
-@property (nonatomic, readonly, nullable) id<UUChartGroup> chartGroup;
+@property (nonatomic, readonly, nullable) id<XYChartGroup> chartGroup;
 @property (nonatomic, readonly) NSUInteger index;
 
-- (void)setChartGroup:(nullable id<UUChartGroup>)chartGroup index:(NSUInteger)index;
+- (void)setChartGroup:(nullable id<XYChartGroup>)chartGroup index:(NSUInteger)index;
 
 @end
 

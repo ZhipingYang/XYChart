@@ -1,6 +1,6 @@
 //
 //  UULineItemView.m
-//  UUChartView
+//  XYChart
 //
 //  Created by Daniel on 2018/7/21.
 //  Copyright © 2018 uyiuyao. All rights reserved.
@@ -13,10 +13,10 @@
 {
     CALayer *_separatedLine;
 }
-@property (nonatomic, strong) id<UUChartGroup> chartGroup;
+@property (nonatomic, strong) id<XYChartGroup> chartGroup;
 @property (nonatomic) NSUInteger index;
 
-@property (nonatomic, strong) NSArray <id<UUChartItem>>* chartItems;
+@property (nonatomic, strong) NSArray <id<XYChartItem>>* chartItems;
 
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) NSMutableArray <CALayer *>* circles;
@@ -50,17 +50,17 @@
 {
     [super layoutSubviews];
     
-    _separatedLine.frame = CGRectMake(0, 0, 1/[UIScreen mainScreen].scale, uu_height(self)-UUChartXLabelHeight);
-    _nameLabel.frame = CGRectMake(0, uu_height(self)-UUChartXLabelHeight, uu_width(self), UUChartXLabelHeight);
+    _separatedLine.frame = CGRectMake(0, 0, 1/[UIScreen mainScreen].scale, xy_height(self)-XYChartRowLabelHeight);
+    _nameLabel.frame = CGRectMake(0, xy_height(self)-XYChartRowLabelHeight, xy_width(self), XYChartRowLabelHeight);
     
     [_circles enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.frame = CGRectMake((uu_width(self)-uu_width(obj))/2.0,
-                               (uu_height(self)-UUChartXLabelHeight)*(1-_chartItems.xy_safeIdx(idx).percent) - uu_height(obj)/2.0,
-                               uu_width(obj), uu_height(obj));
+        obj.frame = CGRectMake((xy_width(self)-xy_width(obj))/2.0,
+                               (xy_height(self)-XYChartRowLabelHeight)*(1-self.chartItems.xy_safeIdx(idx).percent) - xy_height(obj)/2.0,
+                               xy_width(obj), xy_height(obj));
     }];
 }
 
-- (void)setChartGroup:(id<UUChartGroup>)chartGroup index:(NSUInteger)index
+- (void)setChartGroup:(id<XYChartGroup>)chartGroup index:(NSUInteger)index
 {
     [_circles makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     [_circles removeAllObjects];
@@ -71,20 +71,20 @@
     _nameLabel.attributedText = _chartGroup.names.xy_safeIdx(index);
     _separatedLine.hidden = index==0;
     
-    NSMutableArray <id <UUChartItem>>*array = @[].mutableCopy;
-    [_chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<UUChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        id <UUChartItem>item = obj.xy_safeIdx(index);
+    NSMutableArray <id <XYChartItem>>*array = @[].mutableCopy;
+    [_chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        id <XYChartItem>item = obj.xy_safeIdx(index);
         [array addObject:item];
         
         CALayer *circle = [CALayer layer];
         circle.backgroundColor = [UIColor whiteColor].CGColor;
-        circle.frame = CGRectMake(0, 0, UUChartLineWidth*4, UUChartLineWidth*4);
-        circle.cornerRadius = UUChartLineWidth*2;
+        circle.frame = CGRectMake(0, 0, XYChartLineWidth*4, XYChartLineWidth*4);
+        circle.cornerRadius = XYChartLineWidth*2;
         circle.borderColor = item.color.CGColor;
-        circle.borderWidth = UUChartLineWidth;
+        circle.borderWidth = XYChartLineWidth;
         [self.layer addSublayer:circle];
         
-        [_circles addObject:circle];
+        [self.circles addObject:circle];
     }];
     _chartItems = array;
 }
@@ -97,13 +97,13 @@
 - (void)handleTap:(UIGestureRecognizer*)recognizer
 {
     CGPoint touchpoint = [recognizer locationInView:self];
-    NSMutableArray <id<UUChartItem>>* inTouchItems = @[].mutableCopy;
+    NSMutableArray <id<XYChartItem>>* inTouchItems = @[].mutableCopy;
     NSMutableArray <CALayer *>* inTouchCircles = @[].mutableCopy;
     [_circles enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGRect rect = obj.frame;
-        id <UUChartItem> item = _chartItems[idx];
-        if (uu_width(obj)<=30) {
-            rect = CGRectInset(rect, uu_width(obj)-30, uu_width(obj)-30);
+        id <XYChartItem> item = self.chartItems[idx];
+        if (xy_width(obj)<=30) {
+            rect = CGRectInset(rect, xy_width(obj)-30, xy_width(obj)-30);
         }
         if (CGRectContainsPoint(rect, touchpoint) && item.name.length>0) {
             [inTouchItems addObject:item];
@@ -115,7 +115,7 @@
         [self becomeFirstResponder];
         UIMenuController *menu = [UIMenuController sharedMenuController];
         NSMutableArray *menus = @[].mutableCopy;
-        [inTouchItems enumerateObjectsUsingBlock:^(id<UUChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [inTouchItems enumerateObjectsUsingBlock:^(id<XYChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:obj.name action:@selector(showItemName:)];
             [menus addObject:item];
         }];

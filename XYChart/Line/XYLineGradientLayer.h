@@ -1,6 +1,6 @@
 //
 //  XYLineGradientLayer.h
-//  UUChartView
+//  XYChart
 //
 //  Created by Daniel on 2018/7/22.
 //  Copyright © 2018 uyiuyao. All rights reserved.
@@ -11,9 +11,9 @@
 
 @interface XYLineGradientLayer : CAGradientLayer
 
-@property (nonatomic, readonly) id <UUChartItem>pre;
-@property (nonatomic, readonly) id <UUChartItem>next;
+@property (nonatomic, readonly) id <XYChartItem>pre;
+@property (nonatomic, readonly) id <XYChartItem>next;
 
-+ (instancetype)layerWithPre:(id<UUChartItem>)pre next:(id<UUChartItem>)next;
++ (instancetype)layerWithPre:(id<XYChartItem>)pre next:(id<XYChartItem>)next;
 
 @end

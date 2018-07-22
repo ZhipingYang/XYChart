@@ -1,6 +1,6 @@
 //
 //  XYLineChart.h
-//  UUChartView
+//  XYChart
 //
 //  Created by Daniel on 14-7-24.
 //  Copyright (c) 2014年 uyiuyao. All rights reserved.
@@ -12,9 +12,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XYLineChart : UIView<UUChartContainer>
+@interface XYLineChart : UIView<XYChartContainer>
 
-@property (nonatomic, strong) id<UUChartGroup>chartGroup;
+@property (nonatomic, strong) id<XYChartGroup>chartGroup;
 
 @end
 
