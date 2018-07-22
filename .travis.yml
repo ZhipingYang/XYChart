@@ -31,5 +31,5 @@ podfile: Demo/Podfile
 #     - pod install
 before_script:
   - export LANG=en_US.UTF-8
-xcode_workspace: Demo/XYChart.xcworkspace
+xcode_workspace: Demo/XYChart.xcodeproj
 
