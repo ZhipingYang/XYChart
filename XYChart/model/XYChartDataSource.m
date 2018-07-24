@@ -1,15 +1,15 @@
 //
-//  XYChartGroup.m
+//  XYChartDataSource.m
 //  XYChart
 //
 //  Created by Daniel on 2018/7/21.
 //  Copyright © 2018 uyiuyao. All rights reserved.
 //
 
-#import "XYChartGroup.h"
+#import "XYChartDataSource.h"
 #import "XYChartItem.h"
 
-@interface XYChartGroup()
+@interface XYChartDataSource()
 {
     NSAttributedString *(^_configYLabelBlock)(CGFloat value);
 }
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation XYChartGroup
+@implementation XYChartDataSource
 
 - (instancetype)initWithStyle:(XYChartStyle)style
 {
@@ -26,9 +26,9 @@
         self.chartStyle = style;
         self.maxValue = 100;
         self.minValue = 0;
-        self.ySectionNumber = 5;
-        self.xSectionWidth = 60;
-        self.autoSizeX = YES;
+        self.numberOfSections = 5;
+        self.widthOfRow = 60;
+        self.autoSizingRowWidth = YES;
     }
     return self;
 }

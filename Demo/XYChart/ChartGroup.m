@@ -36,8 +36,8 @@
     if (self) {
         _section = section;
         _row = row;
-        self.xSectionWidth = width;
-        self.autoSizeX = NO;
+        self.widthOfRow = width;
+        self.autoSizingRowWidth = NO;
     }
     return self;
 }

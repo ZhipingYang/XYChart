@@ -26,7 +26,7 @@
 		65CB0F1E2104422B0065236D /* XYBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0F132104422A0065236D /* XYBarView.m */; };
 		65CB0F1F2104422B0065236D /* XYBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0F142104422B0065236D /* XYBarCell.m */; };
 		65CB0F202104422B0065236D /* XYBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0F152104422B0065236D /* XYBarChart.m */; };
-		65CB0F23210442BF0065236D /* XYChartGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0F22210442BF0065236D /* XYChartGroup.m */; };
+		65CB0F23210442BF0065236D /* XYChartDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0F22210442BF0065236D /* XYChartDataSource.m */; };
 		65CB0F26210443A80065236D /* LineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0F25210443A80065236D /* LineTableViewController.m */; };
 		65CB0F2C21044B7A0065236D /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0F2B21044B7A0065236D /* TableViewCell.m */; };
 		65E9A36F2104541F00277206 /* ChartGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9A36E2104541F00277206 /* ChartGroup.m */; };
@@ -94,8 +94,8 @@
 		65CB0F132104422A0065236D /* XYBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYBarView.m; sourceTree = "<group>"; };
 		65CB0F142104422B0065236D /* XYBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYBarCell.m; sourceTree = "<group>"; };
 		65CB0F152104422B0065236D /* XYBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYBarChart.m; sourceTree = "<group>"; };
-		65CB0F21210442BF0065236D /* XYChartGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYChartGroup.h; sourceTree = "<group>"; };
-		65CB0F22210442BF0065236D /* XYChartGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYChartGroup.m; sourceTree = "<group>"; };
+		65CB0F21210442BF0065236D /* XYChartDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYChartDataSource.h; sourceTree = "<group>"; };
+		65CB0F22210442BF0065236D /* XYChartDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYChartDataSource.m; sourceTree = "<group>"; };
 		65CB0F24210443A80065236D /* LineTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineTableViewController.h; sourceTree = "<group>"; };
 		65CB0F25210443A80065236D /* LineTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LineTableViewController.m; sourceTree = "<group>"; };
 		65CB0F2A21044B790065236D /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
@@ -243,8 +243,8 @@
 		65CB0F0C2104422A0065236D /* model */ = {
 			isa = PBXGroup;
 			children = (
-				65CB0F21210442BF0065236D /* XYChartGroup.h */,
-				65CB0F22210442BF0065236D /* XYChartGroup.m */,
+				65CB0F21210442BF0065236D /* XYChartDataSource.h */,
+				65CB0F22210442BF0065236D /* XYChartDataSource.m */,
 				65CB0F0D2104422A0065236D /* XYChartItem.h */,
 				65CB0F0E2104422A0065236D /* XYChartItem.m */,
 			);
@@ -399,7 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65CB0ECC2104416A0065236D /* BarTableViewController.m in Sources */,
-				65CB0F23210442BF0065236D /* XYChartGroup.m in Sources */,
+				65CB0F23210442BF0065236D /* XYChartDataSource.m in Sources */,
 				65CB0ED72104416B0065236D /* main.m in Sources */,
 				65CB0F26210443A80065236D /* LineTableViewController.m in Sources */,
 				65CB0F1C2104422B0065236D /* XYLineGradientLayer.m in Sources */,

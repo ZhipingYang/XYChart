@@ -10,6 +10,6 @@
 
 @interface XYBarChart : UIView<XYChartContainer>
 
-@property (nonatomic, strong) id<XYChartGroup>chartGroup;
+@property (nonatomic, strong) id<XYChartDataSource>chartGroup;
 
 @end

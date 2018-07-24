@@ -6,9 +6,9 @@
 //  Copyright © 2018 Daniel. All rights reserved.
 //
 
-#import "XYChartGroup.h"
+#import "XYChartDataSource.h"
 
-@interface ChartGroup : XYChartGroup
+@interface ChartGroup : XYChartDataSource
 
 - (instancetype)initWithStyle:(XYChartStyle)style section:(NSUInteger)section row:(NSUInteger)row;
 

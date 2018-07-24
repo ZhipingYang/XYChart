@@ -8,7 +8,7 @@
 
 #import "TableViewCell.h"
 #import "XYChart.h"
-#import "XYChartGroup.h"
+#import "XYChartDataSource.h"
 
 @interface TableViewCell ()
 {
@@ -42,7 +42,7 @@
     _chartView.frame = CGRectMake(0, 30, self.bounds.size.width-20, self.bounds.size.height-40);
 }
 
-- (void)setGroup:(XYChartGroup *)group
+- (void)setGroup:(XYChartDataSource *)group
 {
     _group = group;
     _chartView.chartGroup = group;

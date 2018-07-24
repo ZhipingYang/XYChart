@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XYChart : UIView<XYChartContainer>
 
-@property (nonatomic, strong, nullable) id<XYChartGroup> chartGroup;
+@property (nonatomic, strong, nullable) id<XYChartDataSource> chartGroup;
 
-- (instancetype)initWithFrame:(CGRect)frame chartGroup:(nullable id<XYChartGroup>)chartGroup;
+- (instancetype)initWithFrame:(CGRect)frame chartGroup:(nullable id<XYChartDataSource>)chartGroup;
 
 @end
 

@@ -26,7 +26,7 @@
 
 @implementation XYChart
 
-- (id)initWithFrame:(CGRect)frame chartGroup:(id<XYChartGroup>)chartGroup
+- (id)initWithFrame:(CGRect)frame chartGroup:(id<XYChartDataSource>)chartGroup
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -77,12 +77,12 @@
     [self justLinesLayout];
 }
 
-- (void)setChartGroup:(id<XYChartGroup>)chartGroup
+- (void)setChartGroup:(id<XYChartDataSource>)chartGroup
 {
     [self setChartGroup:chartGroup animation:_chartGroup ? NO : YES];
 }
 
-- (void)setChartGroup:(id<XYChartGroup>)chartGroup animation:(BOOL)animation
+- (void)setChartGroup:(id<XYChartDataSource>)chartGroup animation:(BOOL)animation
 {
     _chartGroup = chartGroup;
     
@@ -105,10 +105,10 @@
     [self addSubview:_chartContainer];
     [_chartContainer setChartGroup:_chartGroup animation:NO];
     
-    for (NSUInteger i=0; i<_chartGroup.ySectionNumber+1; i++) {
+    for (NSUInteger i=0; i<_chartGroup.numberOfSections+1; i++) {
         UILabel *label = [[UILabel alloc] init];
         label.textAlignment = NSTextAlignmentRight;
-        CGFloat sectionValue = (chartGroup.maxValue-chartGroup.minValue)/(CGFloat)chartGroup.ySectionNumber;
+        CGFloat sectionValue = (chartGroup.maxValue-chartGroup.minValue)/(CGFloat)chartGroup.numberOfSections;
         CGFloat value = chartGroup.maxValue - sectionValue*i;
         if (_chartGroup.configYLabelBlock) {
             label.attributedText = _chartGroup.configYLabelBlock(value);
@@ -133,7 +133,7 @@
 {
     const CGFloat pixel = 1/[UIScreen mainScreen].scale;
     const CGSize size = self.bounds.size;
-    CGFloat count = _chartGroup.ySectionNumber>0 ? _chartGroup.ySectionNumber : 1;
+    CGFloat count = _chartGroup.numberOfSections>0 ? _chartGroup.numberOfSections : 1;
     const CGFloat sectionHeight = (size.height-XYChartRowLabelHeight)/count;
     _leftSeparatedLine.frame = CGRectMake(XYChartSectionLabelWidth, 0, pixel, size.height-XYChartRowLabelHeight);
     _rightSeparatedLine.frame = CGRectMake(size.width-pixel, 0, pixel, size.height-XYChartRowLabelHeight);
@@ -147,7 +147,7 @@
     [_horizonLines makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     [_horizonLines removeAllObjects];
     
-    for (int i=0; i<_chartGroup.ySectionNumber+1; i++) {
+    for (int i=0; i<_chartGroup.numberOfSections+1; i++) {
         CALayer *hori = [CALayer layer];
         hori.backgroundColor = [UIColor xy_separatedColor].CGColor;
         hori.zPosition = -1;

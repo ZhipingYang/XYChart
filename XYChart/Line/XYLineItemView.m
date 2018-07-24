@@ -13,7 +13,7 @@
 {
     CALayer *_separatedLine;
 }
-@property (nonatomic, strong) id<XYChartGroup> chartGroup;
+@property (nonatomic, strong) id<XYChartDataSource> chartGroup;
 @property (nonatomic) NSUInteger index;
 
 @property (nonatomic, strong) NSArray <id<XYChartItem>>* chartItems;
@@ -60,7 +60,7 @@
     }];
 }
 
-- (void)setChartGroup:(id<XYChartGroup>)chartGroup index:(NSUInteger)index
+- (void)setChartGroup:(id<XYChartDataSource>)chartGroup index:(NSUInteger)index
 {
     [_circles makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     [_circles removeAllObjects];

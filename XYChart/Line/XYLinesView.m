@@ -32,7 +32,7 @@
     [self updateLinesShape];
 }
 
-- (void)setChartGroup:(id<XYChartGroup>)chartGroup
+- (void)setChartGroup:(id<XYChartDataSource>)chartGroup
 {
     _chartGroup = chartGroup;
     // clean

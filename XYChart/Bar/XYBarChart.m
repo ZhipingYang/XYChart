@@ -51,12 +51,12 @@
     [_collectionView reloadData];
 }
 
-- (void)setChartGroup:(id<XYChartGroup>)chartGroup
+- (void)setChartGroup:(id<XYChartDataSource>)chartGroup
 {
     [self setChartGroup:chartGroup animation:_chartGroup ? NO : YES];
 }
 
-- (void)setChartGroup:(id<XYChartGroup>)chartGroup animation:(BOOL)animation
+- (void)setChartGroup:(id<XYChartDataSource>)chartGroup animation:(BOOL)animation
 {
     _chartGroup = chartGroup;
     [self.collectionView reloadData];
@@ -86,10 +86,10 @@
 {
     NSInteger count = _chartGroup.dataList.count > 0 ? _chartGroup.dataList.firstObject.count : 1;
     count = count>0 ? count : 1;
-    if (_chartGroup.autoSizeX) {
+    if (_chartGroup.autoSizingRowWidth) {
         return CGSizeMake(self.bounds.size.width/(CGFloat)count, self.bounds.size.height);
     } else {
-        return CGSizeMake(_chartGroup.xSectionWidth, self.bounds.size.height);
+        return CGSizeMake(_chartGroup.widthOfRow, self.bounds.size.height);
     }
 }
 

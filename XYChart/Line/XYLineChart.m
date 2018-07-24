@@ -42,29 +42,29 @@
 {
     [super layoutSubviews];
     _scrolView.frame = self.bounds;
-    if (_chartGroup.autoSizeX) {
+    if (_chartGroup.autoSizingRowWidth) {
         _scrolView.contentSize = _scrolView.frame.size;
     } else {
-        _scrolView.contentSize = CGSizeMake(_chartGroup.xSectionWidth * _itemViews.count, xy_height(_scrolView));
+        _scrolView.contentSize = CGSizeMake(_chartGroup.widthOfRow * _itemViews.count, xy_height(_scrolView));
     }
     _linesView.frame = CGRectMake(0, 0, _scrolView.contentSize.width, _scrolView.contentSize.height-XYChartRowLabelHeight);
     
     [_itemViews enumerateObjectsUsingBlock:^(XYLineItemView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (self.chartGroup.autoSizeX) {
+        if (self.chartGroup.autoSizingRowWidth) {
             CGFloat width = xy_width(self)/self.itemViews.count;
             obj.frame = CGRectMake(idx*width, 0, width, xy_height(self));
         } else {
-            obj.frame = CGRectMake(idx*self.chartGroup.xSectionWidth, 0, self.chartGroup.xSectionWidth, xy_height(self));
+            obj.frame = CGRectMake(idx*self.chartGroup.widthOfRow, 0, self.chartGroup.widthOfRow, xy_height(self));
         }
     }];
 }
 
-- (void)setChartGroup:(id<XYChartGroup>)chartGroup
+- (void)setChartGroup:(id<XYChartDataSource>)chartGroup
 {
     [self setChartGroup:chartGroup animation:_chartGroup ? NO : YES];
 }
 
-- (void)setChartGroup:(id<XYChartGroup>)chartGroup animation:(BOOL)animation
+- (void)setChartGroup:(id<XYChartDataSource>)chartGroup animation:(BOOL)animation
 {
     _chartGroup = chartGroup;
     

@@ -11,7 +11,7 @@
 
 @interface XYBarCell()
 
-@property (nonatomic, strong) id<XYChartGroup> chartGroup;
+@property (nonatomic, strong) id<XYChartDataSource> chartGroup;
 
 @property (nonatomic, strong) NSArray <id<XYChartItem>>*barsDataArray;
 
@@ -55,7 +55,7 @@
     }];
 }
 
-- (void)setChartGroup:(id<XYChartGroup>)chartGroup index:(NSUInteger)index
+- (void)setChartGroup:(id<XYChartDataSource>)chartGroup index:(NSUInteger)index
 {
     _chartGroup = chartGroup;
     self.nameLabel.attributedText = _chartGroup.names.xy_safeIdx(index);
