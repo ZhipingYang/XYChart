@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XYChartItem : NSObject<XYChartItem>
 
-@property (nonatomic) CGFloat percent;
+@property (nonatomic) NSNumber *value;
 @property (nonatomic) NSTimeInterval duration;
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, readwrite) NSString *name;

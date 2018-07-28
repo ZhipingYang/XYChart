@@ -19,10 +19,11 @@
 
 @implementation XYBarChart
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithChartView:(XYChart *)chartView
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
+        _chartView = chartView;
         self.clipsToBounds = YES;
         [self initBaseUIElements];
     }
@@ -51,20 +52,20 @@
     [_collectionView reloadData];
 }
 
-- (void)setChartGroup:(id<XYChartDataSource>)chartGroup
+- (void)setDataSource:(id<XYChartDataSource>)dataSource
 {
-    [self setChartGroup:chartGroup animation:_chartGroup ? NO : YES];
+    [self setDataSource:dataSource animation:_dataSource ? NO : YES];
 }
 
-- (void)setChartGroup:(id<XYChartDataSource>)chartGroup animation:(BOOL)animation
+- (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation
 {
-    _chartGroup = chartGroup;
+    _dataSource = dataSource;
     [self.collectionView reloadData];
 }
 
 - (void)reloadData:(BOOL)animation
 {
-    
+    [self setDataSource:_dataSource animation:animation];
 }
 
 
@@ -72,25 +73,23 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return _chartGroup.names.count;
+    return [_dataSource numberOfRowsInChart:_chartView];
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XYBarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XYBarCell class]) forIndexPath:indexPath];
-    [cell setChartGroup:_chartGroup index:indexPath.row];
+    [cell setDataSource:_dataSource index:indexPath.row chart:_chartView];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger count = _chartGroup.dataList.count > 0 ? _chartGroup.dataList.firstObject.count : 1;
-    count = count>0 ? count : 1;
-    if (_chartGroup.autoSizingRowWidth) {
-        return CGSizeMake(self.bounds.size.width/(CGFloat)count, self.bounds.size.height);
-    } else {
-        return CGSizeMake(_chartGroup.widthOfRow, self.bounds.size.height);
-    }
+    const BOOL isAutoSizing = [_dataSource autoSizingRowInChart:_chartView];
+    CGFloat rows = [_dataSource numberOfRowsInChart:_chartView];
+    rows = rows>0 ? rows : 1;
+    const CGFloat rowWidth = isAutoSizing ? xy_width(self)/rows : [_dataSource rowWidthOfChart:_chartView];
+    return CGSizeMake(rowWidth, xy_height(self));
 }
 
 @end

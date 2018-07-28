@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XYChartDataSource.h"
+#import "ChartGroup.h"
 
 @interface TableViewCell : UITableViewCell
 
-@property (nonatomic, strong) XYChartDataSource *group;
+@property (nonatomic, strong) ChartGroup *group;
 
 @end

@@ -22,12 +22,12 @@
     [super viewDidLoad];
     
     _dataArray = @[
-                   [[ChartGroup alloc] initWithStyle:XYChartStyleLine section:1 row:5],
-                   [[ChartGroup alloc] initWithStyle:XYChartStyleLine section:1 row:15],
-                   [[ChartGroup alloc] initWithStyle:XYChartStyleLine section:2 row:15],
-                   [[ChartGroup alloc] initWithStyle:XYChartStyleLine section:3 row:5],
-                   [[ChartGroup alloc] initWithStyle:XYChartStyleLine section:2 row:15 width:60],
-                   [[ChartGroup alloc] initWithStyle:XYChartStyleLine section:2 row:33 width:40],
+                   [[ChartGroup alloc] initWithStyle:XYChartTypeLine section:1 row:5],
+                   [[ChartGroup alloc] initWithStyle:XYChartTypeLine section:1 row:15],
+                   [[ChartGroup alloc] initWithStyle:XYChartTypeLine section:2 row:15],
+                   [[ChartGroup alloc] initWithStyle:XYChartTypeLine section:3 row:5],
+                   [[ChartGroup alloc] initWithStyle:XYChartTypeLine section:2 row:15 width:60],
+                   [[ChartGroup alloc] initWithStyle:XYChartTypeLine section:2 row:33 width:40],
                    ];
     [self.tableView reloadData];
 }

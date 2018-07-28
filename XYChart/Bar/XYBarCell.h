@@ -10,14 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class XYChart;
 @interface XYBarCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIView *barContainerView;
 @property (nonatomic, strong) UILabel *nameLabel;
 
-@property (nonatomic, readonly) id<XYChartDataSource> chartGroup;
-
-- (void)setChartGroup:(id<XYChartDataSource> _Nonnull)chartGroup index:(NSUInteger)index;
+- (void)setDataSource:(id<XYChartDataSource> _Nonnull)dataSource index:(NSUInteger)index chart:(XYChart *)chart;
 
 @end
 

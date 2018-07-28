@@ -13,29 +13,28 @@
 {
     NSAttributedString *(^_configYLabelBlock)(CGFloat value);
 }
-@property (nonatomic) XYChartStyle chartStyle;
+@property (nonatomic, strong) NSArray <NSArray <id<XYChartItem>>*> *dataList;
 
 @end
 
 @implementation XYChartDataSource
 
-- (instancetype)initWithStyle:(XYChartStyle)style
+- (instancetype)initWithDataList:(NSArray <NSArray <id<XYChartItem>>*> *)dataList
 {
     self = [super init];
     if (self) {
-        self.chartStyle = style;
-        self.maxValue = 100;
-        self.minValue = 0;
-        self.numberOfSections = 5;
+        self.range = XYRangeMake(0, 100);
+        self.numberOfLevels = 5;
         self.widthOfRow = 60;
         self.autoSizingRowWidth = YES;
+        self.dataList = dataList;
     }
     return self;
 }
 
 - (instancetype)init
 {
-    return [self initWithStyle:XYChartStyleLine];
+    return [self initWithDataList:@[]];
 }
 
 - (NSAttributedString *(^)(CGFloat))configYLabelBlock
@@ -76,7 +75,7 @@
             NSMutableAttributedString *mStr = [NSMutableAttributedString new];
             for (int i=0; i<self.dataList.count; i++) {
                 id <XYChartItem>item = self.dataList.xy_safeIdx(i).xy_safeIdx(idx);
-                [mStr appendAttributedString:block(item.name, item.color)];
+                [mStr appendAttributedString:block(item.showName, item.color)];
                 if (i!=self.dataList.count-1) {
                     [mStr appendAttributedString:block(@":",[UIColor lightGrayColor])];
                 }
@@ -94,6 +93,62 @@
     [dataList enumerateObjectsUsingBlock:^(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSAssert(obj.count == count, @"dataList的子数组个数不一致");
     }];
+}
+
+#pragma mark - XYChartDataSource
+
+- (NSUInteger)numberOfSectionsInChart:(XYChart *)chart
+{
+    return self.dataList.count;
+}
+
+- (NSUInteger)numberOfRowsInChart:(XYChart *)chart
+{
+    NSArray <NSNumber *>*numers = [_dataList xy_map:^id _Nonnull(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx) {
+        return [NSNumber numberWithInt:(int)obj.count];
+    }];
+    __block NSInteger number = 0;
+    [numers enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.intValue > number) {
+            number = obj.intValue;
+        }
+    }];
+    return number;
+}
+
+- (NSAttributedString *)chart:(XYChart *)chart titleOfRowAtIndex:(NSUInteger)index
+{
+    return self.names.xy_safeIdx(index);
+}
+
+- (NSAttributedString *)chart:(XYChart *)chart titleOfSectionAtValue:(CGFloat)sectionValue
+{
+    return self.configYLabelBlock(sectionValue);
+}
+
+- (id<XYChartItem>)chart:(XYChart *)chart itemOfIndex:(NSIndexPath *)index
+{
+    return self.dataList.xy_safeIdx(index.section).xy_safeIdx(index.row);
+}
+
+- (XYRange)visibleRangeInChart:(XYChart *)chart
+{
+    return self.range;
+}
+
+- (NSUInteger)numberOfLevelInChart:(XYChart *)chart
+{
+    return self.numberOfLevels;
+}
+
+- (CGFloat)rowWidthOfChart:(XYChart *)chart
+{
+    return self.widthOfRow;
+}
+
+- (BOOL)autoSizingRowInChart:(XYChart *)chart
+{
+    return self.autoSizingRowWidth;
 }
 
 @end

@@ -6,8 +6,7 @@
 //  Copyright © 2018 uyiuyao. All rights reserved.
 //
 
-#ifndef UUChartConst_h
-#define UUChartConst_h
+@import UIKit;
 
 // 纵轴文案宽度
 #define XYChartSectionLabelWidth 30
@@ -29,9 +28,24 @@
  - UUChartStyleLine: 折线图
  - UUChartStyleBar: 条形图
  */
-typedef NS_ENUM(NSInteger, XYChartStyle){
-    XYChartStyleLine = 0,
-    XYChartStyleBar
+typedef NS_ENUM(NSInteger, XYChartType){
+    XYChartTypeLine = 0,
+    XYChartTypeBar
 };
 
-#endif /* UUChartConst_h */
+//范围
+struct xy_range {
+    CGFloat min;
+    CGFloat max;
+};
+typedef struct xy_range XYRange;
+CG_INLINE XYRange XYRangeMake(CGFloat min, CGFloat max);
+
+CG_INLINE XYRange
+XYRangeMake(CGFloat min, CGFloat max){
+    XYRange r;
+    r.min = min;
+    r.max = max;
+    return r;
+}
+static const XYRange XYRangeZero = {0,0};

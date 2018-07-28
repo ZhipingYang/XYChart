@@ -10,8 +10,10 @@
 
 @interface ChartGroup : XYChartDataSource
 
-- (instancetype)initWithStyle:(XYChartStyle)style section:(NSUInteger)section row:(NSUInteger)row;
+@property (nonatomic, readonly) XYChartType type;
 
-- (instancetype)initWithStyle:(XYChartStyle)style section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width;
+- (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row;
+
+- (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width;
 
 @end

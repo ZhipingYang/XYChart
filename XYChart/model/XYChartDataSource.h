@@ -13,19 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface XYChartDataSource : NSObject<XYChartDataSource>
 
 /**
- default 0
+ default the min & max of items value
  */
-@property (nonatomic) CGFloat minValue;
-
-/**
- default 100
- */
-@property (nonatomic) CGFloat maxValue;
+@property (nonatomic) XYRange range;
 
 /**
  default 5
  */
-@property (nonatomic) NSUInteger numberOfSections;
+@property (nonatomic) NSUInteger numberOfLevels;
 
 /**
  default 60
@@ -60,14 +55,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  必须设置的
  */
-@property (nonatomic, strong) NSArray <NSArray <id<XYChartItem>>*> *dataList;
+@property (nonatomic, readonly) NSArray <NSArray <id<XYChartItem>>*> *dataList;
 
-- (instancetype)initWithStyle:(XYChartStyle)style;
-
-/**
- 默认 UUChartStyleLine
- */
-- (instancetype)init;
+- (instancetype)initWithDataList:(NSArray <NSArray <id<XYChartItem>>*> *)dataList;
 
 @end
 

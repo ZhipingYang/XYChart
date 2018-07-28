@@ -13,10 +13,9 @@
 {
     CALayer *_separatedLine;
 }
-@property (nonatomic, strong) id<XYChartDataSource> chartGroup;
-@property (nonatomic) NSUInteger index;
 
 @property (nonatomic, strong) NSArray <id<XYChartItem>>* chartItems;
+@property (nonatomic) XYRange range;
 
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) NSMutableArray <CALayer *>* circles;
@@ -53,40 +52,34 @@
     _separatedLine.frame = CGRectMake(0, 0, 1/[UIScreen mainScreen].scale, xy_height(self)-XYChartRowLabelHeight);
     _nameLabel.frame = CGRectMake(0, xy_height(self)-XYChartRowLabelHeight, xy_width(self), XYChartRowLabelHeight);
     
+    __weak typeof(self) weakSelf = self;
     [_circles enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGFloat value = weakSelf.chartItems.xy_safeIdx(idx).value.floatValue;
+        CGFloat percent = (value - weakSelf.range.min)/(weakSelf.range.max - weakSelf.range.min);
         obj.frame = CGRectMake((xy_width(self)-xy_width(obj))/2.0,
-                               (xy_height(self)-XYChartRowLabelHeight)*(1-self.chartItems.xy_safeIdx(idx).percent) - xy_height(obj)/2.0,
+                               (xy_height(self)-XYChartRowLabelHeight)*(1-percent) - xy_height(obj)/2.0,
                                xy_width(obj), xy_height(obj));
     }];
 }
 
-- (void)setChartGroup:(id<XYChartDataSource>)chartGroup index:(NSUInteger)index
+- (void)setItems:(NSArray<id<XYChartItem>> *)items range:(XYRange)range
 {
     [_circles makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     [_circles removeAllObjects];
+
+    _chartItems = items;
+    _range = range;
     
-    _chartGroup = chartGroup;
-    _index = index;
-    
-    _nameLabel.attributedText = _chartGroup.names.xy_safeIdx(index);
-    _separatedLine.hidden = index==0;
-    
-    NSMutableArray <id <XYChartItem>>*array = @[].mutableCopy;
-    [_chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        id <XYChartItem>item = obj.xy_safeIdx(index);
-        [array addObject:item];
-        
+    [_chartItems enumerateObjectsUsingBlock:^(id<XYChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CALayer *circle = [CALayer layer];
         circle.backgroundColor = [UIColor whiteColor].CGColor;
-        circle.frame = CGRectMake(0, 0, XYChartLineWidth*4, XYChartLineWidth*4);
         circle.cornerRadius = XYChartLineWidth*2;
-        circle.borderColor = item.color.CGColor;
+        circle.borderColor = obj.color.CGColor;
         circle.borderWidth = XYChartLineWidth;
         [self.layer addSublayer:circle];
-        
         [self.circles addObject:circle];
     }];
-    _chartItems = array;
+    [self setNeedsLayout];
 }
 
 - (BOOL)canBecomeFirstResponder
@@ -105,7 +98,7 @@
         if (xy_width(obj)<=30) {
             rect = CGRectInset(rect, xy_width(obj)-30, xy_width(obj)-30);
         }
-        if (CGRectContainsPoint(rect, touchpoint) && item.name.length>0) {
+        if (CGRectContainsPoint(rect, touchpoint) && item.showName.length>0) {
             [inTouchItems addObject:item];
             [inTouchCircles addObject:obj];
         }
@@ -116,7 +109,7 @@
         UIMenuController *menu = [UIMenuController sharedMenuController];
         NSMutableArray *menus = @[].mutableCopy;
         [inTouchItems enumerateObjectsUsingBlock:^(id<XYChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:obj.name action:@selector(showItemName:)];
+            UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:obj.showName action:@selector(showItemName:)];
             [menus addObject:item];
         }];
         menu.menuItems = menus;

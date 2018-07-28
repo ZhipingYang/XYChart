@@ -7,6 +7,7 @@
 //
 
 
+
 #import "XYChart.h"
 #import "XYLineChart.h"
 #import "XYBarChart.h"
@@ -20,31 +21,32 @@
 
 @property (nonatomic, strong) UIView <XYChartContainer> *chartContainer;
 
+@property (nonatomic) XYChartType chartType;
+
 @property (nonatomic, strong) NSMutableArray <UILabel *>* sectionLabels;
 
 @end
 
 @implementation XYChart
 
-- (id)initWithFrame:(CGRect)frame chartGroup:(id<XYChartDataSource>)chartGroup
+- (id)initWithFrame:(CGRect)frame chartType:(XYChartType)chartType
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.sectionLabels = @[].mutableCopy;
         _horizonLines = @[].mutableCopy;
-        [self setUpChart];
-        // 初始化
-        self.chartGroup = _chartGroup;
+        _chartType = chartType;
+        [self setUpChartElements];
     }
     return self;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    return [self initWithFrame:frame chartGroup:nil];
+    return [self initWithFrame:frame chartType:XYChartTypeLine];
 }
 
-- (void)setUpChart
+- (void)setUpChartElements
 {
     if (!_leftSeparatedLine) {
         _leftSeparatedLine = [CALayer layer];
@@ -58,6 +60,13 @@
         _rightSeparatedLine.zPosition = -1;
         [self.layer addSublayer:_rightSeparatedLine];
     }
+    
+    if (_chartType == XYChartTypeLine) {
+        _chartContainer = [[XYLineChart alloc] initWithChartView:self];
+    } else if (_chartType == XYChartTypeBar) {
+        _chartContainer = [[XYBarChart alloc] initWithChartView:self];
+    }
+    [self addSubview:_chartContainer];
 }
 
 - (void)layoutSubviews
@@ -77,63 +86,41 @@
     [self justLinesLayout];
 }
 
-- (void)setChartGroup:(id<XYChartDataSource>)chartGroup
+- (void)setDataSource:(id<XYChartDataSource>)dataSource
 {
-    [self setChartGroup:chartGroup animation:_chartGroup ? NO : YES];
+    [self setDataSource:dataSource animation:_dataSource ? NO : YES];
 }
 
-- (void)setChartGroup:(id<XYChartDataSource>)chartGroup animation:(BOOL)animation
+- (void)setDelegate:(id<XYChartDelegate>)delegate
 {
-    _chartGroup = chartGroup;
-    
-    [_sectionLabels makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [_sectionLabels removeAllObjects];
-    
-    // 图表类型都改变了
-    if (_chartContainer && _chartGroup.chartStyle != _chartContainer.chartGroup.chartStyle) {
-        [_chartContainer removeFromSuperview];
-        _chartContainer = nil;
-    }
+    _delegate = delegate;
+    _chartContainer.delegate = delegate;
+}
+
+- (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation
+{
+    _dataSource = dataSource;
     
     // 容器
-    const CGSize size = self.bounds.size;
-    if (_chartGroup.chartStyle == XYChartStyleLine && !_chartContainer) {
-        _chartContainer = [[XYLineChart alloc] initWithFrame:CGRectMake(XYChartSectionLabelWidth, 0, size.width-XYChartSectionLabelWidth, size.height)];
-    } else if (_chartGroup.chartStyle == XYChartStyleBar && !_chartContainer) {
-        _chartContainer = [[XYBarChart alloc] initWithFrame:CGRectMake(XYChartSectionLabelWidth, 0, size.width-XYChartSectionLabelWidth, size.height)];
-    }
-    [self addSubview:_chartContainer];
-    [_chartContainer setChartGroup:_chartGroup animation:NO];
+    _chartContainer.frame = CGRectMake(XYChartSectionLabelWidth, 0, xy_width(self)-XYChartSectionLabelWidth, xy_height(self));
+    [_chartContainer setDataSource:dataSource animation:animation];
     
-    for (NSUInteger i=0; i<_chartGroup.numberOfSections+1; i++) {
-        UILabel *label = [[UILabel alloc] init];
-        label.textAlignment = NSTextAlignmentRight;
-        CGFloat sectionValue = (chartGroup.maxValue-chartGroup.minValue)/(CGFloat)chartGroup.numberOfSections;
-        CGFloat value = chartGroup.maxValue - sectionValue*i;
-        if (_chartGroup.configYLabelBlock) {
-            label.attributedText = _chartGroup.configYLabelBlock(value);
-        } else {
-            label.font = [UIFont systemFontOfSize:11];
-            label.textColor = [UIColor lightGrayColor];
-            label.text = [NSString stringWithFormat:@"%.f",chartGroup.maxValue - sectionValue*i];
-        }
-        [self addSubview:label];
-        [_sectionLabels addObject:label];
-    }
-    [self updateHorizonLines];
+    [self resetSectionLabels];
+    [self resetHorizonLines];
     [self setNeedsLayout];
 }
 
 - (void)reloadData:(BOOL)animation
 {
-    [self setChartGroup:_chartGroup animation:YES];
+    [self setDataSource:_dataSource animation:animation];
 }
 
 - (void)justLinesLayout
 {
     const CGFloat pixel = 1/[UIScreen mainScreen].scale;
     const CGSize size = self.bounds.size;
-    CGFloat count = _chartGroup.numberOfSections>0 ? _chartGroup.numberOfSections : 1;
+    const NSUInteger levels = [_dataSource numberOfLevelInChart:self];
+    CGFloat count = levels>0 ? levels : 1;
     const CGFloat sectionHeight = (size.height-XYChartRowLabelHeight)/count;
     _leftSeparatedLine.frame = CGRectMake(XYChartSectionLabelWidth, 0, pixel, size.height-XYChartRowLabelHeight);
     _rightSeparatedLine.frame = CGRectMake(size.width-pixel, 0, pixel, size.height-XYChartRowLabelHeight);
@@ -142,12 +129,38 @@
     }];
 }
 
-- (void)updateHorizonLines
+- (void)resetSectionLabels
+{
+    [_sectionLabels makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [_sectionLabels removeAllObjects];
+    
+    const NSUInteger levels = [_dataSource numberOfLevelInChart:self];
+    const XYRange range = [_dataSource visibleRangeInChart:self];
+    const CGFloat sectionValue = (range.max-range.min)/(CGFloat)levels;
+    
+    for (NSUInteger i=0; i<levels+1; i++) {
+        UILabel *label = [[UILabel alloc] init];
+        label.textAlignment = NSTextAlignmentRight;
+        CGFloat value = range.max - sectionValue*i;
+        
+        if ([(NSObject<XYChartDataSource> *)_dataSource respondsToSelector:@selector(chart:titleOfSectionAtValue:)]) {
+            label.attributedText = [_dataSource chart:self titleOfSectionAtValue:value];
+        } else {
+            label.font = [UIFont systemFontOfSize:11];
+            label.textColor = [UIColor lightGrayColor];
+            label.text = [NSString stringWithFormat:@"%.f",range.max - sectionValue*i];
+        }
+        [self addSubview:label];
+        [_sectionLabels addObject:label];
+    }
+}
+
+- (void)resetHorizonLines
 {
     [_horizonLines makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     [_horizonLines removeAllObjects];
     
-    for (int i=0; i<_chartGroup.numberOfSections+1; i++) {
+    for (int i=0; i<[_dataSource numberOfLevelInChart:self]+1; i++) {
         CALayer *hori = [CALayer layer];
         hori.backgroundColor = [UIColor xy_separatedColor].CGColor;
         hori.zPosition = -1;

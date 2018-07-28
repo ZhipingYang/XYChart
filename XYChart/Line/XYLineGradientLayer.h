@@ -14,6 +14,6 @@
 @property (nonatomic, readonly) id <XYChartItem>pre;
 @property (nonatomic, readonly) id <XYChartItem>next;
 
-+ (instancetype)layerWithPre:(id<XYChartItem>)pre next:(id<XYChartItem>)next;
++ (instancetype)layerWithPre:(id<XYChartItem>)pre next:(id<XYChartItem>)next range:(XYRange)range;
 
 @end

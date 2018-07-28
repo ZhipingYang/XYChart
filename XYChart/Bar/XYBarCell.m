@@ -11,16 +11,14 @@
 
 @interface XYBarCell()
 
-@property (nonatomic, strong) id<XYChartDataSource> chartGroup;
+@property (nonatomic, weak) id<XYChartDataSource> dataSource;
+@property (nonatomic, weak) XYChart *chartView;
 
 @property (nonatomic, strong) NSArray <id<XYChartItem>>*barsDataArray;
 
 @end
 
 @implementation XYBarCell
-{
-    
-}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -55,28 +53,33 @@
     }];
 }
 
-- (void)setChartGroup:(id<XYChartDataSource>)chartGroup index:(NSUInteger)index
+- (void)setDataSource:(id<XYChartDataSource> _Nonnull)dataSource index:(NSUInteger)index chart:(XYChart *)chart
 {
-    _chartGroup = chartGroup;
-    self.nameLabel.attributedText = _chartGroup.names.xy_safeIdx(index);
+    _dataSource = dataSource;
+    _chartView = chart;
+    
+    self.nameLabel.attributedText = [_dataSource chart:chart titleOfRowAtIndex:index];
     
     NSMutableArray <id<XYChartItem>>*mArr = @[].mutableCopy;
-    [chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [mArr addObject:obj.xy_safeIdx(index)];
-    }];
+    for (int section=0; section<[_dataSource numberOfSectionsInChart:chart]; section++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:section];
+        id<XYChartItem> item = [_dataSource chart:_chartView itemOfIndex:indexPath];
+        if (item) {
+            [mArr addObject:item];
+        }
+    }
     _barsDataArray = [NSArray arrayWithArray:mArr];
     [self reloadBars];
+
 }
 
 - (void)reloadBars
 {
     const CGFloat count = _barsDataArray.count;
-    const CGSize size = self.barContainerView.bounds.size;
-
     [_barContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     [_barsDataArray enumerateObjectsUsingBlock:^(id<XYChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        XYBarView *bar = [[XYBarView alloc] initWithFrame:CGRectMake((size.width/count)*idx, 0, size.width/count, size.height)];
+        XYBarView *bar = [[XYBarView alloc] initWithFrame:CGRectMake((xy_width(self.barContainerView)/count)*idx, 0, xy_width(self.barContainerView)/count, xy_height(self.barContainerView))];
         [self.barContainerView addSubview:bar];
         bar.chartItem = obj;
     }];

@@ -13,27 +13,26 @@
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;
 @property (nonatomic, strong) id <XYChartItem>pre;
 @property (nonatomic, strong) id <XYChartItem>next;
+@property (nonatomic) XYRange range;
 
 @end
 
 @implementation XYLineGradientLayer
 
-+ (instancetype)layerWithPre:(id<XYChartItem>)pre next:(id<XYChartItem>)next
++ (instancetype)layerWithPre:(id<XYChartItem>)pre next:(id<XYChartItem>)next range:(XYRange)range
 {
-    CGFloat startY = pre.percent > next.percent ? 0:1;
-    CGFloat endY = pre.percent > next.percent ? 1:0;
+    CGFloat startY = pre.value.floatValue > next.value.floatValue ? 0:1;
+    CGFloat endY = pre.value.floatValue > next.value.floatValue ? 1:0;
 
     XYLineGradientLayer *gradient = [super layer];
     gradient.pre = pre;
     gradient.next = next;
+    gradient.range = range;
     gradient.colors = @[(id)pre.color.CGColor, (id)next.color.CGColor];
     gradient.startPoint = CGPointMake(0, startY);
     gradient.endPoint = CGPointMake(1, endY);
     
-//    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-//    shapeLayer.lineWidth = XYChartLineWidth;
-//    gradient.mask = shapeLayer;
-//    gradient.shapeLayer = shapeLayer;
+    gradient.hidden = !pre || !next;
     
     return gradient;
 }
@@ -47,8 +46,8 @@
     CGFloat bottomY = (xy_height(self)-XYChartLineWidth*2);
     
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, 0, _pre.percent>_next.percent ? topY : bottomY);
-    CGPathAddLineToPoint(path, NULL, xy_width(self), _pre.percent>_next.percent ? bottomY : topY);
+    CGPathMoveToPoint(path, NULL, 0, _pre.value.floatValue>_next.value.floatValue ? topY : bottomY);
+    CGPathAddLineToPoint(path, NULL, xy_width(self), _pre.value.floatValue>_next.value.floatValue ? bottomY : topY);
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.frame = CGRectMake(0, 0, xy_width(self), xy_height(self));

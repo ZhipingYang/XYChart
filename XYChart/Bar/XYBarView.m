@@ -40,7 +40,7 @@
 {
     const CGSize selfSize = self.bounds.size;
     
-    _line.frame = CGRectMake(0, selfSize.height*(1-_chartItem.percent), selfSize.width, selfSize.height * _chartItem.percent);
+//    _line.frame = CGRectMake(0, selfSize.height*(1-_chartItem.percent), selfSize.width, selfSize.height * _chartItem.percent);
 }
 
 - (void)setChartItem:(id<XYChartItem>)chartItem
@@ -50,7 +50,7 @@
 
 - (void)setChartItem:(id<XYChartItem> _Nonnull)chartItem animation:(BOOL)animation
 {
-    if (_chartItem.percent == chartItem.percent) { return; }
+//    if (_chartItem.percent == chartItem.percent) { return; }
     _chartItem = chartItem;
     _line.backgroundColor = chartItem.color.CGColor;
     [self updateLineFrame];
@@ -77,15 +77,15 @@
 
 - (void)handleTap:(UIGestureRecognizer*)recognizer
 {
-    if (_chartItem.name.length > 0) {
-        [self becomeFirstResponder];
-        UIMenuController *menu = [UIMenuController sharedMenuController];
-        UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:_chartItem.name action:@selector(showItemName:)];
-        menu.menuItems = @[item];
-        
-        [menu setTargetRect:CGRectMake(xy_left(self), xy_top(self)+xy_height(self)*(1-_chartItem.percent), xy_width(self), xy_height(self)*_chartItem.percent) inView:self.superview];
-        [menu setMenuVisible:YES animated:YES];
-    }
+//    if (_chartItem.name.length > 0) {
+//        [self becomeFirstResponder];
+//        UIMenuController *menu = [UIMenuController sharedMenuController];
+//        UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:_chartItem.name action:@selector(showItemName:)];
+//        menu.menuItems = @[item];
+//        
+//        [menu setTargetRect:CGRectMake(xy_left(self), xy_top(self)+xy_height(self)*(1-_chartItem.percent), xy_width(self), xy_height(self)*_chartItem.percent) inView:self.superview];
+//        [menu setMenuVisible:YES animated:YES];
+//    }
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
