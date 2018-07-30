@@ -52,7 +52,7 @@
     
     for (int sectionIdx=0; sectionIdx<section; sectionIdx++) {
         NSMutableArray <XYLineGradientLayer *>*mArr = @[].mutableCopy;
-        for (int rowIdx=0; rowIdx<row-1 && rowIdx>1; rowIdx++) {
+        for (int rowIdx=0; rowIdx<row-1; rowIdx++) {
             NSIndexPath *preIndex = [NSIndexPath indexPathForRow:rowIdx inSection:sectionIdx];
             NSIndexPath *nextIndex = [NSIndexPath indexPathForRow:rowIdx+1 inSection:sectionIdx];
             id<XYChartItem> preItem = [_dataSource chart:chartView itemOfIndex:preIndex];

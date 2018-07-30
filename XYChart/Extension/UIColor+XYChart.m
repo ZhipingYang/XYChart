@@ -60,10 +60,7 @@
 
 + (UIColor *)xy_separatedColor
 {
-    return [UIColor colorWithRed:200/255.0
-                           green:200/255.0
-                            blue:200/255.0
-                           alpha:1];
+    return [UIColor colorWithWhite:0 alpha:0.1];
 }
 + (UIColor *)xy_rainBow:(NSInteger)index
 {

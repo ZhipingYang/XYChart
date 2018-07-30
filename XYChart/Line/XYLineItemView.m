@@ -52,23 +52,25 @@
     _separatedLine.frame = CGRectMake(0, 0, 1/[UIScreen mainScreen].scale, xy_height(self)-XYChartRowLabelHeight);
     _nameLabel.frame = CGRectMake(0, xy_height(self)-XYChartRowLabelHeight, xy_width(self), XYChartRowLabelHeight);
     
+    const CGFloat circleLength = XYChartLineWidth*4;
     __weak typeof(self) weakSelf = self;
     [_circles enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat value = weakSelf.chartItems.xy_safeIdx(idx).value.floatValue;
         CGFloat percent = (value - weakSelf.range.min)/(weakSelf.range.max - weakSelf.range.min);
-        obj.frame = CGRectMake((xy_width(self)-xy_width(obj))/2.0,
-                               (xy_height(self)-XYChartRowLabelHeight)*(1-percent) - xy_height(obj)/2.0,
-                               xy_width(obj), xy_height(obj));
+        obj.frame = CGRectMake((xy_width(self)-circleLength)/2.0,
+                               (xy_height(self)-XYChartRowLabelHeight)*(1-percent) - circleLength/2.0,
+                               circleLength, circleLength);
     }];
 }
 
-- (void)setItems:(NSArray<id<XYChartItem>> *)items range:(XYRange)range
+- (void)setItems:(NSArray <id<XYChartItem>>*)items name:(NSAttributedString *)name range:(XYRange)range
 {
     [_circles makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     [_circles removeAllObjects];
 
     _chartItems = items;
     _range = range;
+    _nameLabel.attributedText = name;
     
     [_chartItems enumerateObjectsUsingBlock:^(id<XYChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CALayer *circle = [CALayer layer];

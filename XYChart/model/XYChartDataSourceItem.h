@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XYChartDataSource : NSObject<XYChartDataSource>
+@interface XYChartDataSourceItem : NSObject<XYChartDataSource>
 
 /**
  default the min & max of items value

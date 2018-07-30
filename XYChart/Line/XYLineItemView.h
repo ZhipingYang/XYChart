@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XYLineItemView : UIView
 
-- (void)setItems:(NSArray <id<XYChartItem>>*)items range:(XYRange)range;
+- (void)setItems:(NSArray <id<XYChartItem>>*)items name:(NSAttributedString *)name range:(XYRange)range;
 
 @end
 

@@ -6,10 +6,10 @@
 //  Copyright © 2018 uyiuyao. All rights reserved.
 //
 
-#import "XYChartDataSource.h"
+#import "XYChartDataSourceItem.h"
 #import "XYChartItem.h"
 
-@interface XYChartDataSource()
+@interface XYChartDataSourceItem()
 {
     NSAttributedString *(^_configYLabelBlock)(CGFloat value);
 }
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation XYChartDataSource
+@implementation XYChartDataSourceItem
 
 - (instancetype)initWithDataList:(NSArray <NSArray <id<XYChartItem>>*> *)dataList
 {

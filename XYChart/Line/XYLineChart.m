@@ -44,7 +44,7 @@
     [super layoutSubviews];
     
     const BOOL isAutoSizing = [_dataSource autoSizingRowInChart:_chartView];
-    const BOOL rowWidth = isAutoSizing ? xy_width(self)/self.itemViews.count
+    const CGFloat rowWidth = isAutoSizing ? xy_width(self)/self.itemViews.count
                                        : [_dataSource rowWidthOfChart:_chartView];
     
     _scrolView.frame = self.bounds;
@@ -55,6 +55,8 @@
         obj.frame = CGRectMake(idx*rowWidth, 0, rowWidth, xy_height(self));
     }];
 }
+
+#pragma mark - XYChartContainer
 
 - (void)setDataSource:(NSObject<XYChartDataSource> *)dataSource
 {
@@ -72,7 +74,7 @@
     
     const NSUInteger rows = [_dataSource numberOfRowsInChart:_chartView];
     const XYRange range = [_dataSource visibleRangeInChart:_chartView];
-    
+
     for (int index=0; index<rows; index++) {
         XYLineItemView *itemView = [[XYLineItemView alloc] init];
         
@@ -85,8 +87,8 @@
                 [mArr addObject:item];
             }
         }
-
-        [itemView setItems:mArr range:range];
+        NSAttributedString *name = [_dataSource chart:_chartView titleOfRowAtIndex:index];
+        [itemView setItems:mArr name:name range:range];
         [self.scrolView addSubview:itemView];
         [_itemViews addObject:itemView];
     }
@@ -95,7 +97,7 @@
 
 - (void)reloadData:(BOOL)animation
 {
-    
+    [self setDataSource:_dataSource animation:animation];
 }
 
 @end

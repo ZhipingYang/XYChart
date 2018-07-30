@@ -6,9 +6,9 @@
 //  Copyright © 2018 Daniel. All rights reserved.
 //
 
-#import "XYChartDataSource.h"
+#import "XYChartDataSourceItem.h"
 
-@interface ChartGroup : XYChartDataSource
+@interface ChartGroup : XYChartDataSourceItem
 
 @property (nonatomic, readonly) XYChartType type;
 

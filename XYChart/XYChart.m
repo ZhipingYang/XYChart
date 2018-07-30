@@ -41,6 +41,11 @@
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    return [self initWithFrame:CGRectZero chartType:XYChartTypeLine];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     return [self initWithFrame:frame chartType:XYChartTypeLine];
@@ -86,34 +91,7 @@
     [self justLinesLayout];
 }
 
-- (void)setDataSource:(id<XYChartDataSource>)dataSource
-{
-    [self setDataSource:dataSource animation:_dataSource ? NO : YES];
-}
-
-- (void)setDelegate:(id<XYChartDelegate>)delegate
-{
-    _delegate = delegate;
-    _chartContainer.delegate = delegate;
-}
-
-- (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation
-{
-    _dataSource = dataSource;
-    
-    // 容器
-    _chartContainer.frame = CGRectMake(XYChartSectionLabelWidth, 0, xy_width(self)-XYChartSectionLabelWidth, xy_height(self));
-    [_chartContainer setDataSource:dataSource animation:animation];
-    
-    [self resetSectionLabels];
-    [self resetHorizonLines];
-    [self setNeedsLayout];
-}
-
-- (void)reloadData:(BOOL)animation
-{
-    [self setDataSource:_dataSource animation:animation];
-}
+#pragma mark - private
 
 - (void)justLinesLayout
 {
@@ -168,6 +146,42 @@
         [_horizonLines addObject:hori];
     }
     [self justLinesLayout];
+}
+
+#pragma mark - XYChartContainer
+
+- (void)setDataSource:(id<XYChartDataSource>)dataSource
+{
+    [self setDataSource:dataSource animation:_dataSource ? NO : YES];
+}
+
+- (void)setDelegate:(id<XYChartDelegate>)delegate
+{
+    _delegate = delegate;
+    _chartContainer.delegate = delegate;
+}
+
+- (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation
+{
+    _dataSource = dataSource;
+    
+    // 容器
+    _chartContainer.frame = CGRectMake(XYChartSectionLabelWidth, 0, xy_width(self)-XYChartSectionLabelWidth, xy_height(self));
+    [_chartContainer setDataSource:dataSource animation:animation];
+    
+    [self resetSectionLabels];
+    [self resetHorizonLines];
+    [self setNeedsLayout];
+}
+
+- (XYChart *)chartView
+{
+    return nil;
+}
+
+- (void)reloadData:(BOOL)animation
+{
+    [self setDataSource:_dataSource animation:animation];
 }
 
 @end

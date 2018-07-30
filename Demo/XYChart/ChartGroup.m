@@ -47,7 +47,7 @@
             item.value = @(obj.integerValue);
             item.color = [UIColor xy_random];
             item.duration = 0.3;
-            item.name = obj;
+            item.showName = obj;
             return item;
         }];
     }];
