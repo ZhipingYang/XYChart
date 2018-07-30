@@ -25,9 +25,9 @@
                    [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:1 row:12],
                    [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:2 row:5],
                    [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:3 row:5],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:4 row:6],
+                   [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:4 row:12],
                    [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:2 row:15 width:60],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:4 row:16 width:80],
+                   [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:4 row:56 width:80],
                    ];
     [self.tableView reloadData];
 }

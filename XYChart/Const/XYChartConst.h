@@ -40,12 +40,14 @@ struct xy_range {
 };
 typedef struct xy_range XYRange;
 CG_INLINE XYRange XYRangeMake(CGFloat min, CGFloat max);
-
-CG_INLINE XYRange
-XYRangeMake(CGFloat min, CGFloat max){
+CG_INLINE XYRange XYRangeMake(CGFloat min, CGFloat max){
     XYRange r;
     r.min = min;
     r.max = max;
     return r;
 }
+//CG_EXTERN bool XYRangeEqual(XYRange r1, XYRange r2) {
+//    return r1.min == r2.min && r1.max == r2.max;
+//}
+
 static const XYRange XYRangeZero = {0,0};

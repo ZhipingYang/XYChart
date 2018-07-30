@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIView *barContainerView;
 @property (nonatomic, strong) UILabel *nameLabel;
 
-- (void)setDataSource:(id<XYChartDataSource> _Nonnull)dataSource index:(NSUInteger)index chart:(XYChart *)chart;
+- (void)setDataSource:(id<XYChartDataSource> _Nonnull)dataSource row:(NSUInteger)row chart:(XYChart *)chart;
 
 @end
 

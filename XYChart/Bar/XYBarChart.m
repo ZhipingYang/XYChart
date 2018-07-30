@@ -52,6 +52,8 @@
     [_collectionView reloadData];
 }
 
+#pragma mark - XYChartContainer
+
 - (void)setDataSource:(id<XYChartDataSource>)dataSource
 {
     [self setDataSource:dataSource animation:_dataSource ? NO : YES];
@@ -68,7 +70,6 @@
     [self setDataSource:_dataSource animation:animation];
 }
 
-
 #pragma mark - UICollectionViewDelegate & UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -79,7 +80,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XYBarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XYBarCell class]) forIndexPath:indexPath];
-    [cell setDataSource:_dataSource index:indexPath.row chart:_chartView];
+    [cell setDataSource:_dataSource row:indexPath.row chart:_chartView];
     return cell;
 }
 

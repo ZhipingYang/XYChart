@@ -37,9 +37,8 @@
 {
     [super layoutSubviews];
     
-    const CGSize size = self.bounds.size;
-    _barContainerView.frame = CGRectMake(4, 0, self.bounds.size.width-8, self.bounds.size.height-XYChartRowLabelHeight);
-    _nameLabel.frame = CGRectMake(0, size.height-XYChartRowLabelHeight, size.width, XYChartRowLabelHeight);
+    _barContainerView.frame = CGRectMake(4, 0, xy_width(self.contentView)-8, xy_height(self)-XYChartRowLabelHeight);
+    _nameLabel.frame = CGRectMake(0, xy_height(self)-XYChartRowLabelHeight, xy_width(self), XYChartRowLabelHeight);
     [self updateBarFrames];
 }
 
@@ -53,24 +52,23 @@
     }];
 }
 
-- (void)setDataSource:(id<XYChartDataSource> _Nonnull)dataSource index:(NSUInteger)index chart:(XYChart *)chart
+- (void)setDataSource:(id<XYChartDataSource> _Nonnull)dataSource row:(NSUInteger)row chart:(XYChart *)chart
 {
     _dataSource = dataSource;
     _chartView = chart;
     
-    self.nameLabel.attributedText = [_dataSource chart:chart titleOfRowAtIndex:index];
+    self.nameLabel.attributedText = [_dataSource chart:chart titleOfRowAtIndex:row];
     
     NSMutableArray <id<XYChartItem>>*mArr = @[].mutableCopy;
-    for (int section=0; section<[_dataSource numberOfSectionsInChart:chart]; section++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:section];
+    
+    const NSUInteger sections = [_dataSource numberOfSectionsInChart:chart];
+    for (int section=0; section<sections; section++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
         id<XYChartItem> item = [_dataSource chart:_chartView itemOfIndex:indexPath];
-        if (item) {
-            [mArr addObject:item];
-        }
+        mArr.xy_safeAdd(item);
     }
     _barsDataArray = [NSArray arrayWithArray:mArr];
     [self reloadBars];
-
 }
 
 - (void)reloadBars
@@ -80,8 +78,8 @@
     
     [_barsDataArray enumerateObjectsUsingBlock:^(id<XYChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         XYBarView *bar = [[XYBarView alloc] initWithFrame:CGRectMake((xy_width(self.barContainerView)/count)*idx, 0, xy_width(self.barContainerView)/count, xy_height(self.barContainerView))];
+        [bar setChartItem:obj range:[self.dataSource visibleRangeInChart:self.chartView]];
         [self.barContainerView addSubview:bar];
-        bar.chartItem = obj;
     }];
 }
 

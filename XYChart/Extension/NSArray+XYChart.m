@@ -63,4 +63,56 @@
     return block;
 }
 
+- (NSArray * (^)(id (^)(id, NSUInteger)))xy_mapIndex
+{
+    __weak typeof(self) weakSelf = self;
+    NSArray * (^returnBlock)(id (^)(id, NSUInteger)) = ^(id (^itemConfigBlock)(id, NSUInteger)) {
+        NSMutableArray *returnArray = @[].mutableCopy;
+        for (NSUInteger idx=0; idx<weakSelf.count; idx++) {
+            id originItem = self[idx];
+            id configItem = nil;
+            if (itemConfigBlock) {
+                configItem = itemConfigBlock(originItem, idx);
+            }
+            returnArray.xy_safeAdd(configItem);
+        }
+        return [NSArray arrayWithArray:returnArray];
+    };
+    return returnBlock;
+}
+
+- (NSArray * (^)(id (^)(id)))xy_map
+{
+    __weak typeof(self) weakSelf = self;
+    NSArray * (^returnBlock)(id (^)(id)) = ^(id (^itemConfigBlock)(id)) {
+        NSMutableArray *returnArray = @[].mutableCopy;
+        for (NSUInteger idx=0; idx<weakSelf.count; idx++) {
+            id originItem = self[idx];
+            id configItem = nil;
+            if (itemConfigBlock) {
+                configItem = itemConfigBlock(originItem);
+            }
+            returnArray.xy_safeAdd(configItem);
+        }
+        return [NSArray arrayWithArray:returnArray];
+    };
+    return returnBlock;
+}
+
+@end
+
+
+@implementation NSMutableArray (XYChart)
+
+- (void (^)(id _Nonnull))xy_safeAdd
+{
+    __weak typeof(self) weakSelf = self;
+    void (^block)(id obj) = ^(id obj) {
+        if (obj) {
+            [weakSelf addObject:obj];
+        }
+    };
+    return block;
+}
+
 @end
