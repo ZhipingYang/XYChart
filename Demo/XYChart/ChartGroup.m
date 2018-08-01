@@ -14,70 +14,59 @@
     NSArray<NSArray<id<XYChartItem>> *> * _dataList;
     NSArray<NSAttributedString *> *_names;
 }
-@property (nonatomic) NSUInteger section;
-@property (nonatomic) NSUInteger row;
 
 @end
 
 @implementation ChartGroup
 
-- (instancetype)initWithStyle:(XYChartStyle)style section:(NSUInteger)section row:(NSUInteger)row
+- (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row
 {
-    self = [self initWithStyle:style];
+    self = [self initWithDataList:[ChartGroup getDataListWithSection:section row:row]];
     if (self) {
-        _section = section;
-        _row = row;
+        _type = type;
+        self.autoSizingRowWidth = YES;
     }
     return self;
 }
-- (instancetype)initWithStyle:(XYChartStyle)style section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width
+- (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width
 {
-    self = [self initWithStyle:style];
+    self = [self initWithDataList:[ChartGroup getDataListWithSection:section row:row]];
     if (self) {
-        _section = section;
-        _row = row;
-        self.xSectionWidth = width;
-        self.autoSizeX = NO;
+        _type = type;
+        self.widthOfRow = width;
+        self.autoSizingRowWidth = NO;
     }
     return self;
 }
 
-- (NSArray<NSArray<id<XYChartItem>> *> *)dataList
++ (NSArray<NSArray<id<XYChartItem>> *> *)getDataListWithSection:(NSUInteger)section row:(NSUInteger)row
 {
-    if (!_dataList) {
-        _dataList = [[self randomSection:_section row:_row] xy_map:^id(NSArray<NSString *> *obj1, NSUInteger idx1) {
-            return [obj1 xy_map:^id(NSString *obj, NSUInteger idx) {
-                XYChartItem *item = [[XYChartItem alloc] init];
-                item.percent = (obj.floatValue-self.minValue)/(self.maxValue-self.minValue);
-                if (self.section==1 && self.row>=7) {
-                    item.color = [UIColor xy_rainBow:idx];
-                } else {
-                    item.color = [UIColor xy_random];
-                }
-                item.duration = 0.3;
-                item.name = obj;
-                return item;
-            }];
+    NSArray * dataList = [[self randomSection:section row:row] xy_map:^id(NSArray<NSString *> *obj1, NSUInteger idx1) {
+        return [obj1 xy_map:^id(NSString *obj, NSUInteger idx) {
+            XYChartItem *item = [[XYChartItem alloc] init];
+            item.value = @(obj.integerValue);
+            item.color = [UIColor xy_random];
+            item.duration = 0.3;
+            item.showName = obj;
+            return item;
         }];
-        // 更新其他
-        _names = nil;
-        [self names];
-    }
-    return _dataList;
+    }];
+    
+    return dataList;
 }
 
 #pragma mark - helper
 
-- (NSArray <NSString *>*)randomStrings:(NSUInteger)count
++ (NSArray <NSString *>*)randomStrings:(NSUInteger)count
 {
     NSMutableArray <NSString *>*mArr = @[].mutableCopy;
     for (int i=0; i<count; i++) {
-        NSInteger num = arc4random()%(NSInteger)([self maxValue]-[self minValue])*0.6;
-        [mArr addObject:@(num+[self minValue]+([self maxValue]-[self minValue])*0.2).stringValue];
+        NSInteger num = arc4random()%100;
+        [mArr addObject:@(num).stringValue];
     }
     return [NSArray arrayWithArray:mArr];
 }
-- (NSArray <NSArray<NSString *>*>*)randomSection:(NSUInteger)section row:(NSUInteger)row
++ (NSArray <NSArray<NSString *>*>*)randomSection:(NSUInteger)section row:(NSUInteger)row
 {
     NSMutableArray <NSArray<NSString *>*>*mArr = @[].mutableCopy;
     for (int i=0; i<section; i++) {
@@ -87,3 +76,4 @@
 }
 
 @end
+

@@ -11,16 +11,14 @@
 
 @interface XYBarCell()
 
-@property (nonatomic, strong) id<XYChartGroup> chartGroup;
+@property (nonatomic, weak) id<XYChartDataSource> dataSource;
+@property (nonatomic, weak) XYChart *chartView;
 
 @property (nonatomic, strong) NSArray <id<XYChartItem>>*barsDataArray;
 
 @end
 
 @implementation XYBarCell
-{
-    
-}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -39,9 +37,8 @@
 {
     [super layoutSubviews];
     
-    const CGSize size = self.bounds.size;
-    _barContainerView.frame = CGRectMake(4, 0, self.bounds.size.width-8, self.bounds.size.height-XYChartRowLabelHeight);
-    _nameLabel.frame = CGRectMake(0, size.height-XYChartRowLabelHeight, size.width, XYChartRowLabelHeight);
+    _barContainerView.frame = CGRectMake(4, 0, xy_width(self.contentView)-8, xy_height(self)-XYChartRowLabelHeight);
+    _nameLabel.frame = CGRectMake(0, xy_height(self)-XYChartRowLabelHeight, xy_width(self), XYChartRowLabelHeight);
     [self updateBarFrames];
 }
 
@@ -55,15 +52,21 @@
     }];
 }
 
-- (void)setChartGroup:(id<XYChartGroup>)chartGroup index:(NSUInteger)index
+- (void)setDataSource:(id<XYChartDataSource> _Nonnull)dataSource row:(NSUInteger)row chart:(XYChart *)chart
 {
-    _chartGroup = chartGroup;
-    self.nameLabel.attributedText = _chartGroup.names.xy_safeIdx(index);
+    _dataSource = dataSource;
+    _chartView = chart;
+    
+    self.nameLabel.attributedText = [_dataSource chart:chart titleOfRowAtIndex:row];
     
     NSMutableArray <id<XYChartItem>>*mArr = @[].mutableCopy;
-    [chartGroup.dataList enumerateObjectsUsingBlock:^(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [mArr addObject:obj.xy_safeIdx(index)];
-    }];
+    
+    const NSUInteger sections = [_dataSource numberOfSectionsInChart:chart];
+    for (int section=0; section<sections; section++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+        id<XYChartItem> item = [_dataSource chart:_chartView itemOfIndex:indexPath];
+        mArr.xy_safeAdd(item);
+    }
     _barsDataArray = [NSArray arrayWithArray:mArr];
     [self reloadBars];
 }
@@ -71,14 +74,12 @@
 - (void)reloadBars
 {
     const CGFloat count = _barsDataArray.count;
-    const CGSize size = self.barContainerView.bounds.size;
-
     [_barContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     [_barsDataArray enumerateObjectsUsingBlock:^(id<XYChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        XYBarView *bar = [[XYBarView alloc] initWithFrame:CGRectMake((size.width/count)*idx, 0, size.width/count, size.height)];
+        XYBarView *bar = [[XYBarView alloc] initWithFrame:CGRectMake((xy_width(self.barContainerView)/count)*idx, 0, xy_width(self.barContainerView)/count, xy_height(self.barContainerView))];
+        [bar setChartItem:obj range:[self.dataSource visibleRangeInChart:self.chartView]];
         [self.barContainerView addSubview:bar];
-        bar.chartItem = obj;
     }];
 }
 

@@ -7,15 +7,20 @@
 //
 
 
-#import "XYChartProtocol.h"
+#include "XYChartProtocol.h"
+
+@import UIKit;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XYChart : UIView<XYChartContainer>
 
-@property (nonatomic, strong, nullable) id<XYChartGroup> chartGroup;
+@property (nonatomic, weak, nullable) id<XYChartDataSource> dataSource;
+@property (nonatomic, weak, nullable) id<XYChartDelegate> delegate;
 
-- (instancetype)initWithFrame:(CGRect)frame chartGroup:(nullable id<XYChartGroup>)chartGroup;
+@property (nonatomic, readonly) XYChartType chartType;
+
+- (instancetype)initWithFrame:(CGRect)frame chartType:(XYChartType)chartType NS_DESIGNATED_INITIALIZER;
 
 @end
 

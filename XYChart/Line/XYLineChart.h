@@ -11,10 +11,14 @@
 #import "XYChartProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class XYChart;
 @interface XYLineChart : UIView<XYChartContainer>
 
-@property (nonatomic, strong) id<XYChartGroup>chartGroup;
+@property (nonatomic, weak, readonly) XYChart *chartView;
+@property (nonatomic, weak, nullable) id<XYChartDataSource> dataSource;
+@property (nonatomic, weak, nullable) id<XYChartDelegate> delegate;
+
+- (instancetype)initWithChartView:(XYChart *)chartView;
 
 @end
 

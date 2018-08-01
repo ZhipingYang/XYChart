@@ -8,8 +8,9 @@
 
 #import "XYChartProtocol.h"
 
+@class XYChart;
 @interface XYLinesView : UIView
 
-@property (nonatomic, strong) id<XYChartGroup> chartGroup;
+- (void)setDataSource:(id<XYChartDataSource>)dataSource chartView:(XYChart *)chartView;
 
 @end

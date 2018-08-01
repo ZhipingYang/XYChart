@@ -22,10 +22,11 @@
 
 @implementation XYLineChart
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithChartView:(XYChart *)chartView
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
+        _chartView = chartView;
         _itemViews = @[].mutableCopy;
         _scrolView = [[UIScrollView alloc] initWithFrame:self.bounds];
         _scrolView.showsVerticalScrollIndicator = NO;
@@ -41,42 +42,53 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
+    const BOOL isAutoSizing = [_dataSource autoSizingRowInChart:_chartView];
+    const CGFloat rowWidth = isAutoSizing ? xy_width(self)/self.itemViews.count
+                                       : [_dataSource rowWidthOfChart:_chartView];
+    
     _scrolView.frame = self.bounds;
-    if (_chartGroup.autoSizeX) {
-        _scrolView.contentSize = _scrolView.frame.size;
-    } else {
-        _scrolView.contentSize = CGSizeMake(_chartGroup.xSectionWidth * _itemViews.count, xy_height(_scrolView));
-    }
+    _scrolView.contentSize = CGSizeMake(rowWidth * _itemViews.count, xy_height(_scrolView));
     _linesView.frame = CGRectMake(0, 0, _scrolView.contentSize.width, _scrolView.contentSize.height-XYChartRowLabelHeight);
     
     [_itemViews enumerateObjectsUsingBlock:^(XYLineItemView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (self.chartGroup.autoSizeX) {
-            CGFloat width = xy_width(self)/self.itemViews.count;
-            obj.frame = CGRectMake(idx*width, 0, width, xy_height(self));
-        } else {
-            obj.frame = CGRectMake(idx*self.chartGroup.xSectionWidth, 0, self.chartGroup.xSectionWidth, xy_height(self));
-        }
+        obj.frame = CGRectMake(idx*rowWidth, 0, rowWidth, xy_height(self));
     }];
 }
 
-- (void)setChartGroup:(id<XYChartGroup>)chartGroup
+#pragma mark - XYChartContainer
+
+- (void)setDataSource:(NSObject<XYChartDataSource> *)dataSource
 {
-    [self setChartGroup:chartGroup animation:_chartGroup ? NO : YES];
+    [self setDataSource:dataSource animation:_dataSource ? NO : YES];
 }
 
-- (void)setChartGroup:(id<XYChartGroup>)chartGroup animation:(BOOL)animation
+- (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation
 {
-    _chartGroup = chartGroup;
+    _dataSource = dataSource;
     
     [_itemViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [_itemViews removeAllObjects];
     
-    _linesView.chartGroup = chartGroup;
+    [_linesView setDataSource:_dataSource chartView:_chartView];
     
-    const NSUInteger count = _chartGroup.dataList.firstObject.count;
-    for (int i=0; i<count; i++) {
+    const NSUInteger rows = [_dataSource numberOfRowsInChart:_chartView];
+    const XYRange range = [_dataSource visibleRangeInChart:_chartView];
+
+    for (int index=0; index<rows; index++) {
         XYLineItemView *itemView = [[XYLineItemView alloc] init];
-        [itemView setChartGroup:_chartGroup index:i];
+        
+        // 收集数组点
+        NSMutableArray <id<XYChartItem>>*mArr = @[].mutableCopy;
+        for (int section=0; section<[_dataSource numberOfSectionsInChart:_chartView]; section++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:section];
+            id<XYChartItem> item = [_dataSource chart:_chartView itemOfIndex:indexPath];
+            if (item) {
+                [mArr addObject:item];
+            }
+        }
+        NSAttributedString *name = [_dataSource chart:_chartView titleOfRowAtIndex:index];
+        [itemView setItems:mArr name:name range:range];
         [self.scrolView addSubview:itemView];
         [_itemViews addObject:itemView];
     }
@@ -85,7 +97,7 @@
 
 - (void)reloadData:(BOOL)animation
 {
-    
+    [self setDataSource:_dataSource animation:animation];
 }
 
 @end

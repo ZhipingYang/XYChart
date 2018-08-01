@@ -6,12 +6,14 @@
 //  Copyright © 2018 Daniel. All rights reserved.
 //
 
-#import "XYChartGroup.h"
+#import "XYChartDataSourceItem.h"
 
-@interface ChartGroup : XYChartGroup
+@interface ChartGroup : XYChartDataSourceItem
 
-- (instancetype)initWithStyle:(XYChartStyle)style section:(NSUInteger)section row:(NSUInteger)row;
+@property (nonatomic, readonly) XYChartType type;
 
-- (instancetype)initWithStyle:(XYChartStyle)style section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width;
+- (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row;
+
+- (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width;
 
 @end

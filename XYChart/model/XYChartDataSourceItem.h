@@ -1,5 +1,5 @@
 //
-//  XYChartGroup.h
+//  XYChartDataSource.h
 //  XYChart
 //
 //  Created by Daniel on 2018/7/21.
@@ -10,32 +10,27 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XYChartGroup : NSObject<XYChartGroup>
+@interface XYChartDataSourceItem : NSObject<XYChartDataSource>
 
 /**
- default 0
+ default the min & max of items value
  */
-@property (nonatomic) CGFloat minValue;
-
-/**
- default 100
- */
-@property (nonatomic) CGFloat maxValue;
+@property (nonatomic) XYRange range;
 
 /**
  default 5
  */
-@property (nonatomic) NSUInteger ySectionNumber;
+@property (nonatomic) NSUInteger numberOfLevels;
 
 /**
  default 60
  */
-@property (nonatomic) CGFloat xSectionWidth;
+@property (nonatomic) CGFloat widthOfRow;
 
 /**
  default YES;
  */
-@property (nonatomic) BOOL autoSizeX;
+@property (nonatomic) BOOL autoSizingRowWidth;
 
 /**
  default：多条线路的item.name累加 比如：@[@[‘a’,'b'],@['c','d']] => @["a:c","b:d"]
@@ -60,14 +55,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  必须设置的
  */
-@property (nonatomic, strong) NSArray <NSArray <id<XYChartItem>>*> *dataList;
+@property (nonatomic, readonly) NSArray <NSArray <id<XYChartItem>>*> *dataList;
 
-- (instancetype)initWithStyle:(XYChartStyle)style;
-
-/**
- 默认 UUChartStyleLine
- */
-- (instancetype)init;
+- (instancetype)initWithDataList:(NSArray <NSArray <id<XYChartItem>>*> *)dataList;
 
 @end
 

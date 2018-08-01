@@ -5,186 +5,93 @@
 
 > **XYChart** is designed by Line and Bar. You can mark the range of values you want, and show the max or min values in linechart.
 
-#### Two styles for XYChart:
-
-- LineStyle
-- BarStyle
-
+<!--
 <p align="center">
 <img src="https://github.com/ZhipingYang/UUChartView/raw/master/UUChartViewTests/UUChartView.gif">
 </p>
- 
+--> 
+
+#### ChartType
+- XYChartTypeLine
+- XYChartTypeBar
+
 ## Usage
 
+说明：
+
 ```objective-c
-// in UUChart
--(id)initwithUUChartDataFrame:(CGRect)rect 
-                   withSource:(id<UUChartDataSource>)dataSource 
-                    withStyle:(UUChartStyle)style;
+@interface XYChart : UIView<XYChartContainer>
+
+@property (nonatomic, weak, nullable) id<XYChartDataSource> dataSource;
+@property (nonatomic, weak, nullable) id<XYChartDelegate> delegate;
+
+@property (nonatomic, readonly) XYChartType chartType;
+
+- (instancetype)initWithFrame:(CGRect)frame chartType:(XYChartType)chartType NS_DESIGNATED_INITIALIZER;
+
+@end
 ```
 
-### DataSource
+方法1：
 
 ```objective-c
-// required
-
-- (NSArray *)UUChart_xLableArray:(UUChart *)chart;
-
-//The target array's object's class is equal to NSArray
-- (NSArray *)UUChart_yValueArray:(UUChart *)chart;
-
-// optional
-
-// the colors for lines and bars.
-- (NSArray *)UUChart_ColorArray:(UUChart *)chart;
-
-//CGRange CGRangeMake(CGFloat max, CGFloat min);
-- (CGRange)UUChartChooseRangeInLineChart:(UUChart *)chart;
-
+_chartView = [[XYChart alloc] initWithFrame:CGRectMake(0, 0, 300, 100)    
+                                  chartType:XYChartTypeLine];
+_chartView.dataSource = self;
+_chartView.delegate = self;
+[self.view addSubview:_chartView];
 ```
 
-#### Additional options available for UUChartLineStyle
+方法2：
 
 ```objective-c
+// ChartGroup is the child of XYChartDataSourceItem
+_datasource = [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:2 row:15 width:60];
 
-//Mark the range of values with grayColor if you need
-- (CGRange)UUChartMarkRangeInLineChart:(UUChart *)chart;
-
-//You can choose horizonLine which you want to show
-- (BOOL)UUChart:(UUChart *)chart ShowHorizonLineAtIndex:(NSInteger)index;
-
-// Show the label on the max and min values with their colors.
-- (BOOL)UUChart:(UUChart *)chart ShowMaxMinAtIndex:(NSInteger)index;
-
+_chartView = [[XYChart alloc] initWithFrame:CGRectMake(0, 0, 300, 100)    
+                                  chartType:XYChartTypeLine];
+_chartView.dataSource = _datasource;
+[self.view addSubview:_chartView];
 ```
 
-> UUChart, based on kevinzhow's [PNChart](https://github.com/kevinzhow/PNChart), was created on 2014-7-24, although UUChart is now very different from PNChart.
 
-### Example
-
-```objective-c
-
-chartView = [[UUChart alloc]initwithUUChartDataFrame:CGRectMake(10, 10, [UIScreen mainScreen].bounds.size.width-20, 150)
-                                          withSource:self
-                                           withStyle:indexPath.section==1
-                                     UUChartBarStyle:UUChartLineStyle];
-[chartView showInView:self.contentView];
-
-```
-#### dataSource
+### XYChartDataSource
 
 ```objective-c
-// Horizontal Axis Label
-- (NSArray *)UUChart_xLableArray:(UUChart *)chart
-{
-    if (path.section==0) {
-        switch (path.row) {
-            case 0:
-                return [self getXTitles:5];
-            case 1:
-                return [self getXTitles:11];
-            case 2:
-                return [self getXTitles:7];
-            case 3:
-                return [self getXTitles:7];
-            default:
-                break;
-        }
-    }else{
-        switch (path.row) {
-            case 0:
-                return [self getXTitles:11];
-            case 1:
-                return [self getXTitles:7];
-            default:
-                break;
-        }
-    }
-    return [self getXTitles:20];
-}
-- (NSArray *)getXTitles:(int)num
-{
-    NSMutableArray *xTitles = [NSMutableArray array];
-    for (int i=0; i<num; i++) {
-        NSString * str = [NSString stringWithFormat:@"R-%d",i];
-        [xTitles addObject:str];
-    }
-    return xTitles;
-}	
-	
-//Creating multiple array values (note the datatype)
-- (NSArray *)UUChart_yValueArray:(UUChart *)chart
-{
-    NSArray *ary = @[@"22",@"44",@"15",@"40",@"42"];
-    NSArray *ary1 = @[@"22",@"54",@"15",@"30",@"42",@"77",@"43"];
-    NSArray *ary2 = @[@"76",@"34",@"54",@"23",@"16",@"32",@"17"];
-    NSArray *ary3 = @[@"3",@"12",@"25",@"55",@"52"];
-    NSArray *ary4 = @[@"23",@"42",@"25",@"15",@"30",@"42",@"32",@"40",@"42",@"25",@"33"];
-	
-    if (path.section==0) {
-        switch (path.row) {
-            case 0:
-                return @[ary];
-            case 1:
-                return @[ary4];
-            case 2:
-                return @[ary1,ary2];
-            default:
-                return @[ary1,ary2,ary3];
-        }
-    }else{
-        if (path.row) {
-            return @[ary1,ary2];
-        }else{
-            return @[ary4];
-        }
-    }
-}
+@protocol XYChartDataSource
 
-//Array of colors
-- (NSArray *)UUChart_ColorArray:(UUChart *)chart
-{
-    return @[UUGreen,UURed,UUBrown];
-}
+- (NSUInteger)numberOfSectionsInChart:(XYChart *)chart;
 
-//Choose line chart range
-- (CGRange)UUChartChooseRangeInLineChart:(UUChart *)chart
-{
-    if (path.section==0 && (path.row==0|path.row==1)) {
-        return CGRangeMake(60, 10);
-    }
-    if (path.section==1 && path.row==0) {
-        return CGRangeMake(60, 10);
-    }
-    if (path.row==2) {
-        return CGRangeMake(100, 0);
-    }
-    return CGRangeZero;
-}
+- (NSUInteger)numberOfRowsInChart:(XYChart *)chart;
+
+- (NSAttributedString *)chart:(XYChart *)chart titleOfRowAtIndex:(NSUInteger)index;
+
+- (NSAttributedString *)chart:(XYChart *)chart titleOfSectionAtValue:(CGFloat)sectionValue;
+
+- (id<XYChartItem>)chart:(XYChart *)chart itemOfIndex:(NSIndexPath *)index;
+
+- (XYRange)visibleRangeInChart:(XYChart *)chart;
+
+- (NSUInteger)numberOfLevelInChart:(XYChart *)chart;
+
+- (CGFloat)rowWidthOfChart:(XYChart *)chart;
+
+- (BOOL)autoSizingRowInChart:(XYChart *)chart;
+
+@end
 
 ```
 
-#### Features only available for line charts
+### XYChartDelegate
 
 ```objective-c
-//Ability to declare line chart range
-- (CGRange)UUChartMarkRangeInLineChart:(UUChart *)chart
-{
-   if (path.row==2) {
-       return CGRangeMake(25, 75);
-    }
-  return CGRangeZero;
-}
+@protocol XYChartDelegate
 
-//Display horizontal line
-- (BOOL)UUChart:(UUChart *)chart ShowHorizonLineAtIndex:(NSInteger)index
-{
-    return YES;
-}
+- (BOOL)chart:(XYChart *)chart shouldShowMenu:(NSIndexPath *)index;
 
-//Determine the minimum and maximum display
-- (BOOL)UUChart:(UUChart *)chart ShowMaxMinAtIndex:(NSInteger)index
-{
-    return path.row==2;
-}
+- (void)chart:(XYChart *)chart itemDidClick:(id<XYChartItem>)item;
+
+- (CAAnimation *)chart:(XYChart *)chart clickAnimationOfIndex:(NSIndexPath *)index;
+
+@end
 ```
