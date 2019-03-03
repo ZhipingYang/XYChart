@@ -47,13 +47,12 @@
     }];
     
     if (_dataList.count>0 & _dataList.firstObject.count>0) {
-        NSArray <XYChartItem *>*numbers = [_dataList xy_flatMap:^id _Nonnull(NSArray<id<XYChartItem>> * _Nonnull obj) {
-            return obj;
+        NSArray <NSNumber *>*numbers = [_dataList xy_flatMap:^id _Nonnull(XYChartItem * _Nonnull obj) {
+            return obj.value;
         }];
-        //TODO: if XYChartItem's value keypath was renamed, wow... sad story!!!
-        NSNumber * max = [numbers valueForKeyPath:@"value.@max.intValue"];
-        NSNumber * min = [numbers valueForKeyPath:@"value.@min.intValue"];
-        if (max > min) {
+        NSNumber * max = [numbers valueForKeyPath:@"@max.intValue"];
+        NSNumber * min = [numbers valueForKeyPath:@"@min.intValue"];
+        if (max.floatValue > min.floatValue) {
             CGFloat distance = (max.floatValue - min.floatValue) * 0.2;
             self.range = XYRangeMake(min.floatValue - distance, max.floatValue + distance);
         }
@@ -69,7 +68,7 @@
 
 - (NSUInteger)numberOfRowsInChart:(XYChart *)chart
 {
-    NSArray <NSNumber *>*numers = [_dataList xy_map:^id _Nonnull(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx) {
+    NSArray <NSNumber *>*numers = [_dataList xy_map:^id _Nonnull(NSArray<id<XYChartItem>> * _Nonnull obj) {
         return [NSNumber numberWithInt:(int)obj.count];
     }];
     __block NSInteger number = 0;
@@ -83,7 +82,7 @@
 
 - (NSAttributedString *)chart:(XYChart *)chart titleOfRowAtIndex:(NSUInteger)index
 {
-    NSArray <NSString *>* names = [self.dataList xy_map:^id _Nonnull(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx) {
+    NSArray <NSString *>* names = [self.dataList xy_map:^id _Nonnull(NSArray<id<XYChartItem>> * _Nonnull obj) {
         return obj.xy_safeIdx(index).value.stringValue ?: @"unkown";
     }];
     NSString *showName = [names componentsJoinedByString:@":"];

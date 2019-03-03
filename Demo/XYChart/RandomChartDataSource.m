@@ -34,8 +34,8 @@
 
 + (NSArray<NSArray<id<XYChartItem>> *> *)getDataListWithSection:(NSUInteger)section row:(NSUInteger)row
 {
-    NSArray * dataList = [[self randomSection:section row:row] xy_map:^id(NSArray<NSNumber *> *obj1, NSUInteger idx1) {
-        return [obj1 xy_map:^id(NSNumber *obj, NSUInteger idx) {
+    NSArray * dataList = [[self randomSection:section row:row] xy_map:^id(NSArray<NSNumber *> *obj1) {
+        return [obj1 xy_map:^id(NSNumber *obj) {
             XYChartItem *item = [[XYChartItem alloc] init];
             item.value = obj;
             item.color = [UIColor xy_random];

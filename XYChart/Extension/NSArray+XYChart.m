@@ -10,64 +10,53 @@
 
 @implementation NSArray (XYChart)
 
-- (NSArray *)xy_map:(nonnull id (^)(id obj, NSUInteger idx))block
+- (NSArray *)xy_mapIndex:(id  _Nonnull (^)(id _Nonnull, NSUInteger))block
 {
-    NSAssert(block!=nil, @"block 不能为空, 但还是做了保护");
+    NSAssert(block!=nil, @"block can't be nil");
     
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.count];
     
     [self enumerateObjectsUsingBlock:^(id  _Nonnull object, NSUInteger index, BOOL * _Nonnull stop) {
-        id value = block ? block(object, index) : [NSNull null];
-        [result addObject:value];
+        id value = block(object, index);
+        [result xy_safeAdd:value];
     }];
     
     return [NSArray arrayWithArray:result];
 }
 
-- (id)xy_max:(NSComparisonResult (^)(id, id))block
+- (NSArray *)xy_map:(id  _Nonnull (^)(id _Nonnull))block
 {
-    NSAssert(block!=nil, @"block 不能为空, 但还是做了保护");
-
-    if (self.count==0) { return nil; }
-    if (self.count==1) { return self.firstObject;}
-    id max = self.firstObject;
-    for (int i=1; i<self.count; i++) {
-        if (block(max, self.xy_safeIdx(i)) == NSOrderedAscending) {
-            max = self.xy_safeIdx(i);
-        }
-    }
-    return max;
-}
-
-- (id)xy_min:(NSComparisonResult (^)(id, id))block
-{
-    NSAssert(block!=nil, @"block 不能为空, 但还是做了保护");
-
-    if (self.count==0) { return nil; }
-    if (self.count==1) { return self.firstObject;}
-    id min = self.firstObject;
-    for (int i=1; i<self.count; i++) {
-        if (block(min, self.xy_safeIdx(i)) == NSOrderedDescending) {
-            min = self.xy_safeIdx(i);
-        }
-    }
-    return min;
-}
-
-- (NSArray *)xy_flatMap:(id (^)(id obj))block {
-    NSMutableArray *mutableArray = [NSMutableArray new];
-    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        id _obj = block(obj);
-        if ([_obj isKindOfClass:[NSArray class]]) {
-            NSArray *_array = [_obj xy_flatMap:block];
-            [mutableArray addObjectsFromArray:_array];
-            return;
-        }
-        [mutableArray addObject:_obj];
+    NSAssert(block!=nil, @"block can't be nil");
+    
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.count];
+    
+    [self enumerateObjectsUsingBlock:^(id  _Nonnull object, NSUInteger index, BOOL * _Nonnull stop) {
+        id value = block(object);
+        [result xy_safeAdd:value];
     }];
-    return [mutableArray copy];
+    
+    return [NSArray arrayWithArray:result];
 }
 
+- (NSArray *)_xy_recurrenceAllSubelement
+{
+    NSMutableArray *all = @[].mutableCopy;
+    void (^getSubViewsBlock)(id current) = ^(id current){
+        if ([current isKindOfClass:[NSArray class]]) {
+            [all addObjectsFromArray:[(NSArray *)current _xy_recurrenceAllSubelement]];
+        } else {
+            [all xy_safeAdd:current];
+        }
+    };
+    [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        getSubViewsBlock(obj);
+    }];
+    return [NSArray arrayWithArray:all];
+}
+
+- (NSArray *)xy_flatMap:(id  _Nonnull (^)(id _Nonnull))block {
+    return [[self _xy_recurrenceAllSubelement] xy_map:block];
+}
 
 - (id  _Nonnull (^)(NSUInteger))xy_safeIdx
 {
@@ -83,15 +72,11 @@
 
 @implementation NSMutableArray (XYChart)
 
-- (void (^)(id _Nonnull))xy_safeAdd
+- (void)xy_safeAdd:(id)obj
 {
-    __weak typeof(self) weakSelf = self;
-    void (^block)(id obj) = ^(id obj) {
-        if (obj) {
-            [weakSelf addObject:obj];
-        }
-    };
-    return block;
+    if (obj) {
+        [self addObject:obj];
+    }
 }
 
 @end

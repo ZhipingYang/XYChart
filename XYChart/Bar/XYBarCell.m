@@ -65,7 +65,7 @@
     for (int section=0; section<sections; section++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
         id<XYChartItem> item = [_dataSource chart:_chartView itemOfIndex:indexPath];
-        mArr.xy_safeAdd(item);
+        [mArr xy_safeAdd:item];
     }
     _barsDataArray = [NSArray arrayWithArray:mArr];
     [self reloadBars];
