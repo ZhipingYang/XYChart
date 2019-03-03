@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface XYChartDataSourceItem : NSObject<XYChartDataSource>
 
 /**
- default the min & max of items value
+ default the min & max of items value with 20% space of (max-min)
  */
 @property (nonatomic) XYRange range;
 

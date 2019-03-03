@@ -34,13 +34,13 @@
 
 + (NSArray<NSArray<id<XYChartItem>> *> *)getDataListWithSection:(NSUInteger)section row:(NSUInteger)row
 {
-    NSArray * dataList = [[self randomSection:section row:row] xy_map:^id(NSArray<NSString *> *obj1, NSUInteger idx1) {
-        return [obj1 xy_map:^id(NSString *obj, NSUInteger idx) {
+    NSArray * dataList = [[self randomSection:section row:row] xy_map:^id(NSArray<NSNumber *> *obj1, NSUInteger idx1) {
+        return [obj1 xy_map:^id(NSNumber *obj, NSUInteger idx) {
             XYChartItem *item = [[XYChartItem alloc] init];
-            item.value = @(obj.integerValue);
+            item.value = obj;
             item.color = [UIColor xy_random];
             item.duration = 0.3;
-            item.showName = obj;
+            item.showName = obj.stringValue;
             return item;
         }];
     }];
@@ -50,19 +50,19 @@
 
 #pragma mark - helper
 
-+ (NSArray <NSString *>*)randomStrings:(NSUInteger)count
++ (NSArray <NSNumber *>*)randomStrings:(NSUInteger)count
 {
-    NSMutableArray <NSString *>*mArr = @[].mutableCopy;
+    NSMutableArray <NSNumber *>*mArr = @[].mutableCopy;
     for (int i=0; i<count; i++) {
-        NSInteger num = 10 + arc4random()%80;
-        [mArr addObject:@(num).stringValue];
+        NSInteger num = arc4random()%100;
+        [mArr addObject:@(num)];
     }
     return [NSArray arrayWithArray:mArr];
 }
 
-+ (NSArray <NSArray<NSString *>*>*)randomSection:(NSUInteger)section row:(NSUInteger)row
++ (NSArray <NSArray<NSNumber *>*>*)randomSection:(NSUInteger)section row:(NSUInteger)row
 {
-    NSMutableArray <NSArray<NSString *>*>*mArr = @[].mutableCopy;
+    NSMutableArray <NSArray<NSNumber *>*>*mArr = @[].mutableCopy;
     for (int i=0; i<section; i++) {
         [mArr addObject:[self randomStrings:row]];
     }

@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSArray *)xy_map:(nonnull id (^)(ObjectType obj, NSUInteger idx))block;
 
+- (NSArray *)xy_flatMap:(nonnull id (^)(ObjectType obj))block;
+
 /**
  获取当前数组中满足闭包条件下的最大值 比如比较age大小：@[father, son] => father
 

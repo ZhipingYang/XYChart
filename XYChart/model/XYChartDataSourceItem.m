@@ -11,8 +11,7 @@
 
 @interface XYChartDataSourceItem()
 {
-    NSAttributedString *(^_configYLabelBlock)(CGFloat value);
-    NSArray<NSAttributedString *> *_names;
+    
 }
 
 @property (nonatomic, strong) NSArray <NSArray <id<XYChartItem>>*> *dataList;
@@ -39,33 +38,6 @@
     return [self initWithDataList:@[]];
 }
 
-- (NSArray<NSAttributedString *> *)names
-{
-    if (!_names) {
-        NSAttributedString *(^block)(NSString *str, UIColor *color) = ^(NSString *str, UIColor *color) {
-            return [[NSMutableAttributedString alloc] initWithString:str
-                                                          attributes:
-                    @{
-                      NSFontAttributeName: [UIFont systemFontOfSize:10],
-                      NSForegroundColorAttributeName: color,
-                      }];
-        };
-        
-        _names = [self.dataList.firstObject xy_map:^id(id<XYChartItem> obj, NSUInteger idx) {
-            NSMutableAttributedString *mStr = [NSMutableAttributedString new];
-            for (int i=0; i<self.dataList.count; i++) {
-                id <XYChartItem>item = self.dataList.xy_safeIdx(i).xy_safeIdx(idx);
-                [mStr appendAttributedString:block(item.showName, item.color)];
-                if (i!=self.dataList.count-1) {
-                    [mStr appendAttributedString:block(@":",[UIColor lightGrayColor])];
-                }
-            }
-            return mStr;
-        }];
-    }
-    return _names;
-}
-
 - (void)setDataList:(NSArray<NSArray<id<XYChartItem>> *> *)dataList
 {
     _dataList = dataList;
@@ -73,6 +45,19 @@
     [dataList enumerateObjectsUsingBlock:^(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSAssert(obj.count == count, @"dataList的子数组个数不一致");
     }];
+    
+    if (_dataList.count>0 & _dataList.firstObject.count>0) {
+        NSArray <XYChartItem *>*numbers = [_dataList xy_flatMap:^id _Nonnull(NSArray<id<XYChartItem>> * _Nonnull obj) {
+            return obj;
+        }];
+        //TODO: if XYChartItem's value keypath was renamed, wow... sad story!!!
+        NSNumber * max = [numbers valueForKeyPath:@"value.@max.intValue"];
+        NSNumber * min = [numbers valueForKeyPath:@"value.@min.intValue"];
+        if (max > min) {
+            CGFloat distance = (max.floatValue - min.floatValue) * 0.2;
+            self.range = XYRangeMake(min.floatValue - distance, max.floatValue + distance);
+        }
+    }
 }
 
 #pragma mark - XYChartDataSource
