@@ -28,8 +28,8 @@
 		65CB0EE12104416B0065236D /* XYChartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0EE02104416B0065236D /* XYChartTests.m */; };
 		65CB0EEC2104416B0065236D /* XYChartUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0EEB2104416B0065236D /* XYChartUITests.m */; };
 		65CB0F26210443A80065236D /* LineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0F25210443A80065236D /* LineTableViewController.m */; };
-		65CB0F2C21044B7A0065236D /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0F2B21044B7A0065236D /* TableViewCell.m */; };
-		65E9A36F2104541F00277206 /* ChartGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9A36E2104541F00277206 /* ChartGroup.m */; };
+		65CB0F2C21044B7A0065236D /* ChartViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0F2B21044B7A0065236D /* ChartViewCell.m */; };
+		65E9A36F2104541F00277206 /* RandomChartDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9A36E2104541F00277206 /* RandomChartDataSource.m */; };
 		65E9A3722104584100277206 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 65E9A3702104584000277206 /* README.md */; };
 		65E9A3732104584100277206 /* XYChart.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 65E9A3712104584100277206 /* XYChart.podspec */; };
 		65E9A3762104584C00277206 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 65E9A3742104584B00277206 /* .travis.yml */; };
@@ -98,10 +98,10 @@
 		65CB0EED2104416B0065236D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65CB0F24210443A80065236D /* LineTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineTableViewController.h; sourceTree = "<group>"; };
 		65CB0F25210443A80065236D /* LineTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LineTableViewController.m; sourceTree = "<group>"; };
-		65CB0F2A21044B790065236D /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
-		65CB0F2B21044B7A0065236D /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
-		65E9A36D2104541F00277206 /* ChartGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartGroup.h; sourceTree = "<group>"; };
-		65E9A36E2104541F00277206 /* ChartGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartGroup.m; sourceTree = "<group>"; };
+		65CB0F2A21044B790065236D /* ChartViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartViewCell.h; sourceTree = "<group>"; };
+		65CB0F2B21044B7A0065236D /* ChartViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartViewCell.m; sourceTree = "<group>"; };
+		65E9A36D2104541F00277206 /* RandomChartDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomChartDataSource.h; sourceTree = "<group>"; };
+		65E9A36E2104541F00277206 /* RandomChartDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomChartDataSource.m; sourceTree = "<group>"; };
 		65E9A3702104584000277206 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		65E9A3712104584100277206 /* XYChart.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = XYChart.podspec; path = ../../XYChart.podspec; sourceTree = "<group>"; };
 		65E9A3742104584B00277206 /* .travis.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; name = .travis.yml; path = ../../.travis.yml; sourceTree = "<group>"; };
@@ -222,14 +222,14 @@
 				65CB0EF92104422A0065236D /* XYChart */,
 				65CB0EC72104416A0065236D /* AppDelegate.h */,
 				65CB0EC82104416A0065236D /* AppDelegate.m */,
-				65E9A36D2104541F00277206 /* ChartGroup.h */,
-				65E9A36E2104541F00277206 /* ChartGroup.m */,
+				65E9A36D2104541F00277206 /* RandomChartDataSource.h */,
+				65E9A36E2104541F00277206 /* RandomChartDataSource.m */,
 				65CB0ECA2104416A0065236D /* BarTableViewController.h */,
 				65CB0ECB2104416A0065236D /* BarTableViewController.m */,
 				65CB0F24210443A80065236D /* LineTableViewController.h */,
 				65CB0F25210443A80065236D /* LineTableViewController.m */,
-				65CB0F2A21044B790065236D /* TableViewCell.h */,
-				65CB0F2B21044B7A0065236D /* TableViewCell.m */,
+				65CB0F2A21044B790065236D /* ChartViewCell.h */,
+				65CB0F2B21044B7A0065236D /* ChartViewCell.m */,
 				65CB0ECD2104416A0065236D /* Main.storyboard */,
 				65CB0ED02104416B0065236D /* Assets.xcassets */,
 				65CB0ED22104416B0065236D /* LaunchScreen.storyboard */,
@@ -417,9 +417,9 @@
 				65CB0F26210443A80065236D /* LineTableViewController.m in Sources */,
 				65B6DFA7210C3AA700334702 /* XYChartDataSourceItem.m in Sources */,
 				65B6DFAF210C3AA700334702 /* XYLineGradientLayer.m in Sources */,
-				65E9A36F2104541F00277206 /* ChartGroup.m in Sources */,
+				65E9A36F2104541F00277206 /* RandomChartDataSource.m in Sources */,
 				65B6DFA4210C3AA700334702 /* NSArray+XYChart.m in Sources */,
-				65CB0F2C21044B7A0065236D /* TableViewCell.m in Sources */,
+				65CB0F2C21044B7A0065236D /* ChartViewCell.m in Sources */,
 				65CB0EC92104416A0065236D /* AppDelegate.m in Sources */,
 				65B6DFAA210C3AA700334702 /* XYBarChart.m in Sources */,
 				65B6DFA5210C3AA700334702 /* UIColor+XYChart.m in Sources */,

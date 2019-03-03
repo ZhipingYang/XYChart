@@ -32,24 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic) BOOL autoSizingRowWidth;
 
-/**
- default：多条线路的item.name累加 比如：@[@[‘a’,'b'],@['c','d']] => @["a:c","b:d"]
- 富文本：
- @{
-    NSFontAttributeName: [UIFont systemFontOfSize:10],
-    NSForegroundColorAttributeName: UUChartItem.color,
- }
- */
-@property (nonatomic, strong) NSArray <NSAttributedString *> *names;
-
-/**
- default:
-  @{ NSFontAttributeName: [UIFont systemFontOfSize:10],
-     NSForegroundColorAttributeName: [UIColor lightGrayColor]}
- */
-- (void)setConfigYLabelBlock:(NSAttributedString * _Nonnull (^ _Nullable)(CGFloat))configYLabelBlock;
-
-
 #pragma mark - 重点
 
 /**

@@ -6,31 +6,24 @@
 //  Copyright © 2018 Daniel. All rights reserved.
 //
 
-#import "ChartGroup.h"
+#import "RandomChartDataSource.h"
 #import "XYChartItem.h"
 
-@interface ChartGroup()
-{
-    NSArray<NSArray<id<XYChartItem>> *> * _dataList;
-    NSArray<NSAttributedString *> *_names;
-}
-
-@end
-
-@implementation ChartGroup
+@implementation RandomChartDataSource
 
 - (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row
 {
-    self = [self initWithDataList:[ChartGroup getDataListWithSection:section row:row]];
+    self = [self initWithDataList:[RandomChartDataSource getDataListWithSection:section row:row]];
     if (self) {
         _type = type;
         self.autoSizingRowWidth = YES;
     }
     return self;
 }
+
 - (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width
 {
-    self = [self initWithDataList:[ChartGroup getDataListWithSection:section row:row]];
+    self = [self initWithDataList:[RandomChartDataSource getDataListWithSection:section row:row]];
     if (self) {
         _type = type;
         self.widthOfRow = width;
@@ -61,11 +54,12 @@
 {
     NSMutableArray <NSString *>*mArr = @[].mutableCopy;
     for (int i=0; i<count; i++) {
-        NSInteger num = arc4random()%100;
+        NSInteger num = 10 + arc4random()%80;
         [mArr addObject:@(num).stringValue];
     }
     return [NSArray arrayWithArray:mArr];
 }
+
 + (NSArray <NSArray<NSString *>*>*)randomSection:(NSUInteger)section row:(NSUInteger)row
 {
     NSMutableArray <NSArray<NSString *>*>*mArr = @[].mutableCopy;

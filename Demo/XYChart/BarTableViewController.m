@@ -7,12 +7,12 @@
 //
 
 #import "BarTableViewController.h"
-#import "TableViewCell.h"
-#import "ChartGroup.h"
+#import "ChartViewCell.h"
+#import "RandomChartDataSource.h"
 
 @interface BarTableViewController ()
 
-@property (nonatomic, strong) NSArray <ChartGroup *>* dataArray;
+@property (nonatomic, strong) NSArray <RandomChartDataSource *>* dataArray;
 
 @end
 
@@ -20,14 +20,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerClass:[ChartViewCell class] forCellReuseIdentifier:barChartReuseIdentifier];
+    
     _dataArray = @[
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:1 row:5],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:1 row:12],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:2 row:5],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:3 row:5],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:4 row:12],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:2 row:15 width:60],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeBar section:4 row:56 width:80],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeBar section:1 row:5],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeBar section:1 row:12],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeBar section:2 row:5],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeBar section:3 row:5],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeBar section:4 row:12],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeBar section:2 row:15 width:60],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeBar section:4 row:56 width:80],
                    ];
     [self.tableView reloadData];
 }
@@ -39,7 +41,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TableViewCell class])];
+    ChartViewCell *cell = [tableView dequeueReusableCellWithIdentifier:barChartReuseIdentifier];
     cell.group = _dataArray.xy_safeIdx(indexPath.row);
     return cell;
 }

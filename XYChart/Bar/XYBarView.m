@@ -89,7 +89,8 @@
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
-    return (action == @selector(showItemName:)) && sender == [UIMenuController sharedMenuController];
+    BOOL can = (action == @selector(showItemName:)) && sender == [UIMenuController sharedMenuController];
+    return can ?: [super canPerformAction:action withSender:sender];
 }
 
 - (void)showItemName:(id)sender

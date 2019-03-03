@@ -17,7 +17,6 @@
 
 ## Usage
 
-说明：
 
 ```objective-c
 @interface XYChart : UIView<XYChartContainer>
@@ -35,8 +34,7 @@
 方法1：
 
 ```objective-c
-_chartView = [[XYChart alloc] initWithFrame:CGRectMake(0, 0, 300, 100)    
-                                  chartType:XYChartTypeLine];
+_chartView = [[XYChart alloc] initWithFrame:CGRectMake(0, 0, 300, 100) chartType:XYChartTypeLine];
 _chartView.dataSource = self;
 _chartView.delegate = self;
 [self.view addSubview:_chartView];

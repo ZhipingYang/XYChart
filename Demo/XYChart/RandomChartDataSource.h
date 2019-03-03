@@ -8,7 +8,7 @@
 
 #import "XYChartDataSourceItem.h"
 
-@interface ChartGroup : XYChartDataSourceItem
+@interface RandomChartDataSource : XYChartDataSourceItem
 
 @property (nonatomic, readonly) XYChartType type;
 

@@ -7,12 +7,12 @@
 //
 
 #import "LineTableViewController.h"
-#import "TableViewCell.h"
-#import "ChartGroup.h"
+#import "ChartViewCell.h"
+#import "RandomChartDataSource.h"
 
 @interface LineTableViewController ()
 
-@property (nonatomic, strong) NSArray <ChartGroup *>* dataArray;
+@property (nonatomic, strong) NSArray <RandomChartDataSource *>* dataArray;
 
 @end
 
@@ -20,14 +20,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.tableView registerClass:[ChartViewCell class] forCellReuseIdentifier:lineChartReuseIdentifier];
+
     _dataArray = @[
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeLine section:1 row:5],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeLine section:1 row:15],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeLine section:2 row:15],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeLine section:3 row:5],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeLine section:2 row:15 width:60],
-                   [[ChartGroup alloc] initWithStyle:XYChartTypeLine section:2 row:33 width:40],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:1 row:5],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:1 row:15],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:2 row:15],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:3 row:5],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:2 row:15 width:60],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:2 row:33 width:40],
                    ];
     [self.tableView reloadData];
 }
@@ -39,7 +40,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TableViewCell class])];
+    ChartViewCell *cell = [tableView dequeueReusableCellWithIdentifier:lineChartReuseIdentifier];
     cell.group = _dataArray.xy_safeIdx(indexPath.row);
     return cell;
 }

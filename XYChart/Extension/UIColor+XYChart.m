@@ -43,6 +43,7 @@
                             blue:155/255.0
                            alpha:1];
 }
+
 + (UIColor *)xy_randomLigtGreen
 {
     return [UIColor colorWithRed:155/255.0
@@ -50,6 +51,7 @@
                             blue:155/255.0
                            alpha:1];
 }
+
 + (UIColor *)xy_randomLigtBlue
 {
     return [UIColor colorWithRed:155/255.0
@@ -60,8 +62,9 @@
 
 + (UIColor *)xy_separatedColor
 {
-    return [UIColor colorWithWhite:0 alpha:0.1];
+    return [UIColor colorWithWhite:0 alpha:0.4];
 }
+
 + (UIColor *)xy_rainBow:(NSInteger)index
 {
     return @[

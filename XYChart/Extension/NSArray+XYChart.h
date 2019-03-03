@@ -42,12 +42,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly, nullable) ObjectType (^xy_safeIdx)(NSUInteger index);
 
-/**
- 点语法，mapWithIndex
- */
-@property (nonatomic, readonly, nullable) NSArray * (^xy_mapIndex)(id (^)(id obj, NSUInteger index));
-@property (nonatomic, readonly, nullable) NSArray * (^xy_map)(id (^)(id item));
-
 @end
 
 

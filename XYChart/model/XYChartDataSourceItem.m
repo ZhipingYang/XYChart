@@ -12,7 +12,9 @@
 @interface XYChartDataSourceItem()
 {
     NSAttributedString *(^_configYLabelBlock)(CGFloat value);
+    NSArray<NSAttributedString *> *_names;
 }
+
 @property (nonatomic, strong) NSArray <NSArray <id<XYChartItem>>*> *dataList;
 
 @end
@@ -35,28 +37,6 @@
 - (instancetype)init
 {
     return [self initWithDataList:@[]];
-}
-
-- (NSAttributedString *(^)(CGFloat))configYLabelBlock
-{
-    if (!_configYLabelBlock) {
-        NSAttributedString * (^block)(CGFloat value) = ^(CGFloat value) {
-            return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.f",value]
-                                                   attributes:
-                    @{
-                      NSFontAttributeName: [UIFont systemFontOfSize:10],
-                      NSForegroundColorAttributeName: [UIColor lightGrayColor],
-                      }
-                    ];
-        };
-        self.configYLabelBlock = block;
-    }
-    return _configYLabelBlock;
-}
-
-- (void)setConfigYLabelBlock:(NSAttributedString *(^)(CGFloat))configYLabelBlock
-{
-    _configYLabelBlock = [configYLabelBlock copy];
 }
 
 - (NSArray<NSAttributedString *> *)names
@@ -118,12 +98,26 @@
 
 - (NSAttributedString *)chart:(XYChart *)chart titleOfRowAtIndex:(NSUInteger)index
 {
-    return self.names.xy_safeIdx(index);
+    NSArray <NSString *>* names = [self.dataList xy_map:^id _Nonnull(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx) {
+        return obj.xy_safeIdx(index).value.stringValue ?: @"unkown";
+    }];
+    NSString *showName = [names componentsJoinedByString:@":"];
+    NSDictionary *dic = @{
+                          NSFontAttributeName: [UIFont systemFontOfSize:10],
+                          NSForegroundColorAttributeName: [UIColor xy_separatedColor]
+                          };
+    return [[NSMutableAttributedString alloc] initWithString:showName attributes:dic];
 }
 
 - (NSAttributedString *)chart:(XYChart *)chart titleOfSectionAtValue:(CGFloat)sectionValue
 {
-    return self.configYLabelBlock(sectionValue);
+    return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%.f",sectionValue]
+                                           attributes:
+            @{
+              NSFontAttributeName: [UIFont systemFontOfSize:10],
+              NSForegroundColorAttributeName: [UIColor lightGrayColor],
+              }
+            ];
 }
 
 - (id<XYChartItem>)chart:(XYChart *)chart itemOfIndex:(NSIndexPath *)index
