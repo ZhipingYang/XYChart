@@ -13,9 +13,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        self.clipsToBounds = YES;
-        
+    if (self) {        
         _line = [CAShapeLayer layer];
         _line.lineCap = kCALineCapSquare;
         _line.fillColor = [UIColor clearColor].CGColor;
@@ -74,6 +72,7 @@
 
 - (void)handleTap:(UIGestureRecognizer*)recognizer
 {
+    !_handleBlock ?: _handleBlock(self);
     if (_chartItem.showName.length > 0) {
         const CGFloat percent = (_chartItem.value.floatValue-_range.min)/(_range.max-_range.min);
 

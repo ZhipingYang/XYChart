@@ -60,7 +60,7 @@
 
 - (void)setDataSource:(NSObject<XYChartDataSource> *)dataSource
 {
-    [self setDataSource:dataSource animation:_dataSource ? NO : YES];
+    [self setDataSource:dataSource animation:NO];
 }
 
 - (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation

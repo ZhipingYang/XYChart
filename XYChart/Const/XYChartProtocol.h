@@ -106,11 +106,21 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - XYChartDelegate
 
 @protocol XYChartDelegate
+@optional
 
+/**
+ 是否展示UIMenuController
+ */
 - (BOOL)chart:(XYChart *)chart shouldShowMenu:(NSIndexPath *)index;
 
+/**
+ 点击后的action，重载一般就不show UIMenuController了
+ */
 - (void)chart:(XYChart *)chart itemDidClick:(id<XYChartItem>)item;
 
+/**
+ line用于展示圆圈，bar用于柱形图的动画
+ */
 - (CAAnimation *)chart:(XYChart *)chart clickAnimationOfIndex:(NSIndexPath *)index;
 
 @end

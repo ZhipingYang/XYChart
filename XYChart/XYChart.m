@@ -21,7 +21,7 @@
 
 @property (nonatomic, strong) UIView <XYChartContainer> *chartContainer;
 
-@property (nonatomic) XYChartType chartType;
+@property (nonatomic) XYChartType type;
 
 @property (nonatomic, strong) NSMutableArray <UILabel *>* sectionLabels;
 
@@ -35,7 +35,7 @@
     if (self) {
         self.sectionLabels = @[].mutableCopy;
         _horizonLines = @[].mutableCopy;
-        _chartType = chartType;
+        _type = chartType;
         [self setUpChartElements];
     }
     return self;
@@ -66,9 +66,9 @@
         [self.layer addSublayer:_rightSeparatedLine];
     }
     
-    if (_chartType == XYChartTypeLine) {
+    if (_type == XYChartTypeLine) {
         _chartContainer = [[XYLineChart alloc] initWithChartView:self];
-    } else if (_chartType == XYChartTypeBar) {
+    } else if (_type == XYChartTypeBar) {
         _chartContainer = [[XYBarChart alloc] initWithChartView:self];
     }
     [self addSubview:_chartContainer];
@@ -152,7 +152,7 @@
 
 - (void)setDataSource:(id<XYChartDataSource>)dataSource
 {
-    [self setDataSource:dataSource animation:_dataSource ? NO : YES];
+    [self setDataSource:dataSource animation:NO];
 }
 
 - (void)setDelegate:(id<XYChartDelegate>)delegate

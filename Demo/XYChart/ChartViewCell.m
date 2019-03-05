@@ -12,7 +12,7 @@
 NSString *const lineChartReuseIdentifier = @"lineChartReuseIdentifier";
 NSString *const barChartReuseIdentifier = @"barChartReuseIdentifier";
 
-@interface ChartViewCell ()
+@interface ChartViewCell ()<XYChartDelegate>
 {
     XYChart *_chartView;
 }
@@ -27,6 +27,7 @@ NSString *const barChartReuseIdentifier = @"barChartReuseIdentifier";
         XYChartType type = [reuseIdentifier isEqualToString:lineChartReuseIdentifier]
                          ? XYChartTypeLine : XYChartTypeBar;
         _chartView = [[XYChart alloc] initWithFrame:CGRectZero chartType:type];
+        _chartView.delegate = self;
         [self.contentView addSubview:_chartView];
     }
     return self;
@@ -35,13 +36,42 @@ NSString *const barChartReuseIdentifier = @"barChartReuseIdentifier";
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    _chartView.frame = CGRectMake(0, 30, xy_width(self)-20, xy_height(self)-40);
+    if (@available(iOS 11.0, *)) {
+        CGFloat safeSpace = self.safeAreaInsets.left+self.safeAreaInsets.right;
+        _chartView.frame = CGRectMake(0, 30, xy_width(self)-20-safeSpace, xy_height(self)-40);
+    } else {
+        _chartView.frame = CGRectMake(0, 30, xy_width(self)-20, xy_height(self)-40);
+    }
 }
 
-- (void)setGroup:(RandomChartDataSource *)group
+- (void)setDataSource:(RandomChartDataSource *)dataSource
 {
-    _group = group;
-    [_chartView setDataSource:group animation:YES];
+    _dataSource = dataSource;
+    [_chartView setDataSource:dataSource animation:YES];
+}
+
+#pragma mark - XYChartDelegate
+
+- (BOOL)chart:(XYChart *)chart shouldShowMenu:(NSIndexPath *)index
+{
+    return YES;
+}
+
+- (void)chart:(XYChart *)chart itemDidClick:(id<XYChartItem>)item
+{
+    // actions
+}
+
+- (CAAnimation *)chart:(XYChart *)chart clickAnimationOfIndex:(NSIndexPath *)index
+{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.duration = 0.2;
+    animation.repeatCount = 1;
+    animation.autoreverses = true;
+    animation.removedOnCompletion = true;
+    animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.1, 1.1, 1.0)];
+    return animation;
 }
 
 @end

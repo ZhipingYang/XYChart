@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, nullable) id<XYChartDataSource> dataSource;
 @property (nonatomic, weak, nullable) id<XYChartDelegate> delegate;
 
-@property (nonatomic, readonly) XYChartType chartType;
+@property (nonatomic, readonly) XYChartType type;
 
 - (instancetype)initWithFrame:(CGRect)frame chartType:(XYChartType)chartType NS_DESIGNATED_INITIALIZER;
 

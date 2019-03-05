@@ -24,7 +24,6 @@
     self = [super init];
     if (self) {
         _chartView = chartView;
-        self.clipsToBounds = YES;
         [self initBaseUIElements];
     }
     return self;
@@ -56,7 +55,7 @@
 
 - (void)setDataSource:(id<XYChartDataSource>)dataSource
 {
-    [self setDataSource:dataSource animation:_dataSource ? NO : YES];
+    [self setDataSource:dataSource animation:NO];
 }
 
 - (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation

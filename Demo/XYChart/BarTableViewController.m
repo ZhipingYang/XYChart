@@ -42,7 +42,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChartViewCell *cell = [tableView dequeueReusableCellWithIdentifier:barChartReuseIdentifier];
-    cell.group = _dataArray.xy_safeIdx(indexPath.row);
+    cell.dataSource = _dataArray.xy_safeIdx(indexPath.row);
     return cell;
 }
 
