@@ -21,20 +21,25 @@
 
 + (instancetype)layerWithPre:(id<XYChartItem>)pre next:(id<XYChartItem>)next range:(XYRange)range
 {
+    XYLineGradientLayer *gradient = [super layer];
+    [gradient updateWithPre:pre next:next range:range];
+    return gradient;
+}
+
+- (void)updateWithPre:(id<XYChartItem>)pre next:(id<XYChartItem>)next range:(XYRange)range
+{
+    self.hidden = !pre || !next;
+    if (self.hidden) { return; }
+    
+    _pre = pre;
+    _next = next;
+    _range = range;
+
     CGFloat startY = pre.value.floatValue > next.value.floatValue ? 0:1;
     CGFloat endY = pre.value.floatValue > next.value.floatValue ? 1:0;
-
-    XYLineGradientLayer *gradient = [super layer];
-    gradient.pre = pre;
-    gradient.next = next;
-    gradient.range = range;
-    gradient.colors = @[(id)pre.color.CGColor, (id)next.color.CGColor];
-    gradient.startPoint = CGPointMake(0, startY);
-    gradient.endPoint = CGPointMake(1, endY);
-    
-    gradient.hidden = !pre || !next;
-    
-    return gradient;
+    self.colors = @[(id)pre.color.CGColor, (id)next.color.CGColor];
+    self.startPoint = CGPointMake(0, startY);
+    self.endPoint = CGPointMake(1, endY);
 }
 
 - (void)layoutSublayers

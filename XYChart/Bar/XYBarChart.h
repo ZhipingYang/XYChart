@@ -14,10 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface XYBarChart : UIView<XYChartContainer>
 
 @property (nonatomic, weak, readonly) XYChart *chartView;
-@property (nonatomic, weak, nullable) id<XYChartDataSource> dataSource;
-@property (nonatomic, weak, nullable) id<XYChartDelegate> delegate;
-
-- (instancetype)initWithChartView:(XYChart *)chartView;
 
 @end
 

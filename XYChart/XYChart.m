@@ -91,6 +91,26 @@
     [self justLinesLayout];
 }
 
+#pragma mark - public
+
+- (void)setDataSource:(id<XYChartDataSource>)dataSource
+{
+    [self setDataSource:dataSource animation:NO];
+}
+
+- (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation
+{
+    _dataSource = dataSource;
+    
+    // 容器
+    _chartContainer.frame = CGRectMake(XYChartSectionLabelWidth, 0, xy_width(self)-XYChartSectionLabelWidth, xy_height(self));
+    [_chartContainer reloadData:animation];
+    
+    [self resetSectionLabels];
+    [self resetHorizonLines];
+    [self setNeedsLayout];
+}
+
 #pragma mark - private
 
 - (void)justLinesLayout
@@ -148,36 +168,7 @@
     [self justLinesLayout];
 }
 
-#pragma mark - XYChartContainer
-
-- (void)setDataSource:(id<XYChartDataSource>)dataSource
-{
-    [self setDataSource:dataSource animation:NO];
-}
-
-- (void)setDelegate:(id<XYChartDelegate>)delegate
-{
-    _delegate = delegate;
-    _chartContainer.delegate = delegate;
-}
-
-- (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation
-{
-    _dataSource = dataSource;
-    
-    // 容器
-    _chartContainer.frame = CGRectMake(XYChartSectionLabelWidth, 0, xy_width(self)-XYChartSectionLabelWidth, xy_height(self));
-    [_chartContainer setDataSource:dataSource animation:animation];
-    
-    [self resetSectionLabels];
-    [self resetHorizonLines];
-    [self setNeedsLayout];
-}
-
-- (XYChart *)chartView
-{
-    return nil;
-}
+#pragma mark - XYChartReload
 
 - (void)reloadData:(BOOL)animation
 {

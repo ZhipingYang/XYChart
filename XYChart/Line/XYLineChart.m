@@ -10,6 +10,7 @@
 #import "XYLineChart.h"
 #import "XYLineItemView.h"
 #import "XYLinesView.h"
+#import "XYChart.h"
 
 @interface XYLineChart ()
 
@@ -33,7 +34,7 @@
         _scrolView.showsHorizontalScrollIndicator = NO;
         [self addSubview:_scrolView];
         
-        _linesView = [XYLinesView new];
+        _linesView = [[XYLinesView alloc] initWithChartView:chartView];
         [_scrolView addSubview:_linesView];
     }
     return self;
@@ -43,9 +44,9 @@
 {
     [super layoutSubviews];
     
-    const BOOL isAutoSizing = [_dataSource autoSizingRowInChart:_chartView];
+    const BOOL isAutoSizing = [_chartView.dataSource autoSizingRowInChart:_chartView];
     const CGFloat rowWidth = isAutoSizing ? xy_width(self)/self.itemViews.count
-                                       : [_dataSource rowWidthOfChart:_chartView];
+                                       : [_chartView.dataSource rowWidthOfChart:_chartView];
     
     _scrolView.frame = self.bounds;
     _scrolView.contentSize = CGSizeMake(rowWidth * _itemViews.count, xy_height(_scrolView));
@@ -58,46 +59,34 @@
 
 #pragma mark - XYChartContainer
 
-- (void)setDataSource:(NSObject<XYChartDataSource> *)dataSource
+- (void)reloadData:(BOOL)animation
 {
-    [self setDataSource:dataSource animation:NO];
-}
-
-- (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation
-{
-    _dataSource = dataSource;
-    
     [_itemViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [_itemViews removeAllObjects];
     
-    [_linesView setDataSource:_dataSource chartView:_chartView];
+    [_linesView reloadData:animation];
     
-    const NSUInteger rows = [_dataSource numberOfRowsInChart:_chartView];
-    const XYRange range = [_dataSource visibleRangeInChart:_chartView];
+    const NSUInteger rows = [_chartView.dataSource numberOfRowsInChart:_chartView];
+    const XYRange range = [_chartView.dataSource visibleRangeInChart:_chartView];
 
     for (int index=0; index<rows; index++) {
         XYLineItemView *itemView = [[XYLineItemView alloc] init];
         
         // 收集数组点
         NSMutableArray <id<XYChartItem>>*mArr = @[].mutableCopy;
-        for (int section=0; section<[_dataSource numberOfSectionsInChart:_chartView]; section++) {
+        for (int section=0; section<[_chartView.dataSource numberOfSectionsInChart:_chartView]; section++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:section];
-            id<XYChartItem> item = [_dataSource chart:_chartView itemOfIndex:indexPath];
+            id<XYChartItem> item = [_chartView.dataSource chart:_chartView itemOfIndex:indexPath];
             if (item) {
                 [mArr addObject:item];
             }
         }
-        NSAttributedString *name = [_dataSource chart:_chartView titleOfRowAtIndex:index];
+        NSAttributedString *name = [_chartView.dataSource chart:_chartView titleOfRowAtIndex:index];
         [itemView setItems:mArr name:name range:range];
         [self.scrolView addSubview:itemView];
         [_itemViews addObject:itemView];
     }
     [self setNeedsLayout];
-}
-
-- (void)reloadData:(BOOL)animation
-{
-    [self setDataSource:_dataSource animation:animation];
 }
 
 @end

@@ -130,22 +130,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - UUChartContainer
 
-/**
- 图标容器
- */
-@protocol XYChartContainer
 
-@property (nonatomic, weak, readonly, nullable) XYChart *chartView;
-@property (nonatomic, weak) id<XYChartDataSource> dataSource;
-@property (nonatomic, weak) id<XYChartDelegate> delegate;
-
-/**
- 更新图标数据
- 
- @param dataSource 数据
- @param animation 是否执行动画
- */
-- (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation;
+@protocol XYChartReload
 
 /**
  重载数据
@@ -153,6 +139,17 @@ NS_ASSUME_NONNULL_BEGIN
  @param animation 是否执行动画
  */
 - (void)reloadData:(BOOL)animation;
+
+@end
+
+/**
+ 图标容器
+ */
+@protocol XYChartContainer<XYChartReload>
+
+@property (nonatomic, weak, readonly, nullable) XYChart *chartView;
+
+- (instancetype)initWithChartView:(XYChart *)chartView;
 
 @end
 

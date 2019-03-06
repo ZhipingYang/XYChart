@@ -8,11 +8,9 @@
 
 #import "XYLinesView.h"
 #import "XYLineGradientLayer.h"
+#import "XYChart.h"
 
 @interface XYLinesView()
-
-@property (nonatomic, weak) id<XYChartDataSource> dataSource;
-@property (nonatomic, weak) XYChart *chartView;
 
 @property (nonatomic, strong) NSMutableArray <NSArray <XYLineGradientLayer *>*>* sections;
 
@@ -29,16 +27,23 @@
     return self;
 }
 
+- (instancetype)initWithChartView:(XYChart *)chartView;
+{
+    self = [self initWithFrame:CGRectZero];
+    if (self) {
+        _chartView = chartView;
+    }
+    return self;
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     [self updateLinesShape];
 }
 
-- (void)setDataSource:(id<XYChartDataSource>)dataSource chartView:(XYChart *)chartView
+- (void)reloadData:(BOOL)animation
 {
-    _dataSource = dataSource;
-    _chartView = chartView;
     // clean
     [_sections enumerateObjectsUsingBlock:^(NSArray<CAGradientLayer *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
@@ -46,17 +51,17 @@
     [_sections removeAllObjects];
     
     
-    NSUInteger section = [dataSource numberOfSectionsInChart:chartView];
-    NSUInteger row = [dataSource numberOfRowsInChart:chartView];
-    XYRange range = [_dataSource visibleRangeInChart:chartView];
+    NSUInteger section = [_chartView.dataSource numberOfSectionsInChart:_chartView];
+    NSUInteger row = [_chartView.dataSource numberOfRowsInChart:_chartView];
+    XYRange range = [_chartView.dataSource visibleRangeInChart:_chartView];
     
     for (int sectionIdx=0; sectionIdx<section; sectionIdx++) {
         NSMutableArray <XYLineGradientLayer *>*mArr = @[].mutableCopy;
         for (int rowIdx=0; rowIdx<row-1; rowIdx++) {
             NSIndexPath *preIndex = [NSIndexPath indexPathForRow:rowIdx inSection:sectionIdx];
             NSIndexPath *nextIndex = [NSIndexPath indexPathForRow:rowIdx+1 inSection:sectionIdx];
-            id<XYChartItem> preItem = [_dataSource chart:chartView itemOfIndex:preIndex];
-            id<XYChartItem> nextItem = [_dataSource chart:chartView itemOfIndex:nextIndex];
+            id<XYChartItem> preItem = [_chartView.dataSource chart:_chartView itemOfIndex:preIndex];
+            id<XYChartItem> nextItem = [_chartView.dataSource chart:_chartView itemOfIndex:nextIndex];
             
             XYLineGradientLayer *gradient = [XYLineGradientLayer layerWithPre:preItem next:nextItem range:range];
             gradient.zPosition = -100;
@@ -71,7 +76,7 @@
 
 - (void)updateLinesShape
 {
-    XYRange range = [_dataSource visibleRangeInChart:_chartView];
+    XYRange range = [_chartView.dataSource visibleRangeInChart:_chartView];
 
     [_sections enumerateObjectsUsingBlock:^(NSArray<XYLineGradientLayer *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         const CGFloat itemWidth = xy_width(self)/(float)(obj.count>0 ? (obj.count+1) : 1);
