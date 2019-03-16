@@ -24,6 +24,19 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                               action:@selector(handleTap:)];
         [self addGestureRecognizer:tap];
+//
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self.line removeAllAnimations];
+//
+//            CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+//            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//            animation.duration = 1;
+//            animation.fromValue = @(0.0f);
+//            animation.toValue = @(1.0f);
+//            animation.fillMode = kCAFillModeForwards;
+//            animation.removedOnCompletion = YES;
+//            [self.line addAnimation:animation forKey:@"strokeEnd"];
+//        });
     }
     return self;
 }
@@ -40,6 +53,11 @@
     const CGFloat percent = (_chartItem.value.floatValue-_range.min)/((_range.max-_range.min)==0 ? 1:(_range.max-_range.min));
     
     _line.frame = CGRectMake(0, selfSize.height*(1-percent), selfSize.width, selfSize.height * percent);
+//    UIBezierPath *bezierPath = [UIBezierPath bezierPath];
+//    [bezierPath moveToPoint:CGPointMake(xy_width(_line)/2.0, xy_height(_line))];
+//    [bezierPath addLineToPoint:CGPointMake(xy_width(_line)/2.0, 0)];
+//    bezierPath.lineWidth = xy_width(_line);
+//    _line.path = bezierPath.CGPath;
 }
 
 - (void)setChartItem:(id<XYChartItem>)chartItem range:(XYRange)range
@@ -48,21 +66,8 @@
     _chartItem = chartItem;
     _range = range;
     _line.backgroundColor = chartItem.color.CGColor;
+//    _line.strokeColor = [chartItem.color colorWithAlphaComponent:0.3].CGColor;
     [self updateLineFrame];
-    
-//    if (animation) {
-//        [_line removeAllAnimations];
-//        _line.strokeEnd = 0.0;
-//        CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-//        pathAnimation.duration = chartItem.duration;
-//        pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//        pathAnimation.fromValue = @0.0;
-//        pathAnimation.toValue = @1.0;
-//        pathAnimation.autoreverses = NO;
-//        [_line addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
-//    } else {
-//        _line.strokeEnd = 1.0;
-//    }
 }
 
 - (BOOL)canBecomeFirstResponder
