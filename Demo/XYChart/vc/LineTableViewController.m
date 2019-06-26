@@ -7,8 +7,8 @@
 //
 
 #import "LineTableViewController.h"
-#import "ChartViewCell.h"
 #import "RandomChartDataSource.h"
+#import "ChartViewCell.h"
 
 @interface LineTableViewController ()
 

@@ -6,7 +6,7 @@
 //  Copyright © 2018 Daniel. All rights reserved.
 //
 
-#import "XYChartDataSourceItem.h"
+#import <XYChart/XYChartDataSourceItem.h>
 
 @interface RandomChartDataSource : XYChartDataSourceItem
 

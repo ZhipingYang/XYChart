@@ -7,18 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		65B6DFA4210C3AA700334702 /* NSArray+XYChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DF87210C3AA600334702 /* NSArray+XYChart.m */; };
-		65B6DFA5210C3AA700334702 /* UIColor+XYChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DF8A210C3AA600334702 /* UIColor+XYChart.m */; };
-		65B6DFA6210C3AA700334702 /* XYChartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DF8E210C3AA600334702 /* XYChartItem.m */; };
-		65B6DFA7210C3AA700334702 /* XYChartDataSourceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DF8F210C3AA600334702 /* XYChartDataSourceItem.m */; };
-		65B6DFA8210C3AA700334702 /* XYBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DF97210C3AA600334702 /* XYBarView.m */; };
-		65B6DFA9210C3AA700334702 /* XYBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DF98210C3AA600334702 /* XYBarCell.m */; };
-		65B6DFAA210C3AA700334702 /* XYBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DF99210C3AA600334702 /* XYBarChart.m */; };
-		65B6DFAB210C3AA700334702 /* XYChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DF9A210C3AA600334702 /* XYChart.m */; };
-		65B6DFAC210C3AA700334702 /* XYLineItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DF9C210C3AA700334702 /* XYLineItemView.m */; };
-		65B6DFAD210C3AA700334702 /* XYLinesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DF9D210C3AA700334702 /* XYLinesView.m */; };
-		65B6DFAE210C3AA700334702 /* XYLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DF9E210C3AA700334702 /* XYLineChart.m */; };
-		65B6DFAF210C3AA700334702 /* XYLineGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B6DFA3210C3AA700334702 /* XYLineGradientLayer.m */; };
+		6246DC9A53E3F120277B37A2 /* libPods-XYChartUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C99176A3B6C3E56762496340 /* libPods-XYChartUITests.a */; };
 		65CB0EC92104416A0065236D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0EC82104416A0065236D /* AppDelegate.m */; };
 		65CB0ECC2104416A0065236D /* BarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0ECB2104416A0065236D /* BarTableViewController.m */; };
 		65CB0ECF2104416A0065236D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CB0ECD2104416A0065236D /* Main.storyboard */; };
@@ -34,6 +23,8 @@
 		65E9A3732104584100277206 /* XYChart.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 65E9A3712104584100277206 /* XYChart.podspec */; };
 		65E9A3762104584C00277206 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 65E9A3742104584B00277206 /* .travis.yml */; };
 		65E9A3772104584C00277206 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 65E9A3752104584B00277206 /* LICENSE */; };
+		76F18BE624E6A6ACF3160BB7 /* libPods-XYChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BBB216DD8F1FF4643902D69 /* libPods-XYChart.a */; };
+		F42CEC4A4688F402225CE643 /* libPods-XYChartTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C774217CD033256611AE05D3 /* libPods-XYChartTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,32 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		65B6DF83210C3A8800334702 /* XYChartProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYChartProtocol.h; sourceTree = "<group>"; };
-		65B6DF84210C3A8800334702 /* XYChartConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYChartConst.h; sourceTree = "<group>"; };
-		65B6DF85210C3AA600334702 /* XYChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYChart.h; sourceTree = "<group>"; };
-		65B6DF87210C3AA600334702 /* NSArray+XYChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+XYChart.m"; sourceTree = "<group>"; };
-		65B6DF88210C3AA600334702 /* UIColor+XYChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+XYChart.h"; sourceTree = "<group>"; };
-		65B6DF89210C3AA600334702 /* NSArray+XYChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+XYChart.h"; sourceTree = "<group>"; };
-		65B6DF8A210C3AA600334702 /* UIColor+XYChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+XYChart.m"; sourceTree = "<group>"; };
-		65B6DF8C210C3AA600334702 /* XYChartItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYChartItem.h; sourceTree = "<group>"; };
-		65B6DF8D210C3AA600334702 /* XYChartDataSourceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYChartDataSourceItem.h; sourceTree = "<group>"; };
-		65B6DF8E210C3AA600334702 /* XYChartItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYChartItem.m; sourceTree = "<group>"; };
-		65B6DF8F210C3AA600334702 /* XYChartDataSourceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYChartDataSourceItem.m; sourceTree = "<group>"; };
-		65B6DF94210C3AA600334702 /* XYBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYBarView.h; sourceTree = "<group>"; };
-		65B6DF95210C3AA600334702 /* XYBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYBarCell.h; sourceTree = "<group>"; };
-		65B6DF96210C3AA600334702 /* XYBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYBarChart.h; sourceTree = "<group>"; };
-		65B6DF97210C3AA600334702 /* XYBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYBarView.m; sourceTree = "<group>"; };
-		65B6DF98210C3AA600334702 /* XYBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYBarCell.m; sourceTree = "<group>"; };
-		65B6DF99210C3AA600334702 /* XYBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYBarChart.m; sourceTree = "<group>"; };
-		65B6DF9A210C3AA600334702 /* XYChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYChart.m; sourceTree = "<group>"; };
-		65B6DF9C210C3AA700334702 /* XYLineItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYLineItemView.m; sourceTree = "<group>"; };
-		65B6DF9D210C3AA700334702 /* XYLinesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYLinesView.m; sourceTree = "<group>"; };
-		65B6DF9E210C3AA700334702 /* XYLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYLineChart.m; sourceTree = "<group>"; };
-		65B6DF9F210C3AA700334702 /* XYLineGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYLineGradientLayer.h; sourceTree = "<group>"; };
-		65B6DFA0210C3AA700334702 /* XYLineItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYLineItemView.h; sourceTree = "<group>"; };
-		65B6DFA1210C3AA700334702 /* XYLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYLineChart.h; sourceTree = "<group>"; };
-		65B6DFA2210C3AA700334702 /* XYLinesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYLinesView.h; sourceTree = "<group>"; };
-		65B6DFA3210C3AA700334702 /* XYLineGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYLineGradientLayer.m; sourceTree = "<group>"; };
+		347F558E0B1F63B14CA2E9DA /* Pods-XYChartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYChartUITests.release.xcconfig"; path = "Target Support Files/Pods-XYChartUITests/Pods-XYChartUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4631504D8C3A879BA79CB68F /* Pods-XYChart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYChart.release.xcconfig"; path = "Target Support Files/Pods-XYChart/Pods-XYChart.release.xcconfig"; sourceTree = "<group>"; };
 		65CB0EC42104416A0065236D /* XYChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XYChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CB0EC72104416A0065236D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65CB0EC82104416A0065236D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -102,10 +69,17 @@
 		65CB0F2B21044B7A0065236D /* ChartViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartViewCell.m; sourceTree = "<group>"; };
 		65E9A36D2104541F00277206 /* RandomChartDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomChartDataSource.h; sourceTree = "<group>"; };
 		65E9A36E2104541F00277206 /* RandomChartDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomChartDataSource.m; sourceTree = "<group>"; };
-		65E9A3702104584000277206 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
-		65E9A3712104584100277206 /* XYChart.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = XYChart.podspec; path = ../../XYChart.podspec; sourceTree = "<group>"; };
-		65E9A3742104584B00277206 /* .travis.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; name = .travis.yml; path = ../../.travis.yml; sourceTree = "<group>"; };
-		65E9A3752104584B00277206 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
+		65E9A3702104584000277206 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65E9A3712104584100277206 /* XYChart.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = XYChart.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		65E9A3742104584B00277206 /* .travis.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = .travis.yml; sourceTree = "<group>"; };
+		65E9A3752104584B00277206 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		756382B9108270A2738D435B /* Pods-XYChartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYChartTests.debug.xcconfig"; path = "Target Support Files/Pods-XYChartTests/Pods-XYChartTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9471408379734E056B32DB45 /* Pods-XYChartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYChartUITests.debug.xcconfig"; path = "Target Support Files/Pods-XYChartUITests/Pods-XYChartUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9BBB216DD8F1FF4643902D69 /* libPods-XYChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XYChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEC88D6770F530436456A215 /* Pods-XYChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYChart.debug.xcconfig"; path = "Target Support Files/Pods-XYChart/Pods-XYChart.debug.xcconfig"; sourceTree = "<group>"; };
+		C774217CD033256611AE05D3 /* libPods-XYChartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XYChartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C99176A3B6C3E56762496340 /* libPods-XYChartUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XYChartUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7C76DE31496D921F91576E7 /* Pods-XYChartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYChartTests.release.xcconfig"; path = "Target Support Files/Pods-XYChartTests/Pods-XYChartTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76F18BE624E6A6ACF3160BB7 /* libPods-XYChart.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F42CEC4A4688F402225CE643 /* libPods-XYChartTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,78 +103,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6246DC9A53E3F120277B37A2 /* libPods-XYChartUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		65B6DF82210C3A8800334702 /* Const */ = {
+		61C04307A20851A1F4D37DCB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				65B6DF83210C3A8800334702 /* XYChartProtocol.h */,
-				65B6DF84210C3A8800334702 /* XYChartConst.h */,
+				9BBB216DD8F1FF4643902D69 /* libPods-XYChart.a */,
+				C774217CD033256611AE05D3 /* libPods-XYChartTests.a */,
+				C99176A3B6C3E56762496340 /* libPods-XYChartUITests.a */,
 			);
-			path = Const;
-			sourceTree = "<group>";
-		};
-		65B6DF86210C3AA600334702 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				65B6DF89210C3AA600334702 /* NSArray+XYChart.h */,
-				65B6DF87210C3AA600334702 /* NSArray+XYChart.m */,
-				65B6DF88210C3AA600334702 /* UIColor+XYChart.h */,
-				65B6DF8A210C3AA600334702 /* UIColor+XYChart.m */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		65B6DF8B210C3AA600334702 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				65B6DF8D210C3AA600334702 /* XYChartDataSourceItem.h */,
-				65B6DF8F210C3AA600334702 /* XYChartDataSourceItem.m */,
-				65B6DF8C210C3AA600334702 /* XYChartItem.h */,
-				65B6DF8E210C3AA600334702 /* XYChartItem.m */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		65B6DF93210C3AA600334702 /* Bar */ = {
-			isa = PBXGroup;
-			children = (
-				65B6DF96210C3AA600334702 /* XYBarChart.h */,
-				65B6DF99210C3AA600334702 /* XYBarChart.m */,
-				65B6DF95210C3AA600334702 /* XYBarCell.h */,
-				65B6DF98210C3AA600334702 /* XYBarCell.m */,
-				65B6DF94210C3AA600334702 /* XYBarView.h */,
-				65B6DF97210C3AA600334702 /* XYBarView.m */,
-			);
-			path = Bar;
-			sourceTree = "<group>";
-		};
-		65B6DF9B210C3AA700334702 /* Line */ = {
-			isa = PBXGroup;
-			children = (
-				65B6DFA1210C3AA700334702 /* XYLineChart.h */,
-				65B6DF9E210C3AA700334702 /* XYLineChart.m */,
-				65B6DF9F210C3AA700334702 /* XYLineGradientLayer.h */,
-				65B6DFA3210C3AA700334702 /* XYLineGradientLayer.m */,
-				65B6DFA0210C3AA700334702 /* XYLineItemView.h */,
-				65B6DF9C210C3AA700334702 /* XYLineItemView.m */,
-				65B6DFA2210C3AA700334702 /* XYLinesView.h */,
-				65B6DF9D210C3AA700334702 /* XYLinesView.m */,
-			);
-			path = Line;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		65CB0EBB2104416A0065236D = {
 			isa = PBXGroup;
 			children = (
+				65E9A3702104584000277206 /* README.md */,
+				65E9A3712104584100277206 /* XYChart.podspec */,
+				65E9A3742104584B00277206 /* .travis.yml */,
+				65E9A3752104584B00277206 /* LICENSE */,
 				65CB0EC62104416A0065236D /* XYChart */,
 				65CB0EDF2104416B0065236D /* XYChartTests */,
 				65CB0EEA2104416B0065236D /* XYChartUITests */,
 				65CB0EC52104416A0065236D /* Products */,
+				7C8D71D8A37484F78BF5A4D7 /* Pods */,
+				61C04307A20851A1F4D37DCB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -215,22 +149,12 @@
 		65CB0EC62104416A0065236D /* XYChart */ = {
 			isa = PBXGroup;
 			children = (
-				65E9A3702104584000277206 /* README.md */,
-				65E9A3712104584100277206 /* XYChart.podspec */,
-				65E9A3742104584B00277206 /* .travis.yml */,
-				65E9A3752104584B00277206 /* LICENSE */,
-				65CB0EF92104422A0065236D /* XYChart */,
+				DBEC2CA622C3DB8C007F282C /* view */,
+				DBEC2CA522C3DB76007F282C /* vc */,
+				DBEC2CA422C3DB6E007F282C /* model */,
+				65CB0ECD2104416A0065236D /* Main.storyboard */,
 				65CB0EC72104416A0065236D /* AppDelegate.h */,
 				65CB0EC82104416A0065236D /* AppDelegate.m */,
-				65E9A36D2104541F00277206 /* RandomChartDataSource.h */,
-				65E9A36E2104541F00277206 /* RandomChartDataSource.m */,
-				65CB0ECA2104416A0065236D /* BarTableViewController.h */,
-				65CB0ECB2104416A0065236D /* BarTableViewController.m */,
-				65CB0F24210443A80065236D /* LineTableViewController.h */,
-				65CB0F25210443A80065236D /* LineTableViewController.m */,
-				65CB0F2A21044B790065236D /* ChartViewCell.h */,
-				65CB0F2B21044B7A0065236D /* ChartViewCell.m */,
-				65CB0ECD2104416A0065236D /* Main.storyboard */,
 				65CB0ED02104416B0065236D /* Assets.xcassets */,
 				65CB0ED22104416B0065236D /* LaunchScreen.storyboard */,
 				65CB0ED52104416B0065236D /* Info.plist */,
@@ -257,19 +181,46 @@
 			path = XYChartUITests;
 			sourceTree = "<group>";
 		};
-		65CB0EF92104422A0065236D /* XYChart */ = {
+		7C8D71D8A37484F78BF5A4D7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				65B6DF85210C3AA600334702 /* XYChart.h */,
-				65B6DF9A210C3AA600334702 /* XYChart.m */,
-				65B6DF82210C3A8800334702 /* Const */,
-				65B6DF9B210C3AA700334702 /* Line */,
-				65B6DF93210C3AA600334702 /* Bar */,
-				65B6DF86210C3AA600334702 /* Extension */,
-				65B6DF8B210C3AA600334702 /* model */,
+				BEC88D6770F530436456A215 /* Pods-XYChart.debug.xcconfig */,
+				4631504D8C3A879BA79CB68F /* Pods-XYChart.release.xcconfig */,
+				756382B9108270A2738D435B /* Pods-XYChartTests.debug.xcconfig */,
+				F7C76DE31496D921F91576E7 /* Pods-XYChartTests.release.xcconfig */,
+				9471408379734E056B32DB45 /* Pods-XYChartUITests.debug.xcconfig */,
+				347F558E0B1F63B14CA2E9DA /* Pods-XYChartUITests.release.xcconfig */,
 			);
-			name = XYChart;
-			path = ../../XYChart;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DBEC2CA422C3DB6E007F282C /* model */ = {
+			isa = PBXGroup;
+			children = (
+				65E9A36D2104541F00277206 /* RandomChartDataSource.h */,
+				65E9A36E2104541F00277206 /* RandomChartDataSource.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		DBEC2CA522C3DB76007F282C /* vc */ = {
+			isa = PBXGroup;
+			children = (
+				65CB0ECA2104416A0065236D /* BarTableViewController.h */,
+				65CB0ECB2104416A0065236D /* BarTableViewController.m */,
+				65CB0F24210443A80065236D /* LineTableViewController.h */,
+				65CB0F25210443A80065236D /* LineTableViewController.m */,
+			);
+			path = vc;
+			sourceTree = "<group>";
+		};
+		DBEC2CA622C3DB8C007F282C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				65CB0F2A21044B790065236D /* ChartViewCell.h */,
+				65CB0F2B21044B7A0065236D /* ChartViewCell.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +230,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65CB0EF02104416B0065236D /* Build configuration list for PBXNativeTarget "XYChart" */;
 			buildPhases = (
+				195272D02D3F256627CAA43C /* [CP] Check Pods Manifest.lock */,
 				65CB0EC02104416A0065236D /* Sources */,
 				65CB0EC12104416A0065236D /* Frameworks */,
 				65CB0EC22104416A0065236D /* Resources */,
@@ -296,6 +248,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65CB0EF32104416B0065236D /* Build configuration list for PBXNativeTarget "XYChartTests" */;
 			buildPhases = (
+				1AD5F35322A07388EB809F19 /* [CP] Check Pods Manifest.lock */,
 				65CB0ED82104416B0065236D /* Sources */,
 				65CB0ED92104416B0065236D /* Frameworks */,
 				65CB0EDA2104416B0065236D /* Resources */,
@@ -314,6 +267,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65CB0EF62104416B0065236D /* Build configuration list for PBXNativeTarget "XYChartUITests" */;
 			buildPhases = (
+				712A231EBE3054ECACA069A6 /* [CP] Check Pods Manifest.lock */,
 				65CB0EE32104416B0065236D /* Sources */,
 				65CB0EE42104416B0065236D /* Frameworks */,
 				65CB0EE52104416B0065236D /* Resources */,
@@ -401,29 +355,86 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		195272D02D3F256627CAA43C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XYChart-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1AD5F35322A07388EB809F19 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XYChartTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		712A231EBE3054ECACA069A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XYChartUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		65CB0EC02104416A0065236D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65B6DFA9210C3AA700334702 /* XYBarCell.m in Sources */,
 				65CB0ECC2104416A0065236D /* BarTableViewController.m in Sources */,
-				65B6DFA6210C3AA700334702 /* XYChartItem.m in Sources */,
-				65B6DFAB210C3AA700334702 /* XYChart.m in Sources */,
 				65CB0ED72104416B0065236D /* main.m in Sources */,
-				65B6DFA8210C3AA700334702 /* XYBarView.m in Sources */,
-				65B6DFAE210C3AA700334702 /* XYLineChart.m in Sources */,
-				65B6DFAC210C3AA700334702 /* XYLineItemView.m in Sources */,
 				65CB0F26210443A80065236D /* LineTableViewController.m in Sources */,
-				65B6DFA7210C3AA700334702 /* XYChartDataSourceItem.m in Sources */,
-				65B6DFAF210C3AA700334702 /* XYLineGradientLayer.m in Sources */,
 				65E9A36F2104541F00277206 /* RandomChartDataSource.m in Sources */,
-				65B6DFA4210C3AA700334702 /* NSArray+XYChart.m in Sources */,
 				65CB0F2C21044B7A0065236D /* ChartViewCell.m in Sources */,
 				65CB0EC92104416A0065236D /* AppDelegate.m in Sources */,
-				65B6DFAA210C3AA700334702 /* XYBarChart.m in Sources */,
-				65B6DFA5210C3AA700334702 /* UIColor+XYChart.m in Sources */,
-				65B6DFAD210C3AA700334702 /* XYLinesView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +601,7 @@
 		};
 		65CB0EF12104416B0065236D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEC88D6770F530436456A215 /* Pods-XYChart.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -608,6 +620,7 @@
 		};
 		65CB0EF22104416B0065236D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4631504D8C3A879BA79CB68F /* Pods-XYChart.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -626,6 +639,7 @@
 		};
 		65CB0EF42104416B0065236D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 756382B9108270A2738D435B /* Pods-XYChartTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -644,6 +658,7 @@
 		};
 		65CB0EF52104416B0065236D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7C76DE31496D921F91576E7 /* Pods-XYChartTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -662,6 +677,7 @@
 		};
 		65CB0EF72104416B0065236D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9471408379734E056B32DB45 /* Pods-XYChartUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = XYChartUITests/Info.plist;
@@ -679,6 +695,7 @@
 		};
 		65CB0EF82104416B0065236D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 347F558E0B1F63B14CA2E9DA /* Pods-XYChartUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = XYChartUITests/Info.plist;

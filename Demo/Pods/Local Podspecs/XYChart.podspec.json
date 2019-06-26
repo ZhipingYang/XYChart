@@ -1,0 +1,23 @@
+{
+  "name": "XYChart",
+  "summary": "The line and bar of chart",
+  "description": "XYChart is designed by Line and Bar. You can mark the range of values you want, and show the max or min values in linechart.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ZhipingYang/XYChart",
+  "license": "MIT",
+  "authors": {
+    "ZhipingYang": "XcodeYang@gmail.com"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source": {
+    "git": "https://github.com/ZhipingYang/XYChart.git",
+    "tag": "0.0.1"
+  },
+  "requires_arc": true,
+  "source_files": [
+    "XYChart/**/*.{h,m}"
+  ],
+  "frameworks": "UIKit"
+}

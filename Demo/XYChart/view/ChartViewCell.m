@@ -7,7 +7,7 @@
 //
 
 #import "ChartViewCell.h"
-#import "XYChart.h"
+#import <XYChart/XYChart.h>
 
 NSString *const lineChartReuseIdentifier = @"lineChartReuseIdentifier";
 NSString *const barChartReuseIdentifier = @"barChartReuseIdentifier";

@@ -7,11 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import <FORGestureTrack.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self.window startTracking];
     return YES;
 }
 
