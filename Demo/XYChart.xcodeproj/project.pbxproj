@@ -19,11 +19,11 @@
 		65CB0F26210443A80065236D /* LineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0F25210443A80065236D /* LineTableViewController.m */; };
 		65CB0F2C21044B7A0065236D /* ChartViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CB0F2B21044B7A0065236D /* ChartViewCell.m */; };
 		65E9A36F2104541F00277206 /* RandomChartDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9A36E2104541F00277206 /* RandomChartDataSource.m */; };
-		65E9A3722104584100277206 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 65E9A3702104584000277206 /* README.md */; };
-		65E9A3732104584100277206 /* XYChart.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 65E9A3712104584100277206 /* XYChart.podspec */; };
-		65E9A3762104584C00277206 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 65E9A3742104584B00277206 /* .travis.yml */; };
-		65E9A3772104584C00277206 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 65E9A3752104584B00277206 /* LICENSE */; };
 		76F18BE624E6A6ACF3160BB7 /* libPods-XYChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BBB216DD8F1FF4643902D69 /* libPods-XYChart.a */; };
+		DBBA7ED522C3E7540062EC7F /* XYChart.podspec in Resources */ = {isa = PBXBuildFile; fileRef = DBBA7ED122C3E7540062EC7F /* XYChart.podspec */; };
+		DBBA7ED622C3E7540062EC7F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = DBBA7ED222C3E7540062EC7F /* LICENSE */; };
+		DBBA7ED722C3E7540062EC7F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DBBA7ED322C3E7540062EC7F /* README.md */; };
+		DBBA7ED822C3E7540062EC7F /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = DBBA7ED422C3E7540062EC7F /* .travis.yml */; };
 		F42CEC4A4688F402225CE643 /* libPods-XYChartTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C774217CD033256611AE05D3 /* libPods-XYChartTests.a */; };
 /* End PBXBuildFile section */
 
@@ -69,16 +69,16 @@
 		65CB0F2B21044B7A0065236D /* ChartViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartViewCell.m; sourceTree = "<group>"; };
 		65E9A36D2104541F00277206 /* RandomChartDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomChartDataSource.h; sourceTree = "<group>"; };
 		65E9A36E2104541F00277206 /* RandomChartDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomChartDataSource.m; sourceTree = "<group>"; };
-		65E9A3702104584000277206 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		65E9A3712104584100277206 /* XYChart.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = XYChart.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		65E9A3742104584B00277206 /* .travis.yml */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = .travis.yml; sourceTree = "<group>"; };
-		65E9A3752104584B00277206 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		756382B9108270A2738D435B /* Pods-XYChartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYChartTests.debug.xcconfig"; path = "Target Support Files/Pods-XYChartTests/Pods-XYChartTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9471408379734E056B32DB45 /* Pods-XYChartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYChartUITests.debug.xcconfig"; path = "Target Support Files/Pods-XYChartUITests/Pods-XYChartUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BBB216DD8F1FF4643902D69 /* libPods-XYChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XYChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC88D6770F530436456A215 /* Pods-XYChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYChart.debug.xcconfig"; path = "Target Support Files/Pods-XYChart/Pods-XYChart.debug.xcconfig"; sourceTree = "<group>"; };
 		C774217CD033256611AE05D3 /* libPods-XYChartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XYChartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99176A3B6C3E56762496340 /* libPods-XYChartUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XYChartUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBBA7ED122C3E7540062EC7F /* XYChart.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = XYChart.podspec; path = ../XYChart.podspec; sourceTree = "<group>"; };
+		DBBA7ED222C3E7540062EC7F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		DBBA7ED322C3E7540062EC7F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		DBBA7ED422C3E7540062EC7F /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		F7C76DE31496D921F91576E7 /* Pods-XYChartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYChartTests.release.xcconfig"; path = "Target Support Files/Pods-XYChartTests/Pods-XYChartTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,10 +123,10 @@
 		65CB0EBB2104416A0065236D = {
 			isa = PBXGroup;
 			children = (
-				65E9A3702104584000277206 /* README.md */,
-				65E9A3712104584100277206 /* XYChart.podspec */,
-				65E9A3742104584B00277206 /* .travis.yml */,
-				65E9A3752104584B00277206 /* LICENSE */,
+				DBBA7ED422C3E7540062EC7F /* .travis.yml */,
+				DBBA7ED222C3E7540062EC7F /* LICENSE */,
+				DBBA7ED322C3E7540062EC7F /* README.md */,
+				DBBA7ED122C3E7540062EC7F /* XYChart.podspec */,
 				65CB0EC62104416A0065236D /* XYChart */,
 				65CB0EDF2104416B0065236D /* XYChartTests */,
 				65CB0EEA2104416B0065236D /* XYChartUITests */,
@@ -329,13 +329,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65E9A3762104584C00277206 /* .travis.yml in Resources */,
+				DBBA7ED722C3E7540062EC7F /* README.md in Resources */,
 				65CB0ED42104416B0065236D /* LaunchScreen.storyboard in Resources */,
-				65E9A3732104584100277206 /* XYChart.podspec in Resources */,
-				65E9A3772104584C00277206 /* LICENSE in Resources */,
 				65CB0ED12104416B0065236D /* Assets.xcassets in Resources */,
-				65E9A3722104584100277206 /* README.md in Resources */,
+				DBBA7ED522C3E7540062EC7F /* XYChart.podspec in Resources */,
 				65CB0ECF2104416A0065236D /* Main.storyboard in Resources */,
+				DBBA7ED822C3E7540062EC7F /* .travis.yml in Resources */,
+				DBBA7ED622C3E7540062EC7F /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
