@@ -10,6 +10,7 @@
 #import "XYBarChart.h"
 #import "XYBarView.h"
 #import "XYBarCell.h"
+#import "XYChart.h"
 
 @interface XYBarChart ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -24,7 +25,6 @@
     self = [super init];
     if (self) {
         _chartView = chartView;
-        self.clipsToBounds = YES;
         [self initBaseUIElements];
     }
     return self;
@@ -54,42 +54,31 @@
 
 #pragma mark - XYChartContainer
 
-- (void)setDataSource:(id<XYChartDataSource>)dataSource
-{
-    [self setDataSource:dataSource animation:_dataSource ? NO : YES];
-}
-
-- (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation
-{
-    _dataSource = dataSource;
-    [self.collectionView reloadData];
-}
-
 - (void)reloadData:(BOOL)animation
 {
-    [self setDataSource:_dataSource animation:animation];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDelegate & UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [_dataSource numberOfRowsInChart:_chartView];
+    return [_chartView.dataSource numberOfRowsInChart:_chartView];
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XYBarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XYBarCell class]) forIndexPath:indexPath];
-    [cell setDataSource:_dataSource row:indexPath.row chart:_chartView];
+    [cell setDataSource:_chartView.dataSource row:indexPath.row chart:_chartView];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    const BOOL isAutoSizing = [_dataSource autoSizingRowInChart:_chartView];
-    CGFloat rows = [_dataSource numberOfRowsInChart:_chartView];
+    const BOOL isAutoSizing = [_chartView.dataSource autoSizingRowInChart:_chartView];
+    CGFloat rows = [_chartView.dataSource numberOfRowsInChart:_chartView];
     rows = rows>0 ? rows : 1;
-    const CGFloat rowWidth = isAutoSizing ? xy_width(self)/rows : [_dataSource rowWidthOfChart:_chartView];
+    const CGFloat rowWidth = isAutoSizing ? xy_width(self)/rows : [_chartView.dataSource rowWidthOfChart:_chartView];
     return CGSizeMake(rowWidth, xy_height(self));
 }
 

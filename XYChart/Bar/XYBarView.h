@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) XYRange range;
 
 @property (nonatomic, strong) CAShapeLayer * line;
+@property (nonatomic, copy) void(^handleBlock)(XYBarView *view);
 
 - (void)setChartItem:(id<XYChartItem> _Nonnull)chartItem range:(XYRange)range;
 

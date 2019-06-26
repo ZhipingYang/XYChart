@@ -14,6 +14,6 @@ extern NSString *const barChartReuseIdentifier;
 
 @interface ChartViewCell : UITableViewCell
 
-@property (nonatomic, strong) RandomChartDataSource *group;
+@property (nonatomic, strong) RandomChartDataSource *dataSource;
 
 @end

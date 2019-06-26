@@ -7,7 +7,7 @@
 //
 
 #import "RandomChartDataSource.h"
-#import "XYChartItem.h"
+#import <XYChart/XYChartItem.h>
 
 @implementation RandomChartDataSource
 

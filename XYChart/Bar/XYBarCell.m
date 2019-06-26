@@ -8,9 +8,12 @@
 
 #import "XYBarCell.h"
 #import "XYBarView.h"
+#import "XYChart.h"
 
 @interface XYBarCell()
-
+{
+    NSInteger _row;
+}
 @property (nonatomic, weak) id<XYChartDataSource> dataSource;
 @property (nonatomic, weak) XYChart *chartView;
 
@@ -56,7 +59,7 @@
 {
     _dataSource = dataSource;
     _chartView = chart;
-    
+    _row = row;
     self.nameLabel.attributedText = [_dataSource chart:chart titleOfRowAtIndex:row];
     
     NSMutableArray <id<XYChartItem>>*mArr = @[].mutableCopy;
@@ -80,7 +83,20 @@
         XYBarView *bar = [[XYBarView alloc] initWithFrame:CGRectMake((xy_width(self.barContainerView)/count)*idx, 0, xy_width(self.barContainerView)/count, xy_height(self.barContainerView))];
         [bar setChartItem:obj range:[self.dataSource visibleRangeInChart:self.chartView]];
         [self.barContainerView addSubview:bar];
+        __weak typeof(self) weakSelf = self;
+        bar.handleBlock = ^(XYBarView * _Nonnull view) {
+            [weakSelf handleAnimationIfNeed:view];
+        };
     }];
+}
+
+- (void)handleAnimationIfNeed:(XYBarView *)view
+{
+    [self.barContainerView bringSubviewToFront:view];
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:_row inSection:[_barContainerView.subviews indexOfObject:view]];
+    CAAnimation *animation = [_chartView.delegate chart:_chartView clickAnimationOfIndex:path];
+    [view.line addAnimation:animation forKey:@"hello"];
 }
 
 @end
