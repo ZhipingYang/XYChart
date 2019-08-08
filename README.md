@@ -1,10 +1,25 @@
 <p align="center">
-
 <img align="center" width="150" src ="https://user-images.githubusercontent.com/9360037/43032646-0771fd3c-8cef-11e8-913f-034ca293c625.png"/>
 </p>
 
-> **XYChart** is designed for line & bar of charts which can compare mutiple datas in form styles, and limited the range of values to show, and so on.
+<p align="center">
+	<a href="http://cocoapods.org/pods/XYChart">
+		<image alt="Version" src="https://img.shields.io/cocoapods/v/XYChart.svg?style=flat">
+	</a>
+	<a href="http://cocoapods.org/pods/XYChart">
+		<image alt="License" src="https://img.shields.io/cocoapods/l/XYChart.svg?style=flat">
+	</a>
+	<a href="http://cocoapods.org/pods/XYChart">
+		<image alt="Platform" src="https://img.shields.io/cocoapods/p/XYChart.svg?style=flat">
+	</a>
+	<a href="https://travis-ci.org/ZhipingYang/XYChart">
+		<image alt="CI Status" src="http://img.shields.io/travis/ZhipingYang/XYChart.svg?style=flat">
+	</a>
+</p>
 
+<br>
+
+> **XYChart** is designed for line & bar of charts which can compare mutiple datas in form styles, and limited the range of values to show, and so on.
 
 | **LineChart** | **BarChart** |
 |:-------:|:---------:|
@@ -17,8 +32,16 @@
 | ![gif](https://user-images.githubusercontent.com/9360037/62709107-54c1f900-ba27-11e9-8312-8fcec88a58d5.gif) | ![gif](https://user-images.githubusercontent.com/9360037/62709087-48d63700-ba27-11e9-86f3-e92e4e1bd094.gif) |
 | scrolling linechart (did set row width) | scrolling barchart (did set row width) |
 
-## Usage
 
+### Install
+
+> required `iOS >= 8.0` with [Cocoapods](https://cocoapods.org/)
+
+```ruby
+pod 'XYChart'
+```
+
+### Usage
 
 ```objective-c
 @interface XYChart : UIView<XYChartContainer>
