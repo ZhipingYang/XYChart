@@ -75,7 +75,7 @@
 		BEC88D6770F530436456A215 /* Pods-XYChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XYChart.debug.xcconfig"; path = "Target Support Files/Pods-XYChart/Pods-XYChart.debug.xcconfig"; sourceTree = "<group>"; };
 		C774217CD033256611AE05D3 /* libPods-XYChartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XYChartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99176A3B6C3E56762496340 /* libPods-XYChartUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XYChartUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBBA7ED122C3E7540062EC7F /* XYChart.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = XYChart.podspec; path = ../XYChart.podspec; sourceTree = "<group>"; };
+		DBBA7ED122C3E7540062EC7F /* XYChart.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = XYChart.podspec; path = ../XYChart.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DBBA7ED222C3E7540062EC7F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		DBBA7ED322C3E7540062EC7F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		DBBA7ED422C3E7540062EC7F /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };

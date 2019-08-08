@@ -13,7 +13,7 @@
 @interface XYLinesView()
 
 @property (nonatomic, strong) NSMutableArray <NSArray <XYLineGradientLayer *>*>* sections;
-
+    
 @end
 
 @implementation XYLinesView
@@ -39,7 +39,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self updateLinesShape];
+    [self updateLinesShape:NO];
 }
 
 - (void)reloadData:(BOOL)animation
@@ -71,10 +71,10 @@
         [self.sections addObject:[NSArray arrayWithArray:mArr]];
     }
     
-    [self updateLinesShape];
+    [self updateLinesShape:animation];
 }
 
-- (void)updateLinesShape
+- (void)updateLinesShape:(BOOL)animate
 {
     XYRange range = [_chartView.dataSource visibleRangeInChart:_chartView];
 
@@ -88,6 +88,7 @@
                                         xy_height(self)*(1-MAX(prePercent, nextPercent))-circleLenght/2,
                                         itemWidth,
                                         xy_height(self)*fabs(prePercent-nextPercent)+circleLenght);
+            [gradient startAnimate:animate];
         }];
     }];
 }

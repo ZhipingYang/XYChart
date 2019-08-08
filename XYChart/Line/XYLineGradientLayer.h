@@ -13,9 +13,12 @@
 
 @property (nonatomic, readonly) id<XYChartItem> pre;
 @property (nonatomic, readonly) id<XYChartItem> next;
+@property (nonatomic, readonly) CAShapeLayer *shapeLayer;
 
 + (instancetype)layerWithPre:(id<XYChartItem>)pre next:(id<XYChartItem>)next range:(XYRange)range;
 
 - (void)updateWithPre:(id<XYChartItem>)pre next:(id<XYChartItem>)next range:(XYRange)range;
+
+- (void)startAnimate:(BOOL)animate;
 
 @end

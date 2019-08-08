@@ -70,7 +70,7 @@ NSString *const barChartReuseIdentifier = @"barChartReuseIdentifier";
     animation.repeatCount = 1;
     animation.autoreverses = true;
     animation.removedOnCompletion = true;
-    animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.1, 1.1, 1.0)];
+    animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.2, 1.3, 1.0)];
     return animation;
 }
 

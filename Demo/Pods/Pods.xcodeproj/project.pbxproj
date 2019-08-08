@@ -7,167 +7,167 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		184B8BD0E340E026EE072AEFE12BE5AF /* FORTrackGesture.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D4B8608EF494C0E7E785279E6D8F5C1 /* FORTrackGesture.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		291741E47D041E46BBB69520C809DCE2 /* Pods-XYChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B176D30D24B7AC99154BFB686C4DD2 /* Pods-XYChart-dummy.m */; };
-		2C76F346AF8A4A51602E09A53626E5EC /* XYLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03C84D97CC09D514A959863B0D3E77 /* XYLineChart.m */; };
-		321E72E17C1EBBAAEDC85B8EB97034F4 /* XYBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 365A52954E6C28DE7E97D909A148F7E5 /* XYBarCell.m */; };
-		358643DA971421EEB735942BE0A70145 /* NSArray+XYChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CB34B24B6B362FABD5160A9C125B21 /* NSArray+XYChart.m */; };
-		3E8B23070D753F108625AB23DCBC7C04 /* XYLineItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F4136565BF3ACD8337CC7284AE1903 /* XYLineItemView.m */; };
-		3F369CC23D858EF4575D1934A8427169 /* XYChartDataSourceItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 4777A2F1AFC9B65EFF0CC201343078CA /* XYChartDataSourceItem.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		4982A90A59FA6312174AFDF74075B353 /* UIColor+XYChart.h in Headers */ = {isa = PBXBuildFile; fileRef = AF299939252E22599CBE195750F7A29D /* UIColor+XYChart.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		4F575803CA9EEC8C4EC843FBB18D214B /* FORGestureTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 545E13A507AD6F1D2C3710DC02C78CBA /* FORGestureTrack.m */; };
-		5111551161850CABF6E34C502CFD270C /* XYChartItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 63E049AE8080D0B605D929ECF0ADAA6C /* XYChartItem.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		59FA5305739E6720FFCDE41CEC199AAF /* Pods-XYChartTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7481D2895EA1E9DF7E1FF7901BA8608E /* Pods-XYChartTests-dummy.m */; };
-		65F7E6ACD10FAA5801C082908171C905 /* XYLineGradientLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D077B8D2383EF9E052A2133736B1ED81 /* XYLineGradientLayer.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		6BCF5AE2101A079252322A0AAB14A620 /* XYLinesView.h in Headers */ = {isa = PBXBuildFile; fileRef = C82655B95E87AD18BD2C93B85F3C7EEC /* XYLinesView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		7FF5B8F348B8F4083F20CC80E25DC041 /* XYBarCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7045B54F1A346877B15576D6F2E51020 /* XYBarCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		800B1C32FA20A2D2A4AB6298C08A90DF /* XYLineGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6357847088B10335164A99CA2BEFC1F9 /* XYLineGradientLayer.m */; };
-		8EA6A7DBF6BFB01D826C6F32BE64C364 /* XYLineItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = 95973C0BB654FFB65FB32EAE0D421A01 /* XYLineItemView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		923230A8FDDDD6457E900947760AAAA9 /* XYChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA315AC5E62808346F62EB063A09734 /* XYChart.m */; };
-		9F47FFA3A22895D1C58FB5E7B7EB53D8 /* FORGestureTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 61E49C9D097778836149A49D1BF4A0B6 /* FORGestureTrack.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		AF75A480F6272710E85D1E22C4DD0D38 /* XYChartProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 1779ADCE76ACD2005F5825120D02FC45 /* XYChartProtocol.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B1CB9E66BEB7823BA4A94BAC2C594497 /* Pods-XYChartUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF99020FBCC20A69147F2C69C1022EE /* Pods-XYChartUITests-dummy.m */; };
-		B8E53C380419E067D19BE2A1174E2A09 /* FORGestureTrackDisplay-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C52FFFAD5ED8B1E9AA44F123EFADF3 /* FORGestureTrackDisplay-dummy.m */; };
-		BA5B71A5ABDE753883D593BF5F3B61DD /* XYChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 39ACF528808F45E3D7C3CC773EF4E05F /* XYChart.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		BBBB1EFF731EC97CFF2CF4BA8A5D33AC /* NSArray+XYChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 90AE14E3087B029C774C59687E6BE9FD /* NSArray+XYChart.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C82FF05E8E9CA7ABDA6BEEC89494F7CF /* XYChartDataSourceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FA1BFCEBCA2207AA42DBFFA8225C53 /* XYChartDataSourceItem.m */; };
-		C8B0A4663766EB994E8421ED1E11AAE3 /* XYBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA9A89D443D91152138AD9785F6018E /* XYBarChart.m */; };
-		CD204CA4512748277138AD97F53DAAD5 /* XYBarChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 15BB4A601AEA35C4252E2D338C5F14E8 /* XYBarChart.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		D67D59F7CFA9636EC6D70B6D4301AA4F /* FORTrackGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9DCBF92DB2541C70121B82EBBE7E5 /* FORTrackGesture.m */; };
-		D98D2626B2AE0D90DABFCCF656EDD3DA /* XYChartConst.h in Headers */ = {isa = PBXBuildFile; fileRef = F7EBD4F4A5AA9B6F5E626D47D5F53780 /* XYChartConst.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		DD364C35C7D1AE7B49BC30CD4ECC178D /* UIColor+XYChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7371AFA85A24B84BEBA3FE4BB36F48 /* UIColor+XYChart.m */; };
-		E4DA714819BBA1C97DB848A88B112248 /* XYBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 987CD00464F6B5244595F39654F549F6 /* XYBarView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		E5827F6B3C01739DBF76E6397B8A1964 /* XYBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B4FADAEB376EEFBAB150E829D932D /* XYBarView.m */; };
-		EC05E0A99E8135B7A32C71E0E52AD9CD /* XYChartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B69E4239F1E1DEECA21AA8E8F10EE869 /* XYChartItem.m */; };
-		ECF4A02F620C1377567DB769CBAD6FDD /* XYLineChart.h in Headers */ = {isa = PBXBuildFile; fileRef = CCE3CFDA46AB55323298E8BBDB45904F /* XYLineChart.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		ED99B5660B5B13F051E89D580D6C34D3 /* XYChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 300BB46BCA82037D375F3B068CD67F39 /* XYChart-dummy.m */; };
-		F626B5B585B6FBA97F6D4CE69E445583 /* XYLinesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9849411DE45EBAA99D231353AFC6B8F7 /* XYLinesView.m */; };
+		04922DFF55B5B66735CDED7D27CF2805 /* XYBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FF0339D20A97BF8EF26E64F54AA225 /* XYBarView.m */; };
+		0B3F86AD90BE9290A83E6FF47043AB49 /* XYLineItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = 33DD748A7C0EB96940312502B3EB5E0E /* XYLineItemView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1823AE2B7501179D4059C7F1B5E6DB22 /* FORGestureTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 545E13A507AD6F1D2C3710DC02C78CBA /* FORGestureTrack.m */; };
+		19F6E6110ACA91E94A238757F496A6A2 /* NSArray+XYChart.h in Headers */ = {isa = PBXBuildFile; fileRef = A5DCFEA2FE02F4B4FCDE084118DBCC94 /* NSArray+XYChart.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		23A0416B93186CF61077C47D7124D343 /* XYChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1DCD672009175DD40F1E7F32BFA2EA /* XYChart-dummy.m */; };
+		2670F553E474DCD13262503D2A21FA86 /* XYBarCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA8D7A4A202EC0F024B26191A6BE595 /* XYBarCell.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		277CEA38959384F612252E6B033527E5 /* XYChartProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F668286B8652F21825DA236638675BA /* XYChartProtocol.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		29A28AEAD963541ED14809559964FBA2 /* XYLinesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C361ED3D5FB41B8A829E40B38ECADA4 /* XYLinesView.m */; };
+		30BB4AE9E5DE44CA6C6FC404611A2626 /* XYChartConst.h in Headers */ = {isa = PBXBuildFile; fileRef = 59E129EF0664A6C8211E7C98F78BBFE7 /* XYChartConst.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		40B0926AD1570A1BC2F5D5397C1D0746 /* XYChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AF317632145265AB183A8DFE586E5F4 /* XYChart.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		42D4748ED9A44F305E151162EE5315C9 /* UIColor+XYChart.h in Headers */ = {isa = PBXBuildFile; fileRef = CD6C36A41EBC2CC1B5C10E96A07FFB0A /* UIColor+XYChart.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		4DB5BC7DC277C020CC9AF3F19AEB4287 /* FORTrackGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE9DCBF92DB2541C70121B82EBBE7E5 /* FORTrackGesture.m */; };
+		4F62822651AFA2C1518D35A94D9D19D7 /* XYLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 521159A615FC1B0D2A9149E72A12D353 /* XYLineChart.m */; };
+		567C1D125C7CAFB1CE180D95043783F9 /* FORTrackGesture.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D4B8608EF494C0E7E785279E6D8F5C1 /* FORTrackGesture.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5E485BD6FEFA5B1528F272ABC0BC082D /* XYChartItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A4B1A27853231121EBEE60C50CCD51C7 /* XYChartItem.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		604895CF4BF06D2C5ADF1FA9350F817C /* XYChartDataSourceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3331BF64928577A9AC113B36F7AD86 /* XYChartDataSourceItem.m */; };
+		7519075E72098529286D8402ECB7B505 /* XYBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BC2E4A5BCE55FD5E0E233DB577CB0 /* XYBarCell.m */; };
+		7C9BAC1249CF2AAA00570F1703BCB1F6 /* XYBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472EBD33F7A6109448556A9F12DAC54 /* XYBarChart.m */; };
+		82D87AD612DD7F71F4635F98B377B010 /* XYChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C91D5FF46B36C03D166D1A44F90D96C /* XYChart.m */; };
+		8AAFB8CE7B0C6CF7BFC3E31CEC18BFFC /* FORGestureTrackDisplay-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AAB70FCA2D144F90EB18C2B0B789E4 /* FORGestureTrackDisplay-dummy.m */; };
+		8D61482FE8923EEBDF915A37979A0924 /* FORGestureTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 61E49C9D097778836149A49D1BF4A0B6 /* FORGestureTrack.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		929679B65739366567E3E6BD42A148D7 /* XYLineGradientLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 78DD54F64E08C93ADFAE4C11112290D6 /* XYLineGradientLayer.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9BE3CF7195AA287B52EA97677BF87972 /* XYChartDataSourceItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 469C8961476701A4C647A24B8FB3FB98 /* XYChartDataSourceItem.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		A0636EDDAC2D7DC1906B0295A664AD4C /* XYBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 54277303C4721030EA5861E528A65BC5 /* XYBarView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		A4D6CC361E08757DF491C9CF04018A3F /* XYLineItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6435DEDAFF0109D1FEC69586D426B0E7 /* XYLineItemView.m */; };
+		B056F14A4BD604F785B89A3320290D02 /* XYBarChart.h in Headers */ = {isa = PBXBuildFile; fileRef = E73485F7529A6E65244EA8728AE775FD /* XYBarChart.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		BC98CE0598017471E12654C6A51742AA /* XYLineChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 0915A57B79A53A34B5764D7D5E0FF0BF /* XYLineChart.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C3B5899933A0F492429247F369C66C24 /* Pods-XYChartUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E777D2E742821E0B3CAF91CC6E401F2 /* Pods-XYChartUITests-dummy.m */; };
+		CC57585FC5A61615E3E77FA3803DF571 /* XYLinesView.h in Headers */ = {isa = PBXBuildFile; fileRef = D2951E64754D16FADB618C336B66C4AC /* XYLinesView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D8DF44B567D12780DF39395BA5C92F38 /* XYLineGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 439DB0C7864D27457D820ED18E70DE7A /* XYLineGradientLayer.m */; };
+		DADB9F00E66237273AA3FA8E1849B33F /* XYChartItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BD049E08CD9D1818310FE64C2532BB24 /* XYChartItem.m */; };
+		EFA589BD95FE34DF7EC323DF0F2BB366 /* Pods-XYChartTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4490F84D9628A84D944029C796DE20 /* Pods-XYChartTests-dummy.m */; };
+		F09FE868883642E75D7E71398C191859 /* Pods-XYChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2817961E6054EF4EC10A6E62C1CCFB41 /* Pods-XYChart-dummy.m */; };
+		F97B94C19CEF53254B4886ED8998858B /* UIColor+XYChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DD71A4BD2191CAE7E623E6AC3785F0A /* UIColor+XYChart.m */; };
+		FA8746A4E7CB4C8CD057247DBDFBDC80 /* NSArray+XYChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 114728F87FE60BD3CF15DBCB2E2381B7 /* NSArray+XYChart.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3F122491B995EFA5246AE3233C37498E /* PBXContainerItemProxy */ = {
+		2117CC469A004654EB8C0B97210A3FC4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F89BA645ACC531AEC9824610742962A3;
-			remoteInfo = "Pods-XYChart";
-		};
-		5FDDA378BF6D83EB60CC35DEFD7438BD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F50D2EE35B4D74DCB4D75FE78C1EF630;
+			remoteGlobalIDString = C3F2F5238902732E7F7AFC29F1B2CEE2;
 			remoteInfo = FORGestureTrackDisplay;
 		};
-		8A3673CDD471AF5FBDEBB435CA29DE3E /* PBXContainerItemProxy */ = {
+		673E4B3C595DA80715FCD3EB65B5D650 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = AC7FA0368689079B991F19D447F27482;
+			remoteGlobalIDString = B0D0E62BF41C22B1AE8D767D90807D23;
+			remoteInfo = "Pods-XYChart";
+		};
+		D0D7D4E4BD48F94E1F7AD8DD16E4AAF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F9D6B276D3368DDF296A0E89F3796E0;
 			remoteInfo = XYChart;
 		};
-		A8DAC0B9ACE5CD87DDDBAD7A8F79D9E7 /* PBXContainerItemProxy */ = {
+		EC9E3F9C98D3E20339A2A29D1DCC58EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F89BA645ACC531AEC9824610742962A3;
+			remoteGlobalIDString = B0D0E62BF41C22B1AE8D767D90807D23;
 			remoteInfo = "Pods-XYChart";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		057B4FADAEB376EEFBAB150E829D932D /* XYBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYBarView.m; sourceTree = "<group>"; };
-		06CB34B24B6B362FABD5160A9C125B21 /* NSArray+XYChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+XYChart.m"; sourceTree = "<group>"; };
-		07AC229D41EF9C215AF15834FB0068CB /* libFORGestureTrackDisplay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFORGestureTrackDisplay.a; path = libFORGestureTrackDisplay.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		089CC65894ABB5A1D6EEEE34FEB16E7B /* libPods-XYChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-XYChart.a"; path = "libPods-XYChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		15BB4A601AEA35C4252E2D338C5F14E8 /* XYBarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYBarChart.h; sourceTree = "<group>"; };
-		1779ADCE76ACD2005F5825120D02FC45 /* XYChartProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYChartProtocol.h; sourceTree = "<group>"; };
+		0472EBD33F7A6109448556A9F12DAC54 /* XYBarChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYBarChart.m; sourceTree = "<group>"; };
+		0915A57B79A53A34B5764D7D5E0FF0BF /* XYLineChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYLineChart.h; sourceTree = "<group>"; };
+		114728F87FE60BD3CF15DBCB2E2381B7 /* NSArray+XYChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+XYChart.m"; sourceTree = "<group>"; };
+		14FF0339D20A97BF8EF26E64F54AA225 /* XYBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYBarView.m; sourceTree = "<group>"; };
 		1D4B8608EF494C0E7E785279E6D8F5C1 /* FORTrackGesture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FORTrackGesture.h; path = FORGestureTrackDisplay/FORTrackGesture.h; sourceTree = "<group>"; };
-		1D7371AFA85A24B84BEBA3FE4BB36F48 /* UIColor+XYChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+XYChart.m"; sourceTree = "<group>"; };
-		1FAF372477E6A47E4DFE5A9781F2D0AB /* XYChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XYChart.xcconfig; sourceTree = "<group>"; };
-		25C52FFFAD5ED8B1E9AA44F123EFADF3 /* FORGestureTrackDisplay-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FORGestureTrackDisplay-dummy.m"; sourceTree = "<group>"; };
-		288D697E6428051F4F45DA81C39E3270 /* Pods-XYChartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChartTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2F3F1DD9CCA15EBEDA5B41AB8BC26450 /* XYChart.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = XYChart.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		300BB46BCA82037D375F3B068CD67F39 /* XYChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XYChart-dummy.m"; sourceTree = "<group>"; };
-		307D7E1CAA0A6BCAC8DDCAB01738B9B8 /* libXYChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libXYChart.a; path = libXYChart.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		365A52954E6C28DE7E97D909A148F7E5 /* XYBarCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYBarCell.m; sourceTree = "<group>"; };
-		39ACF528808F45E3D7C3CC773EF4E05F /* XYChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XYChart.h; path = XYChart/XYChart.h; sourceTree = "<group>"; };
-		3CD36954F1712A74071801DEA441AF6A /* Pods-XYChartUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XYChartUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		41DB3764F412CF5D7CC3737A719FA9D8 /* libPods-XYChartUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-XYChartUITests.a"; path = "libPods-XYChartUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		46EECFD2AAE90E270FA68BF76BEDAB0A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		4777A2F1AFC9B65EFF0CC201343078CA /* XYChartDataSourceItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYChartDataSourceItem.h; sourceTree = "<group>"; };
-		4CA315AC5E62808346F62EB063A09734 /* XYChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XYChart.m; path = XYChart/XYChart.m; sourceTree = "<group>"; };
-		4CA79FE3B8A78A136FC49D1C1BF5D65A /* Pods-XYChartUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XYChartUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		2817961E6054EF4EC10A6E62C1CCFB41 /* Pods-XYChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-XYChart-dummy.m"; sourceTree = "<group>"; };
+		33DD748A7C0EB96940312502B3EB5E0E /* XYLineItemView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYLineItemView.h; sourceTree = "<group>"; };
+		38642685D7EC78CD57EF14DAF01DDBDD /* Pods-XYChartUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XYChartUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		39596355E9A6F06FD7CDE8EA21FF3309 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		4155E4F6218A25A444E9F741C7CCACB2 /* Pods-XYChartTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XYChartTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		41A86FC61E83BCAAC15706A8F9CD2457 /* Pods-XYChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChart.debug.xcconfig"; sourceTree = "<group>"; };
+		439DB0C7864D27457D820ED18E70DE7A /* XYLineGradientLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYLineGradientLayer.m; sourceTree = "<group>"; };
+		4635DD45FC0782F5687C6471689AEFA6 /* Pods-XYChart-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XYChart-acknowledgements.plist"; sourceTree = "<group>"; };
+		469C8961476701A4C647A24B8FB3FB98 /* XYChartDataSourceItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYChartDataSourceItem.h; sourceTree = "<group>"; };
+		4DD71A4BD2191CAE7E623E6AC3785F0A /* UIColor+XYChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+XYChart.m"; sourceTree = "<group>"; };
 		4DE9DCBF92DB2541C70121B82EBBE7E5 /* FORTrackGesture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FORTrackGesture.m; path = FORGestureTrackDisplay/FORTrackGesture.m; sourceTree = "<group>"; };
-		52B176D30D24B7AC99154BFB686C4DD2 /* Pods-XYChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-XYChart-dummy.m"; sourceTree = "<group>"; };
+		4E74C71FDC9450B56217EB66854A5F7E /* XYChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XYChart.xcconfig; sourceTree = "<group>"; };
+		521159A615FC1B0D2A9149E72A12D353 /* XYLineChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYLineChart.m; sourceTree = "<group>"; };
+		52DF5B7C2125C19B794A1BBF050EF8F5 /* FORGestureTrackDisplay-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FORGestureTrackDisplay-prefix.pch"; sourceTree = "<group>"; };
+		54277303C4721030EA5861E528A65BC5 /* XYBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYBarView.h; sourceTree = "<group>"; };
 		545E13A507AD6F1D2C3710DC02C78CBA /* FORGestureTrack.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FORGestureTrack.m; path = FORGestureTrackDisplay/FORGestureTrack.m; sourceTree = "<group>"; };
-		5BAB7575E1B0A3F2BBC51D7F8A0D6A53 /* Pods-XYChart-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XYChart-acknowledgements.plist"; sourceTree = "<group>"; };
-		5C8E0A6A87D93CDD2D882973A9952C71 /* Pods-XYChartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChartTests.release.xcconfig"; sourceTree = "<group>"; };
+		59E129EF0664A6C8211E7C98F78BBFE7 /* XYChartConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYChartConst.h; sourceTree = "<group>"; };
+		5E777D2E742821E0B3CAF91CC6E401F2 /* Pods-XYChartUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-XYChartUITests-dummy.m"; sourceTree = "<group>"; };
 		61E49C9D097778836149A49D1BF4A0B6 /* FORGestureTrack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FORGestureTrack.h; path = FORGestureTrackDisplay/FORGestureTrack.h; sourceTree = "<group>"; };
-		6357847088B10335164A99CA2BEFC1F9 /* XYLineGradientLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYLineGradientLayer.m; sourceTree = "<group>"; };
-		63E049AE8080D0B605D929ECF0ADAA6C /* XYChartItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYChartItem.h; sourceTree = "<group>"; };
-		7045B54F1A346877B15576D6F2E51020 /* XYBarCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYBarCell.h; sourceTree = "<group>"; };
-		7481D2895EA1E9DF7E1FF7901BA8608E /* Pods-XYChartTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-XYChartTests-dummy.m"; sourceTree = "<group>"; };
-		7AFBD6C1879359CD815D84DED28D45B6 /* FORGestureTrackDisplay.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FORGestureTrackDisplay.xcconfig; sourceTree = "<group>"; };
-		90AE14E3087B029C774C59687E6BE9FD /* NSArray+XYChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+XYChart.h"; sourceTree = "<group>"; };
-		95973C0BB654FFB65FB32EAE0D421A01 /* XYLineItemView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYLineItemView.h; sourceTree = "<group>"; };
-		9849411DE45EBAA99D231353AFC6B8F7 /* XYLinesView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYLinesView.m; sourceTree = "<group>"; };
-		987CD00464F6B5244595F39654F549F6 /* XYBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYBarView.h; sourceTree = "<group>"; };
-		9A047B85AAE1A81750CC3D128F88F872 /* XYChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XYChart-prefix.pch"; sourceTree = "<group>"; };
-		9C03C84D97CC09D514A959863B0D3E77 /* XYLineChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYLineChart.m; sourceTree = "<group>"; };
+		6435DEDAFF0109D1FEC69586D426B0E7 /* XYLineItemView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYLineItemView.m; sourceTree = "<group>"; };
+		6D22320D762EC006EC6C6C8B1C24B4C8 /* Pods-XYChartUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XYChartUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6F0BC2E4A5BCE55FD5E0E233DB577CB0 /* XYBarCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYBarCell.m; sourceTree = "<group>"; };
+		6F668286B8652F21825DA236638675BA /* XYChartProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYChartProtocol.h; sourceTree = "<group>"; };
+		70FCE3D15D11F79061E67E2FC889069A /* Pods-XYChartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChartUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		747741C9FD65301A489AFDC8613FAB61 /* XYChart.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = XYChart.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		78DD54F64E08C93ADFAE4C11112290D6 /* XYLineGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYLineGradientLayer.h; sourceTree = "<group>"; };
+		7C91D5FF46B36C03D166D1A44F90D96C /* XYChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XYChart.m; path = XYChart/XYChart.m; sourceTree = "<group>"; };
+		7FF1838DB553F3AF8336DD034FE5DAA2 /* Pods-XYChart-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XYChart-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8776F48BDA139B6CADBEC98B2DBD1B7A /* libPods-XYChartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-XYChartTests.a"; path = "libPods-XYChartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C361ED3D5FB41B8A829E40B38ECADA4 /* XYLinesView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYLinesView.m; sourceTree = "<group>"; };
+		8E4490F84D9628A84D944029C796DE20 /* Pods-XYChartTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-XYChartTests-dummy.m"; sourceTree = "<group>"; };
+		9AF317632145265AB183A8DFE586E5F4 /* XYChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XYChart.h; path = XYChart/XYChart.h; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A1FA1BFCEBCA2207AA42DBFFA8225C53 /* XYChartDataSourceItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYChartDataSourceItem.m; sourceTree = "<group>"; };
-		A4F4136565BF3ACD8337CC7284AE1903 /* XYLineItemView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYLineItemView.m; sourceTree = "<group>"; };
-		A93A4F313B1BC15DBD5DE1D1171B1329 /* Pods-XYChartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChartUITests.release.xcconfig"; sourceTree = "<group>"; };
-		AA316D3A25FC55A6DD3533ABFEB8DC23 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		AF299939252E22599CBE195750F7A29D /* UIColor+XYChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+XYChart.h"; sourceTree = "<group>"; };
-		B4D8B88D4D48CF53FCB300700C7C8976 /* Pods-XYChartTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XYChartTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B69E4239F1E1DEECA21AA8E8F10EE869 /* XYChartItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYChartItem.m; sourceTree = "<group>"; };
-		B6D0FC24D185CD8C0732E22FA4B7281B /* Pods-XYChart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChart.release.xcconfig"; sourceTree = "<group>"; };
-		C1529A48213F07D6176AF603A431E783 /* FORGestureTrackDisplay-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FORGestureTrackDisplay-prefix.pch"; sourceTree = "<group>"; };
-		C1AC2A13A10B6BC03339B51DF256CD7D /* Pods-XYChartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChartUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		C7562379E412CBF18A1DB69FF9CCA6D6 /* libPods-XYChartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-XYChartTests.a"; path = "libPods-XYChartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C82655B95E87AD18BD2C93B85F3C7EEC /* XYLinesView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYLinesView.h; sourceTree = "<group>"; };
-		CCE3CFDA46AB55323298E8BBDB45904F /* XYLineChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYLineChart.h; sourceTree = "<group>"; };
-		D077B8D2383EF9E052A2133736B1ED81 /* XYLineGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYLineGradientLayer.h; sourceTree = "<group>"; };
-		DCACC9B400EFE8D81C3D95846FCC0E50 /* Pods-XYChartTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XYChartTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		DDA9A89D443D91152138AD9785F6018E /* XYBarChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYBarChart.m; sourceTree = "<group>"; };
-		ECE37BAD9EF00D8306A2FF68F529B06D /* Pods-XYChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChart.debug.xcconfig"; sourceTree = "<group>"; };
-		ECF99020FBCC20A69147F2C69C1022EE /* Pods-XYChartUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-XYChartUITests-dummy.m"; sourceTree = "<group>"; };
-		F7EBD4F4A5AA9B6F5E626D47D5F53780 /* XYChartConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYChartConst.h; sourceTree = "<group>"; };
-		F90A24A79DB95B10BBC930D79288950E /* Pods-XYChart-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XYChart-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9EA8D7A4A202EC0F024B26191A6BE595 /* XYBarCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYBarCell.h; sourceTree = "<group>"; };
+		A4B1A27853231121EBEE60C50CCD51C7 /* XYChartItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYChartItem.h; sourceTree = "<group>"; };
+		A5DCFEA2FE02F4B4FCDE084118DBCC94 /* NSArray+XYChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+XYChart.h"; sourceTree = "<group>"; };
+		A8EDF224A62F098779D4FAE515CF08B1 /* XYChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XYChart-prefix.pch"; sourceTree = "<group>"; };
+		A90B6877B25ADCCE2CAABB1BB20CEC8A /* Pods-XYChartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChartTests.release.xcconfig"; sourceTree = "<group>"; };
+		AB1DCD672009175DD40F1E7F32BFA2EA /* XYChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XYChart-dummy.m"; sourceTree = "<group>"; };
+		BD049E08CD9D1818310FE64C2532BB24 /* XYChartItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYChartItem.m; sourceTree = "<group>"; };
+		BFD6EF3FCD22FA75D5E941A4E5BE44AD /* libXYChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libXYChart.a; path = libXYChart.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C999022CE2F4DB82E4B3B9BF3C38ACE9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		CD6C36A41EBC2CC1B5C10E96A07FFB0A /* UIColor+XYChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+XYChart.h"; sourceTree = "<group>"; };
+		CEA74933CB6149D0D3596BF452BDEE28 /* libPods-XYChartUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-XYChartUITests.a"; path = "libPods-XYChartUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0D5778C8E31EEC5FC07761D1B9C6DC6 /* FORGestureTrackDisplay.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FORGestureTrackDisplay.xcconfig; sourceTree = "<group>"; };
+		D2951E64754D16FADB618C336B66C4AC /* XYLinesView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYLinesView.h; sourceTree = "<group>"; };
+		D3AAB70FCA2D144F90EB18C2B0B789E4 /* FORGestureTrackDisplay-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FORGestureTrackDisplay-dummy.m"; sourceTree = "<group>"; };
+		E6733E4BCC660BAC40D22FF310697175 /* libFORGestureTrackDisplay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFORGestureTrackDisplay.a; path = libFORGestureTrackDisplay.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E73485F7529A6E65244EA8728AE775FD /* XYBarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYBarChart.h; sourceTree = "<group>"; };
+		E770C5FA39A84F1818CE85D34AC34659 /* Pods-XYChartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChartUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E81408C5592A38C064B483FB7BB4A45B /* libPods-XYChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-XYChart.a"; path = "libPods-XYChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEE06A56457E7D068A07AFC758EF8704 /* Pods-XYChartTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XYChartTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F36FB0CECB213CCBFEC7295471EA781C /* Pods-XYChart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChart.release.xcconfig"; sourceTree = "<group>"; };
+		FB3331BF64928577A9AC113B36F7AD86 /* XYChartDataSourceItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYChartDataSourceItem.m; sourceTree = "<group>"; };
+		FBD5AA69BF2800A578375DC3326B08FD /* Pods-XYChartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChartTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		097EB6FC6E2ADF364E7015623611B663 /* Frameworks */ = {
+		15B5ED9671B98F7B1384A17E1BE97452 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0B430BC2BD35BDB2362BBEA09EAF94E1 /* Frameworks */ = {
+		16DFD1C25FB4539ED204F78BE7257713 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1970117B9155948CC5CFC66A6665B322 /* Frameworks */ = {
+		A2BCB8714A54618E79F9CB64E4CACED0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		53A76436A8197E3537FE99516AC0BD7C /* Frameworks */ = {
+		E7216FBEB63E65FE03949A70D940D82C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADED0BC04F5A5FFFCF07E21A4A117F24 /* Frameworks */ = {
+		F64F9E694EC7C1496FAA2B07F49E47EA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -184,10 +184,44 @@
 				545E13A507AD6F1D2C3710DC02C78CBA /* FORGestureTrack.m */,
 				1D4B8608EF494C0E7E785279E6D8F5C1 /* FORTrackGesture.h */,
 				4DE9DCBF92DB2541C70121B82EBBE7E5 /* FORTrackGesture.m */,
-				D88A6FAFFA849AE2230731E618A6A62C /* Support Files */,
+				6B72CBF0F94DC29C94BB1252DBBC98B1 /* Support Files */,
 			);
 			name = FORGestureTrackDisplay;
 			path = FORGestureTrackDisplay;
+			sourceTree = "<group>";
+		};
+		103D18F49963CE4704696104B7BC9E66 /* Pods-XYChart */ = {
+			isa = PBXGroup;
+			children = (
+				7FF1838DB553F3AF8336DD034FE5DAA2 /* Pods-XYChart-acknowledgements.markdown */,
+				4635DD45FC0782F5687C6471689AEFA6 /* Pods-XYChart-acknowledgements.plist */,
+				2817961E6054EF4EC10A6E62C1CCFB41 /* Pods-XYChart-dummy.m */,
+				41A86FC61E83BCAAC15706A8F9CD2457 /* Pods-XYChart.debug.xcconfig */,
+				F36FB0CECB213CCBFEC7295471EA781C /* Pods-XYChart.release.xcconfig */,
+			);
+			name = "Pods-XYChart";
+			path = "Target Support Files/Pods-XYChart";
+			sourceTree = "<group>";
+		};
+		130C0CAB100DABF32041D06589284B3F /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				59E129EF0664A6C8211E7C98F78BBFE7 /* XYChartConst.h */,
+				6F668286B8652F21825DA236638675BA /* XYChartProtocol.h */,
+			);
+			name = Const;
+			path = XYChart/Const;
+			sourceTree = "<group>";
+		};
+		18127DB78386524D6658CD01CEE9F455 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4E74C71FDC9450B56217EB66854A5F7E /* XYChart.xcconfig */,
+				AB1DCD672009175DD40F1E7F32BFA2EA /* XYChart-dummy.m */,
+				A8EDF224A62F098779D4FAE515CF08B1 /* XYChart-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "Demo/Pods/Target Support Files/XYChart";
 			sourceTree = "<group>";
 		};
 		1ADBD31786F36C9D37E8A0EB80EC9B37 /* Pods */ = {
@@ -198,118 +232,116 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		2832BCEB787ADCA59192E0950D9B9C31 /* Pods-XYChartTests */ = {
+		35F10222C1116BC999400949B821A62F /* Pods-XYChartTests */ = {
 			isa = PBXGroup;
 			children = (
-				B4D8B88D4D48CF53FCB300700C7C8976 /* Pods-XYChartTests-acknowledgements.markdown */,
-				DCACC9B400EFE8D81C3D95846FCC0E50 /* Pods-XYChartTests-acknowledgements.plist */,
-				7481D2895EA1E9DF7E1FF7901BA8608E /* Pods-XYChartTests-dummy.m */,
-				288D697E6428051F4F45DA81C39E3270 /* Pods-XYChartTests.debug.xcconfig */,
-				5C8E0A6A87D93CDD2D882973A9952C71 /* Pods-XYChartTests.release.xcconfig */,
+				EEE06A56457E7D068A07AFC758EF8704 /* Pods-XYChartTests-acknowledgements.markdown */,
+				4155E4F6218A25A444E9F741C7CCACB2 /* Pods-XYChartTests-acknowledgements.plist */,
+				8E4490F84D9628A84D944029C796DE20 /* Pods-XYChartTests-dummy.m */,
+				FBD5AA69BF2800A578375DC3326B08FD /* Pods-XYChartTests.debug.xcconfig */,
+				A90B6877B25ADCCE2CAABB1BB20CEC8A /* Pods-XYChartTests.release.xcconfig */,
 			);
 			name = "Pods-XYChartTests";
 			path = "Target Support Files/Pods-XYChartTests";
 			sourceTree = "<group>";
 		};
-		501016D7C86068D38EC15BB5B2C729E4 /* Support Files */ = {
+		6B72CBF0F94DC29C94BB1252DBBC98B1 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				1FAF372477E6A47E4DFE5A9781F2D0AB /* XYChart.xcconfig */,
-				300BB46BCA82037D375F3B068CD67F39 /* XYChart-dummy.m */,
-				9A047B85AAE1A81750CC3D128F88F872 /* XYChart-prefix.pch */,
+				D0D5778C8E31EEC5FC07761D1B9C6DC6 /* FORGestureTrackDisplay.xcconfig */,
+				D3AAB70FCA2D144F90EB18C2B0B789E4 /* FORGestureTrackDisplay-dummy.m */,
+				52DF5B7C2125C19B794A1BBF050EF8F5 /* FORGestureTrackDisplay-prefix.pch */,
 			);
 			name = "Support Files";
-			path = "Demo/Pods/Target Support Files/XYChart";
-			sourceTree = "<group>";
-		};
-		65468A792668BD3B5EAAAF46372A4FD8 /* Bar */ = {
-			isa = PBXGroup;
-			children = (
-				7045B54F1A346877B15576D6F2E51020 /* XYBarCell.h */,
-				365A52954E6C28DE7E97D909A148F7E5 /* XYBarCell.m */,
-				15BB4A601AEA35C4252E2D338C5F14E8 /* XYBarChart.h */,
-				DDA9A89D443D91152138AD9785F6018E /* XYBarChart.m */,
-				987CD00464F6B5244595F39654F549F6 /* XYBarView.h */,
-				057B4FADAEB376EEFBAB150E829D932D /* XYBarView.m */,
-			);
-			name = Bar;
-			path = XYChart/Bar;
-			sourceTree = "<group>";
-		};
-		6731CCCC799D277E288C47CB7E24787F /* Pods-XYChart */ = {
-			isa = PBXGroup;
-			children = (
-				F90A24A79DB95B10BBC930D79288950E /* Pods-XYChart-acknowledgements.markdown */,
-				5BAB7575E1B0A3F2BBC51D7F8A0D6A53 /* Pods-XYChart-acknowledgements.plist */,
-				52B176D30D24B7AC99154BFB686C4DD2 /* Pods-XYChart-dummy.m */,
-				ECE37BAD9EF00D8306A2FF68F529B06D /* Pods-XYChart.debug.xcconfig */,
-				B6D0FC24D185CD8C0732E22FA4B7281B /* Pods-XYChart.release.xcconfig */,
-			);
-			name = "Pods-XYChart";
-			path = "Target Support Files/Pods-XYChart";
+			path = "../Target Support Files/FORGestureTrackDisplay";
 			sourceTree = "<group>";
 		};
 		729D7906F36388B4B3CF5E0095086783 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				6731CCCC799D277E288C47CB7E24787F /* Pods-XYChart */,
-				2832BCEB787ADCA59192E0950D9B9C31 /* Pods-XYChartTests */,
-				BE5D74B6F9160AC0230E72EA7DCC62E5 /* Pods-XYChartUITests */,
+				103D18F49963CE4704696104B7BC9E66 /* Pods-XYChart */,
+				35F10222C1116BC999400949B821A62F /* Pods-XYChartTests */,
+				B65BAB34AD139E95BFCB23FC81F60E7A /* Pods-XYChartUITests */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		884C54A7AAA6A31AD8A74ABA1E808FB5 /* Extension */ = {
+		8D36126B0FA553108526065E314F8A1D /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				90AE14E3087B029C774C59687E6BE9FD /* NSArray+XYChart.h */,
-				06CB34B24B6B362FABD5160A9C125B21 /* NSArray+XYChart.m */,
-				AF299939252E22599CBE195750F7A29D /* UIColor+XYChart.h */,
-				1D7371AFA85A24B84BEBA3FE4BB36F48 /* UIColor+XYChart.m */,
+				C999022CE2F4DB82E4B3B9BF3C38ACE9 /* LICENSE */,
+				39596355E9A6F06FD7CDE8EA21FF3309 /* README.md */,
+				747741C9FD65301A489AFDC8613FAB61 /* XYChart.podspec */,
 			);
-			name = Extension;
-			path = XYChart/Extension;
+			name = Pod;
 			sourceTree = "<group>";
 		};
-		9E348E24433C85D2406A023C04B0FD78 /* Products */ = {
+		8E87F690A01E5ED8E42A789B3EFD3404 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				07AC229D41EF9C215AF15834FB0068CB /* libFORGestureTrackDisplay.a */,
-				089CC65894ABB5A1D6EEEE34FEB16E7B /* libPods-XYChart.a */,
-				C7562379E412CBF18A1DB69FF9CCA6D6 /* libPods-XYChartTests.a */,
-				41DB3764F412CF5D7CC3737A719FA9D8 /* libPods-XYChartUITests.a */,
-				307D7E1CAA0A6BCAC8DDCAB01738B9B8 /* libXYChart.a */,
+				E6733E4BCC660BAC40D22FF310697175 /* libFORGestureTrackDisplay.a */,
+				E81408C5592A38C064B483FB7BB4A45B /* libPods-XYChart.a */,
+				8776F48BDA139B6CADBEC98B2DBD1B7A /* libPods-XYChartTests.a */,
+				CEA74933CB6149D0D3596BF452BDEE28 /* libPods-XYChartUITests.a */,
+				BFD6EF3FCD22FA75D5E941A4E5BE44AD /* libXYChart.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BE5D74B6F9160AC0230E72EA7DCC62E5 /* Pods-XYChartUITests */ = {
+		A9D0960FE9AC99B7F614F8577F2973B7 /* XYChart */ = {
 			isa = PBXGroup;
 			children = (
-				3CD36954F1712A74071801DEA441AF6A /* Pods-XYChartUITests-acknowledgements.markdown */,
-				4CA79FE3B8A78A136FC49D1C1BF5D65A /* Pods-XYChartUITests-acknowledgements.plist */,
-				ECF99020FBCC20A69147F2C69C1022EE /* Pods-XYChartUITests-dummy.m */,
-				C1AC2A13A10B6BC03339B51DF256CD7D /* Pods-XYChartUITests.debug.xcconfig */,
-				A93A4F313B1BC15DBD5DE1D1171B1329 /* Pods-XYChartUITests.release.xcconfig */,
+				9AF317632145265AB183A8DFE586E5F4 /* XYChart.h */,
+				7C91D5FF46B36C03D166D1A44F90D96C /* XYChart.m */,
+				CAB744213F1404B917BF465C074C2E0B /* Bar */,
+				130C0CAB100DABF32041D06589284B3F /* Const */,
+				C37E966F4EF648BAA20A753A200DECB0 /* Extension */,
+				EDFEEB3831DEF7F8CFDDF815B17CDA5A /* Line */,
+				D3EFD22BABDEE0B2EFEFC54A0837945F /* model */,
+				8D36126B0FA553108526065E314F8A1D /* Pod */,
+				18127DB78386524D6658CD01CEE9F455 /* Support Files */,
+			);
+			name = XYChart;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		B65BAB34AD139E95BFCB23FC81F60E7A /* Pods-XYChartUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6D22320D762EC006EC6C6C8B1C24B4C8 /* Pods-XYChartUITests-acknowledgements.markdown */,
+				38642685D7EC78CD57EF14DAF01DDBDD /* Pods-XYChartUITests-acknowledgements.plist */,
+				5E777D2E742821E0B3CAF91CC6E401F2 /* Pods-XYChartUITests-dummy.m */,
+				70FCE3D15D11F79061E67E2FC889069A /* Pods-XYChartUITests.debug.xcconfig */,
+				E770C5FA39A84F1818CE85D34AC34659 /* Pods-XYChartUITests.release.xcconfig */,
 			);
 			name = "Pods-XYChartUITests";
 			path = "Target Support Files/Pods-XYChartUITests";
 			sourceTree = "<group>";
 		};
-		C3FDAF750E2C7E75E340783BC114FA95 /* Line */ = {
+		C37E966F4EF648BAA20A753A200DECB0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				CCE3CFDA46AB55323298E8BBDB45904F /* XYLineChart.h */,
-				9C03C84D97CC09D514A959863B0D3E77 /* XYLineChart.m */,
-				D077B8D2383EF9E052A2133736B1ED81 /* XYLineGradientLayer.h */,
-				6357847088B10335164A99CA2BEFC1F9 /* XYLineGradientLayer.m */,
-				95973C0BB654FFB65FB32EAE0D421A01 /* XYLineItemView.h */,
-				A4F4136565BF3ACD8337CC7284AE1903 /* XYLineItemView.m */,
-				C82655B95E87AD18BD2C93B85F3C7EEC /* XYLinesView.h */,
-				9849411DE45EBAA99D231353AFC6B8F7 /* XYLinesView.m */,
+				A5DCFEA2FE02F4B4FCDE084118DBCC94 /* NSArray+XYChart.h */,
+				114728F87FE60BD3CF15DBCB2E2381B7 /* NSArray+XYChart.m */,
+				CD6C36A41EBC2CC1B5C10E96A07FFB0A /* UIColor+XYChart.h */,
+				4DD71A4BD2191CAE7E623E6AC3785F0A /* UIColor+XYChart.m */,
 			);
-			name = Line;
-			path = XYChart/Line;
+			name = Extension;
+			path = XYChart/Extension;
+			sourceTree = "<group>";
+		};
+		CAB744213F1404B917BF465C074C2E0B /* Bar */ = {
+			isa = PBXGroup;
+			children = (
+				9EA8D7A4A202EC0F024B26191A6BE595 /* XYBarCell.h */,
+				6F0BC2E4A5BCE55FD5E0E233DB577CB0 /* XYBarCell.m */,
+				E73485F7529A6E65244EA8728AE775FD /* XYBarChart.h */,
+				0472EBD33F7A6109448556A9F12DAC54 /* XYBarChart.m */,
+				54277303C4721030EA5861E528A65BC5 /* XYBarView.h */,
+				14FF0339D20A97BF8EF26E64F54AA225 /* XYBarView.m */,
+			);
+			name = Bar;
+			path = XYChart/Bar;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -319,30 +351,21 @@
 				E4392282493F8D9852F019523C5EDA74 /* Development Pods */,
 				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
 				1ADBD31786F36C9D37E8A0EB80EC9B37 /* Pods */,
-				9E348E24433C85D2406A023C04B0FD78 /* Products */,
+				8E87F690A01E5ED8E42A789B3EFD3404 /* Products */,
 				729D7906F36388B4B3CF5E0095086783 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D52C74C2E2CE68B3A6DAA6714A98CDF4 /* Pod */ = {
+		D3EFD22BABDEE0B2EFEFC54A0837945F /* model */ = {
 			isa = PBXGroup;
 			children = (
-				46EECFD2AAE90E270FA68BF76BEDAB0A /* LICENSE */,
-				AA316D3A25FC55A6DD3533ABFEB8DC23 /* README.md */,
-				2F3F1DD9CCA15EBEDA5B41AB8BC26450 /* XYChart.podspec */,
+				469C8961476701A4C647A24B8FB3FB98 /* XYChartDataSourceItem.h */,
+				FB3331BF64928577A9AC113B36F7AD86 /* XYChartDataSourceItem.m */,
+				A4B1A27853231121EBEE60C50CCD51C7 /* XYChartItem.h */,
+				BD049E08CD9D1818310FE64C2532BB24 /* XYChartItem.m */,
 			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		D88A6FAFFA849AE2230731E618A6A62C /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7AFBD6C1879359CD815D84DED28D45B6 /* FORGestureTrackDisplay.xcconfig */,
-				25C52FFFAD5ED8B1E9AA44F123EFADF3 /* FORGestureTrackDisplay-dummy.m */,
-				C1529A48213F07D6176AF603A431E783 /* FORGestureTrackDisplay-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/FORGestureTrackDisplay";
+			name = model;
+			path = XYChart/model;
 			sourceTree = "<group>";
 		};
 		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
@@ -352,101 +375,78 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E11CC8744A039D626F0F899EB0A5F863 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				4777A2F1AFC9B65EFF0CC201343078CA /* XYChartDataSourceItem.h */,
-				A1FA1BFCEBCA2207AA42DBFFA8225C53 /* XYChartDataSourceItem.m */,
-				63E049AE8080D0B605D929ECF0ADAA6C /* XYChartItem.h */,
-				B69E4239F1E1DEECA21AA8E8F10EE869 /* XYChartItem.m */,
-			);
-			name = model;
-			path = XYChart/model;
-			sourceTree = "<group>";
-		};
-		E392D36DF73F447A36A50A03D6112003 /* XYChart */ = {
-			isa = PBXGroup;
-			children = (
-				39ACF528808F45E3D7C3CC773EF4E05F /* XYChart.h */,
-				4CA315AC5E62808346F62EB063A09734 /* XYChart.m */,
-				65468A792668BD3B5EAAAF46372A4FD8 /* Bar */,
-				F75686DFCFF674C46A8DB71AB6F8711C /* Const */,
-				884C54A7AAA6A31AD8A74ABA1E808FB5 /* Extension */,
-				C3FDAF750E2C7E75E340783BC114FA95 /* Line */,
-				E11CC8744A039D626F0F899EB0A5F863 /* model */,
-				D52C74C2E2CE68B3A6DAA6714A98CDF4 /* Pod */,
-				501016D7C86068D38EC15BB5B2C729E4 /* Support Files */,
-			);
-			name = XYChart;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		E4392282493F8D9852F019523C5EDA74 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E392D36DF73F447A36A50A03D6112003 /* XYChart */,
+				A9D0960FE9AC99B7F614F8577F2973B7 /* XYChart */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		F75686DFCFF674C46A8DB71AB6F8711C /* Const */ = {
+		EDFEEB3831DEF7F8CFDDF815B17CDA5A /* Line */ = {
 			isa = PBXGroup;
 			children = (
-				F7EBD4F4A5AA9B6F5E626D47D5F53780 /* XYChartConst.h */,
-				1779ADCE76ACD2005F5825120D02FC45 /* XYChartProtocol.h */,
+				0915A57B79A53A34B5764D7D5E0FF0BF /* XYLineChart.h */,
+				521159A615FC1B0D2A9149E72A12D353 /* XYLineChart.m */,
+				78DD54F64E08C93ADFAE4C11112290D6 /* XYLineGradientLayer.h */,
+				439DB0C7864D27457D820ED18E70DE7A /* XYLineGradientLayer.m */,
+				33DD748A7C0EB96940312502B3EB5E0E /* XYLineItemView.h */,
+				6435DEDAFF0109D1FEC69586D426B0E7 /* XYLineItemView.m */,
+				D2951E64754D16FADB618C336B66C4AC /* XYLinesView.h */,
+				8C361ED3D5FB41B8A829E40B38ECADA4 /* XYLinesView.m */,
 			);
-			name = Const;
-			path = XYChart/Const;
+			name = Line;
+			path = XYChart/Line;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		58E5BB2CA9F076766400308A1B762076 /* Headers */ = {
+		2D09D89EA9EB8300C2B3A48E9FA766F4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F47FFA3A22895D1C58FB5E7B7EB53D8 /* FORGestureTrack.h in Headers */,
-				184B8BD0E340E026EE072AEFE12BE5AF /* FORTrackGesture.h in Headers */,
+				8D61482FE8923EEBDF915A37979A0924 /* FORGestureTrack.h in Headers */,
+				567C1D125C7CAFB1CE180D95043783F9 /* FORTrackGesture.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA6574766D7D388DB125C266416E172C /* Headers */ = {
+		3300FDE3B2B5A536383D236589FA7286 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19F6E6110ACA91E94A238757F496A6A2 /* NSArray+XYChart.h in Headers */,
+				42D4748ED9A44F305E151162EE5315C9 /* UIColor+XYChart.h in Headers */,
+				2670F553E474DCD13262503D2A21FA86 /* XYBarCell.h in Headers */,
+				B056F14A4BD604F785B89A3320290D02 /* XYBarChart.h in Headers */,
+				A0636EDDAC2D7DC1906B0295A664AD4C /* XYBarView.h in Headers */,
+				40B0926AD1570A1BC2F5D5397C1D0746 /* XYChart.h in Headers */,
+				30BB4AE9E5DE44CA6C6FC404611A2626 /* XYChartConst.h in Headers */,
+				9BE3CF7195AA287B52EA97677BF87972 /* XYChartDataSourceItem.h in Headers */,
+				5E485BD6FEFA5B1528F272ABC0BC082D /* XYChartItem.h in Headers */,
+				277CEA38959384F612252E6B033527E5 /* XYChartProtocol.h in Headers */,
+				BC98CE0598017471E12654C6A51742AA /* XYLineChart.h in Headers */,
+				929679B65739366567E3E6BD42A148D7 /* XYLineGradientLayer.h in Headers */,
+				0B3F86AD90BE9290A83E6FF47043AB49 /* XYLineItemView.h in Headers */,
+				CC57585FC5A61615E3E77FA3803DF571 /* XYLinesView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8869F948190772B16DD6BF4405B1165B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE3FBF197B9DE8F35A4107D793EFBB20 /* Headers */ = {
+		B24E4498B5812EDD45159B02A8723544 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0F1F28ECE31D67D73866BC8788692DB /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BBBB1EFF731EC97CFF2CF4BA8A5D33AC /* NSArray+XYChart.h in Headers */,
-				4982A90A59FA6312174AFDF74075B353 /* UIColor+XYChart.h in Headers */,
-				7FF5B8F348B8F4083F20CC80E25DC041 /* XYBarCell.h in Headers */,
-				CD204CA4512748277138AD97F53DAAD5 /* XYBarChart.h in Headers */,
-				E4DA714819BBA1C97DB848A88B112248 /* XYBarView.h in Headers */,
-				BA5B71A5ABDE753883D593BF5F3B61DD /* XYChart.h in Headers */,
-				D98D2626B2AE0D90DABFCCF656EDD3DA /* XYChartConst.h in Headers */,
-				3F369CC23D858EF4575D1934A8427169 /* XYChartDataSourceItem.h in Headers */,
-				5111551161850CABF6E34C502CFD270C /* XYChartItem.h in Headers */,
-				AF75A480F6272710E85D1E22C4DD0D38 /* XYChartProtocol.h in Headers */,
-				ECF4A02F620C1377567DB769CBAD6FDD /* XYLineChart.h in Headers */,
-				65F7E6ACD10FAA5801C082908171C905 /* XYLineGradientLayer.h in Headers */,
-				8EA6A7DBF6BFB01D826C6F32BE64C364 /* XYLineItemView.h in Headers */,
-				6BCF5AE2101A079252322A0AAB14A620 /* XYLinesView.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F25F9493F0866C064C277B9EC37A4759 /* Headers */ = {
+		DAD95599AB6B0CBB4CC9CE38F88808F4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -456,49 +456,13 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		34253BC73C887D1E796823FEF18651A6 /* Pods-XYChartUITests */ = {
+		3F9D6B276D3368DDF296A0E89F3796E0 /* XYChart */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C5477566FB563738BB28305A248DEEEF /* Build configuration list for PBXNativeTarget "Pods-XYChartUITests" */;
+			buildConfigurationList = DAC699AF385BB038FEE75DAAD26B4045 /* Build configuration list for PBXNativeTarget "XYChart" */;
 			buildPhases = (
-				F25F9493F0866C064C277B9EC37A4759 /* Headers */,
-				80D604DF54310A0718D02E1F077A18F2 /* Sources */,
-				53A76436A8197E3537FE99516AC0BD7C /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0C5A9A8E510B51A313709578D243094B /* PBXTargetDependency */,
-			);
-			name = "Pods-XYChartUITests";
-			productName = "Pods-XYChartUITests";
-			productReference = 41DB3764F412CF5D7CC3737A719FA9D8 /* libPods-XYChartUITests.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		5137BAAF6078CE1C9E965FCB7E949BBC /* Pods-XYChartTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6C3CBA16D6099933A3A94933C3717782 /* Build configuration list for PBXNativeTarget "Pods-XYChartTests" */;
-			buildPhases = (
-				CA6574766D7D388DB125C266416E172C /* Headers */,
-				A561CF2D23232EEFEDFA8D7D89952F08 /* Sources */,
-				1970117B9155948CC5CFC66A6665B322 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BBFE99F6F7EC239D19240F3510D3EBDF /* PBXTargetDependency */,
-			);
-			name = "Pods-XYChartTests";
-			productName = "Pods-XYChartTests";
-			productReference = C7562379E412CBF18A1DB69FF9CCA6D6 /* libPods-XYChartTests.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		AC7FA0368689079B991F19D447F27482 /* XYChart */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C796C749C6C3A606CCB5EAE793EC5E41 /* Build configuration list for PBXNativeTarget "XYChart" */;
-			buildPhases = (
-				D0F1F28ECE31D67D73866BC8788692DB /* Headers */,
-				BC2C0B11F8D995E04E6918C06C84E4B8 /* Sources */,
-				0B430BC2BD35BDB2362BBEA09EAF94E1 /* Frameworks */,
+				3300FDE3B2B5A536383D236589FA7286 /* Headers */,
+				B60915B0963B8EA2FBF72483F97C12EB /* Sources */,
+				F64F9E694EC7C1496FAA2B07F49E47EA /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -506,16 +470,71 @@
 			);
 			name = XYChart;
 			productName = XYChart;
-			productReference = 307D7E1CAA0A6BCAC8DDCAB01738B9B8 /* libXYChart.a */;
+			productReference = BFD6EF3FCD22FA75D5E941A4E5BE44AD /* libXYChart.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		F50D2EE35B4D74DCB4D75FE78C1EF630 /* FORGestureTrackDisplay */ = {
+		48516EDAB3252DDB874E8C8F2832419A /* Pods-XYChartUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2F2FC8EC231BFB07D0A22411A4B2B4E8 /* Build configuration list for PBXNativeTarget "FORGestureTrackDisplay" */;
+			buildConfigurationList = CB99D3CB6D79DD0134EAF2A2F3BAABAF /* Build configuration list for PBXNativeTarget "Pods-XYChartUITests" */;
 			buildPhases = (
-				58E5BB2CA9F076766400308A1B762076 /* Headers */,
-				622652168354BB3399D35251A4133BD6 /* Sources */,
-				ADED0BC04F5A5FFFCF07E21A4A117F24 /* Frameworks */,
+				B24E4498B5812EDD45159B02A8723544 /* Headers */,
+				5D64F84BDBFDDF1896723CF5ED505C18 /* Sources */,
+				A2BCB8714A54618E79F9CB64E4CACED0 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				372F1F346F999F36E3926E2C333503D3 /* PBXTargetDependency */,
+			);
+			name = "Pods-XYChartUITests";
+			productName = "Pods-XYChartUITests";
+			productReference = CEA74933CB6149D0D3596BF452BDEE28 /* libPods-XYChartUITests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		6549519C5795CF712F584C92AA329CEA /* Pods-XYChartTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29F0E911ED5AEA70D038706E6C86BCAB /* Build configuration list for PBXNativeTarget "Pods-XYChartTests" */;
+			buildPhases = (
+				8869F948190772B16DD6BF4405B1165B /* Headers */,
+				64DB988E7FF495BF2921A3002A155E12 /* Sources */,
+				E7216FBEB63E65FE03949A70D940D82C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D5020309BC21BCF7ADBEA61DC9DF631 /* PBXTargetDependency */,
+			);
+			name = "Pods-XYChartTests";
+			productName = "Pods-XYChartTests";
+			productReference = 8776F48BDA139B6CADBEC98B2DBD1B7A /* libPods-XYChartTests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B0D0E62BF41C22B1AE8D767D90807D23 /* Pods-XYChart */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC1FB386389573487F0B466C5B53C672 /* Build configuration list for PBXNativeTarget "Pods-XYChart" */;
+			buildPhases = (
+				DAD95599AB6B0CBB4CC9CE38F88808F4 /* Headers */,
+				5999BF4C0F03D90EBD7E3CBE1CF711F4 /* Sources */,
+				16DFD1C25FB4539ED204F78BE7257713 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D2B29726E641DE3F6DA399645198F50 /* PBXTargetDependency */,
+				45B973772ED9B871E87CDD62812BB263 /* PBXTargetDependency */,
+			);
+			name = "Pods-XYChart";
+			productName = "Pods-XYChart";
+			productReference = E81408C5592A38C064B483FB7BB4A45B /* libPods-XYChart.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C3F2F5238902732E7F7AFC29F1B2CEE2 /* FORGestureTrackDisplay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70572AEB9BE7B787222A497DED2C8019 /* Build configuration list for PBXNativeTarget "FORGestureTrackDisplay" */;
+			buildPhases = (
+				2D09D89EA9EB8300C2B3A48E9FA766F4 /* Headers */,
+				6B85FF42B0F8A9B6F6C7917144D8D16F /* Sources */,
+				15B5ED9671B98F7B1384A17E1BE97452 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -523,26 +542,7 @@
 			);
 			name = FORGestureTrackDisplay;
 			productName = FORGestureTrackDisplay;
-			productReference = 07AC229D41EF9C215AF15834FB0068CB /* libFORGestureTrackDisplay.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		F89BA645ACC531AEC9824610742962A3 /* Pods-XYChart */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0D501070128938ABB207AC6522E11DEA /* Build configuration list for PBXNativeTarget "Pods-XYChart" */;
-			buildPhases = (
-				CE3FBF197B9DE8F35A4107D793EFBB20 /* Headers */,
-				63C0500B91B3357E562B8BB60F15B807 /* Sources */,
-				097EB6FC6E2ADF364E7015623611B663 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9985AAA901368E120BCAB90179718FE6 /* PBXTargetDependency */,
-				5EAFD28DB70A450B0A1DFB3089EF4052 /* PBXTargetDependency */,
-			);
-			name = "Pods-XYChart";
-			productName = "Pods-XYChart";
-			productReference = 089CC65894ABB5A1D6EEEE34FEB16E7B /* libPods-XYChart.a */;
+			productReference = E6733E4BCC660BAC40D22FF310697175 /* libFORGestureTrackDisplay.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -551,116 +551,187 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 9E348E24433C85D2406A023C04B0FD78 /* Products */;
+			productRefGroup = 8E87F690A01E5ED8E42A789B3EFD3404 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F50D2EE35B4D74DCB4D75FE78C1EF630 /* FORGestureTrackDisplay */,
-				F89BA645ACC531AEC9824610742962A3 /* Pods-XYChart */,
-				5137BAAF6078CE1C9E965FCB7E949BBC /* Pods-XYChartTests */,
-				34253BC73C887D1E796823FEF18651A6 /* Pods-XYChartUITests */,
-				AC7FA0368689079B991F19D447F27482 /* XYChart */,
+				C3F2F5238902732E7F7AFC29F1B2CEE2 /* FORGestureTrackDisplay */,
+				B0D0E62BF41C22B1AE8D767D90807D23 /* Pods-XYChart */,
+				6549519C5795CF712F584C92AA329CEA /* Pods-XYChartTests */,
+				48516EDAB3252DDB874E8C8F2832419A /* Pods-XYChartUITests */,
+				3F9D6B276D3368DDF296A0E89F3796E0 /* XYChart */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		622652168354BB3399D35251A4133BD6 /* Sources */ = {
+		5999BF4C0F03D90EBD7E3CBE1CF711F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F575803CA9EEC8C4EC843FBB18D214B /* FORGestureTrack.m in Sources */,
-				B8E53C380419E067D19BE2A1174E2A09 /* FORGestureTrackDisplay-dummy.m in Sources */,
-				D67D59F7CFA9636EC6D70B6D4301AA4F /* FORTrackGesture.m in Sources */,
+				F09FE868883642E75D7E71398C191859 /* Pods-XYChart-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		63C0500B91B3357E562B8BB60F15B807 /* Sources */ = {
+		5D64F84BDBFDDF1896723CF5ED505C18 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				291741E47D041E46BBB69520C809DCE2 /* Pods-XYChart-dummy.m in Sources */,
+				C3B5899933A0F492429247F369C66C24 /* Pods-XYChartUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		80D604DF54310A0718D02E1F077A18F2 /* Sources */ = {
+		64DB988E7FF495BF2921A3002A155E12 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1CB9E66BEB7823BA4A94BAC2C594497 /* Pods-XYChartUITests-dummy.m in Sources */,
+				EFA589BD95FE34DF7EC323DF0F2BB366 /* Pods-XYChartTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A561CF2D23232EEFEDFA8D7D89952F08 /* Sources */ = {
+		6B85FF42B0F8A9B6F6C7917144D8D16F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59FA5305739E6720FFCDE41CEC199AAF /* Pods-XYChartTests-dummy.m in Sources */,
+				1823AE2B7501179D4059C7F1B5E6DB22 /* FORGestureTrack.m in Sources */,
+				8AAFB8CE7B0C6CF7BFC3E31CEC18BFFC /* FORGestureTrackDisplay-dummy.m in Sources */,
+				4DB5BC7DC277C020CC9AF3F19AEB4287 /* FORTrackGesture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BC2C0B11F8D995E04E6918C06C84E4B8 /* Sources */ = {
+		B60915B0963B8EA2FBF72483F97C12EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				358643DA971421EEB735942BE0A70145 /* NSArray+XYChart.m in Sources */,
-				DD364C35C7D1AE7B49BC30CD4ECC178D /* UIColor+XYChart.m in Sources */,
-				321E72E17C1EBBAAEDC85B8EB97034F4 /* XYBarCell.m in Sources */,
-				C8B0A4663766EB994E8421ED1E11AAE3 /* XYBarChart.m in Sources */,
-				E5827F6B3C01739DBF76E6397B8A1964 /* XYBarView.m in Sources */,
-				ED99B5660B5B13F051E89D580D6C34D3 /* XYChart-dummy.m in Sources */,
-				923230A8FDDDD6457E900947760AAAA9 /* XYChart.m in Sources */,
-				C82FF05E8E9CA7ABDA6BEEC89494F7CF /* XYChartDataSourceItem.m in Sources */,
-				EC05E0A99E8135B7A32C71E0E52AD9CD /* XYChartItem.m in Sources */,
-				2C76F346AF8A4A51602E09A53626E5EC /* XYLineChart.m in Sources */,
-				800B1C32FA20A2D2A4AB6298C08A90DF /* XYLineGradientLayer.m in Sources */,
-				3E8B23070D753F108625AB23DCBC7C04 /* XYLineItemView.m in Sources */,
-				F626B5B585B6FBA97F6D4CE69E445583 /* XYLinesView.m in Sources */,
+				FA8746A4E7CB4C8CD057247DBDFBDC80 /* NSArray+XYChart.m in Sources */,
+				F97B94C19CEF53254B4886ED8998858B /* UIColor+XYChart.m in Sources */,
+				7519075E72098529286D8402ECB7B505 /* XYBarCell.m in Sources */,
+				7C9BAC1249CF2AAA00570F1703BCB1F6 /* XYBarChart.m in Sources */,
+				04922DFF55B5B66735CDED7D27CF2805 /* XYBarView.m in Sources */,
+				23A0416B93186CF61077C47D7124D343 /* XYChart-dummy.m in Sources */,
+				82D87AD612DD7F71F4635F98B377B010 /* XYChart.m in Sources */,
+				604895CF4BF06D2C5ADF1FA9350F817C /* XYChartDataSourceItem.m in Sources */,
+				DADB9F00E66237273AA3FA8E1849B33F /* XYChartItem.m in Sources */,
+				4F62822651AFA2C1518D35A94D9D19D7 /* XYLineChart.m in Sources */,
+				D8DF44B567D12780DF39395BA5C92F38 /* XYLineGradientLayer.m in Sources */,
+				A4D6CC361E08757DF491C9CF04018A3F /* XYLineItemView.m in Sources */,
+				29A28AEAD963541ED14809559964FBA2 /* XYLinesView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0C5A9A8E510B51A313709578D243094B /* PBXTargetDependency */ = {
+		372F1F346F999F36E3926E2C333503D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-XYChart";
-			target = F89BA645ACC531AEC9824610742962A3 /* Pods-XYChart */;
-			targetProxy = A8DAC0B9ACE5CD87DDDBAD7A8F79D9E7 /* PBXContainerItemProxy */;
+			target = B0D0E62BF41C22B1AE8D767D90807D23 /* Pods-XYChart */;
+			targetProxy = EC9E3F9C98D3E20339A2A29D1DCC58EB /* PBXContainerItemProxy */;
 		};
-		5EAFD28DB70A450B0A1DFB3089EF4052 /* PBXTargetDependency */ = {
+		3D5020309BC21BCF7ADBEA61DC9DF631 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-XYChart";
+			target = B0D0E62BF41C22B1AE8D767D90807D23 /* Pods-XYChart */;
+			targetProxy = 673E4B3C595DA80715FCD3EB65B5D650 /* PBXContainerItemProxy */;
+		};
+		45B973772ED9B871E87CDD62812BB263 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = XYChart;
-			target = AC7FA0368689079B991F19D447F27482 /* XYChart */;
-			targetProxy = 8A3673CDD471AF5FBDEBB435CA29DE3E /* PBXContainerItemProxy */;
+			target = 3F9D6B276D3368DDF296A0E89F3796E0 /* XYChart */;
+			targetProxy = D0D7D4E4BD48F94E1F7AD8DD16E4AAF4 /* PBXContainerItemProxy */;
 		};
-		9985AAA901368E120BCAB90179718FE6 /* PBXTargetDependency */ = {
+		5D2B29726E641DE3F6DA399645198F50 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FORGestureTrackDisplay;
-			target = F50D2EE35B4D74DCB4D75FE78C1EF630 /* FORGestureTrackDisplay */;
-			targetProxy = 5FDDA378BF6D83EB60CC35DEFD7438BD /* PBXContainerItemProxy */;
-		};
-		BBFE99F6F7EC239D19240F3510D3EBDF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-XYChart";
-			target = F89BA645ACC531AEC9824610742962A3 /* Pods-XYChart */;
-			targetProxy = 3F122491B995EFA5246AE3233C37498E /* PBXContainerItemProxy */;
+			target = C3F2F5238902732E7F7AFC29F1B2CEE2 /* FORGestureTrackDisplay */;
+			targetProxy = 2117CC469A004654EB8C0B97210A3FC4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		05DF210AC65EBB0E593AAF976B2C2177 /* Release */ = {
+		055C4DE5AB8A1484DB7EC071A3E6703C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E74C71FDC9450B56217EB66854A5F7E /* XYChart.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/XYChart/XYChart-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = XYChart;
+				PRODUCT_NAME = XYChart;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0F7CB3EF8EDBBB95DF84B25062C48E98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0D5778C8E31EEC5FC07761D1B9C6DC6 /* FORGestureTrackDisplay.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FORGestureTrackDisplay/FORGestureTrackDisplay-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FORGestureTrackDisplay;
+				PRODUCT_NAME = FORGestureTrackDisplay;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		37ACAC939133B4F030E14B6A563B7057 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E74C71FDC9450B56217EB66854A5F7E /* XYChart.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/XYChart/XYChart-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = XYChart;
+				PRODUCT_NAME = XYChart;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4BE66A09A74FD25164AAB3C2645B9B93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -715,59 +786,55 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		149915BF7553A29E461562315D124BBC /* Debug */ = {
+		598BC372555B85ABD9756672F6522EC1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFBD6C1879359CD815D84DED28D45B6 /* FORGestureTrackDisplay.xcconfig */;
+			baseConfigurationReference = E770C5FA39A84F1818CE85D34AC34659 /* Pods-XYChartUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/FORGestureTrackDisplay/FORGestureTrackDisplay-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = FORGestureTrackDisplay;
-				PRODUCT_NAME = FORGestureTrackDisplay;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		2807349E7C8611587C9442D399E751AD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFBD6C1879359CD815D84DED28D45B6 /* FORGestureTrackDisplay.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/FORGestureTrackDisplay/FORGestureTrackDisplay-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = FORGestureTrackDisplay;
-				PRODUCT_NAME = FORGestureTrackDisplay;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		421ECB1396280A8D83853C3DDBED1700 /* Debug */ = {
+		5C16E3342759501EA70023593DD9B27E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70FCE3D15D11F79061E67E2FC889069A /* Pods-XYChartUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7EF7227D9B20A1D549000096ACCB23D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -826,14 +893,14 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		5B7D3A18370D7BEE928B473B15EB7AF6 /* Release */ = {
+		952A0BCFE0740D0C2E6E54310FA1F821 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C8E0A6A87D93CDD2D882973A9952C71 /* Pods-XYChartTests.release.xcconfig */;
+			baseConfigurationReference = F36FB0CECB213CCBFEC7295471EA781C /* Pods-XYChart.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -853,63 +920,21 @@
 			};
 			name = Release;
 		};
-		5FC7D910D797C0454E8458C5CFE45F75 /* Debug */ = {
+		A6904DE61BDE7A20E64742D02BAA19EF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECE37BAD9EF00D8306A2FF68F529B06D /* Pods-XYChart.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		6B87890579D9495478142F49238EADAE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 288D697E6428051F4F45DA81C39E3270 /* Pods-XYChartTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		7F5E277D84F54FD1584106FDF671E7E7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FAF372477E6A47E4DFE5A9781F2D0AB /* XYChart.xcconfig */;
+			baseConfigurationReference = D0D5778C8E31EEC5FC07761D1B9C6DC6 /* FORGestureTrackDisplay.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/XYChart/XYChart-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/FORGestureTrackDisplay/FORGestureTrackDisplay-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = XYChart;
-				PRODUCT_NAME = XYChart;
+				PRODUCT_MODULE_NAME = FORGestureTrackDisplay;
+				PRODUCT_NAME = FORGestureTrackDisplay;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -918,9 +943,30 @@
 			};
 			name = Debug;
 		};
-		85ED989EAB2E97E323F32692CBE69168 /* Release */ = {
+		B46060B01CCA5C089E087DE21E8CA3E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A93A4F313B1BC15DBD5DE1D1171B1329 /* Pods-XYChartUITests.release.xcconfig */;
+			baseConfigurationReference = 41A86FC61E83BCAAC15706A8F9CD2457 /* Pods-XYChart.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B7BE9B466F1703CAD2FC29512CFC428B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A90B6877B25ADCCE2CAABB1BB20CEC8A /* Pods-XYChartTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -940,55 +986,9 @@
 			};
 			name = Release;
 		};
-		9EC1C5CFEBA16CECA6A475CFFD12D72D /* Release */ = {
+		EDDD7C2EE6AF1190F4EE7B5923AC5813 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6D0FC24D185CD8C0732E22FA4B7281B /* Pods-XYChart.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		DB77CFF7A149E59AC42185D850188E1B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FAF372477E6A47E4DFE5A9781F2D0AB /* XYChart.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/XYChart/XYChart-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = XYChart;
-				PRODUCT_NAME = XYChart;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		E3C6D1C1FEB4DE5F59FA919E6CAB0D15 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1AC2A13A10B6BC03339B51DF256CD7D /* Pods-XYChartUITests.debug.xcconfig */;
+			baseConfigurationReference = FBD5AA69BF2800A578375DC3326B08FD /* Pods-XYChartTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1010,20 +1010,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0D501070128938ABB207AC6522E11DEA /* Build configuration list for PBXNativeTarget "Pods-XYChart" */ = {
+		29F0E911ED5AEA70D038706E6C86BCAB /* Build configuration list for PBXNativeTarget "Pods-XYChartTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5FC7D910D797C0454E8458C5CFE45F75 /* Debug */,
-				9EC1C5CFEBA16CECA6A475CFFD12D72D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2F2FC8EC231BFB07D0A22411A4B2B4E8 /* Build configuration list for PBXNativeTarget "FORGestureTrackDisplay" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				149915BF7553A29E461562315D124BBC /* Debug */,
-				2807349E7C8611587C9442D399E751AD /* Release */,
+				EDDD7C2EE6AF1190F4EE7B5923AC5813 /* Debug */,
+				B7BE9B466F1703CAD2FC29512CFC428B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1031,35 +1022,44 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				421ECB1396280A8D83853C3DDBED1700 /* Debug */,
-				05DF210AC65EBB0E593AAF976B2C2177 /* Release */,
+				7EF7227D9B20A1D549000096ACCB23D7 /* Debug */,
+				4BE66A09A74FD25164AAB3C2645B9B93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6C3CBA16D6099933A3A94933C3717782 /* Build configuration list for PBXNativeTarget "Pods-XYChartTests" */ = {
+		70572AEB9BE7B787222A497DED2C8019 /* Build configuration list for PBXNativeTarget "FORGestureTrackDisplay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B87890579D9495478142F49238EADAE /* Debug */,
-				5B7D3A18370D7BEE928B473B15EB7AF6 /* Release */,
+				A6904DE61BDE7A20E64742D02BAA19EF /* Debug */,
+				0F7CB3EF8EDBBB95DF84B25062C48E98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C5477566FB563738BB28305A248DEEEF /* Build configuration list for PBXNativeTarget "Pods-XYChartUITests" */ = {
+		CB99D3CB6D79DD0134EAF2A2F3BAABAF /* Build configuration list for PBXNativeTarget "Pods-XYChartUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3C6D1C1FEB4DE5F59FA919E6CAB0D15 /* Debug */,
-				85ED989EAB2E97E323F32692CBE69168 /* Release */,
+				5C16E3342759501EA70023593DD9B27E /* Debug */,
+				598BC372555B85ABD9756672F6522EC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C796C749C6C3A606CCB5EAE793EC5E41 /* Build configuration list for PBXNativeTarget "XYChart" */ = {
+		DAC699AF385BB038FEE75DAAD26B4045 /* Build configuration list for PBXNativeTarget "XYChart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7F5E277D84F54FD1584106FDF671E7E7 /* Debug */,
-				DB77CFF7A149E59AC42185D850188E1B /* Release */,
+				055C4DE5AB8A1484DB7EC071A3E6703C /* Debug */,
+				37ACAC939133B4F030E14B6A563B7057 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC1FB386389573487F0B466C5B53C672 /* Build configuration list for PBXNativeTarget "Pods-XYChart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B46060B01CCA5C089E087DE21E8CA3E2 /* Debug */,
+				952A0BCFE0740D0C2E6E54310FA1F821 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
