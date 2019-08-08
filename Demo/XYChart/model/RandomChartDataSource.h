@@ -16,4 +16,6 @@
 
 - (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width;
 
+- (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width isGroupColor:(BOOL)isGroupColor;
+
 @end

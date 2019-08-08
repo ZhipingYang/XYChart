@@ -13,7 +13,9 @@
 
 - (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row
 {
-    self = [self initWithDataList:[RandomChartDataSource getDataListWithSection:section row:row]];
+    self = [self initWithDataList:[RandomChartDataSource getDataListWithSection:section
+                                                                            row:row
+                                                                   isGroupColor: false]];
     if (self) {
         _type = type;
         self.autoSizingRowWidth = YES;
@@ -23,7 +25,9 @@
 
 - (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width
 {
-    self = [self initWithDataList:[RandomChartDataSource getDataListWithSection:section row:row]];
+    self = [self initWithDataList:[RandomChartDataSource getDataListWithSection:section
+                                                                            row:row
+                                                                   isGroupColor: false]];
     if (self) {
         _type = type;
         self.widthOfRow = width;
@@ -32,13 +36,27 @@
     return self;
 }
 
-+ (NSArray<NSArray<id<XYChartItem>> *> *)getDataListWithSection:(NSUInteger)section row:(NSUInteger)row
+- (instancetype)initWithStyle:(XYChartType)type section:(NSUInteger)section row:(NSUInteger)row width:(CGFloat)width isGroupColor:(BOOL)isGroupColor
+{
+    self = [self initWithDataList:[RandomChartDataSource getDataListWithSection:section row:row isGroupColor: true]];
+    if (self) {
+        _type = type;
+        self.widthOfRow = width;
+        self.autoSizingRowWidth = NO;
+    }
+    return self;
+}
+
++ (NSArray<NSArray<id<XYChartItem>> *> *)getDataListWithSection:(NSUInteger)section
+                                                            row:(NSUInteger)row
+                                                   isGroupColor:(BOOL)isGroupColor
 {
     NSArray * dataList = [[self randomSection:section row:row] xy_map:^id(NSArray<NSNumber *> *obj1) {
+        UIColor *color = [UIColor xy_random];
         return [obj1 xy_map:^id(NSNumber *obj) {
             XYChartItem *item = [[XYChartItem alloc] init];
             item.value = obj;
-            item.color = [UIColor xy_random];
+            item.color = isGroupColor ? color : [UIColor xy_random];
             item.duration = 3;
             item.showName = obj.stringValue;
             return item;

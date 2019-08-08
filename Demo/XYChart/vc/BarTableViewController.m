@@ -29,7 +29,7 @@
                    [[RandomChartDataSource alloc] initWithStyle:XYChartTypeBar section:3 row:5],
                    [[RandomChartDataSource alloc] initWithStyle:XYChartTypeBar section:4 row:12],
                    [[RandomChartDataSource alloc] initWithStyle:XYChartTypeBar section:2 row:15 width:60],
-                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeBar section:4 row:56 width:80],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeBar section:4 row:56 width:80 isGroupColor:true],
                    ];
     [self.tableView reloadData];
 }

@@ -12,7 +12,9 @@
 | single datas in linechart | single datas in linechart |
 | ![WechatIMG67](https://user-images.githubusercontent.com/9360037/62707045-470a7480-ba23-11e9-87c9-25d8b8df1d7b.jpeg) | ![WechatIMG68](https://user-images.githubusercontent.com/9360037/62707047-470a7480-ba23-11e9-9ea1-687185c04f74.jpeg) |
 | mutiple datas in linechart | mutiple datas in linechart |
-| ![linescroll](https://user-images.githubusercontent.com/9360037/62710352-b6836280-ba29-11e9-97d0-c43e7f34b445.gif) | ![barchart.gif](https://user-images.githubusercontent.com/9360037/62709087-48d63700-ba27-11e9-86f3-e92e4e1bd094.gif) |
+| ![WechatIMG70](https://user-images.githubusercontent.com/9360037/62711726-20047080-ba2c-11e9-8890-022fe4e58df9.jpeg) | ![click](https://user-images.githubusercontent.com/9360037/62712419-5ee6f600-ba2d-11e9-9605-aeaba3097e9b.gif) |
+| **LineDotsClicked:** show all if the dots closed | **BarClicked:** custom click effects |
+| ![gif](https://user-images.githubusercontent.com/9360037/62709107-54c1f900-ba27-11e9-8312-8fcec88a58d5.gif) | ![gif](https://user-images.githubusercontent.com/9360037/62709087-48d63700-ba27-11e9-86f3-e92e4e1bd094.gif) |
 | scrolling linechart (did set row width) | scrolling barchart (did set row width) |
 
 ## Usage
