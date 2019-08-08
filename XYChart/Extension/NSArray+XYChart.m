@@ -79,4 +79,19 @@
     }
 }
 
+- (void)xy_flexibleReuseWithContains:(NSInteger)count map:(id (^)(void))map handle:(void (^)(id obj))handle
+{
+    if (count > self.count) {
+        for (int i=0; i<(count-self.count); i++) {
+            [self addObject:map()];
+        }
+    } else if (count < self.count) {
+        NSRange range = NSMakeRange(self.count-1, self.count-count);
+        NSArray *spareArr = [self subarrayWithRange:range];
+        [spareArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            handle(obj);
+        }];
+        [self removeObjectsInRange:range];
+    }
+}
 @end

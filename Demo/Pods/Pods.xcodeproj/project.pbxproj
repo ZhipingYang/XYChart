@@ -78,8 +78,8 @@
 /* Begin PBXFileReference section */
 		057B4FADAEB376EEFBAB150E829D932D /* XYBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYBarView.m; sourceTree = "<group>"; };
 		06CB34B24B6B362FABD5160A9C125B21 /* NSArray+XYChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+XYChart.m"; sourceTree = "<group>"; };
-		07AC229D41EF9C215AF15834FB0068CB /* libFORGestureTrackDisplay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFORGestureTrackDisplay.a; path = libFORGestureTrackDisplay.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		089CC65894ABB5A1D6EEEE34FEB16E7B /* libPods-XYChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-XYChart.a"; path = "libPods-XYChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07AC229D41EF9C215AF15834FB0068CB /* libFORGestureTrackDisplay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFORGestureTrackDisplay.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		089CC65894ABB5A1D6EEEE34FEB16E7B /* libPods-XYChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XYChart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BB4A601AEA35C4252E2D338C5F14E8 /* XYBarChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYBarChart.h; sourceTree = "<group>"; };
 		1779ADCE76ACD2005F5825120D02FC45 /* XYChartProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYChartProtocol.h; sourceTree = "<group>"; };
 		1D4B8608EF494C0E7E785279E6D8F5C1 /* FORTrackGesture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FORTrackGesture.h; path = FORGestureTrackDisplay/FORTrackGesture.h; sourceTree = "<group>"; };
@@ -87,14 +87,14 @@
 		1FAF372477E6A47E4DFE5A9781F2D0AB /* XYChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XYChart.xcconfig; sourceTree = "<group>"; };
 		25C52FFFAD5ED8B1E9AA44F123EFADF3 /* FORGestureTrackDisplay-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FORGestureTrackDisplay-dummy.m"; sourceTree = "<group>"; };
 		288D697E6428051F4F45DA81C39E3270 /* Pods-XYChartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChartTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2F3F1DD9CCA15EBEDA5B41AB8BC26450 /* XYChart.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = XYChart.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		2F3F1DD9CCA15EBEDA5B41AB8BC26450 /* XYChart.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = XYChart.podspec; sourceTree = "<group>"; tabWidth = 2; };
 		300BB46BCA82037D375F3B068CD67F39 /* XYChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XYChart-dummy.m"; sourceTree = "<group>"; };
-		307D7E1CAA0A6BCAC8DDCAB01738B9B8 /* libXYChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libXYChart.a; path = libXYChart.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		307D7E1CAA0A6BCAC8DDCAB01738B9B8 /* libXYChart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libXYChart.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		365A52954E6C28DE7E97D909A148F7E5 /* XYBarCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYBarCell.m; sourceTree = "<group>"; };
 		39ACF528808F45E3D7C3CC773EF4E05F /* XYChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XYChart.h; path = XYChart/XYChart.h; sourceTree = "<group>"; };
 		3CD36954F1712A74071801DEA441AF6A /* Pods-XYChartUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XYChartUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		41DB3764F412CF5D7CC3737A719FA9D8 /* libPods-XYChartUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-XYChartUITests.a"; path = "libPods-XYChartUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		46EECFD2AAE90E270FA68BF76BEDAB0A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		41DB3764F412CF5D7CC3737A719FA9D8 /* libPods-XYChartUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XYChartUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		46EECFD2AAE90E270FA68BF76BEDAB0A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4777A2F1AFC9B65EFF0CC201343078CA /* XYChartDataSourceItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYChartDataSourceItem.h; sourceTree = "<group>"; };
 		4CA315AC5E62808346F62EB063A09734 /* XYChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = XYChart.m; path = XYChart/XYChart.m; sourceTree = "<group>"; };
 		4CA79FE3B8A78A136FC49D1C1BF5D65A /* Pods-XYChartUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XYChartUITests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -115,18 +115,18 @@
 		987CD00464F6B5244595F39654F549F6 /* XYBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYBarView.h; sourceTree = "<group>"; };
 		9A047B85AAE1A81750CC3D128F88F872 /* XYChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XYChart-prefix.pch"; sourceTree = "<group>"; };
 		9C03C84D97CC09D514A959863B0D3E77 /* XYLineChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYLineChart.m; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1FA1BFCEBCA2207AA42DBFFA8225C53 /* XYChartDataSourceItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYChartDataSourceItem.m; sourceTree = "<group>"; };
 		A4F4136565BF3ACD8337CC7284AE1903 /* XYLineItemView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYLineItemView.m; sourceTree = "<group>"; };
 		A93A4F313B1BC15DBD5DE1D1171B1329 /* Pods-XYChartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChartUITests.release.xcconfig"; sourceTree = "<group>"; };
-		AA316D3A25FC55A6DD3533ABFEB8DC23 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		AA316D3A25FC55A6DD3533ABFEB8DC23 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AF299939252E22599CBE195750F7A29D /* UIColor+XYChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+XYChart.h"; sourceTree = "<group>"; };
 		B4D8B88D4D48CF53FCB300700C7C8976 /* Pods-XYChartTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XYChartTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		B69E4239F1E1DEECA21AA8E8F10EE869 /* XYChartItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XYChartItem.m; sourceTree = "<group>"; };
 		B6D0FC24D185CD8C0732E22FA4B7281B /* Pods-XYChart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChart.release.xcconfig"; sourceTree = "<group>"; };
 		C1529A48213F07D6176AF603A431E783 /* FORGestureTrackDisplay-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FORGestureTrackDisplay-prefix.pch"; sourceTree = "<group>"; };
 		C1AC2A13A10B6BC03339B51DF256CD7D /* Pods-XYChartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XYChartUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		C7562379E412CBF18A1DB69FF9CCA6D6 /* libPods-XYChartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-XYChartTests.a"; path = "libPods-XYChartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7562379E412CBF18A1DB69FF9CCA6D6 /* libPods-XYChartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XYChartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82655B95E87AD18BD2C93B85F3C7EEC /* XYLinesView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYLinesView.h; sourceTree = "<group>"; };
 		CCE3CFDA46AB55323298E8BBDB45904F /* XYLineChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYLineChart.h; sourceTree = "<group>"; };
 		D077B8D2383EF9E052A2133736B1ED81 /* XYLineGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XYLineGradientLayer.h; sourceTree = "<group>"; };
@@ -186,7 +186,6 @@
 				4DE9DCBF92DB2541C70121B82EBBE7E5 /* FORTrackGesture.m */,
 				D88A6FAFFA849AE2230731E618A6A62C /* Support Files */,
 			);
-			name = FORGestureTrackDisplay;
 			path = FORGestureTrackDisplay;
 			sourceTree = "<group>";
 		};
@@ -559,6 +558,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;

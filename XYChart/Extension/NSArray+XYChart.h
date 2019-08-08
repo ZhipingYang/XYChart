@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSMutableArray<ObjectType> (XYChart)
 
 - (void)xy_safeAdd:(ObjectType)obj;
+- (void)xy_flexibleReuseWithContains:(NSInteger)count map:(ObjectType (^)(void))map handle:(void (^)(ObjectType obj))handle;
 
 @end
 

@@ -39,7 +39,7 @@
             XYChartItem *item = [[XYChartItem alloc] init];
             item.value = obj;
             item.color = [UIColor xy_random];
-            item.duration = 0.3;
+            item.duration = 3;
             item.showName = obj.stringValue;
             return item;
         }];
