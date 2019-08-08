@@ -25,10 +25,9 @@
     _dataArray = @[
                    [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:1 row:5],
                    [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:1 row:15],
-                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:2 row:15],
                    [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:3 row:5],
                    [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:2 row:15 width:60],
-                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:2 row:33 width:40],
+                   [[RandomChartDataSource alloc] initWithStyle:XYChartTypeLine section:2 row:60 width:50]
                    ];
     [self.tableView reloadData];
 }
