@@ -55,26 +55,26 @@
     }];
 }
 
-- (void)setDataSource:(id<XYChartDataSource> _Nonnull)dataSource row:(NSUInteger)row chart:(XYChart *)chart
+- (void)updateChart:(XYChart *)chart index:(NSUInteger)index animation:(BOOL)animation
 {
-    _dataSource = dataSource;
+    _dataSource = chart.dataSource;
     _chartView = chart;
-    _row = row;
-    self.nameLabel.attributedText = [_dataSource chart:chart titleOfRowAtIndex:row];
+    _row = index;
+    self.nameLabel.attributedText = [_dataSource chart:chart titleOfRowAtIndex:index];
     
     NSMutableArray <id<XYChartItem>>*mArr = @[].mutableCopy;
     
     const NSUInteger sections = [_dataSource numberOfSectionsInChart:chart];
     for (int section=0; section<sections; section++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:section];
         id<XYChartItem> item = [_dataSource chart:_chartView itemOfIndex:indexPath];
         [mArr xy_safeAdd:item];
     }
     _barsDataArray = [NSArray arrayWithArray:mArr];
-    [self reloadBars];
+    [self reloadBars:animation];
 }
 
-- (void)reloadBars
+- (void)reloadBars:(BOOL)animation
 {
     const CGFloat count = _barsDataArray.count;
     [_barContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -83,6 +83,8 @@
         XYBarView *bar = [[XYBarView alloc] initWithFrame:CGRectMake((xy_width(self.barContainerView)/count)*idx, 0, xy_width(self.barContainerView)/count, xy_height(self.barContainerView))];
         [bar setChartItem:obj range:[self.dataSource visibleRangeInChart:self.chartView]];
         [self.barContainerView addSubview:bar];
+        [bar startAnimate:animation];
+        
         __weak typeof(self) weakSelf = self;
         bar.handleBlock = ^(XYBarView * _Nonnull view) {
             [weakSelf handleAnimationIfNeed:view];
@@ -96,7 +98,7 @@
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:_row inSection:[_barContainerView.subviews indexOfObject:view]];
     CAAnimation *animation = [_chartView.delegate chart:_chartView clickAnimationOfIndex:path];
-    [view.line addAnimation:animation forKey:@"hello"];
+    [view.showLayer addAnimation:animation forKey:@"Bar_CAAnimation"];
 }
 
 @end

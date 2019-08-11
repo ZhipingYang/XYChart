@@ -66,11 +66,23 @@ NSString *const barChartReuseIdentifier = @"barChartReuseIdentifier";
 {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animation.duration = 0.2;
+    animation.duration = 0.3;
     animation.repeatCount = 1;
-    animation.autoreverses = true;
     animation.removedOnCompletion = true;
-    animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.2, 1.3, 1.0)];
+    
+    int style = arc4random()%3;
+    if (style == 0) {
+        animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.1, 1.1, 1.0)];
+        animation.autoreverses = true;
+    } else if (style == 1) {
+        CATransform3D rotate = CATransform3DMakeRotation(M_PI, 1, 0, 0);
+        rotate.m34 = 1.0/100.0;
+        animation.toValue = [NSValue valueWithCATransform3D:rotate];
+    } else if (style == 2) {
+        CATransform3D rotate = CATransform3DMakeRotation(M_PI, 0, 1, 0);
+        rotate.m34 = -1.0/100.0;
+        animation.toValue = [NSValue valueWithCATransform3D:rotate];
+    }
     return animation;
 }
 

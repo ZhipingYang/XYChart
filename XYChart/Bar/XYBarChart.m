@@ -13,7 +13,9 @@
 #import "XYChart.h"
 
 @interface XYBarChart ()<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-
+{
+    BOOL _shouldAnimation;
+}
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @end
@@ -56,6 +58,7 @@
 
 - (void)reloadData:(BOOL)animation
 {
+    _shouldAnimation = animation;
     [self.collectionView reloadData];
 }
 
@@ -69,7 +72,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XYBarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XYBarCell class]) forIndexPath:indexPath];
-    [cell setDataSource:_chartView.dataSource row:indexPath.row chart:_chartView];
+    [cell updateChart:_chartView index:indexPath.row animation:_shouldAnimation];
     return cell;
 }
 

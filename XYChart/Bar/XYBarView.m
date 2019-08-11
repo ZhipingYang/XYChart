@@ -8,35 +8,37 @@
 
 #import "XYBarView.h"
 
+
+@interface XYBarView ()
+
+@property (nonatomic, strong) CADisplayLink *link;
+
+@end
+
 @implementation XYBarView
+
+- (void)dealloc
+{
+    [_link invalidate];
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {        
-        _line = [CAShapeLayer layer];
-        _line.lineCap = kCALineCapSquare;
-        _line.fillColor = [UIColor clearColor].CGColor;
-        _line.lineWidth = self.frame.size.width;
-        _line.strokeEnd = 1.0;
-        [self.layer addSublayer:_line];
+    if (self) {
+        _shapeLayer = [CAShapeLayer layer];
+        _shapeLayer.lineCap = kCALineCapSquare;
+        _shapeLayer.strokeEnd = 1.0;
+        _shapeLayer.strokeColor = [UIColor whiteColor].CGColor;
+        
+        _showLayer = [CALayer layer];
+        [_showLayer addSublayer:_shapeLayer];
+        _showLayer.mask = _shapeLayer;
+        [self.layer addSublayer:_showLayer];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                               action:@selector(handleTap:)];
         [self addGestureRecognizer:tap];
-//
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [self.line removeAllAnimations];
-//
-//            CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-//            animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//            animation.duration = 1;
-//            animation.fromValue = @(0.0f);
-//            animation.toValue = @(1.0f);
-//            animation.fillMode = kCAFillModeForwards;
-//            animation.removedOnCompletion = YES;
-//            [self.line addAnimation:animation forKey:@"strokeEnd"];
-//        });
     }
     return self;
 }
@@ -47,28 +49,59 @@
     [self updateLineFrame];
 }
 
+#pragma mark - private
+
 - (void)updateLineFrame
 {
     const CGSize selfSize = self.bounds.size;
     const CGFloat percent = (_chartItem.value.floatValue-_range.min)/((_range.max-_range.min)==0 ? 1:(_range.max-_range.min));
     
-    _line.frame = CGRectMake(0, selfSize.height*(1-percent), selfSize.width, selfSize.height * percent);
-//    UIBezierPath *bezierPath = [UIBezierPath bezierPath];
-//    [bezierPath moveToPoint:CGPointMake(xy_width(_line)/2.0, xy_height(_line))];
-//    [bezierPath addLineToPoint:CGPointMake(xy_width(_line)/2.0, 0)];
-//    bezierPath.lineWidth = xy_width(_line);
-//    _line.path = bezierPath.CGPath;
+    _showLayer.frame = CGRectMake(0, selfSize.height*(1-percent), selfSize.width, selfSize.height * percent);
+    
+    UIBezierPath *bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint:CGPointMake(xy_width(_showLayer)/2.0, xy_height(_showLayer))];
+    [bezierPath addLineToPoint:CGPointMake(xy_width(_showLayer)/2.0, 0)];
+    _shapeLayer.path = bezierPath.CGPath;
+    _shapeLayer.lineWidth = xy_width(_showLayer);
 }
+
+#pragma mark - public
 
 - (void)setChartItem:(id<XYChartItem>)chartItem range:(XYRange)range
 {
     if (_chartItem.value.floatValue == chartItem.value.floatValue && (range.min == _range.min && range.max == _range.max)) { return; }
     _chartItem = chartItem;
     _range = range;
-    _line.backgroundColor = chartItem.color.CGColor;
-//    _line.strokeColor = [chartItem.color colorWithAlphaComponent:0.3].CGColor;
+    _showLayer.backgroundColor = chartItem.color.CGColor;
+    
     [self updateLineFrame];
 }
+
+#pragma mark - animation
+
+- (void)startAnimate:(BOOL)animate
+{
+    if (animate == NO) { return; }
+    if (_shapeLayer.strokeEnd > 0 && _shapeLayer.strokeEnd < 1) { return; }
+    
+    _shapeLayer.strokeEnd = 0;
+    if (_link == nil) {
+        _link = [CADisplayLink displayLinkWithTarget:self selector:@selector(animateFlipAction)];
+        [_link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    }
+}
+
+- (void)animateFlipAction
+{
+    _shapeLayer.strokeEnd += 1/(60.0 * self.chartItem.duration);
+    if (_shapeLayer.strokeEnd > 1) {
+        [_link invalidate];
+        _link = nil;
+        _shapeLayer.strokeEnd = 1;
+    }
+}
+
+#pragma mark - UIMenu
 
 - (BOOL)canBecomeFirstResponder
 {
