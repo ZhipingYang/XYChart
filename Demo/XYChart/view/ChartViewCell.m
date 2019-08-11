@@ -26,7 +26,7 @@ NSString *const barChartReuseIdentifier = @"barChartReuseIdentifier";
     if (self) {
         XYChartType type = [reuseIdentifier isEqualToString:lineChartReuseIdentifier]
                          ? XYChartTypeLine : XYChartTypeBar;
-        _chartView = [[XYChart alloc] initWithFrame:CGRectZero chartType:type];
+        _chartView = [[XYChart alloc] initWithFrame:CGRectZero type:type];
         _chartView.delegate = self;
         [self.contentView addSubview:_chartView];
     }

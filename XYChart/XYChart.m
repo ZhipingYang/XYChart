@@ -29,26 +29,31 @@
 
 @implementation XYChart
 
-- (id)initWithFrame:(CGRect)frame chartType:(XYChartType)chartType
+- (id)initWithFrame:(CGRect)frame type:(XYChartType)type
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.sectionLabels = @[].mutableCopy;
         _horizonLines = @[].mutableCopy;
-        _type = chartType;
+        _type = type;
         [self setUpChartElements];
     }
     return self;
 }
 
+- (instancetype)initWithType:(XYChartType)type
+{
+    return [self initWithFrame:CGRectZero type:type];
+}
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    return [self initWithFrame:CGRectZero chartType:XYChartTypeLine];
+    return [self initWithFrame:CGRectZero type:XYChartTypeLine];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    return [self initWithFrame:frame chartType:XYChartTypeLine];
+    return [self initWithFrame:frame type:XYChartTypeLine];
 }
 
 - (void)setUpChartElements

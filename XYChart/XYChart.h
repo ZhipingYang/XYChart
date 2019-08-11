@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) XYChartType type;
 
-- (instancetype)initWithFrame:(CGRect)frame chartType:(XYChartType)chartType NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithFrame:(CGRect)frame type:(XYChartType)type NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithType:(XYChartType)type;
 
 /**
  更新图标数据
