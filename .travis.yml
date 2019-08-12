@@ -31,3 +31,8 @@ script:
   - pod install
   - xcodebuild clean build -workspace XYChart.xcworkspace -scheme 'XYChart' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone XS' -configuration Debug | xcpretty -c
 
+deploy:
+  provider: script
+  script: ./scripts/push.sh
+  on:
+    tags: true

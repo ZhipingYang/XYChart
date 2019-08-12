@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 	s.description	= <<-DESC
 	XYChart is designed for line & bar of charts which can compare mutiple datas in form styles, and limited the range of values to show, and so on.
 	                       DESC
-	s.version      	= '0.0.1'
+	s.version      	= '0.0.2'
 	s.homepage     	= "https://github.com/ZhipingYang/XYChart"
 	s.license      	= 'MIT'
 	s.authors      	= { 'ZhipingYang' => 'XcodeYang@gmail.com' }
