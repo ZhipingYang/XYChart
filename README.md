@@ -42,6 +42,7 @@
 ## Using
 
 <details><summary> Expand for XYChart details </summary>
+<br>
 
 ```objective-c
 @interface XYChart : UIView<XYChartReload>
@@ -95,7 +96,35 @@ _chartView.dataSource = _datasource;
 [self.view addSubview:_chartView];
 ```
 
+
+<details open><summary> Expand for <bold>XYChartDelegate</bold> protocol details </summary>
+<br>
+
+```objective-c
+@protocol XYChartDelegate
+@optional
+
+/**
+ 是否展示UIMenuController
+ */
+- (BOOL)chart:(XYChart *)chart shouldShowMenu:(NSIndexPath *)index;
+
+/**
+ 点击后的action，重载一般就不show UIMenuController了
+ */
+- (void)chart:(XYChart *)chart itemDidClick:(id<XYChartItem>)item;
+
+/**
+ line用于展示圆圈，bar用于柱形图的动画
+ */
+- (CAAnimation *)chart:(XYChart *)chart clickAnimationOfIndex:(NSIndexPath *)index;
+
+@end
+```
+</details>
+
 <details><summary> Expand for XYChartDataSource protocol details </summary>
+<br>
 
 ```objective-c
 /**
@@ -152,31 +181,6 @@ _chartView.dataSource = _datasource;
 ```
 </details>
 
-
-<details><summary> Expand for <bold>XYChartDelegate</bold> protocol details </summary>
-
-```objective-c
-@protocol XYChartDelegate
-@optional
-
-/**
- 是否展示UIMenuController
- */
-- (BOOL)chart:(XYChart *)chart shouldShowMenu:(NSIndexPath *)index;
-
-/**
- 点击后的action，重载一般就不show UIMenuController了
- */
-- (void)chart:(XYChart *)chart itemDidClick:(id<XYChartItem>)item;
-
-/**
- line用于展示圆圈，bar用于柱形图的动画
- */
-- (CAAnimation *)chart:(XYChart *)chart clickAnimationOfIndex:(NSIndexPath *)index;
-
-@end
-```
-</details>
 
 
 ## Author
