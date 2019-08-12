@@ -4,15 +4,15 @@ language: objective-c
 notifications:
   email: false
 
-# branches:
-#   only:
-#   - master
+ branches:
+   only:
+   - master
 
 cache: cocoapods
 podfile: Demo/Podfile
 
 before_install:
-    - gem install cocoapods --no-document --quiet
+    - gem install cocoapods -v '~> 1.7.0' --no-document --quiet
     - gem install xcpretty --no-document --quiet
     - pod --version
     - pod repo update --silent
@@ -20,19 +20,48 @@ before_install:
     - xcodebuild -version
     - xcodebuild -showsdks
 
-script:
-  - echo Pod
-  - pod lib lint --allow-warnings
+jobs:
+  include:
+    - stage: lint
+      before_install: mv .github/XYChart.podspec .
+      script:
+        - pod lib lint --allow-warnings
 
-  - echo Clean DerivedData
-  - rm -rf ~/Library/Developer/Xcode/DerivedData/
+    - stage: test
+      name: "clean"
+      before_install: mv .github/XYChart.podspec .
+      script:
+        - rm -rf ~/Library/Developer/Xcode/DerivedData/
+      - script:
+        - cd Demo
+        - pod install
+        - xcodebuild clean build -workspace XYChart.xcworkspace -scheme 'XYChart' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone XS' -configuration Debug | xcpretty -c
+        name: "test on iOS"
 
-  - cd Demo
-  - pod install
-  - xcodebuild clean build -workspace XYChart.xcworkspace -scheme 'XYChart' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone XS' -configuration Debug | xcpretty -c
+    - stage: deploy
+      before_script: |
+        mv .github/XYChart.podspec .
+        sed -i '' "s/s.version = '0.0.1'/s.version = '$TRAVIS_TAG'/g" XYChart.podspec
+      script: |
+        set -eo pipefail
+        mv .github/XYChart.podspec .
+        pod trunk push --verbose --allow-warnings | ruby -e 'ARGF.each{ print "." }'
+      on:
+        tags: true
 
-deploy:
-  provider: script
-  script: ./scripts/push.sh
-  on:
-    tags: true
+# script:
+#   - echo Pod
+#   - pod lib lint --allow-warnings
+
+#   - echo Clean DerivedData
+#   - rm -rf ~/Library/Developer/Xcode/DerivedData/
+
+#   - cd Demo
+#   - pod install
+#   - xcodebuild clean build -workspace XYChart.xcworkspace -scheme 'XYChart' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone XS' -configuration Debug | xcpretty -c
+
+# deploy:
+#   provider: script
+#   script: ./scripts/push.sh
+#   on:
+#     tags: true
