@@ -9,8 +9,6 @@ branches:
     - master
     - /^\d+\.\d+\.\d+$/
 
-cache: cocoapods
-
 before_install:
     - gem install cocoapods -v '~> 1.7.0' --no-document --quiet
     - gem install xcpretty --no-document --quiet
