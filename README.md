@@ -39,7 +39,7 @@
 > pod 'XYChart'
 > ```
 
-## Using
+## Usage
 
 <details><summary> Expand for XYChart details </summary>
 <br>
@@ -77,6 +77,7 @@
 
 
 **Method 1：**
+[details](https://github.com/ZhipingYang/XYChart/issues/50)
 
 ```objective-c
 _chartView = [[XYChart alloc] initWithFrame:CGRectMake(0, 0, 300, 100) chartType:XYChartTypeLine];
