@@ -15,6 +15,7 @@
 }
 
 @property (nonatomic, strong) NSArray <NSArray <id<XYChartItem>>*> *dataList;
+@property (nonatomic, strong) XYChartConfiguration *configuration;
 
 @end
 
@@ -38,21 +39,15 @@ static XYRange XYChartAutoRangeWithItems(NSArray<NSArray<id<XYChartItem>> *> *da
     if (!hasValue) {
         return XYRangeMake(0, 100);
     }
-    CGFloat distance = (maxValue - minValue) * 0.2;
-    if (distance <= 0) {
-        distance = MAX(fabs(maxValue) * 0.2, 1);
-    }
-    return XYRangeMake(minValue - distance, maxValue + distance);
+    return XYChartExpandedRange(minValue, maxValue);
 }
 
 - (instancetype)initWithDataList:(NSArray <NSArray <id<XYChartItem>>*> *)dataList
 {
     self = [super init];
     if (self) {
-        self.range = XYRangeMake(0, 100);
-        self.numberOfLevels = 5;
-        self.widthOfRow = 60;
-        self.autoSizingRowWidth = YES;
+        _configuration = [XYChartConfiguration defaultConfiguration];
+        _configuration.automaticallyAdjustsVisibleRange = YES;
         self.dataList = dataList;
     }
     return self;
@@ -71,12 +66,58 @@ static XYRange XYChartAutoRangeWithItems(NSArray<NSArray<id<XYChartItem>> *> *da
         NSAssert(obj.count == count, @"dataList的子数组个数不一致");
     }];
     
-    if (_dataList.count > 0 && _dataList.firstObject.count > 0) {
-        self.range = XYChartAutoRangeWithItems(_dataList);
+    if (self.configuration.automaticallyAdjustsVisibleRange && _dataList.count > 0 && _dataList.firstObject.count > 0) {
+        self.configuration.visibleRange = XYChartAutoRangeWithItems(_dataList);
     }
 }
 
+- (void)setRange:(XYRange)range
+{
+    self.configuration.visibleRange = range;
+    self.configuration.automaticallyAdjustsVisibleRange = NO;
+}
+
+- (XYRange)range
+{
+    return self.configuration.visibleRange;
+}
+
+- (void)setNumberOfLevels:(NSUInteger)numberOfLevels
+{
+    self.configuration.numberOfLevels = numberOfLevels;
+}
+
+- (NSUInteger)numberOfLevels
+{
+    return self.configuration.numberOfLevels;
+}
+
+- (void)setWidthOfRow:(CGFloat)widthOfRow
+{
+    self.configuration.rowWidth = widthOfRow;
+}
+
+- (CGFloat)widthOfRow
+{
+    return self.configuration.rowWidth;
+}
+
+- (void)setAutoSizingRowWidth:(BOOL)autoSizingRowWidth
+{
+    self.configuration.autoSizingRowWidth = autoSizingRowWidth;
+}
+
+- (BOOL)autoSizingRowWidth
+{
+    return self.configuration.autoSizingRowWidth;
+}
+
 #pragma mark - XYChartDataSource
+
+- (XYChartConfiguration *)chartConfiguration:(XYChart *)chart
+{
+    return self.configuration;
+}
 
 - (NSUInteger)numberOfSectionsInChart:(XYChart *)chart
 {
@@ -85,22 +126,19 @@ static XYRange XYChartAutoRangeWithItems(NSArray<NSArray<id<XYChartItem>> *> *da
 
 - (NSUInteger)numberOfRowsInChart:(XYChart *)chart
 {
-    NSArray <NSNumber *>*numers = [_dataList xy_map:^id _Nonnull(NSArray<id<XYChartItem>> * _Nonnull obj) {
-        return [NSNumber numberWithInt:(int)obj.count];
+    __block NSUInteger maxRowCount = 0;
+    [self.dataList enumerateObjectsUsingBlock:^(NSArray<id<XYChartItem>> * _Nonnull sectionItems, NSUInteger idx, BOOL * _Nonnull stop) {
+        maxRowCount = MAX(maxRowCount, sectionItems.count);
     }];
-    __block NSInteger number = 0;
-    [numers enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.intValue > number) {
-            number = obj.intValue;
-        }
-    }];
-    return number;
+    return maxRowCount;
 }
 
 - (NSAttributedString *)chart:(XYChart *)chart titleOfRowAtIndex:(NSUInteger)index
 {
-    NSArray <NSString *>* names = [self.dataList xy_map:^id _Nonnull(NSArray<id<XYChartItem>> * _Nonnull obj) {
-        return obj.xy_safeIdx(index).value.stringValue ?: @"unkown";
+    NSMutableArray<NSString *> *names = [NSMutableArray arrayWithCapacity:self.dataList.count];
+    [self.dataList enumerateObjectsUsingBlock:^(NSArray<id<XYChartItem>> * _Nonnull sectionItems, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *name = sectionItems.xy_safeIdx(index).value.stringValue;
+        [names addObject:name.length > 0 ? name : @"unknown"];
     }];
     NSString *showName = [names componentsJoinedByString:@":"];
     NSDictionary *dic = @{
@@ -128,27 +166,25 @@ static XYRange XYChartAutoRangeWithItems(NSArray<NSArray<id<XYChartItem>> *> *da
 
 - (XYRange)visibleRangeInChart:(XYChart *)chart
 {
-    return self.range;
+    return self.configuration.visibleRange;
 }
 
 - (NSUInteger)numberOfLevelInChart:(XYChart *)chart
 {
-    return self.numberOfLevels;
+    return self.configuration.numberOfLevels;
 }
 
 - (CGFloat)rowWidthOfChart:(XYChart *)chart
 {
-    return self.widthOfRow;
+    return self.configuration.rowWidth;
 }
 
 - (BOOL)autoSizingRowInChart:(XYChart *)chart
 {
-    return self.autoSizingRowWidth;
+    return self.configuration.autoSizingRowWidth;
 }
 
 @end
-
-
 
 
 

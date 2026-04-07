@@ -31,6 +31,9 @@
         _circles = @[].mutableCopy;
         _nameLabel = [UILabel new];
         _nameLabel.textAlignment = NSTextAlignmentCenter;
+        _nameLabel.adjustsFontSizeToFitWidth = YES;
+        _nameLabel.minimumScaleFactor = 0.65;
+        _nameLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [self addSubview:_nameLabel];
         
         _separatedLine = [CALayer layer];
@@ -49,7 +52,8 @@
 {
     [super layoutSubviews];
     
-    _separatedLine.frame = CGRectMake(0, 0, 1/[UIScreen mainScreen].scale, xy_height(self)-XYChartRowLabelHeight);
+    CGFloat plotHeight = XYChartPlotHeight(xy_height(self));
+    _separatedLine.frame = CGRectMake(0, 0, XYChartPixel(), plotHeight);
     _nameLabel.frame = CGRectMake(0, xy_height(self)-XYChartRowLabelHeight, xy_width(self), XYChartRowLabelHeight);
     
     const CGFloat circleLength = XYChartLineWidth*4;
@@ -58,7 +62,7 @@
         CGFloat value = weakSelf.chartItems.xy_safeIdx(idx).value.floatValue;
         CGFloat percent = XYChartClampedPercent(value, weakSelf.range);
         obj.frame = CGRectMake((xy_width(self)-circleLength)/2.0,
-                               (xy_height(self)-XYChartRowLabelHeight)*(1-percent) - circleLength/2.0,
+                               plotHeight*(1-percent) - circleLength/2.0,
                                circleLength, circleLength);
     }];
 }

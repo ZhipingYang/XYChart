@@ -7,6 +7,7 @@
 //
 
 
+#import "XYChartConfiguration.h"
 #include "XYChartProtocol.h"
 
 @import UIKit;
@@ -17,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak, nullable) id<XYChartDataSource> dataSource;
 @property (nonatomic, weak, nullable) id<XYChartDelegate> delegate;
+@property (nonatomic, copy, nullable) XYChartConfiguration *configuration;
 
 @property (nonatomic, readonly) XYChartType type;
 
@@ -30,6 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
  @param animation 是否执行动画
  */
 - (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation;
+
+/**
+ current configuration used by rendering after resolving datasource compatibility fallback
+ */
+- (XYChartConfiguration *)resolvedConfiguration;
 
 @end
 

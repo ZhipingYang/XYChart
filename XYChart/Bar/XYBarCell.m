@@ -31,6 +31,9 @@
         [self.contentView addSubview:_barContainerView];
         _nameLabel = [UILabel new];
         _nameLabel.textAlignment = NSTextAlignmentCenter;
+        _nameLabel.adjustsFontSizeToFitWidth = YES;
+        _nameLabel.minimumScaleFactor = 0.65;
+        _nameLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [self addSubview:_nameLabel];
     }
     return self;
@@ -48,6 +51,9 @@
 - (void)updateBarFrames
 {
     const CGFloat count = self.barContainerView.subviews.count;
+    if (count <= 0) {
+        return;
+    }
     const CGSize size = self.barContainerView.bounds.size;
     [self.barContainerView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.frame = CGRectMake((size.width/count)*idx, 0, size.width/count, size.height);
@@ -78,10 +84,13 @@
 {
     const CGFloat count = _barsDataArray.count;
     [_barContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    if (count <= 0) {
+        return;
+    }
     
     [_barsDataArray enumerateObjectsUsingBlock:^(id<XYChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         XYBarView *bar = [[XYBarView alloc] initWithFrame:CGRectMake((xy_width(self.barContainerView)/count)*idx, 0, xy_width(self.barContainerView)/count, xy_height(self.barContainerView))];
-        [bar setChartItem:obj range:[self.dataSource visibleRangeInChart:self.chartView]];
+        [bar setChartItem:obj range:[self.chartView resolvedConfiguration].visibleRange];
         [self.barContainerView addSubview:bar];
         [bar startAnimate:animation];
         
@@ -97,7 +106,7 @@
     [self.barContainerView bringSubviewToFront:view];
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:_row inSection:[_barContainerView.subviews indexOfObject:view]];
-    id<XYChartDelegate> delegate = _chartView.delegate;
+    NSObject<XYChartDelegate> *delegate = (NSObject<XYChartDelegate> *)_chartView.delegate;
     if ([delegate respondsToSelector:@selector(chart:clickAnimationOfIndex:)]) {
         CAAnimation *animation = [delegate chart:_chartView clickAnimationOfIndex:path];
         if (animation) {

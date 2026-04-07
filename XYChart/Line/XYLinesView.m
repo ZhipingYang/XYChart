@@ -53,7 +53,7 @@
     
     NSUInteger section = [_chartView.dataSource numberOfSectionsInChart:_chartView];
     NSUInteger row = [_chartView.dataSource numberOfRowsInChart:_chartView];
-    XYRange range = [_chartView.dataSource visibleRangeInChart:_chartView];
+    XYRange range = [_chartView resolvedConfiguration].visibleRange;
     if (section == 0 || row < 2) {
         [self setNeedsLayout];
         return;
@@ -80,18 +80,20 @@
 
 - (void)updateLinesShape:(BOOL)animate
 {
-    XYRange range = [_chartView.dataSource visibleRangeInChart:_chartView];
+    XYRange range = [_chartView resolvedConfiguration].visibleRange;
+    NSUInteger rowCount = [_chartView.dataSource numberOfRowsInChart:_chartView];
+    CGFloat itemWidth = rowCount > 0 ? xy_width(self) / rowCount : xy_width(self);
+    CGFloat plotHeight = xy_height(self);
 
     [_sections enumerateObjectsUsingBlock:^(NSArray<XYLineGradientLayer *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        const CGFloat itemWidth = xy_width(self)/(float)(obj.count>0 ? (obj.count+1) : 1);
         [obj enumerateObjectsUsingBlock:^(XYLineGradientLayer * _Nonnull gradient, NSUInteger sub_idx, BOOL * _Nonnull sub_stop) {
-            CGFloat circleLenght = XYChartLineWidth*4;
+            CGFloat circleLength = XYChartLineWidth*4;
             CGFloat prePercent = XYChartClampedPercent(gradient.pre.value.floatValue, range);
             CGFloat nextPercent = XYChartClampedPercent(gradient.next.value.floatValue, range);
             gradient.frame = CGRectMake(itemWidth * (sub_idx + 0.5),
-                                        xy_height(self)*(1-MAX(prePercent, nextPercent))-circleLenght/2,
+                                        plotHeight*(1-MAX(prePercent, nextPercent))-circleLength/2,
                                         itemWidth,
-                                        xy_height(self)*fabs(prePercent-nextPercent)+circleLenght);
+                                        plotHeight*fabs(prePercent-nextPercent)+circleLength);
             [gradient startAnimate:animate];
         }];
     }];

@@ -74,6 +74,35 @@ CG_INLINE CGFloat XYChartAnimationStep(NSTimeInterval duration) {
     return 1 / (60.0 * duration);
 }
 
+CG_INLINE CGFloat XYChartPixel(void) {
+    return 1 / UIScreen.mainScreen.scale;
+}
+
+CG_INLINE CGFloat XYChartPlotHeight(CGFloat totalHeight) {
+    return MAX(totalHeight - XYChartRowLabelHeight, 0);
+}
+
+CG_INLINE CGFloat XYChartResolvedRowWidth(CGFloat availableWidth, NSUInteger rowCount, BOOL autoSizing, CGFloat configuredWidth) {
+    NSUInteger safeRowCount = rowCount > 0 ? rowCount : 1;
+    CGFloat fallbackWidth = configuredWidth > 0 ? configuredWidth : 44.0;
+    CGFloat safeAvailableWidth = MAX(availableWidth, fallbackWidth);
+    return autoSizing ? safeAvailableWidth / safeRowCount : fallbackWidth;
+}
+
+CG_INLINE CGFloat XYChartResolvedContentWidth(CGFloat availableWidth, NSUInteger rowCount, BOOL autoSizing, CGFloat configuredWidth) {
+    NSUInteger safeRowCount = rowCount > 0 ? rowCount : 1;
+    CGFloat rowWidth = XYChartResolvedRowWidth(availableWidth, safeRowCount, autoSizing, configuredWidth);
+    return MAX(MAX(availableWidth, configuredWidth), rowWidth * safeRowCount);
+}
+
 CG_INLINE NSUInteger XYChartSafeLevels(NSUInteger levels) {
     return levels > 0 ? levels : 1;
+}
+
+CG_INLINE XYRange XYChartExpandedRange(CGFloat minValue, CGFloat maxValue) {
+    CGFloat distance = (maxValue - minValue) * 0.2;
+    if (distance <= 0) {
+        distance = MAX(fabs(maxValue) * 0.2, 1);
+    }
+    return XYRangeMake(minValue - distance, maxValue + distance);
 }

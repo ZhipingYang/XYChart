@@ -14,7 +14,7 @@
 
 @interface XYLineChart ()
 
-@property (nonatomic, strong) UIScrollView *scrolView;
+@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) XYLinesView *linesView;
 
 @property (nonatomic, strong) NSMutableArray <XYLineItemView *>* itemViews;
@@ -29,13 +29,13 @@
     if (self) {
         _chartView = chartView;
         _itemViews = @[].mutableCopy;
-        _scrolView = [[UIScrollView alloc] initWithFrame:self.bounds];
-        _scrolView.showsVerticalScrollIndicator = NO;
-        _scrolView.showsHorizontalScrollIndicator = NO;
-        [self addSubview:_scrolView];
+        _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        [self addSubview:_scrollView];
         
         _linesView = [[XYLinesView alloc] initWithChartView:chartView];
-        [_scrolView addSubview:_linesView];
+        [_scrollView addSubview:_linesView];
     }
     return self;
 }
@@ -44,15 +44,15 @@
 {
     [super layoutSubviews];
     
-    const BOOL isAutoSizing = [_chartView.dataSource autoSizingRowInChart:_chartView];
+    XYChartConfiguration *configuration = [_chartView resolvedConfiguration];
+    const BOOL isAutoSizing = configuration.autoSizingRowWidth;
     const NSUInteger itemCount = self.itemViews.count;
-    const CGFloat visibleItemCount = itemCount > 0 ? itemCount : 1;
-    const CGFloat rowWidth = isAutoSizing ? xy_width(self)/visibleItemCount
-                                          : [_chartView.dataSource rowWidthOfChart:_chartView];
+    const CGFloat rowWidth = XYChartResolvedRowWidth(xy_width(self), itemCount, isAutoSizing, configuration.rowWidth);
+    const CGFloat contentWidth = XYChartResolvedContentWidth(xy_width(self), itemCount, isAutoSizing, configuration.rowWidth);
     
-    _scrolView.frame = self.bounds;
-    _scrolView.contentSize = CGSizeMake(MAX(rowWidth * itemCount, xy_width(_scrolView)), xy_height(_scrolView));
-    _linesView.frame = CGRectMake(0, 0, _scrolView.contentSize.width, _scrolView.contentSize.height-XYChartRowLabelHeight);
+    _scrollView.frame = self.bounds;
+    _scrollView.contentSize = CGSizeMake(contentWidth, xy_height(_scrollView));
+    _linesView.frame = CGRectMake(0, 0, contentWidth, XYChartPlotHeight(xy_height(_scrollView)));
     
     [_itemViews enumerateObjectsUsingBlock:^(XYLineItemView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.frame = CGRectMake(idx*rowWidth, 0, rowWidth, xy_height(self));
@@ -69,7 +69,7 @@
     [_linesView reloadData:animation];
     
     const NSUInteger rows = [_chartView.dataSource numberOfRowsInChart:_chartView];
-    const XYRange range = [_chartView.dataSource visibleRangeInChart:_chartView];
+    const XYRange range = [_chartView resolvedConfiguration].visibleRange;
 
     for (int index=0; index<rows; index++) {
         XYLineItemView *itemView = [[XYLineItemView alloc] init];
@@ -90,7 +90,7 @@
         }
         NSAttributedString *name = [_chartView.dataSource chart:_chartView titleOfRowAtIndex:index];
         [itemView setItems:mArr name:name range:range];
-        [self.scrolView addSubview:itemView];
+        [self.scrollView addSubview:itemView];
         [_itemViews addObject:itemView];
     }
     [self setNeedsLayout];
@@ -102,7 +102,7 @@
                        items:(NSArray<id<XYChartItem>> *)items
                      circles:(NSArray<CALayer *> *)circles
 {
-    id<XYChartDelegate> delegate = self.chartView.delegate;
+    NSObject<XYChartDelegate> *delegate = (NSObject<XYChartDelegate> *)self.chartView.delegate;
     NSMutableArray<id<XYChartItem>> *menuItems = @[].mutableCopy;
     NSMutableArray<CALayer *> *menuCircles = @[].mutableCopy;
     

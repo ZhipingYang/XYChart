@@ -51,7 +51,7 @@
 {
     [super layoutSubviews];
     _collectionView.frame = self.bounds;
-    [_collectionView reloadData];
+    [_collectionView.collectionViewLayout invalidateLayout];
 }
 
 #pragma mark - XYChartContainer
@@ -78,10 +78,10 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    const BOOL isAutoSizing = [_chartView.dataSource autoSizingRowInChart:_chartView];
-    CGFloat rows = [_chartView.dataSource numberOfRowsInChart:_chartView];
-    rows = rows>0 ? rows : 1;
-    const CGFloat rowWidth = isAutoSizing ? xy_width(self)/rows : [_chartView.dataSource rowWidthOfChart:_chartView];
+    XYChartConfiguration *configuration = [_chartView resolvedConfiguration];
+    const BOOL isAutoSizing = configuration.autoSizingRowWidth;
+    NSUInteger rows = [_chartView.dataSource numberOfRowsInChart:_chartView];
+    const CGFloat rowWidth = XYChartResolvedRowWidth(xy_width(self), rows, isAutoSizing, configuration.rowWidth);
     return CGSizeMake(rowWidth, xy_height(self));
 }
 

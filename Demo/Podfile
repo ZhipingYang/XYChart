@@ -1,21 +1,20 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+source 'https://cdn.cocoapods.org/'
 
-target 'XYChart' do
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
+platform :ios, '13.0'
+project 'XYChartDemo.xcodeproj'
+
+install! 'cocoapods',
+  :deterministic_uuids => false,
+  :warn_for_unused_master_specs_repo => false
+
+target 'XYChartDemo' do
   pod 'XYChart', :path => '../'
-  pod "FORGestureTrackDisplay"
+end
 
-
-  target 'XYChartTests' do
-    inherit! :search_paths
-    # Pods for testing
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+    end
   end
-
-  target 'XYChartUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end

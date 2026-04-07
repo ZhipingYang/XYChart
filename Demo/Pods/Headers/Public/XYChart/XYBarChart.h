@@ -1,1 +1,0 @@
-../../../../../XYChart/Bar/XYBarChart.h

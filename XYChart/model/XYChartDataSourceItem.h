@@ -7,10 +7,16 @@
 //
 
 #import "XYChartProtocol.h"
+#import "XYChartConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XYChartDataSourceItem : NSObject<XYChartDataSource>
+
+/**
+ preferred API for chart layout and axis configuration
+ */
+@property (nonatomic, strong, readonly) XYChartConfiguration *configuration;
 
 /**
  default the min & max of items value with 20% space of (max-min)

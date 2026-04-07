@@ -39,6 +39,25 @@
 > pod 'XYChart'
 > ```
 
+## Demo
+
+The repository now keeps the demo as a pure-code app plus generated project config only.
+
+```bash
+brew install xcodegen cocoapods
+cd Demo
+xcodegen generate
+pod install
+open XYChartDemo.xcworkspace
+```
+
+Files that matter:
+
+- `XYChart/`: pod core source
+- `Demo/Sources/`: pure code demo logic
+- `Demo/project.yml`: XcodeGen project definition
+- `Demo/Podfile`: CocoaPods integration for the demo
+
 ## Usage
 
 <details><summary> Expand for XYChart details </summary>
@@ -49,6 +68,7 @@
 
 @property (nonatomic, weak, nullable) id<XYChartDataSource> dataSource;
 @property (nonatomic, weak, nullable) id<XYChartDelegate> delegate;
+@property (nonatomic, copy, nullable) XYChartConfiguration *configuration;
 
 @property (nonatomic, readonly) XYChartType chartType;
 
@@ -75,12 +95,22 @@
 
 </details>
 
+**Preferred configuration API**
+
+```objective-c
+XYChartDataSourceItem *datasource = [[XYChartDataSourceItem alloc] initWithDataList:dataList];
+datasource.configuration.numberOfLevels = 4;
+datasource.configuration.autoSizingRowWidth = NO;
+datasource.configuration.rowWidth = 48;
+datasource.configuration.automaticallyAdjustsVisibleRange = YES;
+```
+
 
 **Method 1：**
 [details](https://github.com/ZhipingYang/XYChart/issues/50)
 
 ```objective-c
-_chartView = [[XYChart alloc] initWithFrame:CGRectMake(0, 0, 300, 100) chartType:XYChartTypeLine];
+_chartView = [[XYChart alloc] initWithFrame:CGRectMake(0, 0, 300, 100) type:XYChartTypeLine];
 _chartView.dataSource = self;
 _chartView.delegate = self;
 [self.view addSubview:_chartView];
@@ -94,6 +124,20 @@ _datasource = [[XYChartDataSourceItem alloc] init];
 
 _chartView = [[XYChart alloc] initWithType:XYChartTypeLine];
 _chartView.dataSource = _datasource;
+[self.view addSubview:_chartView];
+```
+
+**Method 3： chart-level override**
+
+```objective-c
+XYChartConfiguration *configuration = [XYChartConfiguration defaultConfiguration];
+configuration.numberOfLevels = 6;
+configuration.autoSizingRowWidth = NO;
+configuration.rowWidth = 44;
+
+_chartView = [[XYChart alloc] initWithType:XYChartTypeLine];
+_chartView.configuration = configuration;
+_chartView.dataSource = self;
 [self.view addSubview:_chartView];
 ```
 
@@ -149,14 +193,21 @@ _chartView.dataSource = _datasource;
 - (NSAttributedString *)chart:(XYChart *)chart titleOfRowAtIndex:(NSUInteger)index;
 
 /**
- x坐标的标题
- */
-- (NSAttributedString *)chart:(XYChart *)chart titleOfSectionAtValue:(CGFloat)sectionValue;
-
-/**
  index下的数据模型
  */
 - (id<XYChartItem>)chart:(XYChart *)chart itemOfIndex:(NSIndexPath *)index;
+
+@optional
+
+/**
+ 推荐使用独立配置对象来承载范围、分段和布局配置
+ */
+- (nullable XYChartConfiguration *)chartConfiguration:(XYChart *)chart;
+
+/**
+ x坐标的标题
+ */
+- (NSAttributedString *)chart:(XYChart *)chart titleOfSectionAtValue:(CGFloat)sectionValue;
 
 /**
  标记y轴方向高亮区间

@@ -50,10 +50,13 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - XYChartDataSource
 
 @class XYChart;
+@class XYChartConfiguration;
 /**
  多套对比数据展示
  */
 @protocol XYChartDataSource
+
+@required
 
 /**
  多少条并行对比数据，折线图表现多条线，柱状图表现一列中有几条柱状图
@@ -71,14 +74,21 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSAttributedString *)chart:(XYChart *)chart titleOfRowAtIndex:(NSUInteger)index;
 
 /**
- x坐标的标题
- */
-- (NSAttributedString *)chart:(XYChart *)chart titleOfSectionAtValue:(CGFloat)sectionValue;
-
-/**
  index下的数据模型
  */
 - (id<XYChartItem>)chart:(XYChart *)chart itemOfIndex:(NSIndexPath *)index;
+
+@optional
+
+/**
+ 推荐使用独立配置对象来承载范围、分段和布局配置
+ */
+- (nullable XYChartConfiguration *)chartConfiguration:(XYChart *)chart;
+
+/**
+ x坐标的标题
+ */
+- (NSAttributedString *)chart:(XYChart *)chart titleOfSectionAtValue:(CGFloat)sectionValue;
 
 /**
  标记y轴方向高亮区间
