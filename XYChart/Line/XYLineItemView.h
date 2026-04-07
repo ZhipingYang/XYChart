@@ -12,7 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XYLineItemView : UIView
 
+@property (nonatomic, copy, nullable) void(^handleBlock)(XYLineItemView *view, NSArray<NSNumber *> *sectionIndexes, NSArray<id<XYChartItem>> *items, NSArray<CALayer *> *circles);
+
 - (void)setItems:(NSArray <id<XYChartItem>>*)items name:(NSAttributedString *)name range:(XYRange)range;
+- (void)showMenuForItems:(NSArray <id<XYChartItem>>*)items targetCircles:(NSArray<CALayer *> *)circles;
 
 @end
 

@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+#import <math.h>
 
 // 纵轴文案宽度
 #define XYChartSectionLabelWidth 30
@@ -48,3 +49,31 @@ CG_INLINE XYRange XYRangeMake(CGFloat min, CGFloat max){
 }
 
 static const XYRange XYRangeZero = {0,0};
+
+CG_INLINE CGFloat XYChartRangeSpan(XYRange range) {
+    CGFloat span = range.max - range.min;
+    return fabs(span) > CGFLOAT_EPSILON ? span : 0;
+}
+
+CG_INLINE CGFloat XYChartClampedPercent(CGFloat value, XYRange range) {
+    CGFloat span = XYChartRangeSpan(range);
+    if (span == 0 || !isfinite(value)) {
+        return 0;
+    }
+    CGFloat percent = (value - range.min) / span;
+    if (!isfinite(percent)) {
+        return 0;
+    }
+    return MIN(MAX(percent, 0), 1);
+}
+
+CG_INLINE CGFloat XYChartAnimationStep(NSTimeInterval duration) {
+    if (duration <= 0) {
+        return 1;
+    }
+    return 1 / (60.0 * duration);
+}
+
+CG_INLINE NSUInteger XYChartSafeLevels(NSUInteger levels) {
+    return levels > 0 ? levels : 1;
+}

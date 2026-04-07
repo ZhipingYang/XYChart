@@ -20,6 +20,31 @@
 
 @implementation XYChartDataSourceItem
 
+static XYRange XYChartAutoRangeWithItems(NSArray<NSArray<id<XYChartItem>> *> *dataList)
+{
+    __block CGFloat minValue = CGFLOAT_MAX;
+    __block CGFloat maxValue = -CGFLOAT_MAX;
+    __block BOOL hasValue = NO;
+    
+    [dataList enumerateObjectsUsingBlock:^(NSArray<id<XYChartItem>> * _Nonnull sectionItems, NSUInteger idx, BOOL * _Nonnull stop) {
+        [sectionItems enumerateObjectsUsingBlock:^(id<XYChartItem>  _Nonnull item, NSUInteger subIdx, BOOL * _Nonnull subStop) {
+            CGFloat value = item.value.doubleValue;
+            minValue = MIN(minValue, value);
+            maxValue = MAX(maxValue, value);
+            hasValue = YES;
+        }];
+    }];
+    
+    if (!hasValue) {
+        return XYRangeMake(0, 100);
+    }
+    CGFloat distance = (maxValue - minValue) * 0.2;
+    if (distance <= 0) {
+        distance = MAX(fabs(maxValue) * 0.2, 1);
+    }
+    return XYRangeMake(minValue - distance, maxValue + distance);
+}
+
 - (instancetype)initWithDataList:(NSArray <NSArray <id<XYChartItem>>*> *)dataList
 {
     self = [super init];
@@ -46,16 +71,8 @@
         NSAssert(obj.count == count, @"dataList的子数组个数不一致");
     }];
     
-    if (_dataList.count>0 & _dataList.firstObject.count>0) {
-        NSArray <NSNumber *>*numbers = [_dataList xy_flatMap:^id _Nonnull(XYChartItem * _Nonnull obj) {
-            return obj.value;
-        }];
-        NSNumber * max = [numbers valueForKeyPath:@"@max.intValue"];
-        NSNumber * min = [numbers valueForKeyPath:@"@min.intValue"];
-        if (max.floatValue > min.floatValue) {
-            CGFloat distance = (max.floatValue - min.floatValue) * 0.2;
-            self.range = XYRangeMake(min.floatValue - distance, max.floatValue + distance);
-        }
+    if (_dataList.count > 0 && _dataList.firstObject.count > 0) {
+        self.range = XYChartAutoRangeWithItems(_dataList);
     }
 }
 
@@ -130,7 +147,6 @@
 }
 
 @end
-
 
 
 

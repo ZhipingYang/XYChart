@@ -87,18 +87,33 @@
         
         __weak typeof(self) weakSelf = self;
         bar.handleBlock = ^(XYBarView * _Nonnull view) {
-            [weakSelf handleAnimationIfNeed:view];
+            [weakSelf handleTapIfNeed:view];
         };
     }];
 }
 
-- (void)handleAnimationIfNeed:(XYBarView *)view
+- (void)handleTapIfNeed:(XYBarView *)view
 {
     [self.barContainerView bringSubviewToFront:view];
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:_row inSection:[_barContainerView.subviews indexOfObject:view]];
-    CAAnimation *animation = [_chartView.delegate chart:_chartView clickAnimationOfIndex:path];
-    [view.showLayer addAnimation:animation forKey:@"Bar_CAAnimation"];
+    id<XYChartDelegate> delegate = _chartView.delegate;
+    if ([delegate respondsToSelector:@selector(chart:clickAnimationOfIndex:)]) {
+        CAAnimation *animation = [delegate chart:_chartView clickAnimationOfIndex:path];
+        if (animation) {
+            [view.showLayer addAnimation:animation forKey:@"Bar_CAAnimation"];
+        }
+    }
+    if ([delegate respondsToSelector:@selector(chart:itemDidClick:)]) {
+        [delegate chart:_chartView itemDidClick:view.chartItem];
+    }
+    BOOL shouldShowMenu = view.chartItem.showName.length > 0;
+    if ([delegate respondsToSelector:@selector(chart:shouldShowMenu:)]) {
+        shouldShowMenu = [delegate chart:_chartView shouldShowMenu:path];
+    }
+    if (shouldShowMenu && view.superview && view.window) {
+        [view showMenu];
+    }
 }
 
 @end

@@ -86,7 +86,7 @@
     
 - (void)animateFlipAction
 {
-    _shapeLayer.strokeEnd += 1/(60.0 * self.pre.duration);
+    _shapeLayer.strokeEnd += XYChartAnimationStep(self.pre.duration);
     if (_shapeLayer.strokeEnd > 1) {
         [_link invalidate];
         _link = nil;

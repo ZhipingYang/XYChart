@@ -56,7 +56,7 @@
     __weak typeof(self) weakSelf = self;
     [_circles enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat value = weakSelf.chartItems.xy_safeIdx(idx).value.floatValue;
-        CGFloat percent = (value - weakSelf.range.min)/(weakSelf.range.max - weakSelf.range.min);
+        CGFloat percent = XYChartClampedPercent(value, weakSelf.range);
         obj.frame = CGRectMake((xy_width(self)-circleLength)/2.0,
                                (xy_height(self)-XYChartRowLabelHeight)*(1-percent) - circleLength/2.0,
                                circleLength, circleLength);
@@ -84,6 +84,23 @@
     [self setNeedsLayout];
 }
 
+- (void)showMenuForItems:(NSArray<id<XYChartItem>> *)items targetCircles:(NSArray<CALayer *> *)circles
+{
+    if (items.count == 0 || circles.count == 0) {
+        return;
+    }
+    [self becomeFirstResponder];
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    NSMutableArray<UIMenuItem *> *menus = @[].mutableCopy;
+    [items enumerateObjectsUsingBlock:^(id<XYChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:obj.showName action:@selector(showItemName:)];
+        [menus addObject:item];
+    }];
+    menu.menuItems = menus;
+    [menu setTargetRect:circles.lastObject.frame inView:self];
+    [menu setMenuVisible:YES animated:YES];
+}
+
 - (BOOL)canBecomeFirstResponder
 {
     return YES;
@@ -94,30 +111,26 @@
     CGPoint touchpoint = [recognizer locationInView:self];
     NSMutableArray <id<XYChartItem>>* inTouchItems = @[].mutableCopy;
     NSMutableArray <CALayer *>* inTouchCircles = @[].mutableCopy;
+    NSMutableArray <NSNumber *>* sectionIndexes = @[].mutableCopy;
     [_circles enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGRect rect = obj.frame;
         id <XYChartItem> item = self.chartItems[idx];
         if (xy_width(obj)<=30) {
             rect = CGRectInset(rect, xy_width(obj)-30, xy_width(obj)-30);
         }
-        if (CGRectContainsPoint(rect, touchpoint) && item.showName.length>0) {
+        if (CGRectContainsPoint(rect, touchpoint)) {
             [inTouchItems addObject:item];
             [inTouchCircles addObject:obj];
+            [sectionIndexes addObject:@(idx)];
         }
     }];
     
     if (inTouchItems.count > 0) {
-        [self becomeFirstResponder];
-        UIMenuController *menu = [UIMenuController sharedMenuController];
-        NSMutableArray *menus = @[].mutableCopy;
-        [inTouchItems enumerateObjectsUsingBlock:^(id<XYChartItem>  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:obj.showName action:@selector(showItemName:)];
-            [menus addObject:item];
-        }];
-        menu.menuItems = menus;
-        
-        [menu setTargetRect:inTouchCircles.lastObject.frame inView:self];
-        [menu setMenuVisible:YES animated:YES];
+        if (_handleBlock) {
+            _handleBlock(self, sectionIndexes, inTouchItems, inTouchCircles);
+        } else {
+            [self showMenuForItems:inTouchItems targetCircles:inTouchCircles];
+        }
     }
 }
 

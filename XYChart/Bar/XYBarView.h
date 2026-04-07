@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setChartItem:(id<XYChartItem> _Nonnull)chartItem range:(XYRange)range;
 
 - (void)startAnimate:(BOOL)animate;
+- (void)showMenu;
 
 @end
 

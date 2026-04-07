@@ -29,14 +29,19 @@
 
 @implementation XYChart
 
+- (void)xy_commonInitWithType:(XYChartType)type
+{
+    self.sectionLabels = @[].mutableCopy;
+    _horizonLines = @[].mutableCopy;
+    _type = type;
+    [self setUpChartElements];
+}
+
 - (id)initWithFrame:(CGRect)frame type:(XYChartType)type
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.sectionLabels = @[].mutableCopy;
-        _horizonLines = @[].mutableCopy;
-        _type = type;
-        [self setUpChartElements];
+        [self xy_commonInitWithType:type];
     }
     return self;
 }
@@ -48,7 +53,11 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    return [self initWithFrame:CGRectZero type:XYChartTypeLine];
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self xy_commonInitWithType:XYChartTypeLine];
+    }
+    return self;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -122,8 +131,8 @@
 {
     const CGFloat pixel = 1/[UIScreen mainScreen].scale;
     const CGSize size = self.bounds.size;
-    const NSUInteger levels = [_dataSource numberOfLevelInChart:self];
-    CGFloat count = levels>0 ? levels : 1;
+    const NSUInteger levels = XYChartSafeLevels([_dataSource numberOfLevelInChart:self]);
+    CGFloat count = levels;
     const CGFloat sectionHeight = (size.height-XYChartRowLabelHeight)/count;
     _leftSeparatedLine.frame = CGRectMake(XYChartSectionLabelWidth, 0, pixel, size.height-XYChartRowLabelHeight);
     _rightSeparatedLine.frame = CGRectMake(size.width-pixel, 0, pixel, size.height-XYChartRowLabelHeight);
@@ -137,7 +146,7 @@
     [_sectionLabels makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [_sectionLabels removeAllObjects];
     
-    const NSUInteger levels = [_dataSource numberOfLevelInChart:self];
+    const NSUInteger levels = XYChartSafeLevels([_dataSource numberOfLevelInChart:self]);
     const XYRange range = [_dataSource visibleRangeInChart:self];
     const CGFloat sectionValue = (range.max-range.min)/(CGFloat)levels;
     
@@ -163,7 +172,8 @@
     [_horizonLines makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
     [_horizonLines removeAllObjects];
     
-    for (int i=0; i<[_dataSource numberOfLevelInChart:self]+1; i++) {
+    const NSUInteger levels = XYChartSafeLevels([_dataSource numberOfLevelInChart:self]);
+    for (NSUInteger i=0; i<levels+1; i++) {
         CALayer *hori = [CALayer layer];
         hori.backgroundColor = [UIColor xy_separatedColor].CGColor;
         hori.zPosition = -1;

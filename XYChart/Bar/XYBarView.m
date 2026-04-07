@@ -54,7 +54,7 @@
 - (void)updateLineFrame
 {
     const CGSize selfSize = self.bounds.size;
-    const CGFloat percent = (_chartItem.value.floatValue-_range.min)/((_range.max-_range.min)==0 ? 1:(_range.max-_range.min));
+    const CGFloat percent = XYChartClampedPercent(_chartItem.value.floatValue, _range);
     
     _showLayer.frame = CGRectMake(0, selfSize.height*(1-percent), selfSize.width, selfSize.height * percent);
     
@@ -93,7 +93,7 @@
 
 - (void)animateFlipAction
 {
-    _shapeLayer.strokeEnd += 1/(60.0 * self.chartItem.duration);
+    _shapeLayer.strokeEnd += XYChartAnimationStep(self.chartItem.duration);
     if (_shapeLayer.strokeEnd > 1) {
         [_link invalidate];
         _link = nil;
@@ -110,18 +110,27 @@
 
 - (void)handleTap:(UIGestureRecognizer*)recognizer
 {
-    !_handleBlock ?: _handleBlock(self);
-    if (_chartItem.showName.length > 0) {
-        const CGFloat percent = (_chartItem.value.floatValue-_range.min)/(_range.max-_range.min);
-
-        [self becomeFirstResponder];
-        UIMenuController *menu = [UIMenuController sharedMenuController];
-        UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:_chartItem.showName action:@selector(showItemName:)];
-        menu.menuItems = @[item];
-        
-        [menu setTargetRect:CGRectMake(xy_left(self), xy_top(self)+xy_height(self)*(1-percent), xy_width(self), xy_height(self)*percent) inView:self.superview];
-        [menu setMenuVisible:YES animated:YES];
+    if (_handleBlock) {
+        _handleBlock(self);
+    } else {
+        [self showMenu];
     }
+}
+
+- (void)showMenu
+{
+    if (_chartItem.showName.length == 0) {
+        return;
+    }
+    const CGFloat percent = XYChartClampedPercent(_chartItem.value.floatValue, _range);
+
+    [self becomeFirstResponder];
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:_chartItem.showName action:@selector(showItemName:)];
+    menu.menuItems = @[item];
+    
+    [menu setTargetRect:CGRectMake(xy_left(self), xy_top(self)+xy_height(self)*(1-percent), xy_width(self), xy_height(self)*percent) inView:self.superview];
+    [menu setMenuVisible:YES animated:YES];
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender

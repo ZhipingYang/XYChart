@@ -54,6 +54,10 @@
     NSUInteger section = [_chartView.dataSource numberOfSectionsInChart:_chartView];
     NSUInteger row = [_chartView.dataSource numberOfRowsInChart:_chartView];
     XYRange range = [_chartView.dataSource visibleRangeInChart:_chartView];
+    if (section == 0 || row < 2) {
+        [self setNeedsLayout];
+        return;
+    }
     
     for (int sectionIdx=0; sectionIdx<section; sectionIdx++) {
         NSMutableArray <XYLineGradientLayer *>*mArr = @[].mutableCopy;
@@ -82,8 +86,8 @@
         const CGFloat itemWidth = xy_width(self)/(float)(obj.count>0 ? (obj.count+1) : 1);
         [obj enumerateObjectsUsingBlock:^(XYLineGradientLayer * _Nonnull gradient, NSUInteger sub_idx, BOOL * _Nonnull sub_stop) {
             CGFloat circleLenght = XYChartLineWidth*4;
-            CGFloat prePercent = (gradient.pre.value.floatValue-range.min)/(range.max-range.min);
-            CGFloat nextPercent = (gradient.next.value.floatValue-range.min)/(range.max-range.min);
+            CGFloat prePercent = XYChartClampedPercent(gradient.pre.value.floatValue, range);
+            CGFloat nextPercent = XYChartClampedPercent(gradient.next.value.floatValue, range);
             gradient.frame = CGRectMake(itemWidth * (sub_idx + 0.5),
                                         xy_height(self)*(1-MAX(prePercent, nextPercent))-circleLenght/2,
                                         itemWidth,
