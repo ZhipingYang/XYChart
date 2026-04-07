@@ -14,8 +14,6 @@
 @property (nonatomic, strong) id <XYChartItem>pre;
 @property (nonatomic, strong) id <XYChartItem>next;
 @property (nonatomic) XYRange range;
-
-@property (nonatomic, strong) CADisplayLink *link;
     
 @end
 
@@ -26,11 +24,6 @@
     XYLineGradientLayer *gradient = [super layer];
     [gradient updateWithPre:pre next:next range:range];
     return gradient;
-}
-
-- (void)dealloc
-{
-    [_link invalidate];
 }
 
 - (void)updateWithPre:(id<XYChartItem>)pre next:(id<XYChartItem>)next range:(XYRange)range
@@ -51,7 +44,10 @@
     if (_shapeLayer == nil) {
         _shapeLayer = [CAShapeLayer layer];
         _shapeLayer.lineWidth = XYChartLineWidth;
-        _shapeLayer.strokeColor = [UIColor redColor].CGColor;
+        _shapeLayer.lineCap = kCALineCapRound;
+        _shapeLayer.lineJoin = kCALineJoinRound;
+        _shapeLayer.fillColor = UIColor.clearColor.CGColor;
+        _shapeLayer.strokeColor = UIColor.whiteColor.CGColor;
         [self addSublayer:_shapeLayer];
         self.mask = _shapeLayer;
     }
@@ -74,24 +70,37 @@
 
 - (void)startAnimate:(BOOL)animate
 {
-    if (animate == NO) { return; }
-    if (_shapeLayer.strokeEnd > 0 && _shapeLayer.strokeEnd < 1) { return; }
-    
-    _shapeLayer.strokeEnd = 0;
-    if (_link == nil) {
-        _link = [CADisplayLink displayLinkWithTarget:self selector:@selector(animateFlipAction)];
-        [_link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-    }
+    [self startAnimate:animate delay:0];
 }
-    
-- (void)animateFlipAction
+
+- (void)startAnimate:(BOOL)animate delay:(NSTimeInterval)delay
 {
-    _shapeLayer.strokeEnd += XYChartAnimationStep(self.pre.duration);
-    if (_shapeLayer.strokeEnd > 1) {
-        [_link invalidate];
-        _link = nil;
-        _shapeLayer.strokeEnd = 1;
+    [_shapeLayer removeAnimationForKey:@"xy.line.stroke"];
+    _shapeLayer.strokeEnd = 1;
+    if (animate == NO || self.hidden) {
+        return;
     }
+
+    NSTimeInterval duration = MAX(XYChartResolvedAnimationDuration(self.pre.duration),
+                                  XYChartResolvedAnimationDuration(self.next.duration));
+    CFTimeInterval beginTime = CACurrentMediaTime() + MAX(delay, 0);
+
+    CABasicAnimation *strokeAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    strokeAnimation.fromValue = @0;
+    strokeAnimation.toValue = @1;
+
+    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    opacityAnimation.fromValue = @0.18;
+    opacityAnimation.toValue = @1;
+
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    group.animations = @[strokeAnimation, opacityAnimation];
+    group.duration = duration;
+    group.beginTime = beginTime;
+    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    group.fillMode = kCAFillModeBackwards;
+    group.removedOnCompletion = YES;
+    [_shapeLayer addAnimation:group forKey:@"xy.line.stroke"];
 }
 
 @end

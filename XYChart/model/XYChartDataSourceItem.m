@@ -61,9 +61,13 @@ static XYRange XYChartAutoRangeWithItems(NSArray<NSArray<id<XYChartItem>> *> *da
 - (void)setDataList:(NSArray<NSArray<id<XYChartItem>> *> *)dataList
 {
     _dataList = dataList;
-    NSUInteger count = _dataList.firstObject.count;
+    NSUInteger expectedCount = _dataList.firstObject.count;
     [dataList enumerateObjectsUsingBlock:^(NSArray<id<XYChartItem>> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSAssert(obj.count == count, @"dataList的子数组个数不一致");
+        if (obj.count != expectedCount) {
+            @throw [NSException exceptionWithName:NSInvalidArgumentException
+                                           reason:@"dataList的子数组个数不一致"
+                                         userInfo:nil];
+        }
     }];
     
     if (self.configuration.automaticallyAdjustsVisibleRange && _dataList.count > 0 && _dataList.firstObject.count > 0) {
@@ -185,7 +189,5 @@ static XYRange XYChartAutoRangeWithItems(NSArray<NSArray<id<XYChartItem>> *> *da
 }
 
 @end
-
-
 
 

@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setItems:(NSArray <id<XYChartItem>>*)items name:(NSAttributedString *)name range:(XYRange)range;
 - (void)showMenuForItems:(NSArray <id<XYChartItem>>*)items targetCircles:(NSArray<CALayer *> *)circles;
+- (void)startAnimate:(BOOL)animate delay:(NSTimeInterval)delay;
 
 @end
 

@@ -12,5 +12,6 @@
 @interface XYLinesView : UIView<XYChartContainer>
 
 @property (nonatomic, weak, readonly) XYChart *chartView;
+@property (nonatomic, copy) NSArray<NSNumber *> *segmentAnimationDelays;
 
 @end

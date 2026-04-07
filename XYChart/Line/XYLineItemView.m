@@ -64,6 +64,7 @@
         obj.frame = CGRectMake((xy_width(self)-circleLength)/2.0,
                                plotHeight*(1-percent) - circleLength/2.0,
                                circleLength, circleLength);
+        obj.shadowPath = [UIBezierPath bezierPathWithOvalInRect:obj.bounds].CGPath;
     }];
 }
 
@@ -82,10 +83,44 @@
         circle.cornerRadius = XYChartLineWidth*2;
         circle.borderColor = obj.color.CGColor;
         circle.borderWidth = XYChartLineWidth;
+        circle.shadowColor = obj.color.CGColor;
+        circle.shadowOffset = CGSizeZero;
+        circle.shadowOpacity = 0.18;
+        circle.shadowRadius = 6.0;
         [self.layer addSublayer:circle];
         [self.circles addObject:circle];
     }];
     [self setNeedsLayout];
+}
+
+- (void)startAnimate:(BOOL)animate delay:(NSTimeInterval)delay
+{
+    [_circles enumerateObjectsUsingBlock:^(CALayer * _Nonnull circle, NSUInteger idx, BOOL * _Nonnull stop) {
+        [circle removeAnimationForKey:@"xy.line.circle"];
+        circle.transform = CATransform3DIdentity;
+        if (animate == NO) {
+            circle.opacity = 1;
+            return;
+        }
+
+        CAKeyframeAnimation *scaleAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+        scaleAnimation.values = @[@0.24, @1.2, @0.94, @1.0];
+        scaleAnimation.keyTimes = @[@0, @0.58, @0.84, @1];
+
+        CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        opacityAnimation.fromValue = @0;
+        opacityAnimation.toValue = @1;
+
+        CAAnimationGroup *group = [CAAnimationGroup animation];
+        group.animations = @[scaleAnimation, opacityAnimation];
+        group.duration = 0.22;
+        group.beginTime = CACurrentMediaTime() + MAX(delay, 0) + ((NSTimeInterval)idx * 0.02);
+        group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+        group.fillMode = kCAFillModeBackwards;
+        group.removedOnCompletion = YES;
+        circle.opacity = 1;
+        [circle addAnimation:group forKey:@"xy.line.circle"];
+    }];
 }
 
 - (void)showMenuForItems:(NSArray<id<XYChartItem>> *)items targetCircles:(NSArray<CALayer *> *)circles
@@ -101,8 +136,20 @@
         [menus addObject:item];
     }];
     menu.menuItems = menus;
-    [menu setTargetRect:circles.lastObject.frame inView:self];
-    [menu setMenuVisible:YES animated:YES];
+    __block CGRect targetRect = circles.firstObject.frame;
+    [circles enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        targetRect = CGRectUnion(targetRect, obj.frame);
+    }];
+    CGRect menuRect = CGRectInset(targetRect, -6.0, -6.0);
+    if (@available(iOS 13.0, *)) {
+        [menu showMenuFromView:self rect:menuRect];
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        [menu setTargetRect:menuRect inView:self];
+        [menu setMenuVisible:YES animated:YES];
+#pragma clang diagnostic pop
+    }
 }
 
 - (BOOL)canBecomeFirstResponder
@@ -119,8 +166,11 @@
     [_circles enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGRect rect = obj.frame;
         id <XYChartItem> item = self.chartItems[idx];
-        if (xy_width(obj)<=30) {
-            rect = CGRectInset(rect, xy_width(obj)-30, xy_width(obj)-30);
+        CGFloat minimumTouchSize = 30.0;
+        CGFloat extraWidth = MAX(minimumTouchSize - CGRectGetWidth(rect), 0) / 2.0;
+        CGFloat extraHeight = MAX(minimumTouchSize - CGRectGetHeight(rect), 0) / 2.0;
+        if (extraWidth > 0 || extraHeight > 0) {
+            rect = CGRectInset(rect, -extraWidth, -extraHeight);
         }
         if (CGRectContainsPoint(rect, touchpoint)) {
             [inTouchItems addObject:item];

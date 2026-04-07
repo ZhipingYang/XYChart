@@ -1,47 +1,55 @@
-<p align="center">
-<img align="center" width="150" src ="https://user-images.githubusercontent.com/9360037/43032646-0771fd3c-8cef-11e8-913f-034ca293c625.png"/>
-</p>
+# XYChart
+
+Lightweight Objective-C line and bar charts with configurable range, layout, tap interaction, and replayable entry animation.
+
+## Preview
+
+Real screenshots from the generated pure-code demo on the current iPhone simulator:
 
 <p align="center">
-	<a href="http://cocoapods.org/pods/XYChart">
-		<image alt="Version" src="https://img.shields.io/cocoapods/v/XYChart.svg?style=flat">
-	</a>
-	<a href="http://cocoapods.org/pods/XYChart">
-		<image alt="License" src="https://img.shields.io/cocoapods/l/XYChart.svg?style=flat">
-	</a>
-	<a href="http://cocoapods.org/pods/XYChart">
-		<image alt="Platform" src="https://img.shields.io/cocoapods/p/XYChart.svg?style=flat">
-	</a>
-	<a href="https://travis-ci.org/ZhipingYang/XYChart">
-		<image alt="CI Status" src="http://img.shields.io/travis/ZhipingYang/XYChart.svg?style=flat">
-	</a>
+  <img src="docs/images/demo-overview.png" alt="XYChart line showcase demo" width="48%" />
+  <img src="docs/images/demo-bars.png" alt="XYChart bar showcase demo" width="48%" />
 </p>
 
-<br>
+## Highlights
 
-> **XYChart** is designed for line & bar of charts which can compare mutiple datas in form styles, and limited the range of values to show, and so on.
-
-| **LineChart** | **BarChart** |
-|:-------:|:---------:|
-| ![WechatIMG65](https://user-images.githubusercontent.com/9360037/62707044-4671de00-ba23-11e9-9ddc-57509edba0dc.jpeg) | ![WechatIMG66](https://user-images.githubusercontent.com/9360037/62707048-47a30b00-ba23-11e9-90a9-c414a92da2cc.jpeg) |
-| single datas in linechart | single datas in linechart |
-| ![WechatIMG70](https://user-images.githubusercontent.com/9360037/62711726-20047080-ba2c-11e9-8890-022fe4e58df9.jpeg) | ![click](https://user-images.githubusercontent.com/9360037/62712419-5ee6f600-ba2d-11e9-9605-aeaba3097e9b.gif) |
-| **LineDotsClicked:** show all if the dots closed in multi-datas | **BarClicked:** custom click effects in multi-datas |
-| ![gif](https://user-images.githubusercontent.com/9360037/62709107-54c1f900-ba27-11e9-8312-8fcec88a58d5.gif) | ![gif](https://user-images.githubusercontent.com/9360037/62709087-48d63700-ba27-11e9-86f3-e92e4e1bd094.gif) |
-| scrolling linechart (did set row width) | scrolling barchart (did set row width) |
-
+- Pure Objective-C, UIKit based.
+- Supports line charts and grouped/single bar charts.
+- Multi-series comparison through one datasource abstraction.
+- Configurable visible range, number of levels, and row width.
+- Tap callbacks can drive custom animations or `UIMenuController` values.
+- Entry animation timing is controlled by each `XYChartItem.duration`.
+- Demo is now pure code only and generated from `XcodeGen + CocoaPods`.
 
 ## Install
 
-> required `iOS >= 8.0` with [Cocoapods](https://cocoapods.org/)
-> 
-> ```ruby
-> pod 'XYChart'
-> ```
+```ruby
+pod 'XYChart'
+```
 
-## Demo
+Requirements:
 
-The repository now keeps the demo as a pure-code app plus generated project config only.
+- iOS 12.0+ for the pod
+- CocoaPods
+
+## Repo Layout
+
+- `XYChart/`: pod core source
+- `Demo/Sources/`: pure-code demo logic
+- `Demo/project.yml`: XcodeGen definition for the demo app
+- `Demo/Podfile`: CocoaPods integration for the demo app
+- `docs/images/`: README preview screenshots
+- `GenerateDemo.command`: one-click bootstrap script for the demo
+
+## Run Demo
+
+One-click:
+
+```bash
+./GenerateDemo.command
+```
+
+Manual:
 
 ```bash
 brew install xcodegen cocoapods
@@ -51,17 +59,62 @@ pod install
 open XYChartDemo.xcworkspace
 ```
 
-Files that matter:
+Notes:
 
-- `XYChart/`: pod core source
-- `Demo/Sources/`: pure code demo logic
-- `Demo/project.yml`: XcodeGen project definition
-- `Demo/Podfile`: CocoaPods integration for the demo
+- Open `XYChartDemo.xcworkspace`, not the generated `.xcodeproj`.
+- Generated files such as `Pods/`, `.xcworkspace`, and `.xcodeproj` are not part of the repo core.
+- If you change `Demo/project.yml` or `Demo/Podfile`, rerun `xcodegen generate` and `pod install`.
+- The demo app itself targets iOS 13.0 because it uses modern scene lifecycle and current iPhone layout APIs.
 
-## Usage
+## Quick Start
 
-<details><summary> Expand for XYChart details </summary>
-<br>
+```objective-c
+#import <XYChart/XYChart.h>
+#import <XYChart/XYChartItem.h>
+#import <XYChart/XYChartDataSourceItem.h>
+
+XYChartItem *lineA1 = [XYChartItem new];
+lineA1.value = @28;
+lineA1.color = UIColor.systemBlueColor;
+lineA1.duration = 0.22;
+lineA1.showName = @"Engagement | Mon | 28%";
+
+XYChartItem *lineA2 = [XYChartItem new];
+lineA2.value = @34;
+lineA2.color = UIColor.systemBlueColor;
+lineA2.duration = 0.22;
+lineA2.showName = @"Engagement | Tue | 34%";
+
+XYChartItem *lineB1 = [XYChartItem new];
+lineB1.value = @19;
+lineB1.color = UIColor.systemTealColor;
+lineB1.duration = 0.25;
+lineB1.showName = @"Conversion | Mon | 19%";
+
+XYChartItem *lineB2 = [XYChartItem new];
+lineB2.value = @26;
+lineB2.color = UIColor.systemTealColor;
+lineB2.duration = 0.25;
+lineB2.showName = @"Conversion | Tue | 26%";
+
+XYChartDataSourceItem *dataSource = [[XYChartDataSourceItem alloc] initWithDataList:@[
+    @[lineA1, lineA2],
+    @[lineB1, lineB2]
+]];
+
+dataSource.configuration.numberOfLevels = 5;
+dataSource.configuration.autoSizingRowWidth = YES;
+dataSource.configuration.automaticallyAdjustsVisibleRange = YES;
+
+XYChart *chartView = [[XYChart alloc] initWithType:XYChartTypeLine];
+chartView.delegate = self;
+[chartView setDataSource:dataSource animation:YES];
+[self.view addSubview:chartView];
+```
+
+## Core API
+
+### `XYChart`
 
 ```objective-c
 @interface XYChart : UIView<XYChartReload>
@@ -69,171 +122,109 @@ Files that matter:
 @property (nonatomic, weak, nullable) id<XYChartDataSource> dataSource;
 @property (nonatomic, weak, nullable) id<XYChartDelegate> delegate;
 @property (nonatomic, copy, nullable) XYChartConfiguration *configuration;
+@property (nonatomic, readonly) XYChartType type;
 
-@property (nonatomic, readonly) XYChartType chartType;
-
-- (instancetype)initWithFrame:(CGRect)frame type:(XYChartType)type NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithFrame:(CGRect)frame type:(XYChartType)type;
 - (instancetype)initWithType:(XYChartType)type;
-
-/**
- 更新图标数据
- 
- @param dataSource 数据
- @param animation 是否执行动画
- */
 - (void)setDataSource:(id<XYChartDataSource>)dataSource animation:(BOOL)animation;
-
-/**
- 重载数据
- 
- @param animation 是否执行动画
- */
 - (void)reloadData:(BOOL)animation;
 
 @end
 ```
 
-</details>
-
-**Preferred configuration API**
-
-```objective-c
-XYChartDataSourceItem *datasource = [[XYChartDataSourceItem alloc] initWithDataList:dataList];
-datasource.configuration.numberOfLevels = 4;
-datasource.configuration.autoSizingRowWidth = NO;
-datasource.configuration.rowWidth = 48;
-datasource.configuration.automaticallyAdjustsVisibleRange = YES;
-```
-
-
-**Method 1：**
-[details](https://github.com/ZhipingYang/XYChart/issues/50)
-
-```objective-c
-_chartView = [[XYChart alloc] initWithFrame:CGRectMake(0, 0, 300, 100) type:XYChartTypeLine];
-_chartView.dataSource = self;
-_chartView.delegate = self;
-[self.view addSubview:_chartView];
-```
-
-**Method 2：**
-
-```objective-c
-// the obj follow the XYChartDataSource protocol
-_datasource = [[XYChartDataSourceItem alloc] init];
-
-_chartView = [[XYChart alloc] initWithType:XYChartTypeLine];
-_chartView.dataSource = _datasource;
-[self.view addSubview:_chartView];
-```
-
-**Method 3： chart-level override**
+### `XYChartConfiguration`
 
 ```objective-c
 XYChartConfiguration *configuration = [XYChartConfiguration defaultConfiguration];
+configuration.visibleRange = XYRangeMake(0, 100);
+configuration.automaticallyAdjustsVisibleRange = YES;
 configuration.numberOfLevels = 6;
 configuration.autoSizingRowWidth = NO;
-configuration.rowWidth = 44;
-
-_chartView = [[XYChart alloc] initWithType:XYChartTypeLine];
-_chartView.configuration = configuration;
-_chartView.dataSource = self;
-[self.view addSubview:_chartView];
+configuration.rowWidth = 52.0;
 ```
 
+Available properties:
 
-<details open><summary> Expand for <bold>XYChartDelegate</bold> protocol details </summary>
-<br>
+- `visibleRange`
+- `automaticallyAdjustsVisibleRange`
+- `numberOfLevels`
+- `rowWidth`
+- `autoSizingRowWidth`
+
+### `XYChartItem`
 
 ```objective-c
-@protocol XYChartDelegate
-@optional
-
-/**
- 是否展示UIMenuController
- */
-- (BOOL)chart:(XYChart *)chart shouldShowMenu:(NSIndexPath *)index;
-
-/**
- 点击后的action，重载一般就不show UIMenuController了
- */
-- (void)chart:(XYChart *)chart itemDidClick:(id<XYChartItem>)item;
-
-/**
- line用于展示圆圈，bar用于柱形图的动画
- */
-- (CAAnimation *)chart:(XYChart *)chart clickAnimationOfIndex:(NSIndexPath *)index;
-
-@end
+XYChartItem *item = [XYChartItem new];
+item.value = @42;
+item.color = UIColor.systemBlueColor;
+item.duration = 0.22;
+item.showName = @"North | Jan | 42k";
 ```
-</details>
 
-<details><summary> Expand for XYChartDataSource protocol details </summary>
-<br>
+Notes:
+
+- `duration` controls line draw speed, point reveal timing, and bar grow timing.
+- `showName` is used by `UIMenuController` when menu display is enabled.
+
+### `XYChartDataSource`
+
+Required methods:
 
 ```objective-c
-/**
- 多套对比数据展示
- */
-@protocol XYChartDataSource
-
-/**
- 多少条并行对比数据，折线图表现多条线，柱状图表现一列中有几条柱状图
- */
 - (NSUInteger)numberOfSectionsInChart:(XYChart *)chart;
-
-/**
- 完整的周期内，数据的个数，横向列数
- */
 - (NSUInteger)numberOfRowsInChart:(XYChart *)chart;
-
-/**
- x坐标的标题
- */
 - (NSAttributedString *)chart:(XYChart *)chart titleOfRowAtIndex:(NSUInteger)index;
-
-/**
- index下的数据模型
- */
 - (id<XYChartItem>)chart:(XYChart *)chart itemOfIndex:(NSIndexPath *)index;
-
-@optional
-
-/**
- 推荐使用独立配置对象来承载范围、分段和布局配置
- */
-- (nullable XYChartConfiguration *)chartConfiguration:(XYChart *)chart;
-
-/**
- x坐标的标题
- */
-- (NSAttributedString *)chart:(XYChart *)chart titleOfSectionAtValue:(CGFloat)sectionValue;
-
-/**
- 标记y轴方向高亮区间
- */
-- (XYRange)visibleRangeInChart:(XYChart *)chart;
-
-/**
- y轴方向分段，5就分5段
- */
-- (NSUInteger)numberOfLevelInChart:(XYChart *)chart;
-
-/**
- 横向一栏的宽度
- */
-- (CGFloat)rowWidthOfChart:(XYChart *)chart;
-
-/**
- 自适应平均分横向栏目的宽度
- */
-- (BOOL)autoSizingRowInChart:(XYChart *)chart;
-
-@end
 ```
-</details>
 
+Optional methods:
 
+```objective-c
+- (nullable XYChartConfiguration *)chartConfiguration:(XYChart *)chart;
+- (NSAttributedString *)chart:(XYChart *)chart titleOfSectionAtValue:(CGFloat)sectionValue;
+- (BOOL)autoSizingRowInChart:(XYChart *)chart;
+- (CGFloat)rowWidthOfChart:(XYChart *)chart;
+- (NSUInteger)numberOfLevelInChart:(XYChart *)chart;
+- (XYRange)visibleRangeInChart:(XYChart *)chart;
+```
+
+### `XYChartDelegate`
+
+```objective-c
+- (BOOL)chart:(XYChart *)chart shouldShowMenu:(NSIndexPath *)index;
+- (void)chart:(XYChart *)chart itemDidClick:(id<XYChartItem>)item;
+- (CAAnimation *)chart:(XYChart *)chart clickAnimationOfIndex:(NSIndexPath *)index;
+```
+
+Typical uses:
+
+- decide whether a tapped point or bar should show `UIMenuController`
+- update footer text or external labels when the user taps a value
+- provide custom tap feedback animations per chart or per index
+
+## Demo Coverage
+
+The current demo app includes:
+
+- 3 line cases
+- 3 bar cases
+- replay button per card
+- `UIMenuController` value display
+- sequential line draw and bar grow animation
+- pure-code layout that supports current iPhone safe areas and screen sizes
+
+## Development Notes
+
+- The demo app uses `UIScene` lifecycle and a pure-code `SceneDelegate`.
+- The generated demo project is intentionally disposable; edit source and config, then regenerate.
+- For local verification:
+
+```bash
+cd Demo
+xcodegen generate
+pod install
+xcodebuild -workspace XYChartDemo.xcworkspace -scheme XYChartDemo -configuration Debug -destination 'generic/platform=iOS Simulator' build
+```
 
 ## Author
 
@@ -241,4 +232,4 @@ XcodeYang, xcodeyang@gmail.com
 
 ## License
 
-XYChart is available under the MIT license. See the LICENSE file for more info.
+XYChart is available under the MIT license. See [LICENSE](LICENSE).

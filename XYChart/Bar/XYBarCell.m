@@ -10,6 +10,8 @@
 #import "XYBarView.h"
 #import "XYChart.h"
 
+static const NSTimeInterval XYBarAnimationCascadeStep = 0.06;
+
 @interface XYBarCell()
 {
     NSInteger _row;
@@ -18,10 +20,16 @@
 @property (nonatomic, weak) XYChart *chartView;
 
 @property (nonatomic, strong) NSArray <id<XYChartItem>>*barsDataArray;
+@property (nonatomic) BOOL isWaitingForAnimation;
 
 @end
 
 @implementation XYBarCell
+
++ (NSTimeInterval)animationCascadeStep
+{
+    return XYBarAnimationCascadeStep;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -37,6 +45,14 @@
         [self addSubview:_nameLabel];
     }
     return self;
+}
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    self.isWaitingForAnimation = NO;
+    [_barContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    self.nameLabel.attributedText = nil;
 }
 
 - (void)layoutSubviews
@@ -77,10 +93,11 @@
         [mArr xy_safeAdd:item];
     }
     _barsDataArray = [NSArray arrayWithArray:mArr];
-    [self reloadBars:animation];
+    self.isWaitingForAnimation = animation;
+    [self reloadBars];
 }
 
-- (void)reloadBars:(BOOL)animation
+- (void)reloadBars
 {
     const CGFloat count = _barsDataArray.count;
     [_barContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -92,12 +109,25 @@
         XYBarView *bar = [[XYBarView alloc] initWithFrame:CGRectMake((xy_width(self.barContainerView)/count)*idx, 0, xy_width(self.barContainerView)/count, xy_height(self.barContainerView))];
         [bar setChartItem:obj range:[self.chartView resolvedConfiguration].visibleRange];
         [self.barContainerView addSubview:bar];
-        [bar startAnimate:animation];
         
         __weak typeof(self) weakSelf = self;
         bar.handleBlock = ^(XYBarView * _Nonnull view) {
             [weakSelf handleTapIfNeed:view];
         };
+    }];
+}
+
+- (void)startAnimationsIfNeededWithBaseDelay:(NSTimeInterval)baseDelay
+{
+    if (self.isWaitingForAnimation == NO) {
+        return;
+    }
+    self.isWaitingForAnimation = NO;
+    [self.barContainerView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[XYBarView class]]) {
+            NSTimeInterval delay = baseDelay + ((NSTimeInterval)idx * XYBarAnimationCascadeStep);
+            [(XYBarView *)obj startAnimate:YES delay:delay];
+        }
     }];
 }
 

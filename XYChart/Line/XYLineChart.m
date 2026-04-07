@@ -18,6 +18,8 @@
 @property (nonatomic, strong) XYLinesView *linesView;
 
 @property (nonatomic, strong) NSMutableArray <XYLineItemView *>* itemViews;
+@property (nonatomic, copy) NSArray<NSNumber *> *itemAnimationDelays;
+@property (nonatomic) BOOL shouldAnimateItemsOnNextLayout;
 
 @end
 
@@ -57,6 +59,63 @@
     [_itemViews enumerateObjectsUsingBlock:^(XYLineItemView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.frame = CGRectMake(idx*rowWidth, 0, rowWidth, xy_height(self));
     }];
+    
+    if (self.shouldAnimateItemsOnNextLayout) {
+        self.shouldAnimateItemsOnNextLayout = NO;
+        [_itemViews enumerateObjectsUsingBlock:^(XYLineItemView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSTimeInterval delay = idx < self.itemAnimationDelays.count ? self.itemAnimationDelays[idx].doubleValue : 0;
+            [obj startAnimate:YES delay:delay];
+        }];
+    }
+}
+
+- (NSArray<NSNumber *> *)lineSegmentDurations
+{
+    NSUInteger rows = [self.chartView.dataSource numberOfRowsInChart:self.chartView];
+    NSUInteger sections = [self.chartView.dataSource numberOfSectionsInChart:self.chartView];
+    NSMutableArray<NSNumber *> *durations = [NSMutableArray array];
+    for (NSUInteger row = 0; row + 1 < rows; row++) {
+        NSTimeInterval duration = XYChartDefaultAnimationDuration();
+        for (NSUInteger section = 0; section < sections; section++) {
+            NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:row inSection:section];
+            NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:row + 1 inSection:section];
+            id<XYChartItem> currentItem = [self.chartView.dataSource chart:self.chartView itemOfIndex:currentIndexPath];
+            id<XYChartItem> nextItem = [self.chartView.dataSource chart:self.chartView itemOfIndex:nextIndexPath];
+            NSTimeInterval segmentDuration = MAX(XYChartResolvedAnimationDuration(currentItem ? currentItem.duration : 0),
+                                                 XYChartResolvedAnimationDuration(nextItem ? nextItem.duration : 0));
+            duration = MAX(duration, segmentDuration);
+        }
+        [durations addObject:@(duration)];
+    }
+    return [durations copy];
+}
+
+- (NSArray<NSNumber *> *)segmentAnimationDelaysForDurations:(NSArray<NSNumber *> *)durations
+{
+    NSMutableArray<NSNumber *> *delays = [NSMutableArray arrayWithCapacity:durations.count];
+    NSTimeInterval currentDelay = 0;
+    for (NSNumber *duration in durations) {
+        [delays addObject:@(currentDelay)];
+        currentDelay += duration.doubleValue;
+    }
+    return [delays copy];
+}
+
+- (NSArray<NSNumber *> *)pointAnimationDelaysForSegmentDurations:(NSArray<NSNumber *> *)durations
+                                                   segmentDelays:(NSArray<NSNumber *> *)segmentDelays
+{
+    NSUInteger rows = [self.chartView.dataSource numberOfRowsInChart:self.chartView];
+    NSMutableArray<NSNumber *> *delays = [NSMutableArray arrayWithCapacity:rows];
+    if (rows == 0) {
+        return @[];
+    }
+    [delays addObject:@0];
+    for (NSUInteger row = 1; row < rows; row++) {
+        NSTimeInterval segmentDelay = row - 1 < segmentDelays.count ? segmentDelays[row - 1].doubleValue : 0;
+        NSTimeInterval segmentDuration = row - 1 < durations.count ? durations[row - 1].doubleValue : 0;
+        [delays addObject:@(segmentDelay + segmentDuration)];
+    }
+    return [delays copy];
 }
 
 #pragma mark - XYChartContainer
@@ -66,6 +125,9 @@
     [_itemViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [_itemViews removeAllObjects];
     
+    NSArray<NSNumber *> *segmentDurations = [self lineSegmentDurations];
+    NSArray<NSNumber *> *segmentDelays = animation ? [self segmentAnimationDelaysForDurations:segmentDurations] : @[];
+    self.linesView.segmentAnimationDelays = segmentDelays;
     [_linesView reloadData:animation];
     
     const NSUInteger rows = [_chartView.dataSource numberOfRowsInChart:_chartView];
@@ -93,6 +155,8 @@
         [self.scrollView addSubview:itemView];
         [_itemViews addObject:itemView];
     }
+    self.itemAnimationDelays = animation ? [self pointAnimationDelaysForSegmentDurations:segmentDurations segmentDelays:segmentDelays] : @[];
+    self.shouldAnimateItemsOnNextLayout = animation;
     [self setNeedsLayout];
 }
 

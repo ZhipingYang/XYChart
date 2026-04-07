@@ -16,7 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIView *barContainerView;
 @property (nonatomic, strong) UILabel *nameLabel;
 
++ (NSTimeInterval)animationCascadeStep;
 - (void)updateChart:(XYChart *)chart index:(NSUInteger)index animation:(BOOL)animation;
+- (void)startAnimationsIfNeededWithBaseDelay:(NSTimeInterval)baseDelay;
 
 @end
 

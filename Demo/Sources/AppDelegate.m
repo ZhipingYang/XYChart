@@ -1,17 +1,21 @@
 #import "AppDelegate.h"
-#import "DemoViewController.h"
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor = [UIColor colorWithRed:0.965 green:0.949 blue:0.918 alpha:1.0];
-
-    DemoViewController *rootViewController = [[DemoViewController alloc] init];
-    self.window.rootViewController = rootViewController;
-    [self.window makeKeyAndVisible];
+    (void)application;
+    (void)launchOptions;
     return YES;
+}
+
+- (UISceneConfiguration *)application:(UIApplication *)application
+configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession
+                              options:(UISceneConnectionOptions *)options API_AVAILABLE(ios(13.0))
+{
+    (void)application;
+    (void)options;
+    return [[UISceneConfiguration alloc] initWithName:@"Default Configuration"
+                                          sessionRole:connectingSceneSession.role];
 }
 
 @end

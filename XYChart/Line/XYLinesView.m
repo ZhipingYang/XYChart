@@ -13,6 +13,7 @@
 @interface XYLinesView()
 
 @property (nonatomic, strong) NSMutableArray <NSArray <XYLineGradientLayer *>*>* sections;
+@property (nonatomic) BOOL shouldAnimateOnNextLayout;
     
 @end
 
@@ -39,7 +40,8 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self updateLinesShape:NO];
+    [self updateLinesShape:self.shouldAnimateOnNextLayout];
+    self.shouldAnimateOnNextLayout = NO;
 }
 
 - (void)reloadData:(BOOL)animation
@@ -75,7 +77,8 @@
         [self.sections addObject:[NSArray arrayWithArray:mArr]];
     }
     
-    [self updateLinesShape:animation];
+    self.shouldAnimateOnNextLayout = animation;
+    [self setNeedsLayout];
 }
 
 - (void)updateLinesShape:(BOOL)animate
@@ -94,7 +97,11 @@
                                         plotHeight*(1-MAX(prePercent, nextPercent))-circleLength/2,
                                         itemWidth,
                                         plotHeight*fabs(prePercent-nextPercent)+circleLength);
-            [gradient startAnimate:animate];
+            NSTimeInterval delay = 0;
+            if (animate && sub_idx < self.segmentAnimationDelays.count) {
+                delay = self.segmentAnimationDelays[sub_idx].doubleValue;
+            }
+            [gradient startAnimate:animate delay:delay];
         }];
     }];
 }

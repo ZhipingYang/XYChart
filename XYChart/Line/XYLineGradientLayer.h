@@ -20,5 +20,6 @@
 - (void)updateWithPre:(id<XYChartItem>)pre next:(id<XYChartItem>)next range:(XYRange)range;
 
 - (void)startAnimate:(BOOL)animate;
+- (void)startAnimate:(BOOL)animate delay:(NSTimeInterval)delay;
 
 @end

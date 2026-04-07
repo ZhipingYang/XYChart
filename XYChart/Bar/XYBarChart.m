@@ -17,6 +17,8 @@
     BOOL _shouldAnimation;
 }
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) NSMutableSet<NSNumber *> *animatedRows;
+@property (nonatomic) CFTimeInterval nextRowAnimationAvailableTime;
 
 @end
 
@@ -59,7 +61,21 @@
 - (void)reloadData:(BOOL)animation
 {
     _shouldAnimation = animation;
+    self.animatedRows = animation ? [NSMutableSet set] : nil;
+    self.nextRowAnimationAvailableTime = 0;
     [self.collectionView reloadData];
+}
+
+- (NSTimeInterval)animationSpanForRow:(NSUInteger)row
+{
+    NSUInteger sections = [self.chartView.dataSource numberOfSectionsInChart:self.chartView];
+    NSTimeInterval rowDuration = XYChartDefaultAnimationDuration();
+    for (NSUInteger section = 0; section < sections; section++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+        id<XYChartItem> item = [self.chartView.dataSource chart:self.chartView itemOfIndex:indexPath];
+        rowDuration = MAX(rowDuration, XYChartResolvedAnimationDuration(item ? item.duration : 0));
+    }
+    return rowDuration + MAX((NSInteger)sections - 1, 0) * [XYBarCell animationCascadeStep];
 }
 
 #pragma mark - UICollectionViewDelegate & UICollectionViewDataSource
@@ -72,8 +88,26 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     XYBarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XYBarCell class]) forIndexPath:indexPath];
-    [cell updateChart:_chartView index:indexPath.row animation:_shouldAnimation];
+    BOOL shouldAnimateCell = _shouldAnimation && ![self.animatedRows containsObject:@(indexPath.row)];
+    [cell updateChart:_chartView index:indexPath.row animation:shouldAnimateCell];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell isKindOfClass:[XYBarCell class]] == NO) {
+        return;
+    }
+    if (_shouldAnimation == NO || [self.animatedRows containsObject:@(indexPath.row)]) {
+        [(XYBarCell *)cell startAnimationsIfNeededWithBaseDelay:0];
+        return;
+    }
+    CFTimeInterval now = CACurrentMediaTime();
+    CFTimeInterval scheduledStart = MAX(now, self.nextRowAnimationAvailableTime);
+    NSTimeInterval delay = scheduledStart - now;
+    self.nextRowAnimationAvailableTime = scheduledStart + [self animationSpanForRow:indexPath.row];
+    [self.animatedRows addObject:@(indexPath.row)];
+    [(XYBarCell *)cell startAnimationsIfNeededWithBaseDelay:delay];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath

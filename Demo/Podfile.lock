@@ -1,5 +1,5 @@
 PODS:
-  - XYChart (0.0.1)
+  - XYChart (1.0.0)
 
 DEPENDENCIES:
   - XYChart (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  XYChart: 76158875cac02db0fcdfa176174a80e3cf0dd245
+  XYChart: 0ddaee00d7a1f2f6580c5ed9db0b8eda5f4132ad
 
 PODFILE CHECKSUM: 66004024fd7a3a718c18aa64328ef4adbdf0ec07
 

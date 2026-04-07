@@ -67,19 +67,21 @@ CG_INLINE CGFloat XYChartClampedPercent(CGFloat value, XYRange range) {
     return MIN(MAX(percent, 0), 1);
 }
 
-CG_INLINE CGFloat XYChartAnimationStep(NSTimeInterval duration) {
-    if (duration <= 0) {
-        return 1;
-    }
-    return 1 / (60.0 * duration);
-}
-
 CG_INLINE CGFloat XYChartPixel(void) {
     return 1 / UIScreen.mainScreen.scale;
 }
 
 CG_INLINE CGFloat XYChartPlotHeight(CGFloat totalHeight) {
     return MAX(totalHeight - XYChartRowLabelHeight, 0);
+}
+
+CG_INLINE NSTimeInterval XYChartDefaultAnimationDuration(void) {
+    return 0.22;
+}
+
+CG_INLINE NSTimeInterval XYChartResolvedAnimationDuration(NSTimeInterval duration) {
+    NSTimeInterval candidate = duration > 0 ? duration : XYChartDefaultAnimationDuration();
+    return MAX(candidate, 0.10);
 }
 
 CG_INLINE CGFloat XYChartResolvedRowWidth(CGFloat availableWidth, NSUInteger rowCount, BOOL autoSizing, CGFloat configuredWidth) {

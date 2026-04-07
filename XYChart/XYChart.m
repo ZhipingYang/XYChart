@@ -106,9 +106,9 @@
     __block CGFloat width = XYChartSectionLabelWidth;
     [_sectionLabels enumerateObjectsUsingBlock:^(UILabel * _Nonnull label, NSUInteger idx, BOOL * _Nonnull stop) {
         CGSize fittingSize = [label sizeThatFits:CGSizeMake(CGFLOAT_MAX, 20.0)];
-        width = MAX(width, ceil(fittingSize.width) + 8.0);
+        width = MAX(width, ceil(fittingSize.width) + 12.0);
     }];
-    return MIN(width, 72.0);
+    return MIN(width, 92.0);
 }
 
 - (void)setUpChartElements
@@ -145,7 +145,10 @@
     CGFloat labelHeight = plotHeight / (_sectionLabels.count>1 ? _sectionLabels.count-1 : 1);
     
     [_sectionLabels enumerateObjectsUsingBlock:^(UILabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.frame = CGRectMake(0, labelHeight*(idx-0.5), MAX(sectionLabelWidth - 4.0, 0), labelHeight);
+        CGFloat originY = (labelHeight * idx) - (labelHeight / 2.0);
+        CGFloat maxY = MAX(plotHeight - labelHeight, 0);
+        originY = MIN(MAX(originY, 0), maxY);
+        obj.frame = CGRectMake(4.0, originY, MAX(sectionLabelWidth - 10.0, 0), labelHeight);
     }];
     
     [self updateChartContainerFrame];
@@ -245,6 +248,8 @@
     for (NSUInteger i=0; i<levels+1; i++) {
         UILabel *label = [[UILabel alloc] init];
         label.textAlignment = NSTextAlignmentRight;
+        label.adjustsFontSizeToFitWidth = YES;
+        label.minimumScaleFactor = 0.72;
         CGFloat value = range.max - sectionValue*i;
         
         if ([(NSObject<XYChartDataSource> *)_dataSource respondsToSelector:@selector(chart:titleOfSectionAtValue:)]) {
